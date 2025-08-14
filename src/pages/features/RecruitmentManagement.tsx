@@ -1,152 +1,112 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, 
-  Search, 
-  Calendar, 
-  FileText, 
+import {
+  Users,
+  Search,
+  Calendar,
+  FileText,
   UserPlus,
   BarChart3,
   ArrowRight,
-  Check
+  Check,
+  Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import imf from 'public/RecruitmentManagement-Bg.png'
 
 const RecruitmentManagement = () => {
   const features = [
     {
       icon: Search,
-      title: "Intelligent Candidate Filtering",
-      description: "Advanced AI-powered resume parsing and candidate matching based on job requirements."
+      title: "Talent Requisition",
+      description: "Create job requisitions for all hiring needs."
     },
     {
       icon: Calendar,
-      title: "Interview Scheduling",
-      description: "Automated calendar integration for seamless interview coordination with all stakeholders."
+      title: "Job Posting",
+      description: "Post openings on the right boards instantly."
     },
     {
       icon: FileText,
-      title: "Offer Management",
-      description: "Generate, send, and track offer letters with digital signature capabilities."
+      title: "Centralised Talent Pipeline",
+      description: "Track and manage candidates in one view."
     },
     {
       icon: UserPlus,
-      title: "Onboarding Workflows",
-      description: "Streamlined onboarding process with automated task assignments and progress tracking."
+      title: "Interview & Selection",
+      description: "Schedule panels and communicate effortlessly."
     },
     {
       icon: BarChart3,
-      title: "Recruitment Analytics",
-      description: "Comprehensive reporting on hiring metrics, time-to-hire, and source effectiveness."
+      title: "Offer Management",
+      description: "Send, track, and finalize offers with ease."
     },
     {
       icon: Users,
-      title: "Collaborative Hiring",
-      description: "Enable team-based hiring decisions with structured feedback and evaluation forms."
+      title: "Paperless Onboarding",
+      description: "Deliver a smooth digital self onboarding experience for every hire."
     }
   ];
 
-  const benefits = [
-    "Reduce time-to-hire by 50%",
-    "Improve candidate experience",
-    "Centralized applicant database",
-    "Automated workflow management",
-    "Compliance with hiring regulations",
-    "Integration with job boards"
-  ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section
+        className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-foreground mb-6">
-                Smart Recruitment from Job Posting to Joining
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                OfficeKit helps you attract, evaluate, and onboard top talent effortlessly. 
-                Automate interview workflows, track applicants, and reduce hiring time.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/contact">
-                  <Button className="btn-cta group">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button className="btn-outline">
-                    Schedule Demo
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
+              Recruitment Managment
+            </h3>
+            {/* <h1 className="text-5xl font-semibold text-foreground leading-tight mb-4">
+              Streamline Your Hiring Process with OfficeKit HR
+            </h1> */}
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
+              Streamline Your Hiring Process with
+              <span className="gradient-text"> OfficeKit HR</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Manage recruitment efficiently with a centralized platform that streamlines job postings, candidate tracking, and communication — helping you hire top talent faster and smarter.
+            </p>
 
-              {/* Benefits List */}
-              <div className="grid grid-cols-2 gap-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+
+
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link to="/contact">
+                <Button className="btn-cta h-[44px] py-[22px] group">
+                  Schedule Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
+                <Button
+                  variant="outline"
+                  className="btn-outline group h-[44px] px-6 group"
+                >                  <Play className="mr-2 h-4 w-4" />
+                  Watch Overview
+                </Button>
+              </Link>
             </div>
 
-            {/* Mockup */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-3xl opacity-20"></div>
-              <div className="relative bg-card rounded-3xl shadow-strong p-8 border border-border">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Recruitment Pipeline</h3>
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                      15 New Applications
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[
-                      { stage: "Applications", count: 127, color: "bg-blue-100 text-blue-700" },
-                      { stage: "Screening", count: 45, color: "bg-yellow-100 text-yellow-700" },
-                      { stage: "Interview", count: 18, color: "bg-purple-100 text-purple-700" },
-                      { stage: "Offer", count: 5, color: "bg-green-100 text-green-700" }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg border border-border">
-                        <div className="flex items-center space-x-3">
-                          <div className={`w-3 h-3 rounded-full ${item.color.split(' ')[0]}`}></div>
-                          <span className="font-medium">{item.stage}</span>
-                        </div>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${item.color}`}>
-                          {item.count}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>Time to hire: 14 days</span>
-                      <span>Success rate: 84%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
+
 
       {/* Key Features */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl font-semibold text-foreground mb-6">
               Complete Recruitment Solution
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -176,27 +136,32 @@ const RecruitmentManagement = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-20 bg-[#094ace] text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-semibold mb-6">
               Ready to Transform Your Hiring Process?
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Join thousands of companies that have streamlined their recruitment with OfficeKit.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+       
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 ">
               <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-gray-100">
+                <Button className="btn-cta hover:bg-white bg-white text-primary h-[44px] py-[22px] group">
                   Start Free Trial
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/pricing">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                  View Pricing
+              <Link to="/contact">
+                <Button
+                  variant="outline"
+                  className="btn-outline h-[44px] px-6 group bg-transparent text-white hover:bg-white hover:text-primary"
+                >
+                  Contact Sales Team
                 </Button>
               </Link>
-            </div>
+            </div> 
           </div>
         </div>
       </section>

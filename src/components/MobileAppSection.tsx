@@ -162,11 +162,11 @@ const MobileAppSection = () => {
 
             {/* Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <Button className="btn-cta group flex-1">
+              <Button className="btn-cta group flex-1 h-[44px]">
                 <Download className="mr-2 h-5 w-5" />
                 Download on App Store
               </Button>
-              <Button className="btn-outline group flex-1">
+              <Button className="btn-outline group flex-1 h-[44px]">
                 <Download className="mr-2 h-5 w-5" />
                 Get it on Google Play
               </Button>

@@ -1,15 +1,16 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { 
-  Clock, 
-  Calendar, 
-  MapPin, 
-  CheckCircle, 
+import {
+  Clock,
+  Calendar,
+  MapPin,
+  CheckCircle,
   Users,
   BarChart3,
   ArrowRight,
-  Check
+  Check,
+  Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -17,33 +18,33 @@ const AttendanceAndLeave = () => {
   const features = [
     {
       icon: Clock,
-      title: "Geo-fenced Clock-in/out",
-      description: "Secure location-based attendance tracking with GPS verification and office boundary checks."
+      title: "Attendance Tracking",
+      description: "Monitor employee work hours,shifts, and overtime with precision."
     },
     {
       icon: Calendar,
-      title: "Leave Management",
-      description: "Comprehensive leave tracking with automated approvals, balance calculations, and policy enforcement."
+      title: "Multiple Capture Methods",
+      description: "Support for biometric devices,geo‑fencing, web check‑ins, and mobile apps."
     },
     {
       icon: MapPin,
-      title: "Remote Work Tracking",
-      description: "Monitor remote employee attendance with flexible check-in options and productivity insights."
+      title: "Automated Leave Requests",
+      description: "Employees can apply for leave online with instant notifications to managers."
     },
     {
       icon: CheckCircle,
-      title: "Approval Workflows",
-      description: "Customizable approval chains for leave requests with instant notifications and status updates."
+      title: "Leave Balance Management",
+      description: "Real‑time tracking of accruals, carry‑overs, and policy-based entitlements."
     },
     {
       icon: Users,
-      title: "Team Calendar",
-      description: "Visual team availability overview with holiday planning and resource allocation insights."
+      title: "Customizable Leave Policies",
+      description: "Configure rules for different locations, departments, or roles."
     },
     {
       icon: BarChart3,
-      title: "Attendance Analytics",
-      description: "Detailed reports on attendance patterns, absenteeism trends, and workforce productivity metrics."
+      title: "Integrated Reports",
+      description: "Generate detailed reports on attendance, leave trends, and compliance."
     }
   ];
 
@@ -59,88 +60,49 @@ const AttendanceAndLeave = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section
+        className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-foreground mb-6">
-                Simplify Attendance and Leave Management
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Track employee time and manage leave policies with ease. Fully customizable 
-                settings ensure you stay compliant and flexible.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/contact">
-                  <Button className="btn-cta group">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button className="btn-outline">
-                    Schedule Demo
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
+              Attendance & Leave
+            </h3>
 
-              {/* Benefits List */}
-              <div className="grid grid-cols-2 gap-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
+              Accurate Tracking, Effortless Approvals
+
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Simplify time tracking and leave management for employees and HR. OfficeKit HR automates records, approvals, and reporting — ensuring accuracy and compliance.
+            </p>
+
+
+
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link to="/contact">
+                <Button className="btn-cta h-[44px] py-[22px] group">
+                  Schedule Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
+                <Button
+                  variant="outline"
+                  className="btn-outline group h-[44px] px-6 group"
+                >                  <Play className="mr-2 h-4 w-4" />
+                  Watch Overview
+                </Button>
+              </Link>
             </div>
 
-            {/* Mockup */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-3xl opacity-20"></div>
-              <div className="relative bg-card rounded-3xl shadow-strong p-8 border border-border">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Team Attendance</h3>
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                      98% Present Today
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[
-                      { name: "Sarah Johnson", status: "Present", time: "9:15 AM", color: "bg-green-100 text-green-700" },
-                      { name: "Mike Chen", status: "On Leave", time: "Sick Leave", color: "bg-yellow-100 text-yellow-700" },
-                      { name: "Emily Rodriguez", status: "Present", time: "8:45 AM", color: "bg-green-100 text-green-700" },
-                      { name: "David Kumar", status: "Remote", time: "9:30 AM", color: "bg-blue-100 text-blue-700" }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg border border-border">
-                        <div className="flex items-center space-x-3">
-                          <div className={`w-3 h-3 rounded-full ${item.color.split(' ')[0]}`}></div>
-                          <span className="font-medium">{item.name}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${item.color}`}>
-                            {item.status}
-                          </span>
-                          <div className="text-xs text-muted-foreground mt-1">{item.time}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>Total employees: 156</span>
-                      <span>Avg. attendance: 94%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -149,7 +111,7 @@ const AttendanceAndLeave = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl font-semibold text-foreground mb-6">
               Complete Attendance Solution
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -179,7 +141,7 @@ const AttendanceAndLeave = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      {/* <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold mb-6">
@@ -197,6 +159,36 @@ const AttendanceAndLeave = () => {
               <Link to="/pricing">
                 <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
                   View Pricing
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      <section className="py-20 bg-[#094ace] text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl font-semibold mb-6">
+              Ready to Streamline Time Tracking?
+            </h2>
+            <p className="text-xl text-primary-foreground/80 mb-8">
+              Join thousands of companies managing attendance effortlessly with OfficeKit.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 ">
+              <Link to="/contact">
+                <Button className="btn-cta hover:bg-white bg-white text-primary h-[44px] py-[22px] group">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button
+                  variant="outline"
+                  className="btn-outline h-[44px] px-6 group bg-transparent text-white hover:bg-white hover:text-primary"
+                >
+                  Contact Sales Team
                 </Button>
               </Link>
             </div>

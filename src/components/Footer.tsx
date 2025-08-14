@@ -28,7 +28,7 @@ const Footer = () => {
     { name: "Recruitment Management", href: "/features/recruitment-management" },
     { name: "Attendance and Leave", href: "/features/attendance-and-leave" },
     { name: "Payroll and Compliance", href: "/features/payroll-and-compliance" },
-    { name: "Performance Appraisal", href: "/features/performance-appraisal" },
+    { name: "Performance Management", href: "/features/performance-appraisal" },
     { name: "Self Service Portal", href: "/features/self-service-portal" },
     { name: "Exit Management", href: "/features/exit-management" },
     { name: "Mobile App", href: "/features/mobile-app" },
@@ -102,7 +102,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 opacity-50 my-6"></div>
 
 
-        <div className="grid lg:grid-cols-5 gap-8 mt-12 mb-20">
+        <div className="grid lg:grid-cols-4 gap-8 mt-12 mb-20">
 
 
           {/* Company Links */}
@@ -141,7 +141,7 @@ const Footer = () => {
           </div>
 
 
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <h3 className="text-lg font-semibold text-white">Products</h3>
             <div className="space-y-3">
               <Link to="/about-us" className="block text-gray-300 hover:text-white transition-colors">
@@ -157,7 +157,7 @@ const Footer = () => {
                 prod14
               </Link>
             </div>
-          </div>
+          </div> */}
 
           {/* Resources */}
           <div className="space-y-6">

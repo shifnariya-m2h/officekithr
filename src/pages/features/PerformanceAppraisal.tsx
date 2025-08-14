@@ -1,15 +1,16 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { 
-  Target, 
-  TrendingUp, 
-  Users, 
-  Calendar, 
+import {
+  Target,
+  TrendingUp,
+  Users,
+  Calendar,
   Award,
   BarChart3,
   ArrowRight,
-  Check
+  Check,
+  Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -17,34 +18,34 @@ const PerformanceAppraisal = () => {
   const features = [
     {
       icon: Target,
-      title: "Goal Setting & KPIs",
-      description: "Set SMART goals, define KPIs, and track progress with real-time updates and milestone tracking."
+      title: "Goal Creation",
+      description: "Define and align individual and team goals with organizational objectives."
     },
     {
       icon: TrendingUp,
-      title: "360-Degree Reviews",
-      description: "Comprehensive feedback from peers, subordinates, and supervisors for holistic performance evaluation."
+      title: "Assessment Planning",
+      description: "Create structured evaluation plans to measure performance effectively."
     },
     {
       icon: Users,
-      title: "Self & Manager Reviews",
-      description: "Structured self-assessment and manager evaluation forms with customizable rating scales."
+      title: "360° Evaluation",
+      description: " Get well-rounded insights with feedback from managers, peers, and subordinates."
     },
     {
       icon: Calendar,
-      title: "Custom Appraisal Cycles",
-      description: "Flexible review cycles - annual, bi-annual, quarterly, or custom periods based on your needs."
+      title: "Peer Feedback",
+      description: " Encouragea culture of collaboration and improvement through constructive feedback among colleagues."
     },
     {
       icon: Award,
-      title: "Recognition & Rewards",
-      description: "Built-in recognition system to celebrate achievements and link performance to rewards."
+      title: "IDP Recommendation",
+      description: " Provide personalized Individual Development Plans to guide employee growth."
     },
-    {
-      icon: BarChart3,
-      title: "Performance Analytics",
-      description: "Visual dashboards and reports to identify top performers, skill gaps, and improvement areas."
-    }
+    // {
+    //   icon: BarChart3,
+    //   title: "Performance Analytics",
+    //   description: "Visual dashboards and reports to identify top performers, skill gaps, and improvement areas."
+    // }
   ];
 
   const benefits = [
@@ -59,108 +60,47 @@ const PerformanceAppraisal = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section
+        className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-foreground mb-6">
-                Performance That Drives Growth
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Set goals, track KPIs, and conduct fair, transparent reviews to unlock 
-                your team's full potential and drive organizational success.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/contact">
-                  <Button className="btn-cta group">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button className="btn-outline">
-                    Schedule Demo
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
+              Performance Management
 
-              {/* Benefits List */}
-              <div className="grid grid-cols-2 gap-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+            </h3>
+
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
+
+              Empower Growth with
+              <span className="gradient-text">OfficeKit HR </span>
+
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Drive performance and growth with tools to set goals, track progress, and give feedback. Streamlined cycles ensure fair assessments and continuous improvement.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link to="/contact">
+                <Button className="btn-cta h-[44px] py-[22px] group">
+                  Schedule Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
+                <Button
+                  variant="outline"
+                  className="btn-outline group h-[44px] px-6 group"
+                >                  <Play className="mr-2 h-4 w-4" />
+                  Watch Overview
+                </Button>
+              </Link>
             </div>
 
-            {/* Mockup */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-3xl opacity-20"></div>
-              <div className="relative bg-card rounded-3xl shadow-strong p-8 border border-border">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Performance Dashboard</h3>
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                      Q4 Review Active
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                        <div className="text-2xl font-bold text-blue-700">4.2/5</div>
-                        <div className="text-sm text-blue-600">Avg. Rating</div>
-                      </div>
-                      <div className="p-4 rounded-lg bg-green-50 border border-green-200">
-                        <div className="text-2xl font-bold text-green-700">89%</div>
-                        <div className="text-sm text-green-600">Goal Achievement</div>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      {[
-                        { goal: "Sales Target", progress: 95, status: "Excellent" },
-                        { goal: "Project Delivery", progress: 88, status: "Good" },
-                        { goal: "Team Collaboration", progress: 92, status: "Excellent" },
-                        { goal: "Skill Development", progress: 76, status: "Satisfactory" }
-                      ].map((item, i) => (
-                        <div key={i} className="p-3 rounded-lg border border-border">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-medium">{item.goal}</span>
-                            <span className={`text-sm px-2 py-1 rounded-full ${
-                              item.progress >= 90 ? 'bg-green-100 text-green-700' :
-                              item.progress >= 80 ? 'bg-blue-100 text-blue-700' :
-                              'bg-yellow-100 text-yellow-700'
-                            }`}>
-                              {item.status}
-                            </span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div 
-                              className="bg-primary h-2 rounded-full transition-all duration-300"
-                              style={{ width: `${item.progress}%` }}
-                            ></div>
-                          </div>
-                          <div className="text-xs text-muted-foreground mt-1">{item.progress}% Complete</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>Next review: March 15</span>
-                      <span>Reviews completed: 142/156</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -169,11 +109,11 @@ const PerformanceAppraisal = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl font-semibold text-foreground mb-6">
               Complete Performance Management
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From goal setting to performance reviews, drive excellence across your organization.
+              From goal setting to performance reviews, drive excellence across <br></br> your organization.
             </p>
           </div>
 
@@ -199,31 +139,37 @@ const PerformanceAppraisal = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+
+
+      <section className="py-20 bg-[#094ace] text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-semibold mb-6">
               Ready to Drive Performance Excellence?
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Join thousands of companies building high-performance cultures with OfficeKit.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 ">
               <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-gray-100">
+                <Button className="btn-cta hover:bg-white bg-white text-primary h-[44px] py-[22px] group">
                   Start Free Trial
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/pricing">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                  View Pricing
+              <Link to="/contact">
+                <Button
+                  variant="outline"
+                  className="btn-outline h-[44px] px-6 group bg-transparent text-white hover:bg-white hover:text-primary"
+                >
+                  Contact Sales Team
                 </Button>
               </Link>
             </div>
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

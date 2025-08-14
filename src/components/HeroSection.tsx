@@ -18,14 +18,16 @@ const HeroSection = () => {
               Your journey matters. Our tailored software streamlines operations, supports your team, and fuels growth. Together, let’s build a brighter tomorrow.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact">
-                <Button className="btn-cta py-[22px] group">
+                <Button className="btn-cta h-[44px] py-[22px] group">
                   Schedule Demo
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
-                <Button variant="outline" className="btn-outline py-[22px] group">
-                  <Play className="mr-2 h-4 w-4" />
+                <Button
+                  variant="outline"
+                  className="btn-cta text-black h-[44px] px-6 group"
+                >                  <Play className="mr-2 h-4 w-4" />
                   Watch Overview
                 </Button>
               </Link>

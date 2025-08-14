@@ -15,6 +15,7 @@ import PerformanceAppraisal from "./pages/features/PerformanceAppraisal";
 import SelfServicePortal from "./pages/features/SelfServicePortal";
 import ExitManagement from "./pages/features/ExitManagement";
 import MobileApp from "./pages/features/MobileApp";
+import Employeemanagment from "./pages/features/EmployementManagment"
 import Blog from "./pages/resources/Blog";
 import UseCases from "./pages/resources/UseCases";
 import Community from "./pages/resources/Community";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/features/self-service-portal" element={<SelfServicePortal />} />
           <Route path="/features/exit-management" element={<ExitManagement />} />
           <Route path="/features/mobile-app" element={<MobileApp />} />
+          <Route path="/features/employe-managment" element={<Employeemanagment/>} />
           
           {/* Resource Pages */}
           <Route path="/resources/blog" element={<Blog />} />

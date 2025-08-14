@@ -27,11 +27,12 @@ const Navigation = () => {
     { name: "Recruitment Management", href: "/features/recruitment-management" },
     { name: "Attendance and Leave", href: "/features/attendance-and-leave" },
     { name: "Payroll and Compliance", href: "/features/payroll-and-compliance" },
-    { name: "Performance Appraisal", href: "/features/performance-appraisal" },
+    { name: "Performance Management", href: "/features/performance-appraisal" },
+    { name: "Employee Management", href: "/features/employe-managment" },
     { name: "Self Service Portal", href: "/features/self-service-portal" },
     { name: "Exit Management", href: "/features/exit-management" },
     { name: "Mobile App", href: "/features/mobile-app" },
-  ];
+   ];
 
   const productLinks = [
     { name: "Recruitment & Onboarding", href: "/features" },
@@ -50,8 +51,8 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed  top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-soft"
-          : "bg-transparent"
+        ? "bg-background/95 backdrop-blur-md shadow-soft"
+        : "bg-transparent"
         }`}
     >
       <div className="container mx-auto px-4">
@@ -87,7 +88,7 @@ const Navigation = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <DropdownMenu>
+            {/* <DropdownMenu>
               <DropdownMenuTrigger className="nav-link flex items-center space-x-1 text-foreground hover:text-primary">
                 <span>Product</span>
                 <ChevronDown className="h-4 w-4" />
@@ -104,7 +105,7 @@ const Navigation = () => {
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
 
             {/* Resources Dropdown */}
             <DropdownMenu>
@@ -139,12 +140,12 @@ const Navigation = () => {
           <div className="hidden md:block">
             <Link to="/contact">
               {/* <Button className="btn-cta">Contact Us</Button> */}
-              <Button className="btn-cta group">
+              <Button className="btn-cta group h-[44px]">
                 Schedule Demo
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-          </div> 
+          </div>
 
           {/* Mobile Menu Button */}
           <Button

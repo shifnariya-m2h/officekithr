@@ -1,15 +1,20 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { 
-  User, 
-  FileText, 
-  Download, 
-  Settings, 
+import {
+  User,
+  FileText,
+  Download,
+  Settings,
   MessageSquare,
   Shield,
   ArrowRight,
-  Check
+  Check,
+  Play,
+  CalendarCheck,
+  ClipboardList,
+  Bell,
+  Smartphone
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -17,35 +22,39 @@ const SelfServicePortal = () => {
   const features = [
     {
       icon: User,
-      title: "Personal Data Management",
-      description: "Employees can update personal information, contact details, and emergency contacts independently."
+      title: "Profile Management",
+      description: "Employees can view and update their personal and professional information."
     },
-    {
-      icon: FileText,
-      title: "Document Access",
-      description: "Secure access to payslips, tax documents, policy manuals, and personal employment records."
-    },
-    {
-      icon: Download,
-      title: "Instant Downloads",
-      description: "Download salary certificates, experience letters, and other HR documents on-demand."
-    },
+
     {
       icon: Settings,
       title: "Leave & Attendance View",
       description: "Real-time visibility into leave balances, attendance records, and upcoming holidays."
     },
+
     {
-      icon: MessageSquare,
-      title: "Request Management",
-      description: "Submit and track leave requests, reimbursements, and other HR requests with status updates."
+      icon: CalendarCheck,
+      title: "Leave & Attendance Requests",
+      description: "Apply for leave, regularize attendance, and check balances in real time."
     },
     {
-      icon: Shield,
-      title: "Secure Access",
-      description: "Role-based access control ensures employees see only their relevant information securely."
+      icon: FileText,
+      title: "Payslip & Document Access",
+      description: "Download payslips, tax forms, and HR letters instantly."
+    },
+
+    {
+      icon: Bell,
+      title: "Company Announcements",
+      description: "Stay informed with news, updates, and policy changes in one place."
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Accessibility",
+      description: "Access all features from anywhere via the mobile app."
     }
   ];
+
 
   const benefits = [
     "24/7 self-service access",
@@ -59,110 +68,60 @@ const SelfServicePortal = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section
+        className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-foreground mb-6">
-                Employee Empowerment, Redefined
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Employees can manage their own data, requests, and documents — reducing 
-                HR dependency and improving efficiency across your organization.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/contact">
-                  <Button className="btn-cta group">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button className="btn-outline">
-                    Schedule Demo
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
+              Self Service Portal
 
-              {/* Benefits List */}
-              <div className="grid grid-cols-2 gap-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+            </h3>
+
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
+              Power to Your People,<br></br> Relief for Your HR
+
+              {/* <span className="gradient-text"> HR Workload</span> */}
+
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Give employees the freedom to manage HR anytime, anywhere. OfficeKit HR’s Self Service Portal centralizes essentials, reducing admin work and boosting transparency.
+
+
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link to="/contact">
+                <Button className="btn-cta h-[44px] py-[22px] group">
+                  Schedule Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
+                <Button
+                  variant="outline"
+                  className="btn-outline group h-[44px] px-6 group"
+                >                  <Play className="mr-2 h-4 w-4" />
+                  Watch Overview
+                </Button>
+              </Link>
             </div>
 
-            {/* Mockup */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-3xl opacity-20"></div>
-              <div className="relative bg-card rounded-3xl shadow-strong p-8 border border-border">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Employee Portal</h3>
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                      Sarah Johnson
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                        <div className="text-2xl font-bold text-blue-700">12</div>
-                        <div className="text-sm text-blue-600">Leave Balance</div>
-                      </div>
-                      <div className="p-4 rounded-lg bg-green-50 border border-green-200">
-                        <div className="text-2xl font-bold text-green-700">96%</div>
-                        <div className="text-sm text-green-600">Attendance</div>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      {[
-                        { action: "Download Payslip", status: "Available", icon: Download },
-                        { action: "Apply for Leave", status: "Quick Apply", icon: FileText },
-                        { action: "Update Profile", status: "Edit Info", icon: User },
-                        { action: "View Policies", status: "Access Now", icon: Shield }
-                      ].map((item, i) => {
-                        const Icon = item.icon;
-                        return (
-                          <div key={i} className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center space-x-3">
-                              <Icon className="h-5 w-5 text-primary" />
-                              <span className="font-medium">{item.action}</span>
-                            </div>
-                            <span className="text-sm text-primary font-medium">
-                              {item.status}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>Last login: Today, 9:15 AM</span>
-                      <span>Requests pending: 1</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
+
 
       {/* Key Features */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl font-semibold text-foreground mb-6">
               Complete Self-Service Experience
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -192,31 +151,38 @@ const SelfServicePortal = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+
+
+
+      <section className="py-20 bg-[#094ace] text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-semibold mb-6">
               Ready to Empower Your Employees?
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Join thousands of companies improving employee satisfaction with self-service HR.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 ">
               <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-gray-100">
+                <Button className="btn-cta hover:bg-white bg-white text-primary h-[44px] py-[22px] group">
                   Start Free Trial
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/pricing">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                  View Pricing
+              <Link to="/contact">
+                <Button
+                  variant="outline"
+                  className="btn-outline h-[44px] px-6 group bg-transparent text-white hover:bg-white hover:text-primary"
+                >
+                  Contact Sales Team
                 </Button>
               </Link>
             </div>
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

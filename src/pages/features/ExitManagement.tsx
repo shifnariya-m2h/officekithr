@@ -1,15 +1,16 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { 
-  UserMinus, 
-  ClipboardList, 
-  MessageCircle, 
-  Calculator, 
+import {
+  UserMinus,
+  ClipboardList,
+  MessageCircle,
+  Calculator,
   BarChart3,
   Shield,
   ArrowRight,
-  Check
+  Check,
+  Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -17,33 +18,33 @@ const ExitManagement = () => {
   const features = [
     {
       icon: UserMinus,
-      title: "Notice Period Tracking",
-      description: "Automated tracking of resignation dates, notice periods, and last working day calculations."
-    },
-    {
-      icon: MessageCircle,
-      title: "Exit Interviews",
-      description: "Structured exit interview process with customizable questionnaires and feedback collection."
+      title: "Digital Resignation & Approvals",
+      description: "Employees can submit resignations online with policy-based multi-level approvals for smooth, compliant exits."
     },
     {
       icon: ClipboardList,
-      title: "Clearance Checklists",
-      description: "Department-wise clearance workflows ensuring all assets and responsibilities are transferred."
-    },
-    {
-      icon: Calculator,
-      title: "Final Settlement",
-      description: "Automated calculation of final dues including salary, benefits, and deductions processing."
-    },
-    {
-      icon: BarChart3,
-      title: "Exit Analytics",
-      description: "Insights into turnover patterns, exit reasons, and retention opportunities for improvement."
+      title: "Asset Handover & Clearance",
+      description: "Track and confirm return of company assets with department-wise clearances before final release."
     },
     {
       icon: Shield,
-      title: "Knowledge Transfer",
-      description: "Structured handover process ensuring critical knowledge and responsibilities are documented."
+      title: "Structured Exit Process",
+      description: "Automated checklists ensure no step is missed from handovers to final approvals."
+    },
+    {
+      icon: MessageCircle,
+      title: "Feedback & Insights",
+      description: "Conduct exit interviews and surveys to understand reasons for leaving and improve retention."
+    },
+    {
+      icon: Calculator,
+      title: "Full & Final Settlement Automation",
+      description: "Automatically calculate dues, leave encashment, and settlements with accuracy."
+    },
+    {
+      icon: BarChart3,
+      title: "Instant Documentation & Analytics",
+      description: "Generate relieving/experience letters instantly and track exit trends with detailed reports."
     }
   ];
 
@@ -59,118 +60,49 @@ const ExitManagement = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section
+        className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-foreground mb-6">
-                Smooth & Transparent Exit Process
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Manage resignations, clearances, and knowledge transfers easily with a 
-                structured and trackable exit workflow that ensures positive endings.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/contact">
-                  <Button className="btn-cta group">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button className="btn-outline">
-                    Schedule Demo
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
+              Exit & Asset Management
+            </h3>
 
-              {/* Benefits List */}
-              <div className="grid grid-cols-2 gap-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
+              Seamless &
+              Secure Employee Offboarding
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Streamline resignations, clearances, and settlements with automated workflows, ensuring asset recovery and smooth, compliant exits.
+            </p>
+
+
+
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link to="/contact">
+                <Button className="btn-cta h-[44px] py-[22px] group">
+                  Schedule Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
+                <Button
+                  variant="outline"
+                  className="btn-outline group h-[44px] px-6 group"
+                >                  <Play className="mr-2 h-4 w-4" />
+                  Watch Overview
+                </Button>
+              </Link>
             </div>
 
-            {/* Mockup */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-3xl opacity-20"></div>
-              <div className="relative bg-card rounded-3xl shadow-strong p-8 border border-border">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Exit Workflow</h3>
-                    <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">
-                      3 Active Exits
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[
-                      { 
-                        employee: "John Smith", 
-                        stage: "Exit Interview", 
-                        progress: 75, 
-                        daysLeft: 5,
-                        status: "In Progress"
-                      },
-                      { 
-                        employee: "Maria Garcia", 
-                        stage: "Final Settlement", 
-                        progress: 90, 
-                        daysLeft: 2,
-                        status: "Almost Complete"
-                      },
-                      { 
-                        employee: "Alex Chen", 
-                        stage: "Clearance", 
-                        progress: 45, 
-                        daysLeft: 12,
-                        status: "Pending Approvals"
-                      }
-                    ].map((item, i) => (
-                      <div key={i} className="p-4 rounded-lg border border-border">
-                        <div className="flex items-center justify-between mb-3">
-                          <div>
-                            <div className="font-medium">{item.employee}</div>
-                            <div className="text-sm text-muted-foreground">{item.stage}</div>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-sm font-medium">{item.daysLeft} days left</div>
-                            <div className={`text-xs px-2 py-1 rounded-full ${
-                              item.progress >= 80 ? 'bg-green-100 text-green-700' :
-                              item.progress >= 50 ? 'bg-yellow-100 text-yellow-700' :
-                              'bg-blue-100 text-blue-700'
-                            }`}>
-                              {item.status}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-primary h-2 rounded-full transition-all duration-300"
-                            style={{ width: `${item.progress}%` }}
-                          ></div>
-                        </div>
-                        <div className="text-xs text-muted-foreground mt-1">{item.progress}% Complete</div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>Total exits this month: 8</span>
-                      <span>Avg. completion time: 12 days</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -179,7 +111,7 @@ const ExitManagement = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl font-semibold text-foreground mb-6">
               Complete Exit Management Solution
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -209,31 +141,36 @@ const ExitManagement = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+
+      <section className="py-20 bg-[#094ace] text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-semibold mb-6">
               Ready to Improve Your Exit Process?
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Join thousands of companies managing smooth, professional exits with OfficeKit.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 ">
               <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-gray-100">
+                <Button className="btn-cta hover:bg-white bg-white text-primary h-[44px] py-[22px] group">
                   Start Free Trial
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/pricing">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                  View Pricing
+              <Link to="/contact">
+                <Button
+                  variant="outline"
+                  className="btn-outline h-[44px] px-6 group bg-transparent text-white hover:bg-white hover:text-primary"
+                >
+                  Contact Sales Team
                 </Button>
               </Link>
             </div>
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
