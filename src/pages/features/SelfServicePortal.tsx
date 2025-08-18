@@ -79,7 +79,8 @@ const SelfServicePortal = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
-              Self Service Portal
+              Employee Self Service
+              
 
             </h3>
 

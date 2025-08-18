@@ -29,7 +29,7 @@ const Navigation = () => {
     { name: "Payroll and Compliance", href: "/features/payroll-and-compliance" },
     { name: "Performance Management", href: "/features/performance-appraisal" },
     { name: "Employee Management", href: "/features/employe-managment" },
-    { name: "Self Service Portal", href: "/features/self-service-portal" },
+    { name: "Employee Self Service", href: "/features/self-service-portal" },
     { name: "Exit Management", href: "/features/exit-management" },
     { name: "Mobile App", href: "/features/mobile-app" },
    ];

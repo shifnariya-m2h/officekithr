@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Users, Target, Heart, Award } from "lucide-react";
+import { Users, Target, Heart, Award, CheckCircle, Lock, Shield, LinkIcon } from "lucide-react";
 
 const AboutUs = () => {
   const values = [
@@ -26,40 +26,67 @@ const AboutUs = () => {
     }
   ];
 
+  const whyofficekit = [
+    {
+      icon: CheckCircle,
+      title: "Unified HR Platform",
+      description: "No more switching between multiple systems. OfficeKit HR centralizes all core HR functions — recruitment, onboarding, payroll, attendance, leave management, performance, and more — into one seamless solution. This means HR teams spend less time on admin, and more time driving strategy."
+    },
+    {
+      icon: Lock,
+      title: "Enhanced Engagement",
+      description: "We go beyond processes. With tools for mood tracking, surveys, and a built-in social platform, OfficeKit HR helps employees feel heard, connected, and engaged. Because engaged employees aren’t just happier — they’re more productive and loyal."
+    },
+    {
+      icon: Shield,
+      title: "Robust Security & Compliance",
+      description: "Your HR data deserves the highest level of protection. OfficeKit HR provides enterprise-grade security with built-in compliance for local and multi-country payroll. We help you stay audit-ready, minimize risks, and ensure regulations are never a burden."
+    },
+    {
+      icon: LinkIcon,
+      title: " Fast and Easy Implementation",
+      description: "We know change shouldn’t slow you down. Our platform is designed for quick onboarding, so organizations can go live with minimal downtime. Whether you’re a growing startup or an enterprise, OfficeKit HR adapts to your needs — fast."
+    }
+  ];
+
   const team = [
+
     {
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b4ad?w=400&h=400&fit=crop&crop=face",
-      bio: "Former VP of HR at Fortune 500 companies, passionate about transforming workplace culture."
+      name: "Haris PT",
+      role: "Co Founder & CEO",
+      image: "https://officekit.thebetaprojects.com/_next/image?url=https%3A%2F%2Fmanage.officekit.thebetaprojects.com%2Fstorage%2Fteam%2FharisPT.webp&w=256&q=75",
+      bio: (
+        <>
+          Serial Entrepreneur with 20+ Years of <br />
+          Experience in IT Business
+        </>
+      ),
     },
     {
-      name: "Michael Chen",
-      role: "CTO",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face", 
-      bio: "Tech visionary with 15+ years building scalable enterprise solutions."
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Head of Product",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-      bio: "UX expert focused on creating intuitive, user-friendly HR experiences."
+      name: "Mohammed Faizan Lanka",
+      role: "Co Founder & CTO",
+      image: "https://officekit.thebetaprojects.com/_next/image?url=https%3A%2F%2Fmanage.officekit.thebetaprojects.com%2Fstorage%2Fteam%2FfaizanLanka.webp&w=256&q=75",
+      bio: "Technocrat with 14+ Years of Experience in BFSI, HR and Data Analytics domains."
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section className="pt-32 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold text-foreground mb-6">
-              Who We Are and What We Stand For
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+              Who We Are and What <br /> <span className="gradient-text" >We Stand For</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              OfficeKit is on a mission to simplify HR for everyone — building modern, scalable, 
+              OfficeKit is on a mission to simplify HR for everyone — building modern, scalable,
               and people-first solutions trusted by companies around the world.
             </p>
           </div>
@@ -71,18 +98,18 @@ const AboutUs = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                To democratize HR technology by making powerful, enterprise-grade HR tools 
-                accessible to businesses of all sizes. We believe every organization deserves 
+              <h2 className="text-[44px] font-semibold text-foreground">Our <span className="gradient-text" >Mission </span></h2>
+              <p className="text-[16px] text-muted-foreground leading-relaxed">
+                To democratize HR technology by making powerful, enterprise-grade HR tools
+                accessible to businesses of all sizes. We believe every organization deserves
                 the tools to build amazing workplace cultures.
               </p>
             </div>
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-foreground">Our Vision</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                A world where HR professionals can focus on what matters most — their people. 
-                We envision workplaces where technology enhances human connection rather than 
+              <h2 className="text-[44px] font-semibold text-foreground">Our <span className="gradient-text" >Vision </span></h2>
+              <p className="text-[16px] text-muted-foreground leading-relaxed">
+                A world where HR professionals can focus on what matters most — their people.
+                We envision workplaces where technology enhances human connection rather than
                 replacing it.
               </p>
             </div>
@@ -94,8 +121,8 @@ const AboutUs = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Our Core Values</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-[44px] font-semibold text-foreground mb-6">Our <span className="gradient-text" >Core</span>   Values</h2>
+            <p className="text-[16px] text-muted-foreground max-w-2xl mx-auto">
               These principles guide everything we do, from product development to customer support.
             </p>
           </div>
@@ -121,17 +148,54 @@ const AboutUs = () => {
         </div>
       </section>
 
+
+
+      {/* whyofficekit Values */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-[44px]  font-semibold text-hr-text-primary leading-tight mb-6">
+              Why <span className="gradient-text" >OfficeKit </span>
+              Stands out?
+            </h2>
+            <p className="text-[16px] text-muted-foreground max-w-6xl mx-auto">
+              At OfficeKit HR, we believe HR should empower people, not overwhelm them. Founded with a vision to transform the way organizations manage their workforce, OfficeKit HR delivers a fully integrated, all-in-one platform that simplifies the entire employee lifecycle — from recruitment to retirement.
+              Our journey began with a simple observation: HR teams spend too much time juggling disconnected systems, manual processes, and compliance headaches. We set out to change that. Today, OfficeKit HR powers organizations across industries and geographies with tools that make HR effortless, efficient, and people-focused.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2  gap-8">
+            {whyofficekit.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <div key={index} className="text-center feature-card">
+                  <div className="bg-primary/10 text-primary w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Leadership Team */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Leadership Team</h2>
+            <h2 className="text-[44px] font-semibold text-foreground mb-6">Leadership <span className="gradient-text" >Team</span> </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Meet the passionate leaders driving OfficeKit's mission forward.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {team.map((member, index) => (
               <div key={index} className="text-center feature-card">
                 <img
@@ -153,21 +217,22 @@ const AboutUs = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-20  text-primary-foreground bg-[#0055ff]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold mb-2">5000+</div>
+              <div className="text-4xl font-bold mb-2">25+</div>
+              <div className="text-primary-foreground/80">WorldWide Countries</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2">50+</div>
               <div className="text-primary-foreground/80">Companies Trust Us</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">500K+</div>
+              <div className="text-4xl font-bold mb-2">70K+</div>
               <div className="text-primary-foreground/80">Employees Managed</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">99.9%</div>
-              <div className="text-primary-foreground/80">Uptime Guarantee</div>
-            </div>
+
             <div>
               <div className="text-4xl font-bold mb-2">24/7</div>
               <div className="text-primary-foreground/80">Expert Support</div>

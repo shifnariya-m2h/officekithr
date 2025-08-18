@@ -182,7 +182,7 @@ const Footer = () => {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-300">
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-10 mt-0.5" />
                 <span className="text-sm">hello@officekithr.com</span>
               </div>
               {/* <div className="flex items-center space-x-3 text-gray-300">
@@ -190,17 +190,16 @@ const Footer = () => {
                 <span className="text-sm">+1 (800) 123-4567</span>
               </div> */}
               <div className="flex items-start space-x-3 text-gray-300">
-                <MapPin className="h-6 w-10 mt-0.5" />
-                <span className="text-sm">
+                <MapPin className="h-4 w-10 mt-0.5" />
+                <span className="text-sm">+91 8089 629420<br/>
                   Ground floor,
                   Cyber Park Calicut - 673 016
-                  +91 8089 629420
                 </span>
               </div>
               <div className="flex items-start space-x-3 text-gray-300">
                 <MapPin className="h-4 w-10 mt-0.5" />
-                <span className="text-sm">
-                  #906, Palace Towers Dubai Silicon Oasis Dubai, UAE +971 551997892
+                <span className="text-sm"> +971 551997892 <br/>
+                  #906, Palace Towers Dubai Silicon Oasis Dubai, UAE
                 </span>
               </div>
 

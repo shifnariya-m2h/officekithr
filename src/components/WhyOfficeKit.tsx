@@ -1,7 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Lock, Shield, Link } from "lucide-react";
+import { CheckCircle, Lock, Shield, Link as LinkIcon } from "lucide-react";
 import { FeatureCard } from "./ui/FeatureCard";
+import { Link } from "react-router-dom";
+
 
 export default () => {
   const features = [
@@ -21,7 +23,7 @@ export default () => {
       description: "Tools for mood tracking, surveys, and a social platform keep employees connected and engaged."
     },
     {
-      icon: <Link className="w-5 h-5 text-[#2463eb]" />,
+      icon: <LinkIcon className="w-5 h-5 text-[#2463eb]" />,
       title: "Fast and Easy Implementation",
       description: "Quick onboarding means you can get up and running with minimal downtime."
     }
@@ -50,9 +52,19 @@ export default () => {
                 </div>
               </div>
 
-              <Button variant="outline" size="lg" className="gradient-text font-normal" >
-                Learn more
+
+              <Button
+                variant="outline"
+                className="btn-cta gradient-text font-normal"
+              >
+                <Link to="/about-us" className="flex items-center space-x-2">
+                  Learn more
+                </Link>
               </Button>
+
+
+
+
             </div>
 
             {/* Right Content - Feature Cards */}
@@ -61,10 +73,11 @@ export default () => {
                 <FeatureCard {...features[0]} />
                 <FeatureCard {...features[1]} />
               </div>
-              <div className="space-y-6 sm:mt-8">
-                <FeatureCard {...features[2]} />
-                <FeatureCard {...features[3]} />
+              <div className="space-y-8 sm:mt-9">
+                <FeatureCard {...features[2]} className="h-45 flex flex-col justify-center" />
+                <FeatureCard {...features[3]} className="h-45 flex flex-col justify-center" />
               </div>
+
             </div>
           </div>
         </div>

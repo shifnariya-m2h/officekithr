@@ -12,23 +12,29 @@ const FAQSection = () => {
   const faqs = [
     {
       question: "Recruitment & Onboarding",
-      answer: "Simplify recruitment with smart tracking, structured interviews, and smooth onboarding — all in one flow."
+      answer: "Simplify recruitment with smart tracking, structured interviews, and smooth onboarding — all in one flow.",
+      image: "/public/hrb0.png"
+
     },
     {
       question: "Core HR",
-      answer: "Manage employee data, leaves, attendance, documents, and exits — all via a secure self-service portal."
+      answer: "Manage employee data, leaves, attendance, documents, and exits — all via a secure self-service portal.",
+      image: "/public/Hrb1.png"
     },
     {
       question: "Payroll & Compliance",
-      answer: "Handle global payroll effortlessly with built-in compliance support — accurate, timely, and always on point."
+      answer: "Handle global payroll effortlessly with built-in compliance support — accurate, timely, and always on point.",
+      image: "/public/hrb2.png"
     },
     {
       question: "Performance & Growth",
-      answer: "Set goals, run evaluations, gather 360° feedback, and guide employees with personalized development plans."
+      answer: "Set goals, run evaluations, gather 360° feedback, and guide employees with personalized development plans.",
+      image: "/public/hrb 3.png"
     },
     {
       question: "Operations & Support",
-      answer: "Centralize services with a smart help desk, manage travel, training, tasks, claims, and secure feedback."
+      answer: "Centralize services with a smart help desk, manage travel, training, tasks, claims, and secure feedback.",
+      image: "/public/hrb 4.png"
     }
   ];
 
@@ -82,7 +88,13 @@ const FAQSection = () => {
                 </div>
               </div> */}
               <div className="w-[84%] rounded-2xl h-auto bg-gradient-card shadow-medium flex items-center justify-center">
-                <img className="rounded-2xl" src="/public/img01.png" alt="" />
+                {/* <img className="rounded-2xl" src="/public/img01.png" alt="" /> */}
+                <img
+                  key={selected}
+                  className="rounded-2xl  "
+                  src={faqs.find((_, i) => `item-${i}` === selected)?.image || "/public/hrb0.png"}
+                  alt="FAQ Visual"
+                />
               </div>
             </div>
           </div>
