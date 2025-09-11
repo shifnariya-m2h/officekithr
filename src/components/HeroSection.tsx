@@ -48,7 +48,7 @@ const HeroSection = () => {
               /></span>
             </h1> */}
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-      AI Powered HR Built for the zain{" "}
+      AI Powered HR Built for the{" "}
       <span className="relative inline-block min-w-[8ch] perspective-1000">
         <AnimatePresence mode="wait">
           <motion.span
