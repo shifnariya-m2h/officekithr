@@ -34,6 +34,13 @@ jobs:
           cp public/.htaccess dist/.htaccess
           ls -la dist/
 
+      - name: Create Deployment Log
+        run: |
+          echo "✅ Deployment successful at $(date -u)" > dist/deployment.log
+          echo "Commit: $GITHUB_SHA" >> dist/deployment.log
+          echo "Branch: $GITHUB_REF_NAME" >> dist/deployment.log
+          echo "Actor: $GITHUB_ACTOR" >> dist/deployment.log
+
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
