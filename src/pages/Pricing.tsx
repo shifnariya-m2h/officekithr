@@ -145,12 +145,12 @@ const Pricing = () => {
               <img
                 src="/Box 01.png"
                 alt="Pricing Illustration"
-                className=" rounded-2xl  " // increased size
+                className=" rounded-2xl  "  
               />
 
 
 
-              <a href="tel:+917994470903">
+              <a href="tel:7994154069">
                 <button
                   className="absolute bottom-8 right-9 h-[44px] w-[200px] bg-cover bg-center rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity duration-300"
                   style={{ backgroundImage: "url('/button x .png')" }}

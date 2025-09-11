@@ -13,6 +13,7 @@ import {
   Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const PayrollAndCompliance = () => {
   const features = [
@@ -74,20 +75,20 @@ const PayrollAndCompliance = () => {
               Payroll & Compliance
             </h3>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
-              Pay Your People with Confidence  <span className="gradient-text">Anywhere</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6" style={{ lineHeight: 1.2 }}>
+              Eliminate Payroll Errors <br/>
+              <span className="gradient-text">Before They Happen</span>
 
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Simplify global and local payroll — from taxes to compliance — ensuring accurate, on-time pay anywhere, without paperwork or last-minute stress.
-            </p>
+              Managing payroll can be stressful. Missed deadlines, calculation errors, and compliance issues can slow your business. With OfficeKit HR, you can pay your employees accurately and on time, from anywhere, while staying fully compliant. Focus on growing your team instead of fixing payroll.            </p>
 
 
 
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group">
+                <Button className="btn-cta h-[44px] py-[22px] group"  >
                   Schedule Demo
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>

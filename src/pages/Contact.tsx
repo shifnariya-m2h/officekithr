@@ -8,7 +8,7 @@ const Contact = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 bg-gradient-subtle">
+      {/* <section className="pt-32 bg-gradient-subtle"> */}
         {/* <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl font-bold text-foreground mb-6">
@@ -19,7 +19,7 @@ const Contact = () => {
             </p>
           </div>
         </div> */}
-      </section>
+      {/* </section> */}
 
       <ContactSection />
 

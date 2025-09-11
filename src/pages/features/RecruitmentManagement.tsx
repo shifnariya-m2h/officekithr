@@ -13,7 +13,7 @@ import {
   Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import imf from 'public/RecruitmentManagement-Bg.png'
+import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const RecruitmentManagement = () => {
   const features = [
@@ -55,51 +55,57 @@ const RecruitmentManagement = () => {
       <Navigation />
       {/* Hero Section */}
       <section
-        className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
+        className="pt-32 pb-20 bg-gradient-subtle bg-cover bg-center"
         style={{
           backgroundImage: "url('/RecruitmentManagement2.png')",
         }}
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
-              Recruitment Managment
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Small Heading */}
+            <h3 className="text-2xl font-semibold text-foreground mb-4">
+              Recruitment Management
             </h3>
-            {/* <h1 className="text-5xl font-semibold text-foreground leading-tight mb-4">
-              Streamline Your Hiring Process with OfficeKit HR
-            </h1> */}
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
-              Streamline Your Hiring Process with
+
+            {/* Main Heading */}
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6"
+            >
+              Stop losing top talent to slow processes – make every hire count with
               <span className="gradient-text"> OfficeKit HR</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Manage recruitment efficiently with a centralized platform that streamlines job postings, candidate tracking, and communication — helping you hire top talent faster and smarter.
+
+            {/* Description */}
+            <p className="text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed max-w-3xl mx-auto">
+              Slow hiring processes make you lose top talent. OfficeKit HR streamlines recruitment, automates approvals, and keeps your hiring fast and efficient—so you never miss out on the right candidate. Track applications in real time, collaborate seamlessly with your team, and make data-driven hiring decisions—all from one platform
             </p>
 
-
-
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group">
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+              <Button
+                className="btn-cta h-[48px] px-6 group"
+                // onClick={loadSyncoraBot}
+              >
+                Schedule Demo
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
               </Link>
+
               <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
                 <Button
                   variant="outline"
-                  className="btn-outline group h-[44px] px-6 group"
-                >                  <Play className="mr-2 h-4 w-4" />
+                  className="btn-outline h-[48px] px-6 group"
+                >
+                  <Play className="mr-2 h-5 w-5" />
                   Watch Overview
                 </Button>
               </Link>
             </div>
-
-
           </div>
         </div>
       </section>
+
 
 
       {/* Key Features */}
@@ -145,7 +151,7 @@ const RecruitmentManagement = () => {
             <p className="text-xl text-primary-foreground/80 mb-8">
               Join thousands of companies that have streamlined their recruitment with OfficeKit.
             </p>
-       
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 ">
               <Link to="/contact">
                 <Button className="btn-cta hover:bg-white bg-white text-primary h-[44px] py-[22px] group">
@@ -161,7 +167,7 @@ const RecruitmentManagement = () => {
                   Contact Sales Team
                 </Button>
               </Link>
-            </div> 
+            </div>
           </div>
         </div>
       </section>

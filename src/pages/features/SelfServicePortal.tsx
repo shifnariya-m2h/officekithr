@@ -17,6 +17,7 @@ import {
   Smartphone
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const SelfServicePortal = () => {
   const features = [
@@ -80,28 +81,30 @@ const SelfServicePortal = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl font-semibold text-foreground leading-tight mb-3">
               Employee Self Service
-              
+
 
             </h3>
+              
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6" style={{ lineHeight: 1.2 }}>
               Power to Your People,<br></br> Relief for Your HR
 
               {/* <span className="gradient-text"> HR Workload</span> */}
 
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Give employees the freedom to manage HR anytime, anywhere. OfficeKit HR’s Self Service Portal centralizes essentials, reducing admin work and boosting transparency.
-
+              Empower your employees to manage their own profiles, leave requests, and attendance, while reducing HR’s administrative workload. OfficeKit HR’s Employee Self Service gives your team control and your HR team relief.
 
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              {/* <Link to="/contact"> */}
               <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group">
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+              <Button className="btn-cta h-[44px] py-[22px] group"  >
+                Schedule Demo
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
               </Link>
+              {/* </Link> */}
               <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
                 <Button
                   variant="outline"

@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
       name: "Mohideen Kader",
       role: "Head of HR",
       company: "Lulu International Exchange LLC",
-      image: "/public/p2.svg",
+      image: "/p2.svg",
       rating: 5,
       quote: "Officekit HR is an easy-to-use employee management software, fully customizable HRMS software which made our tedious tasks of daily HR process so easy. "
     },
@@ -14,24 +14,24 @@ const TestimonialsSection = () => {
       name: "Anees",
       role: "Head of HR",
       company: "Thai Group  ",
-      image: "/public/p3.svg",
+      image: "/p3.svg",
       rating: 5,
       quote: "Officekit HR lets you shine, the top HR software in India, lets you put your thoughts together in a very concise format through the best HR software and it really helps you present your best phase."
     },
-    {
-      name: "Venugopal",
-      role: "Chief Executive Officer",
-      company: "Buchprufer",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-      rating: 5,
-      quote: "We have been using Officekit HR, the top HR software in India for the last couple of years, and has helped us through the growth, and management of our company."
-    }
+    // {
+    //   name: "Venugopal",
+    //   role: "Chief Executive Officer",
+    //   company: "Buchprufer",
+    //   image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    //   rating: 5,
+    //   quote: "We have been using Officekit HR, the top HR software in India for the last couple of years, and has helped us through the growth, and management of our company."
+    // }
   ];
 
   return (
-    <section className="py-20 my-20 bg-muted/30">
+    <section className="mb-mb-common bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 section-fade-in">
+        <div className="text-center mb-mb-tursioury section-fade-in">
           <Badge className="bg-white mb-2 font-normal py-2 text-[#3f5ffc]  border border-[#ededed] hover:bg-transparent"  >
             Testimonials
           </Badge>
@@ -44,7 +44,7 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 ">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}

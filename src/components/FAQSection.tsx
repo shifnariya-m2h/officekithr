@@ -5,43 +5,54 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "./ui/badge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FAQSection = () => {
   const [selected, setSelected] = useState('item-0');
   const faqs = [
     {
       question: "Recruitment & Onboarding",
-      answer: "Simplify recruitment with smart tracking, structured interviews, and smooth onboarding — all in one flow.",
-      image: "/public/hrb0.png"
+      answer: "Slow hiring and messy onboarding lose great talent. OfficeKit HR streamlines recruitment and onboarding, helping you hire faster and get employees productive from day one.",
+      image: "/recruitment-onboarding.webp"
 
     },
     {
       question: "Core HR",
-      answer: "Manage employee data, leaves, attendance, documents, and exits — all via a secure self-service portal.",
-      image: "/public/Hrb1.png"
+      answer: "Managing employee data manually is time-consuming and error-prone. OfficeKit HR centralizes records and automates tasks—so HR runs smoothly and accurately.",
+      image: "/corehr.webp"
     },
     {
       question: "Payroll & Compliance",
-      answer: "Handle global payroll effortlessly with built-in compliance support — accurate, timely, and always on point.",
-      image: "/public/hrb2.png"
+      answer: "Payroll mistakes and compliance risks drain trust and time. OfficeKit HR ensures accurate salaries, timely payments, and full compliance—without the stress.",
+      image: "/payroll-comp.webp"
     },
     {
       question: "Performance & Growth",
-      answer: "Set goals, run evaluations, gather 360° feedback, and guide employees with personalized development plans.",
-      image: "/public/hrb 3.png"
+      answer: "Unclear goals and vague reviews limit growth. OfficeKit HR streamlines performance tracking and feedback, helping teams achieve more with clarity.",
+      image: "/perfo-growth.webp"
     },
     {
       question: "Operations & Support",
-      answer: "Centralize services with a smart help desk, manage travel, training, tasks, claims, and secure feedback.",
-      image: "/public/hrb 4.png"
+      answer: "Scattered processes and delayed support frustrate employees. OfficeKit HR simplifies operations and provides instant support—keeping your workforce engaged and productive.",
+      image: "/operation-support.webp"
     }
   ];
 
+
+  // useEffect(() => {
+  //   let index = 0;
+  //   const intervel = setInterval(() => {
+  //     setSelected(`item-${index}`)
+  //     index++;
+  //   }, 2000);
+
+  //   return () => clearInterval(intervel);
+  // }, [])
+
   return (
-    <section className="py-20  bg-background">
+    <section className="mb-mb-common bg-background">
       <div className="container  mx-auto px-4">
-        <div className="text-center  mb-32">
+        <div className="text-center mb-[64px]">
           {/* <Badge className="bg-white mb-2 text-[#3f5ffc] border border-[#ededed] hover:bg-white"  >
             Essential HR Stacks
           </Badge> */}
@@ -56,9 +67,14 @@ const FAQSection = () => {
           </p>
         </div>
 
-        <div className="max-w-7xl mb-20 mt-32 mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <Accordion value={selected} type="single" collapsible className="space-y-4">
+            <Accordion
+              value={selected}
+              type="single"
+              collapsible
+              className="space-y-4"
+            >
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
@@ -71,15 +87,17 @@ const FAQSection = () => {
                         setSelected(`item-${index}`)
                       }, 50)
                     }}
-                    className="text-left font-semibold text-foreground hover:text-black hover:border-none hover:no-underline transition-colors py-6">
+                    className="text-left font-semibold text-black hover:text-black hover:border-none hover:no-underline transition-colors text-lg md:text-xl py-6"
+                  >
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                  <AccordionContent className="text-black leading-relaxed text-base   pb-6">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
+
 
             <div className="relative">
               {/* <div className="w-full h-96 bg-gradient-card rounded-2xl shadow-medium flex items-center justify-center">
@@ -88,11 +106,11 @@ const FAQSection = () => {
                 </div>
               </div> */}
               <div className="w-[84%] rounded-2xl h-auto bg-gradient-card shadow-medium flex items-center justify-center">
-                {/* <img className="rounded-2xl" src="/public/img01.png" alt="" /> */}
+                {/* <img className="rounded-2xl" src="/img01.webp" alt="" /> */}
                 <img
                   key={selected}
                   className="rounded-2xl  "
-                  src={faqs.find((_, i) => `item-${i}` === selected)?.image || "/public/hrb0.png"}
+                  src={faqs.find((_, i) => `item-${i}` === selected)?.image || "//hrb0.webp"}
                   alt="FAQ Visual"
                 />
               </div>

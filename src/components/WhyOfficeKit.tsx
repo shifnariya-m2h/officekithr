@@ -30,7 +30,7 @@ export default () => {
   ];
 
   return (
-    <section className="py-20">
+    <section className="pb-pb-common">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="!bg-[#f4f7fa] rounded-3xl p-8 lg:p-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

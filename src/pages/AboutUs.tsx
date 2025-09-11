@@ -217,7 +217,7 @@ const AboutUs = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-20  text-primary-foreground bg-[#0055ff]">
+      {/* <section className="py-20  text-primary-foreground bg-[#0055ff]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
@@ -239,7 +239,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

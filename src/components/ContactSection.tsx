@@ -5,226 +5,266 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import { Badge } from "./ui/badge";
-
+import { useToast } from "@/hooks/use-toast"
 const ContactSection = () => {
+  const { toast } = useToast()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    company: "",
-    message: ""
+    companyName: "",
+    message: "",
   });
-  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    toast({
-      title: "Demo Requested!",
-      description: "Thank you for your interest. Our team will contact you within 24 hours.",
-    });
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      message: ""
+      ...formData,
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch(
+        "https://www.syncoraai.com/api/webhooks/website/LiQApK1h9PzXw4LtPUQe/leads",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Syncora-Public-Key": "PUB_d9f73a87-a96f-4549-949e-c6acd8ff21b2",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (res.ok) {
+ 
+        toast({
+          title: "Success",
+          variant: "success",
+          description: "Demo scheduled successfully!",
+        })
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          companyName: "",
+          message: "",
+        });
+      } else {
+        const t = await res.text();
+        toast({
+          title: "Error",
+          variant: "destructive",
+          description: "❌ There was a problem sending your form\n" + t,
+        })
+      }
+    } catch (err) {
+      alert("⚠️ Network error. Please try again later.");
+      toast({
+        title: "Error",
+        variant: "destructive",
+        description: "⚠️ Network error. Please try again later.",
+      })
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section className="pb-20  bg-gradient-subtle">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <Badge className="bg-white mb-2 font-normal py-2 text-[#3f5ffc]  border border-[#ededed] hover:bg-transparent"  >
+    <>
+      {/* 🔹 Top Section */}
+      <section
+        className="relative bg-cover bg-center py-28 text-center"
+        style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
+      >
+        <div className="relative container mx-auto px-4">
+          <Badge className="bg-white font-normal py-2 text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent">
             Contact Us
           </Badge>
-
-          <h2 className="text-3xl lg:text-5xl font-semibold text-foreground mb-6 lg:leading-[1.2]">
-            Ready to Transform  <span className="leading-snug gradient-text"  >Your HR? </span>
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            Ready to Transform <span className="gradient-text">Your HR?</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto ">
-            Book a free personalized demo with our team and explore <br></br> how OfficeKit can work for you.
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Book a free personalized demo with our team and explore how
+            OfficeKit can work for you.
           </p>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto mb-16">
-          {/* Contact Form */}
-          <Card className="shadow-medium ">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Book Your Demo</h3>
+      {/* 🔹 Form + Info */}
+      <section className="py-20 bg-gradient-subtle">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Left: Contact Form */}
+            <Card
+              className="shadow-medium bg-cover bg-center"
+              style={{ backgroundImage: "url('/RecruitmentManagement-Bg.png')" }}
+            >
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-foreground mb-6">
+                  Book Your Demo
+                </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name + Email */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your Name"
+                        className="mt-2"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="Your Email"
+                        className="mt-2"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone + Company */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Your Phone Number"
+                        className="mt-2"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="companyName">Company Name *</Label>
+                      <Input
+                        id="companyName"
+                        name="companyName"
+                        type="text"
+                        required
+                        value={formData.companyName}
+                        onChange={handleInputChange}
+                        placeholder="Your Company"
+                        className="mt-2"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Message */}
                   <div>
-                    <Label htmlFor="name" className="text-foreground font-medium">
-                      Full Name *
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleInputChange}
+                      placeholder="Your Message"
+                      rows={5}
                       className="mt-2"
-                      placeholder="Your Name"
                     />
                   </div>
 
+                  <Button
+                    type="submit"
+                    className="btn-cta w-full group"
+                    disabled={loading}
+                  >
+                    <Calendar className="mr-2 h-5 w-5" />
+                    {loading ? "Sending..." : "Book a Demo"}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* Right: Info */}
+            <div className="bg-white rounded-2xl p-10 flex flex-col justify-between">
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
+                <p className="text-muted-foreground mb-4">
+                  Have questions or need assistance? Our team is here to help
+                  you find the perfect HR solution.
+                </p>
+                <p className="text-muted-foreground mb-10">
+                  Whether you’re a small business or a large enterprise, we’ve
+                  got you covered with tailored solutions.
+                </p>
+              </div>
+
+              {/* Contact Info */}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-primary/10 text-primary rounded-lg p-3">
+                    <Mail className="h-6 w-6" />
+                  </div>
                   <div>
-                    <Label htmlFor="email" className="text-foreground font-medium">
-                      Email Address *
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="mt-2"
-                      placeholder="Your Email"
-                    />
+                    <h4 className="font-semibold">Email Us</h4>
+                    <p className="text-sm text-muted-foreground">
+                      <a href="mailto:hello@officekithr.com">
+                        hello@officekithr.com
+                      </a>
+                    </p>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="phone" className="text-foreground font-medium">
-                      Phone Number
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="mt-2"
-                      placeholder="Your Phone Number"
-                    />
+                <div className="flex items-start space-x-4">
+                  <div className="bg-green-50 text-green-600 rounded-lg p-3">
+                    <Phone className="h-6 w-6" />
                   </div>
-
                   <div>
-                    <Label htmlFor="company" className="text-foreground font-medium">
-                      Company Name *
-                    </Label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      required
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="mt-2"
-                      placeholder="Your Company"
-                    />
+                    <h4 className="font-semibold">Call Us</h4>
+                    <p>
+                      <a href="tel:+917994154069">+91 7994154069</a>
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Mon-Fri, 9 AM - 6 PM IST
+                    </p>
                   </div>
                 </div>
 
-                <div>
-                  <Label htmlFor="message" className="text-foreground font-medium">
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="mt-2"
-                    rows={5}
-                    placeholder="Your Messages"
-                  />
+                <div className="flex items-start space-x-4">
+                  <div className="bg-purple-50 text-purple-600 rounded-lg p-3">
+                    <MapPin className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Visit Us</h4>
+                    <p className="text-muted-foreground">
+                      +971 52 815 5771 <br />
+                      +971 55 199 7892 <br />
+                      #105, Bushager Building <br />
+                      13 55 St, Al Garhoud, Dubai
+                    </p>
+                  </div>
                 </div>
-
-                <Button type="submit" className="btn-cta w-full group">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Book a Demo
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-6">Get in Touch</h3>
-              <p className="text-[16px] text-muted-foreground leading-relaxed">
-                Have questions or need assistance? Our team is here to help you find the perfect HR solution for your organization.
-              </p>
+              </div>
             </div>
-
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 text-primary rounded-lg p-3">
-                  <Mail className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">Email Us</h4>
-                  <p className="text-muted-foreground">hello@officekithr.com</p>
-                 </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-green-50 text-green-600 rounded-lg p-3">
-                  <Phone className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">Call Us</h4>
-                  <p className="text-muted-foreground">+1 (800) 123-4567</p>
-                  <p className="text-sm text-muted-foreground">Mon-Fri, 9 AM - 6 PM EST</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-purple-50 text-purple-600 rounded-lg p-3">
-                  <MapPin className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">Visit Us</h4>
-                  <p className="text-muted-foreground">
-                    #906, Palace Towers Dubai Silicon Oasis Dubai, UAE +971 551997892
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Benefits */}
-            {/* <div className="bg-primary-light rounded-xl p-6">
-              <h4 className="font-semibold text-foreground mb-4">What to Expect:</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>30-minute personalized demo</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Discussion of your specific HR needs</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Custom pricing and implementation plan</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>No commitment required</span>
-                </li>
-              </ul>
-            </div> */}
-
-
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

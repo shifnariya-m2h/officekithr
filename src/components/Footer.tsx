@@ -32,12 +32,13 @@ const Footer = () => {
     { name: "Self Service Portal", href: "/features/self-service-portal" },
     { name: "Exit Management", href: "/features/exit-management" },
     { name: "Mobile App", href: "/features/mobile-app" },
+    { name: "Face Lens", href: "/features/face-lens" },
   ];
 
   const resourcesLinks = [
     { name: "Blog", href: "/resources/blog" },
-    { name: "Use Cases", href: "/resources/use-cases" },
-    { name: "Community", href: "/resources/community" },
+    // { name: "Use Cases", href: "/resources/use-cases" },
+    // { name: "Community", href: "/resources/community" },
   ];
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -47,18 +48,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-100">
+    <footer className="bg-gray-900 pt-p-tursioury pb-[32px] text-gray-100">
 
       {/* Main Footer */}
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4">
         {/* Company Info */}
         <div className="lg:col-span-1 space-y-6">
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/lovable-uploads/2aaf2fda-9fcb-425a-86fc-4b2bc5b1ead0.png"
+              src="/Footer logo2.png"
               alt="OfficeKit"
-              className="h-12 w-auto brightness-0 invert"
+              className="h-11 w-auto brightness-0 invert"
             />
           </Link>
 
@@ -115,9 +116,9 @@ const Footer = () => {
               <Link to="/pricing" className="block text-gray-300 hover:text-white transition-colors">
                 Pricing
               </Link>
-              <Link to="/career" className="block text-gray-300 hover:text-white transition-colors">
+              {/* <Link to="/career" className="block text-gray-300 hover:text-white transition-colors">
                 Careers
-              </Link>
+              </Link> */}
               <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">
                 Contact Us
               </Link>
@@ -180,33 +181,57 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Contact</h3>
 
             {/* Contact Info */}
+            {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-300">
-                <Mail className="h-4 w-10 mt-0.5" />
-                <span className="text-sm">hello@officekithr.com</span>
+                <Mail className="h-5 w-5 flex-shrink-0" />
+                <a
+                  href="mailto:hello@officekithr.com"
+                  className="text-sm hover:text-white transition-colors"
+                >
+                  hello@officekithr.com
+                </a>
               </div>
-              {/* <div className="flex items-center space-x-3 text-gray-300">
-                <Phone className="h-4 w-4" />
-                <span className="text-sm">+1 (800) 123-4567</span>
-              </div> */}
+
               <div className="flex items-start space-x-3 text-gray-300">
-                <MapPin className="h-4 w-10 mt-0.5" />
-                <span className="text-sm">+91 8089 629420<br/>
-                  Ground floor,
-                  Cyber Park Calicut - 673 016
-                </span>
-              </div>
-              <div className="flex items-start space-x-3 text-gray-300">
-                <MapPin className="h-4 w-10 mt-0.5" />
-                <span className="text-sm"> +971 551997892 <br/>
-                  #906, Palace Towers Dubai Silicon Oasis Dubai, UAE
+                <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                <span className="text-sm">
+                  <a
+                    href="tel:+917994154069"
+                    className="hover:text-white transition-colors"
+                  >
+                    +91 7994154069
+                  </a>
+                  <br />
+                  Ground floor, Cyber Park Calicut - 673 016
                 </span>
               </div>
 
+              <div className="flex items-start space-x-3 text-gray-300">
+                <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                <span className="text-sm">
+                  <a
+                    href="tel:+971528155771"
+                    className="hover:text-white transition-colors"
+                  >
+                    +971 52 815 5771
+                  </a>
+                  <br />
+                  <a
+                    href="tel:+971551997892"
+                    className="hover:text-white transition-colors"
+                  >
+                    +971 551997892
+                  </a>
+                  <br />
+                  #105, Bushager Building, 13 55 St - Al Garhoud - Dubai
+                </span>
+              </div>
             </div>
 
+
             {/* Newsletter */}
-            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+            {/* <form onSubmit={handleNewsletterSubmit} className="space-y-3">
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -218,7 +243,7 @@ const Footer = () => {
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 Subscribe to Newsletter
               </Button>
-            </form>
+            </form> */}
           </div>
         </div>
         {/* Bottom Bar */}
@@ -229,15 +254,24 @@ const Footer = () => {
               © 2025 OfficeKit inc. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <Link
+                to="/privacy-policy"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              </Link>
+              <Link
+                to="/terms-and-condition"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              </Link>
+              <Link
+                to="/cookie-policy"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -18,6 +18,7 @@ import {
   MessageSquare
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const MobileApp = () => {
   const features = [
@@ -86,15 +87,12 @@ const MobileApp = () => {
                 Mobile App
 
               </h1>
-              <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
-                Your Workplace in Your Pocket with OfficeKit Mobile App.
-
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6" style={{ lineHeight: 1.2 }}>
+                Missed Approvals and HR Delays? <span className="gradient-text">Stay Connected, Wherever You Are. </span>
 
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Access and
-                manage essential HR tasks anywhere with OfficeKit HR’s mobile app—keeping
-                employees connected, productive, and engaged on the go.
+                OfficeKit Mobile keeps your HR tasks in your pocket—track attendance, approve requests, and manage payroll in real time, so work never waits for you. Stay informed, act instantly, and keep your team running smoothly wherever you are.
 
               </p>
 
@@ -109,12 +107,13 @@ const MobileApp = () => {
                 </Button>
               </div> */}
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">                <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Link to="/contact">
+                <Button className="btn-cta h-[44px] py-[22px] group"  >
                   Schedule Demo
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </Link>
+                </Link>
                 <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
                   <Button
                     variant="outline"

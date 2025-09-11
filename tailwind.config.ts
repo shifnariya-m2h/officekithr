@@ -18,6 +18,15 @@ export default {
 			}
 		},
 		extend: {
+			padding:{
+				'pb-common':'120px',
+				'p-tursioury':"64px",
+			},
+			margin:{
+				'mb-common':'120px',
+				'mb-secondory':"56px",
+				'mb-tursioury':"64px",
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

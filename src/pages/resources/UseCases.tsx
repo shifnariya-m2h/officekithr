@@ -12,6 +12,7 @@ import {
   Check
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const UseCases = () => {
   const useCases = [
@@ -126,12 +127,16 @@ const UseCases = () => {
               Discover how companies like yours achieve HR excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button className="btn-cta group h-[44px]">
+              {/* <Link to="/contact"> */}
+
+              {/* replace onClick={loadSyncoraBot} */}
+                 <Link to="/contact"> 
+                <Button className="btn-cta group h-[44px]" >
                   Schedule Demo
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </Link>
+                </Link>
+              {/* </Link> */}
               <Link to="/pricing">
                 <Button className="btn-outline">
                   View Pricing

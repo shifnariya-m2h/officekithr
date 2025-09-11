@@ -13,6 +13,7 @@ import {
   Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const PerformanceAppraisal = () => {
   const features = [
@@ -75,21 +76,22 @@ const PerformanceAppraisal = () => {
 
             </h3>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
-
-              Empower Growth with
-              <span className="gradient-text">OfficeKit HR </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6" style={{ lineHeight: 1.2 }}>
+              From Average to Exceptional Make <br/>
+              <span className="gradient-text">Every Review Count.   </span>
 
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Drive performance and growth with tools to set goals, track progress, and give feedback. Streamlined cycles ensure fair assessments and continuous improvement.</p>
+              Don’t let vague reviews and unclear goals hold your team back. OfficeKit HR helps you set clear objectives, track progress, and give helpful feedback. This turns every performance review into real growth.              </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group">
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+              {/* <Link to="/contact"> */}
+              <Link to="/contact" >
+              <Button className="btn-cta h-[44px] py-[22px] group" >
+                Schedule Demo
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
               </Link>
+              {/* </Link> */}
               <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
                 <Button
                   variant="outline"

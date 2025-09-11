@@ -3,93 +3,112 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Calendar, User, ArrowRight, Tag } from "lucide-react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 const Blog = () => {
   const categories = [
     "All Posts",
     "HR Best Practices",
-    "Product Updates", 
+    "Product Updates",
     "Compliance News",
     "Leadership & Culture",
     "Remote Work"
   ];
 
+  const navigate = useNavigate();
+  const handlenext = () => {
+    navigate('/resources/blog/hrblogs')
+  }
+  const handlenextblog2 = () => {
+    navigate('/resources/blog/newperfomenceblog')
+  }
+
+
+
   const blogPosts = [
     {
       title: "The Future of Remote Work: HR Strategies for 2024",
       excerpt: "Discover the latest trends and strategies for managing remote teams effectively in the evolving workplace landscape.",
-      author: "Sarah Johnson",
-      date: "March 15, 2024",
+      author: "Aiswraya R",
+      date: "August 15, 2025",
       category: "HR Best Practices",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
+      link: "/resources/blog/hrblogs"
+
     },
     {
-      title: "New Performance Management Features Released",
-      excerpt: "Explore our latest performance management enhancements including 360-degree reviews and advanced analytics.",
-      author: "Mike Chen",
-      date: "March 12, 2024", 
+      title: "Why Invest in Enhanced Performance Management Tools?",
+      excerpt: "Modern enterprises thrive by equipping their HR departments with technology thatfosters employee satisfaction, improves talent retention, and accelerates organizational growth.",
+      author: "Karthik",
+      date: "August 28, 2025",
       category: "Product Updates",
       readTime: "3 min read",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      link: "/resources/blog/newperfomenceblog"
     },
+    // {
+    //   title: "Labor Law Updates: What HR Teams Need to Know",
+    //   excerpt: "Stay compliant with the latest labor law changes and understand their impact on your HR processes.",
+    //   author: "Emily Rodriguez",
+    //   date: "March 10, 2024",
+    //   category: "Compliance News",
+    //   readTime: "7 min read",
+    //   image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop"
+    // },
+    // {
+    //   title: "Building a Culture of Continuous Learning",
+    //   excerpt: "Learn how to foster employee development and create learning opportunities that drive engagement.",
+    //   author: "David Kumar",
+    //   date: "March 8, 2024",
+    //   category: "Leadership & Culture",
+    //   readTime: "6 min read",
+    //   image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop"
+    // },
     {
-      title: "Labor Law Updates: What HR Teams Need to Know",
-      excerpt: "Stay compliant with the latest labor law changes and understand their impact on your HR processes.",
-      author: "Emily Rodriguez",
-      date: "March 10, 2024",
-      category: "Compliance News", 
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Building a Culture of Continuous Learning",
-      excerpt: "Learn how to foster employee development and create learning opportunities that drive engagement.",
-      author: "David Kumar",
-      date: "March 8, 2024",
-      category: "Leadership & Culture",
-      readTime: "6 min read", 
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Streamlining Payroll: Best Practices Guide",
-      excerpt: "Essential tips and strategies for error-free payroll processing and maintaining compliance standards.",
-      author: "Sarah Johnson",
-      date: "March 5, 2024",
-      category: "HR Best Practices",
+      title: "Why Modern Businesses Need Smarter Payroll Solutions",
+      excerpt: "Efficient payroll management is crucial for modern enterprises to ensure timely and accurate employee compensation, maintain compliance with tax regulations, and support overall organizational financial health. Investing in advanced payroll technology enhances employee satisfaction, reduces administrative burden, and accelerates operational efficiency.",
+      author: "Nihal",
+      date: "August 29, 2025",
+      category: "Product Updates",
       readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
+      link: "/resources/blog/streamliningpayroll"
+
     },
     {
-      title: "Mobile App Updates: Enhanced Security Features",
-      excerpt: "Discover the new security enhancements in our mobile app including biometric authentication and data encryption.",
-      author: "Mike Chen", 
-      date: "March 3, 2024",
+      title: "Mobile App Updates: Why Businesses Should Prioritize Mobile HRMS Security?",
+      excerpt: "Securing your mobile HRMS app is essential to protect sensitive employee data, achieve payroll compliance, and prevent costly data breaches.By investing in innovative mobile HR security solutions, organizations enhance employee trust,maintain regulatory compliance(GDPR, HIPAA), and improve workforce productivity with reliable, accessible, and secure HR technology.",
+      author: "Karthik",
+      date: "August 3, 2024",
       category: "Product Updates",
       readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
+      link: "/resources/blog/mobileappupdates"
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle">
+      <section className="pt-32 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/RecruitmentManagement2.png')",
+        }}      >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl font-bold text-foreground mb-6">
-              Insights and Updates from the HR World
+              Insights  Updates from the  <span className="gradient-text"> HR World </span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Stay ahead with the latest trends, tips, and strategies for HR professionals. 
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8">
+              Stay ahead with the latest trends, tips, and strategies for HR professionals.
               Expert insights to help you build better workplaces.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {categories.map((category, index) => (
-                <Button 
+                <Button
                   key={index}
                   variant={index === 0 ? "default" : "outline"}
                   className="rounded-full"
@@ -107,14 +126,17 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
+              <Badge className="bg-white font-normal py-2  text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent"  >
+                Blog
+              </Badge>
               <h2 className="text-3xl font-bold text-foreground mb-4">Featured Article</h2>
             </div>
-            
+
             <Card className="overflow-hidden border-border shadow-strong">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative">
-                  <img 
-                    src={blogPosts[0].image} 
+                  <img
+                    src={blogPosts[0].image}
                     alt={blogPosts[0].title}
                     className="w-full h-full object-cover min-h-[300px]"
                   />
@@ -147,7 +169,7 @@ const Blog = () => {
                       <User className="h-4 w-4 text-muted-foreground" />
                       <span className="text-sm text-muted-foreground">{blogPosts[0].author}</span>
                     </div>
-                    <Button className="btn-cta group">
+                    <Button className="btn-cta group" onClick={handlenext}>
                       Read More
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -169,13 +191,13 @@ const Blog = () => {
                 Stay updated with our latest insights and updates
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.slice(1).map((post, index) => (
                 <Card key={index} className="overflow-hidden border-border shadow-medium hover:shadow-strong transition-shadow group">
                   <div className="relative">
-                    <img 
-                      src={post.image} 
+                    <img
+                      src={post.image}
                       alt={post.title}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -201,26 +223,28 @@ const Blog = () => {
                         <span>•</span>
                         <span>{post.date}</span>
                       </div>
-                      <Button variant="ghost" size="sm" className="group">
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
+                      <Link to={post.link}>
+                        <Button variant="ghost" size="sm" className="group" >
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
               ))}
             </div>
-            
+            {/* 
             <div className="text-center mt-12">
               <Button className="btn-outline">
                 Load More Articles
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      {/* <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">Stay in the Loop</h2>
@@ -228,8 +252,8 @@ const Blog = () => {
               Subscribe to our newsletter and get the latest HR insights delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-white/20"
               />
@@ -239,7 +263,7 @@ const Blog = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

@@ -19,7 +19,7 @@ import {
   BarChart
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import imf from 'public/RecruitmentManagement-Bg.png'
+// import { loadSyncoraBot } from "../../components/syncoraBot";
 
 const RecruitmentManagement = () => {
   const features = [
@@ -76,9 +76,9 @@ const RecruitmentManagement = () => {
             {/* <h1 className="text-5xl font-semibold text-foreground leading-tight mb-4">
               Streamline Your Hiring Process with OfficeKit HR
             </h1> */}
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6" style={{ lineHeight: 1.2 }}>
-              Maximizing Workforce Performance for Sustained Growth and Success
-              {/* <span className="gradient-text"> OfficeKit HR</span> */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6" style={{ lineHeight: 1.2 }}>
+              Errors, Delays, and Confusion in Employee Management?      <br/>
+               <span className="gradient-text">  Solve Them Effortlessly.</span>       
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Manage recruitment efficiently with a centralized platform that streamlines job postings, candidate tracking, and communication — helping you hire top talent faster and smarter.
@@ -89,10 +89,10 @@ const RecruitmentManagement = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group">
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+              <Button className="btn-cta h-[44px] py-[22px] group"  >
+                Schedule Demo
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
               </Link>
               <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
                 <Button
