@@ -1,38 +1,39 @@
 name: Deploy React App to cPanel
 
 on:
-  push:  
+  push:
     branches:
-      - main   # or your deploy branch
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # adjust if needed
+          node-version: '18'
 
-      # Install dependencies
       - name: Install Dependencies
-        run: npm install
+        run: |
+          echo "📦 Installing dependencies..."
+          npm install
 
-      # Build React app (outputs to dist/)
       - name: Build Project
-        run: npm run build
+        run: |
+          echo "🏗️ Building React app..."
+          npm run build
 
-      # ✅ Copy .htaccess into dist/ if using Vite
       - name: Copy .htaccess
-        run: cp public/.htaccess dist/.htaccess
+        run: |
+          echo "📂 Copying .htaccess into dist/"
+          cp public/.htaccess dist/.htaccess
+          ls -la dist/
 
-      # Deploy dist/ folder to cPanel
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -41,5 +42,4 @@ jobs:
           password: ${{ secrets.CPANEL_PASSWORD }}
           server-dir: ${{ secrets.CPANEL_PATH }}/
           local-dir: dist/
-          dangerous-clean-slate: true   # clears old files first
-
+          dangerous-clean-slate: true
