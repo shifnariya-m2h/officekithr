@@ -27,7 +27,7 @@ const Blog = () => {
 
   const blogPosts = [
     {
-      title: "The Future of Remote Work: HR Strategies for 2024",
+      title: "The Future of Remote Work: HR Strategies for 2025 and Beyond",
       excerpt: "Discover the latest trends and strategies for managing remote teams effectively in the evolving workplace landscape.",
       author: "Aiswraya R",
       date: "August 15, 2025",
@@ -47,24 +47,6 @@ const Blog = () => {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
       link: "/resources/blog/newperfomenceblog"
     },
-    // {
-    //   title: "Labor Law Updates: What HR Teams Need to Know",
-    //   excerpt: "Stay compliant with the latest labor law changes and understand their impact on your HR processes.",
-    //   author: "Emily Rodriguez",
-    //   date: "March 10, 2024",
-    //   category: "Compliance News",
-    //   readTime: "7 min read",
-    //   image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop"
-    // },
-    // {
-    //   title: "Building a Culture of Continuous Learning",
-    //   excerpt: "Learn how to foster employee development and create learning opportunities that drive engagement.",
-    //   author: "David Kumar",
-    //   date: "March 8, 2024",
-    //   category: "Leadership & Culture",
-    //   readTime: "6 min read",
-    //   image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop"
-    // },
     {
       title: "Why Modern Businesses Need Smarter Payroll Solutions",
       excerpt: "Efficient payroll management is crucial for modern enterprises to ensure timely and accurate employee compensation, maintain compliance with tax regulations, and support overall organizational financial health. Investing in advanced payroll technology enhances employee satisfaction, reduces administrative burden, and accelerates operational efficiency.",
@@ -80,12 +62,43 @@ const Blog = () => {
       title: "Mobile App Updates: Why Businesses Should Prioritize Mobile HRMS Security?",
       excerpt: "Securing your mobile HRMS app is essential to protect sensitive employee data, achieve payroll compliance, and prevent costly data breaches.By investing in innovative mobile HR security solutions, organizations enhance employee trust,maintain regulatory compliance(GDPR, HIPAA), and improve workforce productivity with reliable, accessible, and secure HR technology.",
       author: "Karthik",
-      date: "August 3, 2024",
+      date: "August 3, 2025",
       category: "Product Updates",
       readTime: "4 min read",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
       link: "/resources/blog/mobileappupdates"
-    }
+    },
+    // blog 2nd phase
+    {
+      title: "Navigating the Hybrid Workplace: Strategies for HR and Managers",
+      excerpt: "Discover smart HR strategies and powerful HRMS software to manage hybrid workplaces, streamline payroll and compliance, boost employee engagement, and build a culture of trust, inclusion, and high performance.",
+      author: "Karthik",
+      date: "Auguest 16, 2025",
+      category: "Product Updates",
+      readTime: "4 min read",
+      image: "https://media.istockphoto.com/id/641434530/photo/human-resources-management-app-concept-on-mobile-phone-screen.jpg?s=612x612&w=0&k=20&c=4647ZElnjvbVc8dJ0xXvU2Gb_dTtOpI1hXzcGF9oaQg=",
+      link: "/resources/blog/navigatehybrid"
+    },
+    {
+      title: "Quality vs. Quantity: Why the Right Hire Saves More Than You Think",
+      excerpt: "Recruitment is one of the most important jobs for HR. When a company wants to grow, the first thought of an HR is often to hire many people quickly. This Quick and high numbers of hiring may solve the problem in the short term, but it can create hidden costs for the business. On the other hand, choosing the right hire (quality hiring) instead of rushing to fill seats (quantity hiring) saves money, time, and effort. It also helps the company grow stronger in the long run and results in profit for the company.",
+      author: "Aiswraya R",
+      date: "August 18, 2025",
+      category: "Product Updates",
+      readTime: "3 min read",
+      image: "https://media.istockphoto.com/id/2124660831/photo/human-resources-management-concept-headhunters-recruit-employees-using-candidate-resumes.jpg?s=612x612&w=0&k=20&c=e8gfkrHenE0WfD8QD9_Mxd-FfWEBs5-Bt2THMrWvYaM=",
+      link: "/resources/blog/qualityvsquatity"
+    },
+    {
+      title: "Why Businesses Need an HRMS in Today’s Competitive Landscape",
+      excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore. Today, especially for SMEs and startups, businesses need a human resource management system (HRMS) that can simplify operations, ensure compliance, and keep employees engaged.",
+      author: "Aiswraya R",
+      date: "August 25, 2025",
+      category: "Product Updates",
+      readTime: "5 min read",
+      image: "https://media.istockphoto.com/id/1346294817/photo/human-resource-hexagonal-touch-screen-concept.jpg?s=612x612&w=0&k=20&c=ojdwiev7bHuD_Z7gr7858fAKmN1YzigrUlRJiTV_WjQ=",
+      link: "/resources/blog/whyhrms"
+    },
   ];
 
   return (

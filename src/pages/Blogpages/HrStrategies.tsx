@@ -47,9 +47,14 @@ export default function HRMSBlog() {
             </div>
           </header>
 
-          <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg mb-8 flex items-center justify-center">
-            <span className="text-muted-foreground">Featured Image</span>
+          <div className="aspect-video rounded-lg mb-8 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?ixlib=rb-4.0.3&q=80&w=1600&auto=format&fit=crop"
+              alt="Recruitment quality vs quantity illustration"
+              className="w-full h-full object-cover"
+            />
           </div>
+
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">

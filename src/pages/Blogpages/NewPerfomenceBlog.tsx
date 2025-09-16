@@ -50,8 +50,13 @@ export default function HRMSBlog() {
             </div>
           </header>
 
-          <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg mb-8 flex items-center justify-center">
-            <span className="text-muted-foreground">Featured Image</span>
+   
+          <div className="aspect-video rounded-lg mb-8 overflow-hidden">
+            <img
+              src="https://media.istockphoto.com/id/644335608/photo/personal-development-self-improvement-and-career-growth.webp?a=1&b=1&s=612x612&w=0&k=20&c=nQzmVcPYRpa2-A5vC3G82wCPR9b4__eX3XjD5V5IzYs="
+              alt=" Performance Management"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="prose prose-lg max-w-none">

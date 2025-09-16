@@ -29,6 +29,9 @@ import NewPerfomenceBlog from './pages/Blogpages/NewPerfomenceBlog'
 import StreamliningPayroll from './pages/Blogpages/StreamliningPayroll'
 import MobileAppUpdates from './pages/Blogpages/MobileAppUpdates'
 import { DemoPopup } from "@/components/DemoPopup"
+import NavigateHybrid from "./pages/Blogpages/NavigateHybrid";
+import QualityQuatity from "./pages/Blogpages/QualityQuatity";
+import WhyHrms from "./pages/Blogpages/WhyHrms";
 
 // import BotButton from "./components/BotButton";
 
@@ -74,8 +77,12 @@ const App = () => (
           <Route path="/resources/blog/newperfomenceblog" element={<NewPerfomenceBlog />} />
           <Route path="/resources/blog/streamliningpayroll" element={<StreamliningPayroll />} />
           <Route path="/resources/blog/mobileappupdates" element={<MobileAppUpdates />} />
+          <Route path="/resources/blog/navigatehybrid" element={<NavigateHybrid />} />
+          <Route path="/resources/blog/qualityvsquatity" element={<QualityQuatity />} />
+          <Route path="/resources/blog/whyhrms" element={<WhyHrms />} />
 
- 
+
+
 
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

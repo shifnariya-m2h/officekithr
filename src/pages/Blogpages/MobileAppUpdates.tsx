@@ -9,7 +9,7 @@ export default function MobileAppSecurityBlog() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <article className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <Link to="/resources/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8">
@@ -22,7 +22,7 @@ export default function MobileAppSecurityBlog() {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Mobile App Updates: Enhanced Security Features and Data Protection for HRMS
             </h1>
-            
+
             <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
@@ -47,9 +47,14 @@ export default function MobileAppSecurityBlog() {
             </div>
           </header>
 
-          <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg mb-8 flex items-center justify-center">
-            <span className="text-muted-foreground">Featured Image</span>
+          <div className="aspect-video rounded-lg mb-8 overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt=" Mobile App Security"
+              className="w-full h-full object-cover"
+            />
           </div>
+
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
