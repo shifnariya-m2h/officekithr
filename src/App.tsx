@@ -17,6 +17,7 @@ import ExitManagement from "./pages/features/ExitManagement";
 import MobileApp from "./pages/features/MobileApp";
 import Employeemanagment from "./pages/features/EmployementManagment"
 import OkaiLens from "./pages/face-lens"
+import Chatbot from "./pages/AiPilot"
 
 import Blog from "./pages/resources/Blog";
 import UseCases from "./pages/resources/UseCases";
@@ -61,6 +62,7 @@ const App = () => (
           <Route path="/features/mobile-app" element={<MobileApp />} />
           <Route path="/features/employe-managment" element={<Employeemanagment />} />
           <Route path="/features/face-lens" element={<OkaiLens />} />
+          <Route path="/features/ai-pilot" element={<Chatbot />} />
 
 
           {/* Resource Pages */}

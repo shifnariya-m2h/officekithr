@@ -16,6 +16,7 @@ import {
   Grid,
   BookOpen,
   ScanFace,
+  Bot 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,6 +51,8 @@ const Navigation = () => {
     { name: "Exit Management", href: "/features/exit-management", icon: LogOut },
     { name: "Mobile App", href: "/features/mobile-app", icon: Smartphone },
     { name: "Face Lens", href: "/features/face-lens", icon: ScanFace },
+    { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot  },
+
 
   ];
 
