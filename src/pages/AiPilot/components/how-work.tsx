@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Badge } from "../../../components/ui/badge";
 import { Check } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -51,11 +50,9 @@ export default function HowItWorks() {
           >
             {/* Content Left */}
             <div className="space-y-6 order-1">
-              <Badge className="bg-white font-normal py-2 text-[#3f5ffc] text-[16px] border border-[#ededed]">
-                Step 01
-              </Badge>
+
               <h3 className="text-3xl font-semibold text-hr-text-primary">
-                Quick Workspace Setup
+                Meet AI Pilot
               </h3>
               <p className="text-hr-text-secondary text-lg leading-relaxed text-justify max-w-prose">
                 Say Hello to a New Way of Working with HRMS
@@ -117,9 +114,7 @@ export default function HowItWorks() {
 
             {/* Content Right */}
             <div className="space-y-6 order-1 lg:order-2">
-              <Badge className="bg-white font-normal py-2 text-[16px] text-[#3f5ffc] border border-[#ededed]">
-                Step 02
-              </Badge>
+
               <h3 className="text-3xl font-semibold text-hr-text-primary">
                 What AI Pilot Can Do
               </h3>
@@ -187,9 +182,7 @@ export default function HowItWorks() {
           >
             {/* Content Left */}
             <div className="space-y-6 order-1">
-              <Badge className="bg-white font-normal py-2 text-[16px] text-[#3f5ffc] border border-[#ededed]">
-                Step 03
-              </Badge>
+
               <h3 className="text-3xl font-semibold text-hr-text-primary">
                 How It Works
               </h3>
@@ -202,7 +195,7 @@ export default function HowItWorks() {
                     <Check className="w-4 h-4 text-white" />
                   </div>
                   <span>
-                   Voice & Text Commands – Talk or type, your choice.
+                    Voice & Text Commands – Talk or type, your choice.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -210,7 +203,7 @@ export default function HowItWorks() {
                     <Check className="w-4 h-4 text-white" />
                   </div>
                   <span>
-                     AI-Driven Understanding – Detects intent and executes tasks.
+                    AI-Driven Understanding – Detects intent and executes tasks.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
