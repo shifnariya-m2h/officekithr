@@ -10,19 +10,10 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { SiApple, SiAndroid } from "react-icons/si";
-import { toast } from "sonner";
 
 
 const HeroSection = () => {
  
-const handleIOSClick = (e: React.MouseEvent) => {
-  e.preventDefault();
-  toast("iOS App Coming Soon 🚀", {
-    description: "Stay tuned! Our iOS app will be available shortly.",
-    duration: 3000,
-    position: "top-center", 
-  });
-};
 
 
   return (
@@ -71,11 +62,13 @@ const handleIOSClick = (e: React.MouseEvent) => {
                   Schedule Demo
                 </Button>
               </Link>
-              <DropdownMenu>
+
+              {/* Download Dropdown */}
+                <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     size="lg"
-                    className="bg-transparent border border-gray-400 text-white px-6 py-3 rounded-lg hover:bg-white/10 "
+                    className="bg-transparent border border-gray-400 text-white px-6 py-3 rounded-lg hover:bg-white/10"
                   >
                     Download App
                     <ChevronDown className="ml-2 h-5 w-5" />
@@ -86,9 +79,10 @@ const handleIOSClick = (e: React.MouseEvent) => {
                   {/* iOS Option */}
                   <DropdownMenuItem asChild>
                     <a
-                      href="#"
-                      onClick={handleIOSClick}
-                      className="flex items-center px-3 py-2 rounded-lg mouse-pointer transition hover:bg-blue-600 hover:text-white"
+                      href="https://apps.apple.com/in/app/officekit-app/id1382735899"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-3 py-2 rounded-lg transition hover:bg-blue-600 hover:text-white"
                     >
                       <SiApple className="mr-2 h-5 w-5" />
                       <span>Download for iOS</span>
@@ -98,10 +92,10 @@ const handleIOSClick = (e: React.MouseEvent) => {
                   {/* Android Option */}
                   <DropdownMenuItem asChild>
                     <a
-                      href="https://play.google.com/store/apps/details?id=com.officekitlence&hl=en_IN"
+                      href="https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center px-3 py-2 rounded-lg mouse-pointer transition hover:bg-blue-600 hover:text-white"
+                      className="flex items-center px-3 py-2 rounded-lg transition hover:bg-blue-600 hover:text-white"
                     >
                       <SiAndroid className="mr-2 h-5 w-5" />
                       <span>Download for Android</span>
@@ -110,6 +104,7 @@ const handleIOSClick = (e: React.MouseEvent) => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
+           
             </div>
           </div>
 
