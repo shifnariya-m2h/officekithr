@@ -32,7 +32,7 @@ const Footer = () => {
     { name: "Self Service Portal", href: "/features/self-service-portal" },
     { name: "Exit Management", href: "/features/exit-management" },
     { name: "Mobile App", href: "/features/mobile-app" },
-    { name: "Face Lens", href: "/features/face-lens" },
+    { name: "Face Kit", href: "/features/face-kit" },
   ];
 
   const resourcesLinks = [

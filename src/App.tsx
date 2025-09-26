@@ -61,7 +61,7 @@ const App = () => (
           <Route path="/features/exit-management" element={<ExitManagement />} />
           <Route path="/features/mobile-app" element={<MobileApp />} />
           <Route path="/features/employe-managment" element={<Employeemanagment />} />
-          <Route path="/features/face-lens" element={<OkaiLens />} />
+          <Route path="/features/face-kit" element={<OkaiLens />} />
           <Route path="/features/ai-pilot" element={<Chatbot />} />
 
 

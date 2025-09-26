@@ -50,7 +50,7 @@ const Navigation = () => {
     { name: "Performance Management", href: "/features/performance-appraisal", icon: BarChart3 },
     { name: "Exit Management", href: "/features/exit-management", icon: LogOut },
     { name: "Mobile App", href: "/features/mobile-app", icon: Smartphone },
-    { name: "Face Lens", href: "/features/face-lens", icon: ScanFace },
+    { name: "Face Kit", href: "/features/face-kit", icon: ScanFace },
     { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot  },
 
 

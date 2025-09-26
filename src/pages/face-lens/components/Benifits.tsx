@@ -40,9 +40,9 @@ function Benefits() {
       <div className="relative container mx-auto grid lg:grid-cols-2 gap-10 items-center px-6">
         {/* Left Content */}
         <div>
-          <h3 className="text-lg font-light mb-2">Benefits of Face Lens App</h3>
+          <h3 className="text-lg font-light mb-2">Benefits of  Face Kit App</h3>
           <h2 className="text-4xl font-bold leading-snug mb-4">
-            Get the Face Lens App, full features, completely FREE.
+            Get the  Face Kit App, full features, completely FREE.
           </h2>
           <p className="text-gray-300 mb-8">
             Get AI-powered attendance free with OfficeKit HR's Face Recognition

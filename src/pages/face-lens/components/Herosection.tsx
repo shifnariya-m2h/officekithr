@@ -1,7 +1,14 @@
 import { Button } from "../../../components/ui/button";
-import { ChevronDown } from "lucide-react";
 import mobileMockup from "../../../../public/okai-lens.png";
 import { Link } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { SiApple, SiAndroid } from "react-icons/si";
 
 const HeroSection = () => {
   return (
@@ -51,13 +58,45 @@ const HeroSection = () => {
                   Schedule Demo
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                className="bg-transparent border border-gray-400 text-white px-6 py-3 rounded-lg hover:bg-white/10"
-              >
-                Download App
-                <ChevronDown className="ml-2 h-5 w-5" />
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    size="lg"
+                    className="bg-transparent border border-gray-400 text-white px-6 py-3 rounded-lg hover:bg-white/10"
+                  >
+                    Download App
+                    <ChevronDown className="ml-2 h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent className="w-56 bg-background border border-gray-700 rounded-xl shadow-lg animate-in fade-in-80 slide-in-from-top-2">
+                  {/* iOS Option */}
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="https://apps.apple.com/in/app/officekit-app/id1382735899"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-3 py-2 rounded-lg transition hover:bg-blue-600 hover:text-white"
+                    >
+                      <SiApple className="mr-2 h-5 w-5" />
+                      <span>Download for iOS</span>
+                    </a>
+                  </DropdownMenuItem>
+
+                  {/* Android Option */}
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-3 py-2 rounded-lg transition hover:bg-blue-600 hover:text-white"
+                    >
+                      <SiAndroid className="mr-2 h-5 w-5" />
+                      <span>Download for Android</span>
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
