@@ -29,7 +29,7 @@ export default function HRMSBlog() {
             <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                <span>Karthik</span>
+                <span>Arathi</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />

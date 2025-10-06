@@ -29,7 +29,7 @@ const Blog = () => {
     {
       title: "The Future of Remote Work: HR Strategies for 2025 and Beyond",
       excerpt: "Discover the latest trends and strategies for managing remote teams effectively in the evolving workplace landscape.",
-      author: "Aiswraya R",
+      author: "Aiswarya K",
       date: "August 15, 2025",
       category: "HR Best Practices",
       readTime: "5 min read",
@@ -72,7 +72,7 @@ const Blog = () => {
     {
       title: "Navigating the Hybrid Workplace: Strategies for HR and Managers",
       excerpt: "Discover smart HR strategies and powerful HRMS software to manage hybrid workplaces, streamline payroll and compliance, boost employee engagement, and build a culture of trust, inclusion, and high performance.",
-      author: "Karthik",
+      author: "Arathi",
       date: "Auguest 16, 2025",
       category: "Product Updates",
       readTime: "4 min read",
@@ -82,7 +82,7 @@ const Blog = () => {
     {
       title: "Quality vs. Quantity: Why the Right Hire Saves More Than You Think",
       excerpt: "Recruitment is one of the most important jobs for HR. When a company wants to grow, the first thought of an HR is often to hire many people quickly. This Quick and high numbers of hiring may solve the problem in the short term, but it can create hidden costs for the business. On the other hand, choosing the right hire (quality hiring) instead of rushing to fill seats (quantity hiring) saves money, time, and effort. It also helps the company grow stronger in the long run and results in profit for the company.",
-      author: "Aiswraya R",
+      author: "Aiswarya K",
       date: "August 18, 2025",
       category: "Product Updates",
       readTime: "3 min read",
@@ -92,7 +92,7 @@ const Blog = () => {
     {
       title: "Why Businesses Need an HRMS in Today’s Competitive Landscape",
       excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore. Today, especially for SMEs and startups, businesses need a human resource management system (HRMS) that can simplify operations, ensure compliance, and keep employees engaged.",
-      author: "Aiswraya R",
+      author: "Aiswarya K",
       date: "August 25, 2025",
       category: "Product Updates",
       readTime: "5 min read",
