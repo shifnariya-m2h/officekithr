@@ -162,9 +162,22 @@ function PrivacyPolicy() {
           Our Services are intended for individuals aged 18 and above. We do not knowingly collect personal information from children under 13.
           We collect information you provide directly (such as name, email, phone, company details, profile information, and communications with our team) as well as information collected automatically (such as usage activity, device and technical data, IP address, cookies, and tracking data for analytics and performance). This information is used solely to deliver and improve our Services and is not used for any purposes beyond those described in this Privacy Policy.        </p>
 
+
+{/* 10. Face Data Collection */}
+<h2 className="text-2xl font-semibold mt-10 mb-4">
+  10. Face Data Collection
+</h2>
+<p className="mb-6">
+  When employees mark their attendance, the app captures a live facial image to verify identity in real time. 
+  The image is encrypted and securely stored in our AWS cloud database for authentication purposes only. 
+  This biometric data is never shared with external parties and is automatically deleted if the employee leaves the organization 
+  or their account is deactivated. The process ensures accurate attendance tracking while maintaining strict data privacy and security standards.
+</p>
+
+
         {/* 10. Contact */}
         <h2 className="text-2xl font-semibold mt-10 mb-4">
-          10. Contact Information
+          11. Contact Information
         </h2>
         <p className="mb-2">
           📧 <strong>Email:</strong> hello@officekithr.com
