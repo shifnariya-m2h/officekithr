@@ -62,7 +62,7 @@ const Blog = () => {
       title: "Mobile App Updates: Why Businesses Should Prioritize Mobile HRMS Security?",
       excerpt: "Securing your mobile HRMS app is essential to protect sensitive employee data, achieve payroll compliance, and prevent costly data breaches.By investing in innovative mobile HR security solutions, organizations enhance employee trust,maintain regulatory compliance(GDPR, HIPAA), and improve workforce productivity with reliable, accessible, and secure HR technology.",
       author: "Karthik",
-      date: "August 3, 2025",
+      date: "August 03, 2025",
       category: "Product Updates",
       readTime: "4 min read",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
@@ -98,6 +98,41 @@ const Blog = () => {
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1346294817/photo/human-resource-hexagonal-touch-screen-concept.jpg?s=612x612&w=0&k=20&c=ojdwiev7bHuD_Z7gr7858fAKmN1YzigrUlRJiTV_WjQ=",
       link: "/resources/blog/whyhrms"
+    },
+
+    // 10/13/25
+    {
+      title: "Why Embrace AI-Powered Features in HRMS?",
+      excerpt: "In today’s digital workplace, AI is no longer a future concept — it’s a strategic advantage. Forward-thinking organizations are enhancing their HRMS platforms with artificial intelligence to automate routine processes, deliver personalized employee experiences, and boost HR efficiency at scale.",
+      author: "Karthik",
+      date: "october 13, 2025",
+      category: "AI Updates",
+      readTime: "4 min read",
+      image: "https://media.istockphoto.com/id/1693321583/photo/data-analyst-working-on-business-analytics-dashboard-with-charts-with-kpi-and-metrics.jpg?s=612x612&w=0&k=20&c=3swv6pL3k5w9KRX2UzPdX4vor442SI7Nbfsys9BIvgg=",
+      link: "/resources/blog/aipowered"
+
+    },
+
+    {
+      title: "Real World DEI: Actions That Drive Inclusion, Equity & Diversity",
+      excerpt: "In recent years, many companies talk about Diversity, Equity, and Inclusion (DEI or DEIB. DEI means action changing how things work, who is included, and how fair the system is for everyone. In this blog, I’ll explain:",
+      author: "Aiswarya K",
+      date: "october 08, 2025",
+      category: "Product Updates",
+      readTime: "5 min read",
+      image: "https://media.istockphoto.com/id/1467509880/photo/hrm-or-human-resource-management-businessman-holding-magnifier-select-and-accept-to-manager.jpg?s=612x612&w=0&k=20&c=jHwUtais34k9MQ_lq703k1jkF5JXBc10imCBsrT4bHY=",
+      link: "/resources/blog/realworld-dei"
+    },
+
+    {
+      title: "Why a Human Resource Management System (HRMS) Like OfficeKit HR is Essential for Modern Businesses",
+      excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore. Today, especially for SMEs and startups, businesses need a human resource management system (HRMS) that can simplify operations, ensure compliance, and keep employees engaged.",
+      author: "Arathi",
+      date: "october 07, 2025",
+      category: "Product Updates",
+      readTime: "5 min read",
+      image: "https://media.istockphoto.com/id/1155674251/photo/hr-and-people-network-interface.jpg?s=612x612&w=0&k=20&c=WFkloP-aPgHs4DS3EoI5gUWaAGQI5lkWYDN0nMzy-Ds=",
+      link: "/resources/blog/hrmssystem"
     },
   ];
 

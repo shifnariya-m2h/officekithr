@@ -33,6 +33,13 @@ import { DemoPopup } from "@/components/DemoPopup"
 import NavigateHybrid from "./pages/Blogpages/NavigateHybrid";
 import QualityQuatity from "./pages/Blogpages/QualityQuatity";
 import WhyHrms from "./pages/Blogpages/WhyHrms";
+import AIPoweredFeatures from "./pages/Blogpages/AIPoweredFeatures";
+import HRMSSystem from "./pages/Blogpages/HRMSSystem";
+import RealWorldDEI from "./pages/Blogpages/RealWorldDEI";
+
+
+
+// import Text from './pages/test'
 
 // import BotButton from "./components/BotButton";
 
@@ -45,6 +52,7 @@ const App = () => (
       <Sonner />
       <DemoPopup />
       <BrowserRouter>
+      {/* <Text /> */}
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
@@ -82,6 +90,13 @@ const App = () => (
           <Route path="/resources/blog/navigatehybrid" element={<NavigateHybrid />} />
           <Route path="/resources/blog/qualityvsquatity" element={<QualityQuatity />} />
           <Route path="/resources/blog/whyhrms" element={<WhyHrms />} />
+          <Route path="/resources/blog/aipowered" element={<AIPoweredFeatures/>} />
+          <Route path="/resources/blog/hrmssystem" element={<HRMSSystem />} />
+          <Route path="/resources/blog/realworld-dei" element={<RealWorldDEI />} />
+          
+
+
+          {/* <Route path="/test" element={<Text />} /> */}
 
 
 
