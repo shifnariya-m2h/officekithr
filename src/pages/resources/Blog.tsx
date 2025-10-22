@@ -187,6 +187,7 @@ const Blog = () => {
                     src={blogPosts[0].image}
                     alt={blogPosts[0].title}
                     className="w-full h-full object-cover min-h-[300px]"
+                    loading="lazy"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
@@ -248,6 +249,7 @@ const Blog = () => {
                       src={post.image}
                       alt={post.title}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
                     />
                   </div>
                   <CardContent className="p-6">

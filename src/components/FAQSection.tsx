@@ -112,6 +112,7 @@ const FAQSection = () => {
                   className="rounded-2xl  "
                   src={faqs.find((_, i) => `item-${i}` === selected)?.image || "//hrb0.webp"}
                   alt="FAQ Visual"
+                  loading="lazy"
                 />
               </div>
             </div>

@@ -73,6 +73,7 @@ function Benefits() {
                 src="/AppStore.svg"
                 alt="Download on App Store"
                 className="h-12 hover:scale-105 transition-transform"
+                loading="lazy"
               />
             </a>
 
@@ -85,6 +86,7 @@ function Benefits() {
                 src="/playstoreButton.svg"
                 alt="Get it on Play Store"
                 className="h-12 hover:scale-105 transition-transform"
+                loading="lazy"
               />
             </a>
           </div>
@@ -96,6 +98,7 @@ function Benefits() {
             src={phone}
             alt="Phone mockup"
             className="w-[60%] md:w-[50%] lg:w-[45%] xl:w-[65%] h-auto "
+            loading="lazy"
           />
         </div>
       </div>

@@ -60,6 +60,7 @@ const Footer = () => {
               src="/Footer logo2.png"
               alt="OfficeKit"
               className="h-11 w-auto brightness-0 invert"
+              loading="lazy"
             />
           </Link>
 

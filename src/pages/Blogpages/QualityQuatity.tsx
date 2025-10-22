@@ -55,6 +55,7 @@ export default function HRMSBlog() {
               src="https://media.istockphoto.com/id/1168003566/photo/quality-vs-quantity-signpost-depicting-balance-between-product-or-service-superiority-or.webp?a=1&b=1&s=612x612&w=0&k=20&c=jT78QrB8aS9gmZ-0cLnEFWQ834_RP_Y6Bk22gIk7nfU="
               alt=" Quality vs Quantity"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 

@@ -143,6 +143,7 @@ const MobileApp = () => {
                   <img
                     src="/mobile-mockup.png"
                     alt="Mobile App Mockup"
+                    loading="lazy"
                   // className="w-full max-w-md shadow-lg rounded-lg"
                   />
                 </div>
@@ -208,10 +209,10 @@ const MobileApp = () => {
             </div> */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center" >
               <Link to="https://apps.apple.com/in/app/officekit-app/id1382735899" >
-                <img className="transform hover:scale-105 ease-out duration-300" src="/AppStore.svg" alt="" />
+                <img className="transform hover:scale-105 ease-out duration-300" src="/AppStore.svg" alt="playstore" loading="lazy" />
               </Link>
               <Link to='https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN' >
-                <img className="transform hover:scale-105 ease-out duration-300" src="/PlayStore.svg" alt="" />
+                <img className="transform hover:scale-105 ease-out duration-300" src="/PlayStore.svg" alt="playstore" loading="lazy"/>
               </Link>
             </div>
             <p className="text-sm text-muted-foreground mt-4">

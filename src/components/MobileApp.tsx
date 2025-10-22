@@ -45,26 +45,26 @@ function MobileApp({ }: Props) {
 
                 <div className="flex justify-between items-center" >
                     <div>
-                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/01.svg" alt="" />
-                        <img className="my-6 transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/02.svg" alt="" />
-                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/03.svg" alt="" />
+                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/01.svg" alt="mobileapp" loading="lazy" />
+                        <img className="my-6 transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/02.svg" alt="mobileapp" loading="lazy" />
+                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/03.svg" alt="mobileapp" loading="lazy"/>
                     </div>
                     <div>
-                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/04.svg" alt="" />
-                        <img className="my-6 transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/05.svg" alt="" />
-                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/06.svg" alt="" />
+                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/04.svg" alt="mobileapp" loading="lazy" />
+                        <img className="my-6 transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/05.svg" alt="mobileapp" loading="lazy"/>
+                        <img className="transform duration-500 ease-out hover:translate-y-2" src="/mobile-app-keypoints/06.svg" alt="mobileapp" loading="lazy"/>
                     </div>
                 </div>
                 <div className="absolute top-[76%] w-[320px] h-auto left-1/2 -translate-x-1/2 -translate-y-1/2">
                     {/* <img src="/Free_Iphone_15_Mockup_4 copy.png" alt="" /> */}
-                                        <img ref={phoneRef} src="/Free_Iphone_15_Mockup_4 copy.png" alt="Phone Mockup" />
+                                        <img ref={phoneRef} src="/Free_Iphone_15_Mockup_4 copy.png" alt="Phone Mockup" loading="lazy"/>
 
                     <div className="flex gap-4 mt-10" >
                         <Link to="https://apps.apple.com/in/app/officekit-app/id1382735899" >
-                            <img className="transform hover:scale-105 ease-out duration-300" src="/apple.svg" alt="" />
+                            <img className="transform hover:scale-105 ease-out duration-300" src="/apple.svg" alt="" loading="lazy"/>
                         </Link>
                         <Link to='https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN' >
-                            <img className="transform hover:scale-105 ease-out duration-300" src="/play.svg" alt="" />
+                            <img className="transform hover:scale-105 ease-out duration-300" src="/play.svg" alt="" loading="lazy"/>
                         </Link>
                     </div>
                 </div>

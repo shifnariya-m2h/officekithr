@@ -100,7 +100,8 @@ export default () => {
                 <img
                   className="rounded-2xl h-[25rem]"
                   src="/HiringOnboardings.png"
-                  alt=""
+                  alt="hiring and onboarding feature"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -116,7 +117,8 @@ export default () => {
                 <img
                   className="rounded-2xl h-[25rem]"
                   src="/timePayroll.png"
-                  alt=""
+                  alt="time and payroll feature"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -172,7 +174,8 @@ export default () => {
                 <img
                   className="rounded-2xl h-[25rem]"
                   src="/Performance-selfServ.png"
-                  alt=""
+                  alt="performance and self-service feature"
+                  loading="lazy"
                 />
               </div>
             </div>

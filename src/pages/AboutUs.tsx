@@ -202,6 +202,7 @@ const AboutUs = () => {
                   src={member.image}
                   alt={member.name}
                   className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-border"
+                  loading="lazy"
                 />
                 <h3 className="text-xl font-semibold text-foreground mb-2">
                   {member.name}

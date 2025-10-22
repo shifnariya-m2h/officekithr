@@ -56,6 +56,7 @@ export default function HRMSBlog() {
               src="https://media.istockphoto.com/id/644335608/photo/personal-development-self-improvement-and-career-growth.webp?a=1&b=1&s=612x612&w=0&k=20&c=nQzmVcPYRpa2-A5vC3G82wCPR9b4__eX3XjD5V5IzYs="
               alt=" Performance Management"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 

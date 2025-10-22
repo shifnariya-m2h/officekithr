@@ -56,6 +56,8 @@ export default function OfficeKitHRBlog() {
                             src="https://media.istockphoto.com/id/1047823928/photo/hr-human-resources-concept-diagram.jpg?s=612x612&w=0&k=20&c=gNIPUCrjnsSECEYfUXZIq7FVOch-nDdij9b-DrR4RL0="
                             alt="OfficeKit HRMS in Action"
                             className="w-full h-full object-cover"
+                            loading="lazy"
+
                         />
                     </div>
 

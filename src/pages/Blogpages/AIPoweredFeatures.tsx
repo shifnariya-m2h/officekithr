@@ -55,6 +55,7 @@ export default function AIBlog() {
               src="https://media.istockphoto.com/id/2191437022/photo/hr-management-with-ai-recruiting-technology-concept-businessman-uses-a-laptop-recruitment.jpg?s=612x612&w=0&k=20&c=B_4kAb9mkAGSRvXdY9dGGC4lrfGqI83SGS6mX2kSwqE="
               alt="AI-Powered HRMS"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 

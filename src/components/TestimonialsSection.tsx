@@ -73,6 +73,7 @@ const TestimonialsSection = () => {
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="w-12 h-12 rounded-full object-cover border-2 border-border group-hover:border-primary transition-colors"
+                  loading="lazy"
                 />
                 <div>
                   <div className="font-semibold text-foreground">

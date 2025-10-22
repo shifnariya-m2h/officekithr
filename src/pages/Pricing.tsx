@@ -146,6 +146,7 @@ const Pricing = () => {
                 src="/Box 01.png"
                 alt="Pricing Illustration"
                 className=" rounded-2xl  "  
+                loading="lazy"
               />
 
 

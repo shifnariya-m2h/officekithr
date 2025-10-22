@@ -56,6 +56,7 @@ export default function DEIBlog() {
               src="https://media.istockphoto.com/id/1465567206/photo/employees-must-complete-the-online-survey-form-answer-the-test-questions-marked-checklist-on.jpg?s=612x612&w=0&k=20&c=-Bi6zawuIjLis42Kq3BHzz5DtsV8vd7OQyHg811L0qQ="
               alt="Diversity, Equity, and Inclusion in the Workplace"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 

@@ -55,6 +55,7 @@ export default function HRMSBlog() {
               src="https://img.freepik.com/free-vector/hybrid-work-model-employees-working-home-office-isometric-flowchart_1284-61616.jpg"
               alt="Isometric flowchart depicting employees collaborating in a hybrid workplace with HRMS tools"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 

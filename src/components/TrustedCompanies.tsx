@@ -27,6 +27,7 @@ const TrustedCompanies = () => {
                     className="object-contain w-24 h-12"
                     src={`/${index + 1}.png`}
                     alt={`Company ${index + 1}`}
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -43,6 +44,7 @@ const TrustedCompanies = () => {
                     className="object-contain w-24 h-12"
                     src={`/${index + 1}.png`}
                     alt={`Company ${index + 1}`}
+                    loading="lazy"
                   />
                 </div>
               </div>

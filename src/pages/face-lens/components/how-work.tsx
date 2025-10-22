@@ -90,6 +90,7 @@ export default function HowItWorks() {
                 className="rounded-2xl h-[25rem] object-cover"
                 src="/QWorkspace.png"
                 alt="Quick Workspace Setup"
+                loading="lazy"
               />
             </div>
           </div>
@@ -105,6 +106,7 @@ export default function HowItWorks() {
                 className="rounded-2xl h-[25rem] object-cover"
                 src="/facescans02.png"
                 alt="Register Employees via Face Scan"
+                loading="lazy"
               />
             </div>
 
@@ -190,6 +192,7 @@ export default function HowItWorks() {
                 className="rounded-2xl h-[25rem] object-cover"
                 src="/QWorkspace.png"
                 alt="Employee Management"
+                loading="lazy"
               />
             </div>
           </div>

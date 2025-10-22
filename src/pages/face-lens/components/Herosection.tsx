@@ -123,6 +123,7 @@ const HeroSection = () => {
                   src={mobileMockup}
                   alt="Face recognition attendance app interface"
                   className="w-full max-w-md h-auto drop-shadow-2xl transform hover:scale-105 transition duration-500"
+                  loading="lazy"
                 />
               </div>
             </div>

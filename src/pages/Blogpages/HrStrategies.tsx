@@ -52,6 +52,8 @@ export default function HRMSBlog() {
               src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?ixlib=rb-4.0.3&q=80&w=1600&auto=format&fit=crop"
               alt="Recruitment quality vs quantity illustration"
               className="w-full h-full object-cover"
+              loading="lazy"
+
             />
           </div>
 

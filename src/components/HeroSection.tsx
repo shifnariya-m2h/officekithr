@@ -140,8 +140,10 @@ const HeroSection = () => {
               className="w-full max-w-[1200px] h-auto object-contain rounded-3xl"
               src="/hero-mains.webp"
               alt="Hero"
+              loading="lazy"
               style={{ scale: 1.5 }}
               animate={{ y: [0, -20, 0] }}
+              
               transition={{
                 duration: 6,
                 repeat: Infinity,

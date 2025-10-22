@@ -87,6 +87,7 @@ const Navigation = () => {
               src="/Nav Logo2.png"
               alt="OfficeKit"
               className="h-11 w-auto"
+              loading="lazy"
             />
           </Link>
 
