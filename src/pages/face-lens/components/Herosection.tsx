@@ -9,17 +9,17 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { SiApple, SiAndroid } from "react-icons/si";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 
 const HeroSection = () => {
-  const handleIOSClick = (e: React.MouseEvent) => {
-  e.preventDefault();
-  toast("iOS App Coming Soon 🚀", {
-    description: "Stay tuned! Our iOS app will be available shortly.",
-    duration: 3000,
-    position: "top-center", 
-  });
-};
+//   const handleIOSClick = (e: React.MouseEvent) => {
+//   e.preventDefault();
+//   toast("iOS App Coming Soon 🚀", {
+//     description: "Stay tuned! Our iOS app will be available shortly.",
+//     duration: 3000,
+//     position: "top-center", 
+//   });
+// };
 
   return (
     <section
@@ -84,8 +84,10 @@ const HeroSection = () => {
                   {/* iOS Option */}
                   <DropdownMenuItem asChild>
                     <a
-                      href="#"
-                      onClick={handleIOSClick}
+                      href="https://apps.apple.com/in/app/facekit/id6753619593 "
+                      // onClick={handleIOSClick}
+                          target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center px-3 py-2 rounded-lg mouse-pointer transition hover:bg-blue-600 hover:text-white"
                     >
                       <SiApple className="mr-2 h-5 w-5" />

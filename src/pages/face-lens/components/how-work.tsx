@@ -190,7 +190,7 @@ export default function HowItWorks() {
             <div className="flex justify-center order-2">
               <img
                 className="rounded-2xl h-[25rem] object-cover"
-                src="/QWorkspace.png"
+                src="/QWorkspace.jpg"
                 alt="Employee Management"
                 loading="lazy"
               />

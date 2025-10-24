@@ -84,7 +84,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2  ">
             <img
-              src="/Nav Logo2.png"
+              src="/Nav Logo2.jpg"
               alt="OfficeKit"
               className="h-11 w-auto"
               loading="lazy"
