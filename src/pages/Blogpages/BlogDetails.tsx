@@ -14,7 +14,7 @@ export default function BlogDetail() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/blogs/${id}`);
+        const res = await fetch(`https://officekithrblog-server.onrender.com/api/blogs/${id}`);
         const data = await res.json();
         setPost(data);
       } catch (err) {
