@@ -36,6 +36,7 @@ import WhyHrms from "./pages/Blogpages/WhyHrms";
 import AIPoweredFeatures from "./pages/Blogpages/AIPoweredFeatures";
 import HRMSSystem from "./pages/Blogpages/HRMSSystem";
 import RealWorldDEI from "./pages/Blogpages/RealWorldDEI";
+import BlogDetail from "./pages/Blogpages/BlogDetails";
 
 
 
@@ -52,7 +53,7 @@ const App = () => (
       <Sonner />
       <DemoPopup />
       <BrowserRouter>
-      {/* <Text /> */}
+        {/* <Text /> */}
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
@@ -74,7 +75,7 @@ const App = () => (
 
 
           {/* Resource Pages */}
-          <Route path="/resources/blog" element={<Blog />} />
+          <Route path="/resources/blogs" element={<Blog />} />
           <Route path="/resources/use-cases" element={<UseCases />} />
           <Route path="/resources/community" element={<Community />} />
 
@@ -83,22 +84,24 @@ const App = () => (
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
 
           {/* blogs */}
-          <Route path="/resources/blog/hrblogs" element={<Blog1 />} />
-          <Route path="/resources/blog/newperfomenceblog" element={<NewPerfomenceBlog />} />
-          <Route path="/resources/blog/streamliningpayroll" element={<StreamliningPayroll />} />
-          <Route path="/resources/blog/mobileappupdates" element={<MobileAppUpdates />} />
-          <Route path="/resources/blog/navigatehybrid" element={<NavigateHybrid />} />
-          <Route path="/resources/blog/qualityvsquatity" element={<QualityQuatity />} />
-          <Route path="/resources/blog/whyhrms" element={<WhyHrms />} />
-          <Route path="/resources/blog/aipowered" element={<AIPoweredFeatures/>} />
-          <Route path="/resources/blog/hrmssystem" element={<HRMSSystem />} />
-          <Route path="/resources/blog/realworld-dei" element={<RealWorldDEI />} />
-          
+          <Route path="/resources/blogs/hrblogs" element={<Blog1 />} />
+          <Route path="/resources/blogs/newperfomenceblog" element={<NewPerfomenceBlog />} />
+          <Route path="/resources/blogs/streamliningpayroll" element={<StreamliningPayroll />} />
+          <Route path="/resources/blogs/mobileappupdates" element={<MobileAppUpdates />} />
+          <Route path="/resources/blogs/navigatehybrid" element={<NavigateHybrid />} />
+          <Route path="/resources/blogs/qualityvsquatity" element={<QualityQuatity />} />
+          <Route path="/resources/blogs/whyhrms" element={<WhyHrms />} />
+          <Route path="/resources/blogs/aipowered" element={<AIPoweredFeatures />} />
+          <Route path="/resources/blogs/hrmssystem" element={<HRMSSystem />} />
+          <Route path="/resources/blogs/realworld-dei" element={<RealWorldDEI />} />
+
 
 
           {/* <Route path="/test" element={<Text />} /> */}
 
 
+          {/* blogs  */}
+          <Route path="/blog/:id" element={<BlogDetail />} />
 
 
 

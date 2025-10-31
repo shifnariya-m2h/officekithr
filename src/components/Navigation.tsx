@@ -65,7 +65,7 @@ const Navigation = () => {
   ];
 
   const resourcesLinks = [
-    { name: "Blog", href: "/resources/blog", icon: BookOpen },
+    { name: "Blog", href: "/resources/blogs", icon: BookOpen },
     // { name: "Use Cases", href: "/resources/use-cases", icon: Lightbulb },
     // { name: "Community", href: "/resources/community", icon: Users },
   ];

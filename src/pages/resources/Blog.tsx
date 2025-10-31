@@ -1,167 +1,247 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, User, ArrowRight, Tag } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { getAllPosts } from "@/services/blogService";
+import { useEffect, useState } from "react";
+import { BlogPost } from "@/types";
+import { extractExcerpt } from "@/utils/extractExcerpt";
+
 const Blog = () => {
-  const categories = [
-    "All Posts",
-    "HR Best Practices",
-    "Product Updates",
-    "Compliance News",
-    "Leadership & Culture",
-    "Remote Work"
-  ];
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState("All Posts");
 
   const navigate = useNavigate();
-  const handlenext = () => {
-    navigate('/resources/blog/hrblogs')
-  }
-  const handlenextblog2 = () => {
-    navigate('/resources/blog/newperfomenceblog')
-  }
 
-
-
-  const blogPosts = [
+const categories = [
+    { label: "All Posts", link: "/resources/blogs" },
+    { label: "HR Best Practices", link: "/resources/blogs/hr-best-practices" },
+    { label: "Product Updates", link: "/resources/blogs/product-updates" },
+    { label: "Compliance News", link: "/resources/blogs/compliance-news" },
+    { label: "Leadership & Culture", link: "/resources/blogs/leadership-culture" },
+    { label: "Remote Work", link: "/resources/blogs/remote-work" },
+  ];
+  // Hardcoded fallback posts
+  const fallbackPosts: BlogPost[] = [
     {
+      _id: "1",
       title: "The Future of Remote Work: HR Strategies for 2025 and Beyond",
       excerpt: "Discover the latest trends and strategies for managing remote teams effectively in the evolving workplace landscape.",
       author: "Aiswarya K",
-      date: "August 15, 2025",
-      category: "HR Best Practices",
+      createdAt: "2025-08-15",
+      updates: "HR Best Practices",
       readTime: "5 min read",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-      link: "/resources/blog/hrblogs"
-
+      link: "/resources/blogs/hrblogs"
     },
     {
+      _id: "2",
       title: "Why Invest in Enhanced Performance Management Tools?",
-      excerpt: "Modern enterprises thrive by equipping their HR departments with technology thatfosters employee satisfaction, improves talent retention, and accelerates organizational growth.",
+      excerpt: "Modern enterprises thrive by equipping their HR departments with technology that fosters employee satisfaction, improves talent retention, and accelerates organizational growth.",
       author: "Karthik",
-      date: "August 28, 2025",
-      category: "Product Updates",
+      createdAt: "2025-08-28",
+      updates: "Product Updates",
       readTime: "3 min read",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-      link: "/resources/blog/newperfomenceblog"
+      link: "/resources/blogs/newperfomenceblog"
     },
     {
+      _id: "3",
       title: "Why Modern Businesses Need Smarter Payroll Solutions",
-      excerpt: "Efficient payroll management is crucial for modern enterprises to ensure timely and accurate employee compensation, maintain compliance with tax regulations, and support overall organizational financial health. Investing in advanced payroll technology enhances employee satisfaction, reduces administrative burden, and accelerates operational efficiency.",
+      excerpt: "Efficient payroll management is crucial for modern enterprises to ensure timely and accurate employee compensation, maintain compliance with tax regulations, and support overall organizational financial health.",
       author: "Nihal",
-      date: "August 29, 2025",
-      category: "Product Updates",
+      createdAt: "2025-08-29",
+      updates: "Product Updates",
       readTime: "8 min read",
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
-      link: "/resources/blog/streamliningpayroll"
-
+      link: "/resources/blogs/streamliningpayroll"
     },
     {
+      _id: "4",
       title: "Mobile App Updates: Why Businesses Should Prioritize Mobile HRMS Security?",
-      excerpt: "Securing your mobile HRMS app is essential to protect sensitive employee data, achieve payroll compliance, and prevent costly data breaches.By investing in innovative mobile HR security solutions, organizations enhance employee trust,maintain regulatory compliance(GDPR, HIPAA), and improve workforce productivity with reliable, accessible, and secure HR technology.",
+      excerpt: "Securing your mobile HRMS app is essential to protect sensitive employee data, achieve payroll compliance, and prevent costly data breaches.",
       author: "Karthik",
-      date: "August 03, 2025",
-      category: "Product Updates",
+      createdAt: "2025-08-03",
+      updates: "Product Updates",
       readTime: "4 min read",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-      link: "/resources/blog/mobileappupdates"
+      link: "/resources/blogs/mobileappupdates"
     },
-    // blog 2nd phase
     {
+      _id: "5",
       title: "Navigating the Hybrid Workplace: Strategies for HR and Managers",
-      excerpt: "Discover smart HR strategies and powerful HRMS software to manage hybrid workplaces, streamline payroll and compliance, boost employee engagement, and build a culture of trust, inclusion, and high performance.",
+      excerpt: "Discover smart HR strategies and powerful HRMS software to manage hybrid workplaces, streamline payroll and compliance, boost employee engagement.",
       author: "Arathi",
-      date: "Auguest 16, 2025",
-      category: "Product Updates",
+      createdAt: "2025-08-16",
+      updates: "Product Updates",
       readTime: "4 min read",
       image: "https://media.istockphoto.com/id/641434530/photo/human-resources-management-app-concept-on-mobile-phone-screen.jpg?s=612x612&w=0&k=20&c=4647ZElnjvbVc8dJ0xXvU2Gb_dTtOpI1hXzcGF9oaQg=",
-      link: "/resources/blog/navigatehybrid"
+      link: "/resources/blogs/navigatehybrid"
     },
     {
+      _id: "6",
       title: "Quality vs. Quantity: Why the Right Hire Saves More Than You Think",
-      excerpt: "Recruitment is one of the most important jobs for HR. When a company wants to grow, the first thought of an HR is often to hire many people quickly. This Quick and high numbers of hiring may solve the problem in the short term, but it can create hidden costs for the business. On the other hand, choosing the right hire (quality hiring) instead of rushing to fill seats (quantity hiring) saves money, time, and effort. It also helps the company grow stronger in the long run and results in profit for the company.",
+      excerpt: "Recruitment is one of the most important jobs for HR. Choosing quality over quantity saves money, time, and builds long-term growth.",
       author: "Aiswarya K",
-      date: "August 18, 2025",
-      category: "Product Updates",
+      createdAt: "2025-08-18",
+      updates: "Product Updates",
       readTime: "3 min read",
       image: "https://media.istockphoto.com/id/2124660831/photo/human-resources-management-concept-headhunters-recruit-employees-using-candidate-resumes.jpg?s=612x612&w=0&k=20&c=e8gfkrHenE0WfD8QD9_Mxd-FfWEBs5-Bt2THMrWvYaM=",
-      link: "/resources/blog/qualityvsquatity"
+      link: "/resources/blogs/qualityvsquatity"
     },
     {
+      _id: "7",
       title: "Why Businesses Need an HRMS in Today’s Competitive Landscape",
-      excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore. Today, especially for SMEs and startups, businesses need a human resource management system (HRMS) that can simplify operations, ensure compliance, and keep employees engaged.",
+      excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore.",
       author: "Aiswarya K",
-      date: "August 25, 2025",
-      category: "Product Updates",
+      createdAt: "2025-08-25",
+      updates: "Product Updates",
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1346294817/photo/human-resource-hexagonal-touch-screen-concept.jpg?s=612x612&w=0&k=20&c=ojdwiev7bHuD_Z7gr7858fAKmN1YzigrUlRJiTV_WjQ=",
-      link: "/resources/blog/whyhrms"
+      link: "/resources/blogs/whyhrms"
     },
-
-    // 10/13/25
     {
+      _id: "8",
       title: "Why Embrace AI-Powered Features in HRMS?",
-      excerpt: "In today’s digital workplace, AI is no longer a future concept — it’s a strategic advantage. Forward-thinking organizations are enhancing their HRMS platforms with artificial intelligence to automate routine processes, deliver personalized employee experiences, and boost HR efficiency at scale.",
+      excerpt: "In today’s digital workplace, AI is no longer a future concept — it’s a strategic advantage. Forward-thinking organizations are enhancing their HRMS platforms with artificial intelligence.",
       author: "Karthik",
-      date: "october 13, 2025",
-      category: "AI Updates",
+      createdAt: "2025-10-13",
+      updates: "AI Updates",
       readTime: "4 min read",
       image: "https://media.istockphoto.com/id/1693321583/photo/data-analyst-working-on-business-analytics-dashboard-with-charts-with-kpi-and-metrics.jpg?s=612x612&w=0&k=20&c=3swv6pL3k5w9KRX2UzPdX4vor442SI7Nbfsys9BIvgg=",
-      link: "/resources/blog/aipowered"
-
+      link: "/resources/blogs/aipowered"
     },
-
     {
+      _id: "9",
       title: "Real World DEI: Actions That Drive Inclusion, Equity & Diversity",
-      excerpt: "In recent years, many companies talk about Diversity, Equity, and Inclusion (DEI or DEIB. DEI means action changing how things work, who is included, and how fair the system is for everyone. In this blog, I’ll explain:",
+      excerpt: "In recent years, many companies talk about Diversity, Equity, and Inclusion (DEI). DEI means action changing how things work, who is included, and how fair the system is for everyone.",
       author: "Aiswarya K",
-      date: "october 08, 2025",
-      category: "Product Updates",
+      createdAt: "2025-10-08",
+      updates: "Product Updates",
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1467509880/photo/hrm-or-human-resource-management-businessman-holding-magnifier-select-and-accept-to-manager.jpg?s=612x612&w=0&k=20&c=jHwUtais34k9MQ_lq703k1jkF5JXBc10imCBsrT4bHY=",
-      link: "/resources/blog/realworld-dei"
+      link: "/resources/blogs/realworld-dei"
     },
-
     {
+      _id: "10",
       title: "Why a Human Resource Management System (HRMS) Like OfficeKit HR is Essential for Modern Businesses",
-      excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore. Today, especially for SMEs and startups, businesses need a human resource management system (HRMS) that can simplify operations, ensure compliance, and keep employees engaged.",
+      excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore.",
       author: "Arathi",
-      date: "october 07, 2025",
-      category: "Product Updates",
+      createdAt: "2025-10-07",
+      updates: "Product Updates",
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1155674251/photo/hr-and-people-network-interface.jpg?s=612x612&w=0&k=20&c=WFkloP-aPgHs4DS3EoI5gUWaAGQI5lkWYDN0nMzy-Ds=",
-      link: "/resources/blog/hrmssystem"
+      link: "/resources/blogs/hrmssystem"
     },
   ];
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const apiPosts = await getAllPosts();
+        console.log("Fetched API posts:", apiPosts);
+
+        const normalizedApiPosts = (apiPosts || []).map((post: any) => ({
+          _id: post._id,
+          title: post.title,
+          excerpt: post.excerpt || (post.content ? extractExcerpt(post.content) : "No preview available."),
+          author: post.author || "Admin",
+          createdAt: post.createdAt?.split("T")[0] || new Date().toISOString().split("T")[0],
+          updates: post.updates || "General",
+          readTime: post.readTime || "4 min read",
+          image: post.image || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
+          link: `/blog/${post._id}`
+        } satisfies BlogPost));
+
+        // Merge: API first, then fallback (deduped)
+        const combined = [
+          ...normalizedApiPosts,
+          ...fallbackPosts.filter(fp => !normalizedApiPosts.some(ap => ap._id === fp._id))
+        ];
+
+        // Sort by date: newest first
+        const sorted = combined.sort((a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+
+        setAllPosts(sorted);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        const sortedFallback = [...fallbackPosts].sort((a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setAllPosts(sortedFallback);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+
+  /* ────────────────────── NEW DATE FORMATTER ────────────────────── */
+  const formatBlogDate = (isoDate: string): string => {
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    const d = new Date(isoDate);
+    const month = months[d.getMonth()];
+    const day = String(d.getDate()).padStart(2, "0");
+    const year = d.getFullYear();
+    return `${month} ${day}, ${year}`;
+  };
+  /* ───────────────────────────────────────────────────────────────── */
+
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-pulse text-muted-foreground">Loading posts...</div>
+      </div>
+    );
+  }
+
+  const filteredPosts = activeCategory === "All Posts"
+    ? allPosts
+    : allPosts.filter(post => post.updates === activeCategory);
+
+
+const featuredPost = filteredPosts[0];
+  const latestPosts = filteredPosts.slice(1);
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-subtle bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/RecruitmentManagement2.png')",
-        }}      >
+      <section
+        className="pt-32 pb-20 bg-gradient-subtle bg-cover bg-center"
+        style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
+      >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl font-bold text-foreground mb-6">
-              Insights  Updates from the  <span className="gradient-text"> HR World </span>
+              Insights & Updates from the <span className="gradient-text"> HR World </span>
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8">
               Stay ahead with the latest trends, tips, and strategies for HR professionals.
               Expert insights to help you build better workplaces.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category, index) => (
+           <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((cat) => (
                 <Button
-                  key={index}
-                  variant={index === 0 ? "default" : "outline"}
+                  key={cat.label}
+                  variant={activeCategory === cat.label ? "default" : "outline"}
                   className="rounded-full"
+                  onClick={() => setActiveCategory(cat.label)}
                 >
-                  {category}
+                  {cat.label}
                 </Button>
               ))}
             </div>
@@ -170,67 +250,72 @@ const Blog = () => {
       </section>
 
       {/* Featured Post */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="bg-white font-normal py-2  text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent"  >
-                Blog
-              </Badge>
-              <h2 className="text-3xl font-bold text-foreground mb-4">Featured Article</h2>
-            </div>
-
-            <Card className="overflow-hidden border-border shadow-strong">
-              <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative">
-                  <img
-                    src={blogPosts[0].image}
-                    alt={blogPosts[0].title}
-                    className="w-full h-full object-cover min-h-[300px]"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                      Featured
-                    </span>
-                  </div>
-                </div>
-                <CardContent className="p-8 flex flex-col justify-center">
-                  <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
-                    <span className="flex items-center space-x-1">
-                      <Tag className="h-4 w-4" />
-                      <span>{blogPosts[0].category}</span>
-                    </span>
-                    <span className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{blogPosts[0].date}</span>
-                    </span>
-                    <span>{blogPosts[0].readTime}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    {blogPosts[0].title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {blogPosts[0].excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <User className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">{blogPosts[0].author}</span>
-                    </div>
-                    <Button className="btn-cta group" onClick={handlenext}>
-                      Read More
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </div>
-                </CardContent>
+      {featuredPost && (
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <Badge className="bg-white font-normal py-2 text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent">
+                  Blogs
+                </Badge>
+                <h2 className="text-3xl font-bold text-foreground mb-4">Featured Article</h2>
               </div>
-            </Card>
-          </div>
-        </div>
-      </section>
 
-      {/* Blog Grid */}
+              <Card className="overflow-hidden border-border shadow-strong">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="relative">
+                    <img
+                      src={featuredPost.image}
+                      alt={featuredPost.title}
+                      className="w-full h-full object-cover min-h-[300px]"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                        Featured
+                      </span>
+                    </div>
+                  </div>
+                  <CardContent className="p-8 flex flex-col justify-center">
+                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
+                      <span className="flex items-center space-x-1">
+                        <Tag className="h-4 w-4" />
+                        <span>{featuredPost.updates}</span>
+                      </span>
+                      <span className="flex items-center space-x-1">
+                        <Calendar className="h-4 w-4" />
+                        {/* <span>{featuredPost.createdAt}</span> */}
+                        <span>{formatBlogDate(featuredPost.createdAt)}</span>
+                      </span>
+                      <span>{featuredPost.readTime}</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">
+                      {featuredPost.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {featuredPost.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <User className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm text-muted-foreground">{featuredPost.author}</span>
+                      </div>
+                      <Link to={featuredPost.link}>
+                        <Button className="btn-cta group">
+                          Read More
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Blog Grid - Latest Articles */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -242,8 +327,8 @@ const Blog = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.slice(1).map((post, index) => (
-                <Card key={index} className="overflow-hidden border-border shadow-medium hover:shadow-strong transition-shadow group">
+              {latestPosts.map((post) => (
+                <Card key={post._id} className="overflow-hidden border-border shadow-medium hover:shadow-strong transition-shadow group">
                   <div className="relative">
                     <img
                       src={post.image}
@@ -256,7 +341,7 @@ const Blog = () => {
                     <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
                       <span className="flex items-center space-x-1">
                         <Tag className="h-3 w-3" />
-                        <span>{post.category}</span>
+                        <span>{post.updates}</span>
                       </span>
                       <span>{post.readTime}</span>
                     </div>
@@ -271,10 +356,11 @@ const Blog = () => {
                         <User className="h-3 w-3" />
                         <span>{post.author}</span>
                         <span>•</span>
-                        <span>{post.date}</span>
+                        {/* <span>{post.createdAt}</span> */}
+                        <span>{formatBlogDate(featuredPost.createdAt)}</span>
                       </div>
                       <Link to={post.link}>
-                        <Button variant="ghost" size="sm" className="group" >
+                        <Button variant="ghost" size="sm" className="group">
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </Link>
@@ -283,37 +369,15 @@ const Blog = () => {
                 </Card>
               ))}
             </div>
-            {/* 
-            <div className="text-center mt-12">
-              <Button className="btn-outline">
-                Load More Articles
-              </Button>
-            </div> */}
+
+            {latestPosts.length === 0 && (
+              <div className="text-center py-12 text-muted-foreground">
+                No articles available at the moment.
+              </div>
+            )}
           </div>
         </div>
       </section>
-
-      {/* Newsletter Signup */}
-      {/* <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">Stay in the Loop</h2>
-            <p className="text-primary-foreground/80 mb-8">
-              Subscribe to our newsletter and get the latest HR insights delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-white/20"
-              />
-              <Button className="bg-white text-primary hover:bg-gray-100">
-                Subscribe
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <Footer />
     </div>
