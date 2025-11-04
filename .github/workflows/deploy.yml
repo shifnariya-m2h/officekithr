@@ -1,52 +1,61 @@
-name: Deploy React App to cPanel
+name: 🚀 Deploy React App to cPanel (SFTP)
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger deploys when you push to the main branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      # 1️⃣ Checkout your repository code
+      - name: 🧾 Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      # 2️⃣ Setup Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install Dependencies
+      # 3️⃣ Install project dependencies
+      - name: 📦 Install Dependencies
         run: |
-          echo "📦 Installing dependencies..."
-          npm install
+          echo "Installing dependencies..."
+          npm ci
 
-      - name: Build Project
+      # 4️⃣ Build your React app
+      - name: 🏗️ Build React App
         run: |
-          echo "🏗️ Building React app..."
+          echo "Building React app..."
           npm run build
 
-      - name: Copy .htaccess
+      # 5️⃣ Copy .htaccess file if needed
+      - name: 🗂️ Copy .htaccess
         run: |
-          echo "📂 Copying .htaccess into dist/"
-          cp public/.htaccess dist/.htaccess
+          if [ -f public/.htaccess ]; then
+            cp public/.htaccess dist/.htaccess
+          fi
           ls -la dist/
 
-      - name: Create Deployment Log
+      # 6️⃣ Create a deployment log
+      - name: 🧾 Create Deployment Log
         run: |
           echo "✅ Deployment successful at $(date -u)" > dist/deployment.log
           echo "Commit: $GITHUB_SHA" >> dist/deployment.log
           echo "Branch: $GITHUB_REF_NAME" >> dist/deployment.log
           echo "Actor: $GITHUB_ACTOR" >> dist/deployment.log
 
-      - name: Deploy to cPanel
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # 7️⃣ Deploy to cPanel using SFTP
+      - name: 🚀 Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.CPANEL_HOST }}
           username: ${{ secrets.CPANEL_USER }}
           password: ${{ secrets.CPANEL_PASSWORD }}
-          server-dir: ${{ secrets.CPANEL_PATH }}/
-          local-dir: dist/
-          dangerous-clean-slate: true
+          port: 22
+          local_path: dist/
+          remote_path: ${{ secrets.CPANEL_PATH }}/
+          sftp_only: true
