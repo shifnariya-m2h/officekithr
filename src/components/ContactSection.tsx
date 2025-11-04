@@ -18,8 +18,8 @@ const ContactSection = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-
-  const handleInputChange = (
+  
+   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({
@@ -29,54 +29,57 @@ const ContactSection = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
 
-    try {
-      const res = await fetch(
-        "https://www.syncoraai.com/api/webhooks/website/LiQApK1h9PzXw4LtPUQe/leads",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Syncora-Public-Key": "PUB_d9f73a87-a96f-4549-949e-c6acd8ff21b2",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
 
-      if (res.ok) {
+    
+    // e.preventDefault();
+    // setLoading(true);
+
+    // try {
+    //   const res = await fetch(
+    //     "https://www.syncoraai.com/api/webhooks/website/LiQApK1h9PzXw4LtPUQe/leads",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         "X-Syncora-Public-Key": "PUB_d9f73a87-a96f-4549-949e-c6acd8ff21b2",
+    //       },
+    //       body: JSON.stringify(formData),
+    //     }
+    //   );
+
+    //   if (res.ok) {
  
-        toast({
-          title: "Success",
-          variant: "success",
-          description: "Demo scheduled successfully!",
-        })
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          companyName: "",
-          message: "",
-        });
-      } else {
-        const t = await res.text();
-        toast({
-          title: "Error",
-          variant: "destructive",
-          description: "❌ There was a problem sending your form\n" + t,
-        })
-      }
-    } catch (err) {
-      alert("⚠️ Network error. Please try again later.");
-      toast({
-        title: "Error",
-        variant: "destructive",
-        description: "⚠️ Network error. Please try again later.",
-      })
-    } finally {
-      setLoading(false);
-    }
+    //     toast({
+    //       title: "Success",
+    //       variant: "success",
+    //       description: "Demo scheduled successfully!",
+    //     })
+    //     setFormData({
+    //       name: "",
+    //       email: "",
+    //       phone: "",
+    //       companyName: "",
+    //       message: "",
+    //     });
+    //   } else {
+    //     const t = await res.text();
+    //     toast({
+    //       title: "Error",
+    //       variant: "destructive",
+    //       description: "❌ There was a problem sending your form\n" + t,
+    //     })
+    //   }
+    // } catch (err) {
+    //   alert("⚠️ Network error. Please try again later.");
+    //   toast({
+    //     title: "Error",
+    //     variant: "destructive",
+    //     description: "⚠️ Network error. Please try again later.",
+    //   })
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   return (

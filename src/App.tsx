@@ -29,7 +29,7 @@ import Blog1 from './pages/Blogpages/HrStrategies'
 import NewPerfomenceBlog from './pages/Blogpages/NewPerfomenceBlog'
 import StreamliningPayroll from './pages/Blogpages/StreamliningPayroll'
 import MobileAppUpdates from './pages/Blogpages/MobileAppUpdates'
-import { DemoPopup } from "@/components/DemoPopup"
+// import { DemoPopup } from "@/components/DemoPopup"
 import NavigateHybrid from "./pages/Blogpages/NavigateHybrid";
 import QualityQuatity from "./pages/Blogpages/QualityQuatity";
 import WhyHrms from "./pages/Blogpages/WhyHrms";
@@ -51,7 +51,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <DemoPopup />
+      {/* <DemoPopup /> */}
       <BrowserRouter>
         {/* <Text /> */}
         <ScrollToTop />
