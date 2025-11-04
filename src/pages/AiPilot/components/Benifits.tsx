@@ -61,7 +61,7 @@ function Benefits() {
           {/* Store Buttons */}
           <div className="flex gap-4">
             <a
-              //   href="https://apps.apple.com/in/app/officekit-app/id1382735899"
+                href="https://apps.apple.com/in/app/officekit-app/id1382735899"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -74,7 +74,7 @@ function Benefits() {
             </a>
 
             <a
-              //   href="https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN"
+                href="https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN"
               target="_blank"
               rel="noopener noreferrer"
             >

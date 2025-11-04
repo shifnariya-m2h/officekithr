@@ -8,11 +8,11 @@ function Benefits() {
   const features = [
     {
       title: "Free for all firms",
-      desc: "No license fees, no hidden charges",
+      desc: "No licensing cost upto 25 users",
     },
     {
-      title: "Easy setup",
-      desc: "Get started in minutes, no IT team needed",
+      title: "Seamless setup",
+      desc: "launch in minutes without IT involvement.",
     },
     {
       title: "Accurate records",
@@ -65,7 +65,7 @@ function Benefits() {
           {/* Store Buttons */}
           <div className="flex gap-4">
             <a
-            //   href="https://apps.apple.com/in/app/officekit-app/id1382735899"
+              href="https://apps.apple.com/in/app/facekit/id6753619593"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -78,7 +78,7 @@ function Benefits() {
             </a>
 
             <a
-            //   href="https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN"
+              href="https://play.google.com/store/apps/details?id=com.officekitlence&hl=en_IN"
               target="_blank"
               rel="noopener noreferrer"
             >
