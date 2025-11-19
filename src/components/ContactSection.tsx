@@ -18,8 +18,8 @@ const ContactSection = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  
-   const handleInputChange = (
+
+  const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({
@@ -31,7 +31,7 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
 
 
-    
+
     e.preventDefault();
     setLoading(true);
 
@@ -48,8 +48,16 @@ const ContactSection = () => {
         }
       );
 
+
+
       if (res.ok) {
- 
+
+        if (window.gtag) {
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-17365780413/MAzACIaay74bEL2P09hA'
+          });
+        }
+
         toast({
           title: "Success",
           variant: "success",

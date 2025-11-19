@@ -37,6 +37,7 @@ import AIPoweredFeatures from "./pages/Blogpages/AIPoweredFeatures";
 import HRMSSystem from "./pages/Blogpages/HRMSSystem";
 import RealWorldDEI from "./pages/Blogpages/RealWorldDEI";
 import BlogDetail from "./pages/Blogpages/BlogDetails";
+import GoogleAdsWrapper from "./GoogleAdsWrapper";
 
 
 
@@ -53,6 +54,7 @@ const App = () => (
       <Sonner />
       {/* <DemoPopup /> */}
       <BrowserRouter>
+       <GoogleAdsWrapper /> 
         {/* <Text /> */}
         <ScrollToTop />
         <Routes>

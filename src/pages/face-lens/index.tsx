@@ -4,7 +4,7 @@ import HowWorks from "./components/how-work";
 import Benifits from "./components/Benifits";
 import Footer from "@/components/Footer";
 
-const AttendanceAndLeave = () => {
+const FaceLens = () => {
 
 
   return (
@@ -18,4 +18,4 @@ const AttendanceAndLeave = () => {
   );
 };
 
-export default AttendanceAndLeave;
+export default FaceLens;
