@@ -60,7 +60,7 @@ const ContactSection = () => {
 
         toast({
           title: "Success",
-          variant: "success",
+          variant: "destructive",
           description: "Demo scheduled successfully!",
         })
         setFormData({

@@ -16,7 +16,7 @@ import {
   Grid,
   BookOpen,
   ScanFace,
-  Bot 
+  Bot
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -51,7 +51,7 @@ const Navigation = () => {
     { name: "Exit Management", href: "/features/exit-management", icon: LogOut },
     { name: "Mobile App", href: "/features/mobile-app", icon: Smartphone },
     { name: "Face Kit", href: "/features/face-kit", icon: ScanFace },
-    { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot  },
+    { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot },
 
 
   ];
@@ -73,12 +73,13 @@ const Navigation = () => {
 
   return (
     <nav
-      className={` right-0 z-50 transition-all duration-300 ${isScrolled
+      className={`fixed top-0 left-0 w-full right-0 z-50 transition-all duration-300 ${isScrolled
         ? "bg-background/95 backdrop-blur-md shadow-soft"
-        : " "
+        : "bg-transparent"
         }`}
     >
- 
+
+
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -168,17 +169,31 @@ const Navigation = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
-            {/* <Link to="/contact"> */}
-            {/* <Button className="btn-cta">Contact Us</Button> */}
-            <Link to="/contact"> 
-            <Button className="btn-cta group h-[44px]" >
-              Schedule Demo
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+          <div className="hidden md:flex items-center gap-3">
+            {/* WhatsApp Button */}
+
+            <div
+              onClick={() =>
+                window.open(
+                  "https://wa.me/917994154069?text=" + encodeURIComponent("Hi OfficeKit HR"),
+                  "_blank"
+                )
+              }
+              className=" cursor-pointer bg-[#25D366] w-[44px] h-[44px] rounded-full flex items-center justify-center shadow-md transition transform hover:scale-110 relative animate-pulse-slow
+  "
+            >
+              <i className="bi bi-whatsapp text-white text-[26px]"></i>
+            </div>
+
+            {/* scheudle Button */}
+            <Link to="/contact">
+              <Button className="btn-cta group h-[44px]">
+                Schedule Demo
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
             </Link>
-            {/* </Link> */}
           </div>
+
 
           {/* Mobile Menu Button */}
           <Button

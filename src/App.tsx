@@ -38,8 +38,8 @@ import HRMSSystem from "./pages/Blogpages/HRMSSystem";
 import RealWorldDEI from "./pages/Blogpages/RealWorldDEI";
 import BlogDetail from "./pages/Blogpages/BlogDetails";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
-
-
+// import WhatsAppButton from "./hooks/WhatsAppButton";
+import ChatModal from "./AiAgent";
 
 // import Text from './pages/test'
 
@@ -55,6 +55,8 @@ const App = () => (
       {/* <DemoPopup /> */}
       <BrowserRouter>
        <GoogleAdsWrapper /> 
+       {/* <WhatsAppButton /> */}
+        <ChatModal />
         {/* <Text /> */}
         <ScrollToTop />
         <Routes>
