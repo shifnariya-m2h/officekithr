@@ -34,7 +34,7 @@ export default function AiAgentWidget() {
               border: "none",
               borderRadius: "8px"
             }}
-            allow="fullscreen"
+            allow="microphone"
           ></iframe>
         </div>
       )}

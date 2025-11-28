@@ -13,8 +13,7 @@ import {
   Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { loadSyncoraBot } from "@/components/syncoraBot";
-
+ 
 const PayrollAndCompliance = () => {
   const features = [
     {

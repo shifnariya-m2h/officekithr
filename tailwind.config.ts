@@ -18,14 +18,14 @@ export default {
 			}
 		},
 		extend: {
-			padding:{
-				'pb-common':'120px',
-				'p-tursioury':"64px",
+			padding: {
+				'pb-common': '120px',
+				'p-tursioury': "64px",
 			},
-			margin:{
-				'mb-common':'120px',
-				'mb-secondory':"56px",
-				'mb-tursioury':"64px",
+			margin: {
+				'mb-common': '120px',
+				'mb-secondory': "56px",
+				'mb-tursioury': "64px",
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -113,8 +113,24 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			theme: {
+				extend: {
+					colors: {
+						brand: {
+							50: "#f0f9ff",
+							100: "#e0f2fe",
+							500: "#0ea5e9",
+							600: "#0284c7",
+							700: "#0369a1",
+							800: "#0c4a6e",
+						}
+					}
+				}
 			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
+

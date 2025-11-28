@@ -68,38 +68,46 @@ const Footer = () => {
             Simplifying HR for everyone with smart, fast, and intuitive solutions <br></br> that help your team focus on what truly matters.
           </p>
 
-          <div className="flex space-x-2">
-            <a
-              href="https://www.linkedin.com/in/officekit-hr-877686101"
-              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="https://x.com/Officekit"
-              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.facebook.com/officekithr"
-              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
-            >
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.instagram.com/officekit_hr/?hl=en"
-              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.youtube.com/@officekithr7288"
-              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
-            >
-              <YoutubeIcon className="h-5 w-5" />
-            </a>
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
+            {/* Social Icons */}
+            <div className="flex space-x-2">
+              <a href="https://linkedin.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="https://twitter.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="https://facebook.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="https://instagram.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="https://youtube.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+                <YoutubeIcon className="h-5 w-5" />
+              </a>
+            </div>
+
+            {/* Newsletter Form */}
+            {/* <div className="w-full lg:w-80 text-center lg:text-left">
+              <h2 className="text-white font-semibold mb-2">Connect to us</h2>
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                  required
+                />
+                <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2">
+                  Subscribe
+                </Button>
+              </form>
+            </div> */}
           </div>
+
+
         </div>
         <div className="border-t border-gray-700 opacity-50 my-6"></div>
 
@@ -143,6 +151,8 @@ const Footer = () => {
           </div>
 
 
+
+
           {/* <div className="space-y-6">
             <h3 className="text-lg font-semibold text-white">Products</h3>
             <div className="space-y-3">
@@ -174,8 +184,32 @@ const Footer = () => {
                   {link.name}
                 </Link>
               ))}
+
+              {/* <Link to='/ae'>UAE</Link> */}
             </div>
           </div>
+{/* 
+          <div className="space-y-6">
+            <h3 className="text-lg font-semibold text-white">Global</h3>
+            <div className="space-y-3">
+
+              <Link
+
+                to="/"
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                India
+              </Link>
+              <Link
+
+                to="/ae"
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                UAE
+              </Link>
+
+            </div>
+          </div> */}
 
           {/* Contact & Newsletter */}
           <div className="space-y-6">
@@ -231,20 +265,7 @@ const Footer = () => {
             </div>
 
 
-            {/* Newsletter */}
-            {/* <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
-                required
-              />
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                Subscribe to Newsletter
-              </Button>
-            </form> */}
+
           </div>
         </div>
         {/* Bottom Bar */}

@@ -40,6 +40,8 @@ import BlogDetail from "./pages/Blogpages/BlogDetails";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
 // import WhatsAppButton from "./hooks/WhatsAppButton";
 import ChatModal from "./AiAgent";
+import UaeLandingpage from './UaeLandingPage';
+
 
 // import Text from './pages/test'
 
@@ -98,6 +100,10 @@ const App = () => (
           <Route path="/resources/blogs/aipowered" element={<AIPoweredFeatures />} />
           <Route path="/resources/blogs/hrmssystem" element={<HRMSSystem />} />
           <Route path="/resources/blogs/realworld-dei" element={<RealWorldDEI />} />
+
+
+          {/* uae page */}
+          <Route path="/ae" element={<UaeLandingpage />} />
 
 
 

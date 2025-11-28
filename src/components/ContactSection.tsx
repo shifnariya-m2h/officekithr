@@ -129,7 +129,7 @@ const ContactSection = () => {
                   {/* Name + Email */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Full Name *</Label>
+                      <Label htmlFor="name">Full Name <span className="required-asterisk"><span className="required-asterisk">*</span></span></Label>
                       <Input
                         id="name"
                         name="name"
@@ -142,7 +142,7 @@ const ContactSection = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email">Email Address <span className="required-asterisk"><span className="required-asterisk">*</span></span></Label>
                       <Input
                         id="email"
                         name="email"
@@ -159,11 +159,12 @@ const ContactSection = () => {
                   {/* Phone + Company */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label htmlFor="phone">Phone Number <span className="required-asterisk"><span className="required-asterisk">*</span></span></Label>
                       <Input
                         id="phone"
                         name="phone"
                         type="tel"
+                        required
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Your Phone Number"
@@ -171,7 +172,7 @@ const ContactSection = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="companyName">Company Name *</Label>
+                      <Label htmlFor="companyName">Company Name <span className="required-asterisk"><span className="required-asterisk">*</span></span></Label>
                       <Input
                         id="companyName"
                         name="companyName"

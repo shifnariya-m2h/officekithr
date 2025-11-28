@@ -98,8 +98,8 @@ export default () => {
             <div className="relative">
               <div className="w-[100%] flex items-center justify-center">
                 <img
-                  className="rounded-2xl h-[25rem]"
-                  src="/HiringOnboardings.png"
+                  className="rounded-2xl "
+                  src="/HiringOnboarding-min.png"
                   alt="hiring and onboarding feature"
                   loading="lazy"
                 />
@@ -115,8 +115,8 @@ export default () => {
             <div className="relative order-2 lg:order-1">
               <div className="w-[100%] flex items-center justify-center">
                 <img
-                  className="rounded-2xl h-[25rem]"
-                  src="/timePayroll.png"
+                  className="rounded-2xl "
+                  src="/TimePayroll-min.png"
                   alt="time and payroll feature"
                   loading="lazy"
                 />
@@ -172,8 +172,8 @@ export default () => {
             <div className="relative">
               <div className="w-[110%] flex items-center justify-center">
                 <img
-                  className="rounded-2xl h-[25rem]"
-                  src="/Performance-selfServ.png"
+                  className="rounded-2xl "
+                  src="/Performance&selfservice-min.png"
                   alt="performance and self-service feature"
                   loading="lazy"
                 />
