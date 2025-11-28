@@ -1,5 +1,4 @@
 name: 🚀 Deploy Vite React App to cPanel (SFTP)
-
 on:
   push:
     branches:
