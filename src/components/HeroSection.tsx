@@ -1,159 +1,92 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-// import { loadSyncoraBot } from "../components/syncoraBot";
-import { useEffect, useState } from "react";
-// import { TypeAnimation } from "react-type-animation";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const HeroSection = () => {
-
-
-  const words = ["Future", "Growth", "Innovation", "Success"];
-
-  const [index, setIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2000); // change every 2s
-    return () => clearInterval(interval);
+    // Ensure video plays and loops
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Auto-play might be blocked, but video will play when user interacts
+      });
+    }
   }, []);
 
-
   return (
-    <section className="relative bg-[url('/hero.svg')] bg-cover bg-center rounded-3xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-40 overflow-hidden">
-      <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <motion.div
-            className="text-center lg:text-left"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-              AI Powered HR Built for the 
-              <span className="gradient-text"> 
-                <TypeAnimation
-                sequence={[
-                  " Future",
-                  1000,
-                  "",
-                  500,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              /></span>
-            </h1> */}
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-      AI Powered HR Built for the{" "}
-      <span className="relative inline-block min-w-[8ch] perspective-1000">
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={words[index]}
-            initial={{ rotateX: 90, opacity: 0 }}
-            animate={{ rotateX: 0, opacity: 1 }}
-            exit={{ rotateX: -90, opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="absolute left-0 top-0 gradient-text"
-          >
-            {words[index]}
-          </motion.span>
-        </AnimatePresence>
-        {/* Keeps height stable */}
-        <span className="invisible block">{words[0]}</span>
-      </span>
-    </h1>
+    <section 
+      className="relative bg-cover bg-center bg-no-repeat rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0"
+      style={{
+        backgroundImage: "url('/BG.png')",
+        willChange: "auto",
+      }}
+    >
+      <ContainerScroll
+        titleComponent={
+          <>
+            <div className="text-center w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-30 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+              {/* Main Headline */}
+              <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 tracking-tight px-2">
+                AI Powered HR Built for the{" "}
+                <span className="text-white font-bold">Future</span>
+              </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-              Your journey matters. Our tailored software streamlines operations,
-              supports your team, and fuels growth. Together, let’s build a brighter tomorrow.
-            </p>
+              {/* Description Text */}
+              <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg lg:text-xl text-white/95 mb-4 sm:mb-6 md:mb-8 lg:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
+                Your journey matters. Our tailored software streamlines operations,
+                supports your team, and fuels growth. Together, let's build a brighter tomorrow.
+              </p>
 
-            {/* Pillars Section */}
-            <motion.div
-              className="flex flex-col sm:flex-row sm:flex-wrap gap-6 sm:gap-10 justify-center lg:justify-start"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <CheckCircle className="h-6 w-6 text-green-500 shrink-0" />
-                <span className="text-base font-medium text-foreground">
-                  Automated & Accurate
-                </span>
-              </div>
-
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <CheckCircle className="h-6 w-6 text-green-500 shrink-0" />
-                <span className="text-base font-medium text-foreground">
-                  All-in-One Platform
-                </span>
-              </div>
-
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <CheckCircle className="h-6 w-6 text-green-500 shrink-0" />
-                <span className="text-base font-medium text-foreground">
-                  Smarter Decisions
-                </span>
-              </div>
-            </motion.div>
-
-
-            {/* CTA Buttons */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link to="/contact">
-
-                <Button
-                  className="btn-cta h-[44px] py-[22px] group w-full sm:w-auto"
-                // onClick={loadSyncoraBot}
+              {/* CTA Buttons - Centered */}
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center px-2">
+                <Link to="/contact" className="w-full sm:w-auto max-w-xs sm:max-w-none">
+                  <Button
+                    className="bg-white text-[#0055ff] hover:bg-white/90 h-[40px] sm:h-[42px] md:h-[44px] px-5 sm:px-6 md:px-8 group font-semibold w-full sm:w-auto text-xs sm:text-sm md:text-base"
+                  >
+                    Schedule Demo
+                    <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link 
+                  to="https://www.youtube.com/watch?v=Tposa0O5s_k" 
+                  target="_blank" 
+                  className="flex items-center justify-center text-white border border-transparent hover:border-white bg-transparent hover:bg-white/10 rounded-full px-5 sm:px-6 md:px-8 h-[40px] sm:h-[42px] md:h-[44px] transition-all duration-300 group text-xs sm:text-sm md:text-base font-medium w-full sm:w-auto max-w-xs sm:max-w-none"
                 >
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k" target="_blank">
-                <Button
-                  variant="outline"
-                  className="btn-cta text-black h-[44px] px-6 group w-full sm:w-auto"
-                >
-                  <Play className="mr-2 h-4 w-4" />
-                  Watch Overview
-                </Button>
-              </Link>
+                  <span>Watch Overview</span>
+                  <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
-          </motion.div>
-
-          {/* Right Image */}
-          <motion.div
-            className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <motion.img
-              className="w-full max-w-[1200px] h-auto object-contain rounded-3xl"
-              src="/hero-mains.webp"
-              alt="Hero"
-              loading="lazy"
-              style={{ scale: 1.5 }}
-              animate={{ y: [0, -20, 0] }}
-              
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
-        </div>
-      </div>
+          </>
+        }
+      >
+        <video
+          ref={videoRef}
+          src="/sequence-hero.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="h-full w-full rounded-[18px] sm:rounded-[22px] md:rounded-[26px]"
+          style={{
+            objectFit: "fill",
+            width: "100%",
+            height: "100%",
+            minWidth: "100%",
+            minHeight: "100%",
+            display: "block",
+            willChange: "auto",
+            transform: "translate3d(0, 0, 0)",
+            backfaceVisibility: "hidden",
+          }}
+          draggable={false}
+        />
+      </ContainerScroll>
     </section>
   );
 };
