@@ -6,9 +6,9 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Badge } from "./ui/badge";
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "react-toastify";
+
 const ContactSection = () => {
-  const { toast } = useToast()
 
   const [formData, setFormData] = useState({
     name: "",
@@ -58,11 +58,14 @@ const ContactSection = () => {
           });
         }
 
-        toast({
-          title: "Success",
-          variant: "destructive",
-          description: "Demo scheduled successfully!",
-        })
+        toast.success("Your demo request has been submitted successfully. We'll contact you soon!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         setFormData({
           name: "",
           email: "",
@@ -72,19 +75,24 @@ const ContactSection = () => {
         });
       } else {
         const t = await res.text();
-        toast({
-          title: "Error",
-          variant: "destructive",
-          description: "❌ There was a problem sending your form\n" + t,
-        })
+        toast.error("Unable to submit your request. Please try again or contact us directly.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       }
     } catch (err) {
-      alert("⚠️ Network error. Please try again later.");
-      toast({
-        title: "Error",
-        variant: "destructive",
-        description: "⚠️ Network error. Please try again later.",
-      })
+      toast.error("Unable to connect. Please check your internet connection and try again.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     } finally {
       setLoading(false);
     }

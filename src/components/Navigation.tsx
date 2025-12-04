@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ChevronDown, Menu, X, Users,
@@ -33,6 +33,10 @@ import {
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Close mobile menu when clicking outside and prevent body scroll
   useEffect(() => {
@@ -99,11 +103,61 @@ const Navigation = () => {
     setOpenDropdown(null);
   };
 
+  // Hover handlers for Features dropdown
+  const handleFeaturesMouseEnter = () => {
+    if (featuresTimeoutRef.current) {
+      clearTimeout(featuresTimeoutRef.current);
+    }
+    featuresTimeoutRef.current = setTimeout(() => {
+      setFeaturesOpen(true);
+    }, 200); // 200ms delay
+  };
+
+  const handleFeaturesMouseLeave = () => {
+    if (featuresTimeoutRef.current) {
+      clearTimeout(featuresTimeoutRef.current);
+    }
+    featuresTimeoutRef.current = setTimeout(() => {
+      setFeaturesOpen(false);
+    }, 150); // 150ms delay before closing
+  };
+
+  // Hover handlers for Resources dropdown
+  const handleResourcesMouseEnter = () => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+    }
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setResourcesOpen(true);
+    }, 200); // 200ms delay
+  };
+
+  const handleResourcesMouseLeave = () => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+    }
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setResourcesOpen(false);
+    }, 150); // 150ms delay before closing
+  };
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (featuresTimeoutRef.current) {
+        clearTimeout(featuresTimeoutRef.current);
+      }
+      if (resourcesTimeoutRef.current) {
+        clearTimeout(resourcesTimeoutRef.current);
+      }
+    };
+  }, []);
+
 
   // Custom Logo Component
   const NavbarLogo = () => {
     return (
-      <Link to="/" className="relative z-20 mr-2 sm:mr-4 flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav">
+      <Link to="/" className="relative z-20 mr-2 sm:mr-4 flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0">
         <img
           src="/NavLogo.png"
           alt="OfficeKit"
@@ -121,41 +175,57 @@ const Navigation = () => {
         <NavbarLogo />
         
         {/* Desktop Navigation Items with Dropdowns */}
-        <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1.5 lg:space-x-2 xl:space-x-3 lg:flex">
+        <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1 sm:space-x-1.5 md:space-x-2 lg:space-x-2 xl:space-x-3 2xl:space-x-4 lg:flex pointer-events-none">
           {/* Features Dropdown */}
-          <DropdownMenu modal={false}>
-            <DropdownMenuTrigger asChild>
-              <button 
-                className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-0 focus-visible:outline-none border-none bg-transparent cursor-pointer px-2 lg:px-3 xl:px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap"
-                onBlur={(e) => e.currentTarget.blur()}
-              >
-                <span>Features</span>
-                <ChevronDown className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              className="w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 sm:p-4 md:p-5 z-[70]"
+          <DropdownMenu 
+            modal={false} 
+            open={featuresOpen} 
+            onOpenChange={setFeaturesOpen}
+          >
+            <div
+              onMouseEnter={handleFeaturesMouseEnter}
+              onMouseLeave={handleFeaturesMouseLeave}
+              className="pointer-events-auto"
+            >
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-0 focus-visible:outline-none border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap"
+                  onBlur={(e) => e.currentTarget.blur()}
+                >
+                  <span>Features</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </DropdownMenuTrigger>
+            </div>
+            <div
+              onMouseEnter={handleFeaturesMouseEnter}
+              onMouseLeave={handleFeaturesMouseLeave}
+            >
+              <DropdownMenuContent
+                onMouseEnter={handleFeaturesMouseEnter}
+                onMouseLeave={handleFeaturesMouseLeave}
+              className="w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70]"
               align="start"
               sideOffset={8}
               onCloseAutoFocus={(e) => e.preventDefault()}
               side="bottom"
               alignOffset={-20}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3">
                 {featuresLinks.map((link) => (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="flex items-start gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer"
+                    className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
-                      <link.icon className="h-5 w-5 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
+                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
+                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-base text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-1">
+                      <h3 className="font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5">
                         {link.name}
                       </h3>
-                      <p className="text-sm text-gray-500 transition-colors duration-200">
+                      <p className="text-xs text-gray-500 transition-colors duration-200">
                         {link.description}
                       </p>
                     </div>
@@ -163,21 +233,38 @@ const Navigation = () => {
                 ))}
               </div>
             </DropdownMenuContent>
+            </div>
           </DropdownMenu>
 
           {/* Resources Dropdown */}
-          <DropdownMenu modal={false}>
-            <DropdownMenuTrigger asChild>
-              <button 
-                className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-0 focus-visible:outline-none border-none bg-transparent cursor-pointer px-2 lg:px-3 xl:px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap"
-                onBlur={(e) => e.currentTarget.blur()}
-              >
-                <span>Resources</span>
-                <ChevronDown className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              className="w-[90vw] max-w-[280px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 sm:p-4 z-[70]"
+          <DropdownMenu 
+            modal={false} 
+            open={resourcesOpen} 
+            onOpenChange={setResourcesOpen}
+          >
+            <div
+              onMouseEnter={handleResourcesMouseEnter}
+              onMouseLeave={handleResourcesMouseLeave}
+              className="pointer-events-auto"
+            >
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-0 focus-visible:outline-none border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap"
+                  onBlur={(e) => e.currentTarget.blur()}
+                >
+                  <span>Resources</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </DropdownMenuTrigger>
+            </div>
+            <div
+              onMouseEnter={handleResourcesMouseEnter}
+              onMouseLeave={handleResourcesMouseLeave}
+            >
+              <DropdownMenuContent
+                onMouseEnter={handleResourcesMouseEnter}
+                onMouseLeave={handleResourcesMouseLeave}
+              className="w-[90vw] max-w-[280px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 z-[70]"
               align="start"
               sideOffset={8}
               onCloseAutoFocus={(e) => e.preventDefault()}
@@ -189,16 +276,16 @@ const Navigation = () => {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="flex items-start gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer"
+                    className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
-                      <link.icon className="h-5 w-5 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
+                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
+                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-base text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-1">
+                      <h3 className="font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5">
                         {link.name}
                       </h3>
-                      <p className="text-sm text-gray-500 transition-colors duration-200">
+                      <p className="text-xs text-gray-500 transition-colors duration-200">
                         {link.description}
                       </p>
                     </div>
@@ -206,34 +293,35 @@ const Navigation = () => {
                 ))}
               </div>
             </DropdownMenuContent>
+            </div>
           </DropdownMenu>
 
-          <Link to="/about-us" className="nav-link px-2 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap">
+          <Link to="/about-us" className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto">
             About us
           </Link>
 
-          <Link to="/pricing" className="nav-link px-2 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap">
+          <Link to="/pricing" className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto">
             Pricing
           </Link>
         </div>
 
         {/* Desktop CTA Buttons */}
-        <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 flex-shrink-0">
+        <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 flex-shrink-0 ml-auto relative z-10">
           {/* WhatsApp Button */}
           <button
             type="button"
             onClick={handleWhatsAppClick}
-            className="bg-[#25D366] rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform hover:scale-110 active:scale-95 w-8 h-8 lg:w-9 lg:h-9"
+            className="bg-[#25D366] rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform hover:scale-110 active:scale-95 w-9 h-9 flex-shrink-0"
             aria-label="WhatsApp"
           >
-            <i className="bi bi-whatsapp text-white text-[18px] lg:text-[20px]"></i>
+            <i className="bi bi-whatsapp text-white text-[20px]"></i>
           </button>
 
           {/* Contact Button */}
           <Link to="/contact">
-            <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl px-4 lg:px-5 py-2 lg:py-2.5 text-sm lg:text-base font-bold transition-all duration-300 group shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+            <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-full px-5 py-2.5 text-sm lg:text-base font-medium transition-all duration-300 group shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
               Contact Us
-              <ArrowRight className="ml-1.5 lg:ml-2 h-3.5 lg:h-4 w-3.5 lg:w-4 transition-all duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-all duration-300 group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>
@@ -283,7 +371,7 @@ const Navigation = () => {
             <div className="space-y-1 w-full">
               <button
                 type="button"
-                className="w-full flex items-center justify-between py-3 px-4 text-left font-bold text-base text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50"
+                className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50"
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpenDropdown(openDropdown === 'features' ? null : 'features');
@@ -291,7 +379,7 @@ const Navigation = () => {
                 aria-expanded={openDropdown === 'features'}
               >
                 <span>Features</span>
-                <ChevronDown className={`h-5 w-5 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
+                <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
                   openDropdown === 'features' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
                 }`} />
               </button>
@@ -314,9 +402,9 @@ const Navigation = () => {
                         closeMenu();
                       }}
                     >
-                      <link.icon className="h-5 w-5 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
+                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-sm transition-colors duration-200">{link.name}</h3>
+                        <h3 className="font-medium text-sm transition-colors duration-200">{link.name}</h3>
                         <p className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-200">{link.description}</p>
                       </div>
                     </Link>
@@ -328,7 +416,7 @@ const Navigation = () => {
             <div className="space-y-1 w-full mt-2">
                 <button
                   type="button"
-                  className="w-full flex items-center justify-between py-3 px-4 text-left font-bold text-base text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50"
+                  className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50"
                   onClick={(e) => {
                     e.stopPropagation();
                     setOpenDropdown(openDropdown === 'resources' ? null : 'resources');
@@ -336,7 +424,7 @@ const Navigation = () => {
                   aria-expanded={openDropdown === 'resources'}
                 >
                   <span>Resources</span>
-                  <ChevronDown className={`h-5 w-5 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
+                  <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
                     openDropdown === 'resources' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
                   }`} />
                 </button>
@@ -359,9 +447,9 @@ const Navigation = () => {
                           closeMenu();
                         }}
                       >
-                        <link.icon className="h-5 w-5 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
+                        <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-sm transition-colors duration-200">{link.name}</h3>
+                          <h3 className="font-medium text-sm transition-colors duration-200">{link.name}</h3>
                           <p className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-200">{link.description}</p>
                         </div>
                       </Link>
@@ -372,7 +460,7 @@ const Navigation = () => {
 
               <Link
                 to="/about-us"
-                className="block py-3 px-4 text-base font-bold text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 mt-2"
+                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 mt-2"
                 onClick={(e) => {
                   e.stopPropagation();
                   closeMenu();
@@ -383,7 +471,7 @@ const Navigation = () => {
 
               <Link
                 to="/pricing"
-                className="block py-3 px-4 text-base font-bold text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50"
+                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50"
                 onClick={(e) => {
                   e.stopPropagation();
                   closeMenu();
@@ -400,7 +488,7 @@ const Navigation = () => {
                 }}
                 className="block mt-4"
               >
-                <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl w-full h-[44px] text-sm font-bold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl w-full h-[44px] text-sm font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
                   Contact Us
                 </Button>
               </Link>

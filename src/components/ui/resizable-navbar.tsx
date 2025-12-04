@@ -109,25 +109,13 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "clamp(700px, 55%, 100%)" : "100%",
-        y: visible ? 30 : 0,
-        paddingLeft: visible ? "1.5rem" : "2rem",
-        paddingRight: visible ? "1.5rem" : "2rem",
-        paddingTop: visible ? "1rem" : "1rem",
-        paddingBottom: visible ? "1rem" : "1rem",
       }}
       transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
-        mass: 0.5,
-      }}
-      style={{
-        willChange: "transform, width, padding",
+        duration: 0.3,
+        ease: "easeInOut",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white lg:flex dark:bg-white overflow-hidden",
-        visible ? "lg:min-w-[700px] xl:min-w-[800px]" : "lg:min-w-[800px]",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white lg:flex dark:bg-white overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-2 sm:py-2.5 md:py-3 lg:py-3.5 xl:py-4",
         visible && "bg-white/95 dark:bg-neutral-950/95",
         className,
       )}
@@ -196,7 +184,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         willChange: "transform, width, padding",
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white px-2 sm:px-4 lg:hidden",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-0.5rem)] xs:max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-1.5rem)] md:max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white px-1.5 xs:px-2 sm:px-3 md:px-4 lg:hidden",
         visible && "bg-white/95 dark:bg-neutral-950/95",
         className,
       )}

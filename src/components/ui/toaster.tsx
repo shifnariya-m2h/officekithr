@@ -34,15 +34,15 @@ export function Toaster() {
             key={id}
             {...props}
             className={cn(
-              "rounded-lg shadow-lg border text-white",
-              variant === "success" && "bg-green-600",
-              variant === "destructive" && "bg-red-600",
-              !variant && "bg-slate-800"
+              "rounded-lg shadow-xl border-2 text-white min-w-[320px] max-w-md",
+              variant === "success" && "bg-green-500 border-green-400",
+              variant === "destructive" && "bg-red-500 border-red-400",
+              !variant && "bg-slate-800 border-slate-700"
             )}
           >
-            <div className="grid gap-1  ">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && <ToastDescription>{description}</ToastDescription>}
+            <div className="grid gap-1.5">
+              {title && <ToastTitle className="text-base font-semibold">{title}</ToastTitle>}
+              {description && <ToastDescription className="text-sm opacity-95">{description}</ToastDescription>}
             </div>
             {action}
             <ToastClose />

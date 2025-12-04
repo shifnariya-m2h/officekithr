@@ -6,12 +6,12 @@ import type {
 } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+const TOAST_REMOVE_DELAY = 5000
 
-type ToasterToast = ToastProps & {
+type ToasterToast = Omit<ToastProps, "variant"> & {
   id: string
   title?: React.ReactNode
-  variant?: "success" | "destructive" | "info"
+  variant?: "success" | "destructive" | "info" | "default"
   description?: React.ReactNode
   action?: ToastActionElement
 }
@@ -140,7 +140,11 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">
 
-function toast({ ...props }: Toast) {
+function toast({ ...props }: Toast): {
+  id: string;
+  dismiss: () => void;
+  update: (props: ToasterToast) => void;
+} {
   const id = genId()
 
   const update = (props: ToasterToast) =>

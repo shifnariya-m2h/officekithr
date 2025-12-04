@@ -72,17 +72,14 @@ const HeroSection = () => {
           muted
           playsInline
           preload="auto"
-          className="h-full w-full rounded-[18px] sm:rounded-[22px] md:rounded-[26px]"
+          className="h-full w-full"
           style={{
             objectFit: "fill",
             width: "100%",
             height: "100%",
+            display: "block",
             minWidth: "100%",
             minHeight: "100%",
-            display: "block",
-            willChange: "auto",
-            transform: "translate3d(0, 0, 0)",
-            backfaceVisibility: "hidden",
           }}
           draggable={false}
         />
