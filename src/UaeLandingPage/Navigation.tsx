@@ -1,191 +1,673 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Link } from "react-router-dom"
+"use client";
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import {
+  ArrowRight, ChevronDown, Menu, X, Users,
+  Calendar,
+  BarChart3,
+  IdCard,
+  UserCheck,
+  LogOut,
+  Smartphone,
+  BookOpen,
+  ScanFace,
+  Bot,
+  Coins,
+  Globe
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Navbar,
+  NavBody,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { language, setLanguage, t, isRTL } = useLanguage();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Close mobile menu when clicking outside and prevent body scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMobileMenuOpen && !target.closest('[data-mobile-menu]') && !target.closest('[data-hamburger]')) {
+        setIsMobileMenuOpen(false);
+        setOpenDropdown(null);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        setOpenDropdown(null);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
+  // Navigation Links Data with English and Arabic
   const featuresLinks = [
-    { name: "Recruitment Management", href: "/features/recruitment-management" },
-    { name: "Employee Self Service", href: "/features/self-service-portal" },
-    { name: "Employee Management", href: "/features/employe-managment" },
-    { name: "Attendance and Leave", href: "/features/attendance-and-leave" },
-    { name: "Payroll & Compliance", href: "/features/payroll-and-compliance" },
-    { name: "Performance Management", href: "/features/performance-appraisal" },
-    { name: "Exit Management", href: "/features/exit-management" },
-    { name: "Mobile App", href: "/features/mobile-app" },
-    { name: "Face Kit", href: "/features/face-kit" },
-    { name: "AI Pilot", href: "/features/ai-pilot" },
-  ]
+    { 
+      name: language === 'ar' ? 'إدارة التوظيف' : 'Recruitment Management', 
+      nameEn: 'Recruitment Management',
+      nameAr: 'إدارة التوظيف',
+      href: "/features/recruitment-management", 
+      icon: Users, 
+      description: language === 'ar' ? 'توظيف أذكى وأبسط.' : 'Smarter hiring, simplified.' 
+    },
+    { 
+      name: language === 'ar' ? 'الحضور والإجازة' : 'Attendance and Leave', 
+      nameEn: 'Attendance and Leave',
+      nameAr: 'الحضور والإجازة',
+      href: "/features/attendance-and-leave", 
+      icon: Calendar, 
+      description: language === 'ar' ? 'وقت وإجازة سهلة.' : 'Easy time & leave.' 
+    },
+    { 
+      name: language === 'ar' ? 'كشوف المرتبات والامتثال' : 'Payroll & Compliance', 
+      nameEn: 'Payroll & Compliance',
+      nameAr: 'كشوف المرتبات والامتثال',
+      href: "/features/payroll-and-compliance", 
+      icon: Coins, 
+      description: language === 'ar' ? 'كشوف مرتبات مبسطة.' : 'Payroll made simple.' 
+    },
+    { 
+      name: language === 'ar' ? 'إدارة الأداء' : 'Performance Management', 
+      nameEn: 'Performance Management',
+      nameAr: 'إدارة الأداء',
+      href: "/features/performance-appraisal", 
+      icon: BarChart3, 
+      description: language === 'ar' ? 'دفع الأداء الأفضل.' : 'Drive better performance.' 
+    },
+    { 
+      name: language === 'ar' ? 'إدارة الموظفين' : 'Employee Management', 
+      nameEn: 'Employee Management',
+      nameAr: 'إدارة الموظفين',
+      href: "/features/employe-managment", 
+      icon: IdCard, 
+      description: language === 'ar' ? 'جميع بيانات الموظفين، موحدة.' : 'All employee data, unified.' 
+    },
+    { 
+      name: language === 'ar' ? 'خدمة الموظف الذاتية' : 'Employee Self Service', 
+      nameEn: 'Employee Self Service',
+      nameAr: 'خدمة الموظف الذاتية',
+      href: "/features/self-service-portal", 
+      icon: UserCheck, 
+      description: language === 'ar' ? 'خدمة ذاتية للموظفين.' : 'Self-service for employees.' 
+    },
+    { 
+      name: language === 'ar' ? 'إدارة المغادرة' : 'Exit Management', 
+      nameEn: 'Exit Management',
+      nameAr: 'إدارة المغادرة',
+      href: "/features/exit-management", 
+      icon: LogOut, 
+      description: language === 'ar' ? 'عملية مغادرة سلسة.' : 'Smooth exit process.' 
+    },
+    { 
+      name: language === 'ar' ? 'التطبيق المحمول' : 'Mobile App', 
+      nameEn: 'Mobile App',
+      nameAr: 'التطبيق المحمول',
+      href: "/features/mobile-app", 
+      icon: Smartphone, 
+      description: language === 'ar' ? 'مساحة العمل في جيبنا.' : 'Workspace in our Pocket.' 
+    },
+    { 
+      name: language === 'ar' ? 'Face Kit' : 'Face Kit', 
+      nameEn: 'Face Kit',
+      nameAr: 'Face Kit',
+      href: "/features/face-kit", 
+      icon: ScanFace, 
+      description: language === 'ar' ? 'تعرف متقدم على الوجه.' : 'Advanced facial recognition.' 
+    },
+    { 
+      name: language === 'ar' ? 'AI Pilot' : 'AI Pilot', 
+      nameEn: 'AI Pilot',
+      nameAr: 'AI Pilot',
+      href: "/features/ai-pilot", 
+      icon: Bot, 
+      description: language === 'ar' ? 'مساعدة الموارد البشرية المدعومة بالذكاء الاصطناعي.' : 'AI-powered HR assistance.' 
+    },
+  ];
 
-  const resourcesLinks = [{ name: "Blogs", href: "/resources/blogs" }]
+  const resourcesLinks = [
+    { 
+      name: language === 'ar' ? 'المدونات' : 'Blogs', 
+      nameEn: 'Blogs',
+      nameAr: 'المدونات',
+      href: "/resources/blogs", 
+      icon: BookOpen, 
+      description: language === 'ar' ? 'أحدث الرؤى والتحديثات.' : 'Latest insights and updates.' 
+    },
+  ];
+
+  // WhatsApp Handler - UAE number
+  const handleWhatsAppClick = () => {
+    window.open(
+      "https://wa.me/971528155771?text=" + encodeURIComponent(language === 'ar' ? 'مرحباً OfficeKit HR' : 'Hi OfficeKit HR'),
+      "_blank"
+    );
+  };
+
+  // Close Menu Handler
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+  };
+
+  // Handle Language Change
+  const handleLanguageChange = (lang: 'en' | 'ar') => {
+    setLanguage(lang);
+  };
+
+  // Hover handlers for Features dropdown
+  const handleFeaturesMouseEnter = () => {
+    if (featuresTimeoutRef.current) {
+      clearTimeout(featuresTimeoutRef.current);
+    }
+    featuresTimeoutRef.current = setTimeout(() => {
+      setFeaturesOpen(true);
+    }, 200); // 200ms delay
+  };
+
+  const handleFeaturesMouseLeave = () => {
+    if (featuresTimeoutRef.current) {
+      clearTimeout(featuresTimeoutRef.current);
+    }
+    featuresTimeoutRef.current = setTimeout(() => {
+      setFeaturesOpen(false);
+    }, 150); // 150ms delay before closing
+  };
+
+  // Hover handlers for Resources dropdown
+  const handleResourcesMouseEnter = () => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+    }
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setResourcesOpen(true);
+    }, 200); // 200ms delay
+  };
+
+  const handleResourcesMouseLeave = () => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+    }
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setResourcesOpen(false);
+    }, 150); // 150ms delay before closing
+  };
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (featuresTimeoutRef.current) {
+        clearTimeout(featuresTimeoutRef.current);
+      }
+      if (resourcesTimeoutRef.current) {
+        clearTimeout(resourcesTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Custom Logo Component
+  const NavbarLogo = () => {
+    return (
+      <Link to="/" className={`relative z-20 ${isRTL ? 'ml-2 sm:ml-4' : 'mr-2 sm:mr-4'} flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0`}>
+        <img
+          src="/NavLogo.png"
+          alt="OfficeKit HR - AI-Powered HRMS Software"
+          className="w-auto h-8 sm:h-10 transition-all duration-300 [.group\\/nav[data-visible='true']_&]:h-6 [.group\\/nav[data-visible='true']_&]:sm:h-7"
+          loading="eager"
+          width="120"
+          height="40"
+        />
+      </Link>
+    );
+  };
 
   return (
-    <nav className="fixed top-0 left-0 w-full right-0 z-50">
-      <div className={`mx-4 transition-all duration-300 ${isScrolled ? "mt-2" : "mt-4"}`}>
-        <div
-          className={`relative rounded-2xl backdrop-blur-md border transition-all duration-300 ${
-            isScrolled ? "bg-white/95 border-black/10 shadow-md" : "bg-white/90 border-black/5 shadow-lg"
-          }`}
-        >
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex items-center justify-between h-16 lg:h-20">
-              {/* Logo */}
-              <div className="flex items-center space-x-2">
-                <Link to="/"> 
-                <img src="/NavLogo.png" alt="OfficeKit" className="h-10 w-auto" loading="lazy" />
-                </Link>
-              </div>
-
-              {/* Desktop Navigation - Black Text */}
-              <div className="hidden lg:flex items-center space-x-8 text-sm font-medium">
-                {/* Features Dropdown */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center space-x-1 text-black/80 hover:text-black transition-colors duration-200 group">
-                    <span>Features</span>
-                    <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-64 bg-white border-black/10 shadow-xl rounded-xl">
-                    {featuresLinks.map((link) => (
-                      <DropdownMenuItem key={link.href} asChild>
-                        <a
-                          href={link.href}
-                          className="text-black/70 hover:text-black hover:bg-blue-50 px-4 py-2 rounded-md transition-all duration-200 cursor-pointer"
-                        >
-                          {link.name}
-                        </a>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-
-                {/* Resources Dropdown */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center space-x-1 text-black/80 hover:text-black transition-colors duration-200 group">
-                    <span>Resources</span>
-                    <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-48 bg-white border-black/10 shadow-xl rounded-xl">
-                    {resourcesLinks.map((link) => (
-                      <DropdownMenuItem key={link.href} asChild>
-                        <a
-                          href={link.href}
-                          className="text-black/70 hover:text-black hover:bg-blue-50 px-4 py-2 rounded-md transition-all duration-200 cursor-pointer"
-                        >
-                          {link.name}
-                        </a>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-
-                <a href="/about-us" className="text-black/80 hover:text-black transition-colors duration-200">
-                  About
-                </a>
-                <a href="/pricing" className="text-black/80 hover:text-black transition-colors duration-200">
-                  Pricing
-                </a>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="hidden lg:flex items-center gap-3">
-                {/* WhatsApp Button */}
-                <button
-                  onClick={() => window.open("https://wa.me/917994154069", "_blank")}
-                  className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center hover:scale-110 transition-transform shadow-md hover:shadow-lg"
+    <Navbar className={`!fixed !top-0 left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'font-arabic' : ''}`}>
+      {/* Desktop Navigation */}
+      <NavBody>
+        <NavbarLogo />
+        
+        {/* Desktop Navigation Items with Dropdowns */}
+        <div className={`absolute inset-0 hidden flex-1 flex-row items-center justify-center ${isRTL ? 'space-x-reverse' : ''} space-x-1 sm:space-x-1.5 md:space-x-2 lg:space-x-2 xl:space-x-3 2xl:space-x-4 lg:flex pointer-events-none`}>
+          {/* Language Switcher */}
+          <DropdownMenu>
+            <div className="pointer-events-auto">
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className={`nav-link flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap`}
+                  onBlur={(e) => e.currentTarget.blur()}
+                  aria-label="Language menu"
                 >
-                  <i className="bi bi-whatsapp text-white text-lg"></i>
+                  <Globe className="h-4 w-4" />
+                  <span>{language === 'ar' ? 'العربية' : 'English'}</span>
+                  <ChevronDown className="h-4 w-4 transition-transform duration-200" aria-hidden="true" />
                 </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className="w-40 bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-2 z-[70]"
+                align="start"
+                sideOffset={8}
+                onCloseAutoFocus={(e) => e.preventDefault()}
+                side="bottom"
+              >
+                <button
+                  onClick={() => handleLanguageChange('en')}
+                  className={`w-full text-left px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    language === 'en' ? 'bg-blue-50 text-[#0055ff] font-semibold' : 'text-gray-700 hover:bg-blue-50 hover:text-[#0055ff]'
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => handleLanguageChange('ar')}
+                  className={`w-full text-left px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    language === 'ar' ? 'bg-blue-50 text-[#0055ff] font-semibold' : 'text-gray-700 hover:bg-blue-50 hover:text-[#0055ff]'
+                  }`}
+                >
+                  العربية
+                </button>
+              </DropdownMenuContent>
+            </div>
+          </DropdownMenu>
 
-                {/* Get Started Button */}
-                <a href="/contact">
-                  <Button className="bg-blue-600 text-white hover:bg-blue-700 px-6 h-10 font-semibold text-sm rounded-full shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2">
-                    Get Started
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </a>
-              </div>
+          {/* Features Dropdown */}
+          <DropdownMenu 
+            modal={false} 
+            open={featuresOpen} 
+            onOpenChange={setFeaturesOpen}
+          >
+            <div
+              onMouseEnter={handleFeaturesMouseEnter}
+              onMouseLeave={handleFeaturesMouseLeave}
+              className="pointer-events-auto"
+            >
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className={`nav-link flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap`}
+                  onBlur={(e) => e.currentTarget.blur()}
+                  aria-label={language === 'ar' ? 'قائمة الميزات' : 'Features menu'}
+                  aria-expanded={featuresOpen}
+                  aria-haspopup="true"
+                >
+                  <span>{t('nav.features')}</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                </button>
+              </DropdownMenuTrigger>
+            </div>
+            <div
+              onMouseEnter={handleFeaturesMouseEnter}
+              onMouseLeave={handleFeaturesMouseLeave}
+            >
+              <DropdownMenuContent
+                onMouseEnter={handleFeaturesMouseEnter}
+                onMouseLeave={handleFeaturesMouseLeave}
+                className={`w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70] ${isRTL ? 'text-right' : 'text-left'}`}
+                align="start"
+                sideOffset={8}
+                onCloseAutoFocus={(e) => e.preventDefault()}
+                side="bottom"
+                alignOffset={-20}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3">
+                  {featuresLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className={`flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
+                    >
+                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
+                        <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5 ${isRTL ? 'text-right' : 'text-left'}`}>
+                          {link.name}
+                        </h3>
+                        <p className={`text-xs text-gray-500 transition-colors duration-200 ${isRTL ? 'text-right' : 'text-left'}`}>
+                          {link.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </DropdownMenuContent>
+            </div>
+          </DropdownMenu>
 
-              {/* Mobile Menu Button */}
-              <button className="lg:hidden text-black p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {/* Resources Dropdown */}
+          <DropdownMenu 
+            modal={false} 
+            open={resourcesOpen} 
+            onOpenChange={setResourcesOpen}
+          >
+            <div
+              onMouseEnter={handleResourcesMouseEnter}
+              onMouseLeave={handleResourcesMouseLeave}
+              className="pointer-events-auto"
+            >
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className={`nav-link flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap`}
+                  onBlur={(e) => e.currentTarget.blur()}
+                  aria-label={language === 'ar' ? 'قائمة الموارد' : 'Resources menu'}
+                  aria-expanded={resourcesOpen}
+                  aria-haspopup="true"
+                >
+                  <span>{t('nav.resources')}</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                </button>
+              </DropdownMenuTrigger>
+            </div>
+            <div
+              onMouseEnter={handleResourcesMouseEnter}
+              onMouseLeave={handleResourcesMouseLeave}
+            >
+              <DropdownMenuContent
+                onMouseEnter={handleResourcesMouseEnter}
+                onMouseLeave={handleResourcesMouseLeave}
+                className={`w-[90vw] max-w-[280px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 z-[70] ${isRTL ? 'text-right' : 'text-left'}`}
+                align="start"
+                sideOffset={8}
+                onCloseAutoFocus={(e) => e.preventDefault()}
+                side="bottom"
+                alignOffset={-20}
+              >
+                <div className="flex flex-col gap-2">
+                  {resourcesLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className={`flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
+                    >
+                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
+                        <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5 ${isRTL ? 'text-right' : 'text-left'}`}>
+                          {link.name}
+                        </h3>
+                        <p className={`text-xs text-gray-500 transition-colors duration-200 ${isRTL ? 'text-right' : 'text-left'}`}>
+                          {link.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </DropdownMenuContent>
+            </div>
+          </DropdownMenu>
+
+          <Link 
+            to="/about-us" 
+            className={`nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2`}
+            aria-label={language === 'ar' ? 'من نحن' : 'About OfficeKit HR'}
+          >
+            {t('nav.about')}
+          </Link>
+
+          <Link 
+            to="/pricing" 
+            className={`nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2`}
+            aria-label={language === 'ar' ? 'عرض خطط الأسعار' : 'View pricing plans'}
+          >
+            {t('nav.pricing')}
+          </Link>
+        </div>
+
+        {/* Desktop CTA Buttons */}
+        <div className={`hidden lg:flex items-center gap-1.5 xl:gap-2 flex-shrink-0 ${isRTL ? 'mr-auto' : 'ml-auto'} relative z-10`}>
+          {/* WhatsApp Button */}
+          <button
+            type="button"
+            onClick={handleWhatsAppClick}
+            className="bg-[#25D366] rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform hover:scale-110 active:scale-95 w-9 h-9 flex-shrink-0"
+            aria-label="WhatsApp"
+          >
+            <i className="bi bi-whatsapp text-white text-[20px]"></i>
+          </button>
+
+          {/* Contact Button */}
+          <Link to="/contact">
+            <Button className={`bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-full px-5 py-2.5 text-sm lg:text-base font-medium transition-all duration-300 group shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+              {t('nav.getStarted')}
+              <ArrowRight className={`h-4 w-4 transition-all duration-300 group-hover:translate-x-1 ${isRTL ? 'rotate-180 mr-2' : 'ml-2'} ${isRTL ? 'group-hover:-translate-x-1' : ''}`} />
+            </Button>
+          </Link>
+        </div>
+      </NavBody>
+
+      {/* Mobile Navigation */}
+      <MobileNav>
+        <MobileNavHeader>
+          <NavbarLogo />
+          <div className={`flex items-center gap-2 sm:gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            {/* WhatsApp Button - Mobile */}
+            <button
+              type="button"
+              onClick={handleWhatsAppClick}
+              className="bg-[#25D366] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95 w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0"
+              aria-label="WhatsApp"
+            >
+              <i className="bi bi-whatsapp text-white text-[18px] sm:text-[20px]"></i>
+            </button>
+            <div data-hamburger>
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? (language === 'ar' ? 'إغلاق قائمة التنقل' : 'Close navigation menu') : (language === 'ar' ? 'فتح قائمة التنقل' : 'Open navigation menu')}
+                aria-expanded={isMobileMenuOpen}
+              />
+            </div>
+          </div>
+        </MobileNavHeader>
+        <MobileNavMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+        >
+          <div data-mobile-menu className={`w-full flex flex-col h-full ${isRTL ? 'text-right' : 'text-left'}`}>
+            {/* Close Button at Top */}
+            <div className={`flex ${isRTL ? 'justify-start' : 'justify-end'} mb-4`}>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200"
+                aria-label={language === 'ar' ? 'إغلاق القائمة' : 'Close menu'}
+              >
+                <X className="h-6 w-6 text-gray-700" />
               </button>
             </div>
 
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-              <div className="lg:hidden pb-4 space-y-3 border-t border-black/5 pt-4">
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold text-black/60">Features</p>
-                  {featuresLinks.map((link) => (
-                    <a
+            {/* Language Switcher - Mobile */}
+            <div className={`flex items-center gap-2 px-3 py-2 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <Globe className="h-4 w-4 text-black/60" />
+              <button
+                onClick={() => handleLanguageChange('en')}
+                className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  language === 'en' ? 'bg-[#0055ff] text-white' : 'bg-gray-100 text-black/70'
+                }`}
+              >
+                English
+              </button>
+              <button
+                onClick={() => handleLanguageChange('ar')}
+                className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  language === 'ar' ? 'bg-[#0055ff] text-white' : 'bg-gray-100 text-black/70'
+                }`}
+              >
+                العربية
+              </button>
+            </div>
+
+            <div className="space-y-1 w-full">
+              <button
+                type="button"
+                className={`w-full flex items-center justify-between py-2.5 px-4 ${isRTL ? 'text-right flex-row-reverse' : 'text-left'} font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'features' ? null : 'features');
+                }}
+                aria-expanded={openDropdown === 'features'}
+                aria-label={language === 'ar' ? 'قائمة الميزات' : 'Features menu'}
+                aria-haspopup="true"
+              >
+                <span>{t('nav.features')}</span>
+                <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
+                  openDropdown === 'features' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
+                }`} aria-hidden="true" />
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === 'features' ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className={`space-y-1 ${isRTL ? 'pr-4' : 'pl-4'} pt-2`}>
+                  {featuresLinks.map((link, index) => (
+                    <Link
                       key={link.href}
-                      href={link.href}
-                      className="block text-black/70 hover:text-black hover:bg-blue-50 py-2 px-3 rounded-md transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      to={link.href}
+                      className={`flex items-start gap-3 w-full px-3 py-2.5 rounded-md text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-[#0055ff] group transform ${isRTL ? 'flex-row-reverse hover:-translate-x-1' : 'hover:translate-x-1'}`}
+                      style={{
+                        animationDelay: openDropdown === 'features' ? `${index * 30}ms` : '0ms'
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        closeMenu();
+                      }}
                     >
-                      {link.name}
-                    </a>
+                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-medium text-sm transition-colors duration-200 ${isRTL ? 'text-right' : 'text-left'}`}>{link.name}</h3>
+                        <p className={`text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-200 ${isRTL ? 'text-right' : 'text-left'}`}>{link.description}</p>
+                      </div>
+                    </Link>
                   ))}
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold text-black/60">Resources</p>
-                  {resourcesLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      className="block text-black/70 hover:text-black hover:bg-blue-50 py-2 px-3 rounded-md transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </a>
-                  ))}
-                </div>
-
-                <a
-                  href="/about-us"
-                  className="block text-black/70 hover:text-black py-2 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About
-                </a>
-                <a
-                  href="/pricing"
-                  className="block text-black/70 hover:text-black py-2 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Pricing
-                </a>
-
-                <div className="pt-2 space-y-2">
-                  <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 py-2 rounded-full">
-                      Get Started
-                    </Button>
-                  </a>
                 </div>
               </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
-}
+            </div>
 
-export default Navigation
+            <div className="space-y-1 w-full mt-2">
+              <button
+                type="button"
+                className={`w-full flex items-center justify-between py-2.5 px-4 ${isRTL ? 'text-right flex-row-reverse' : 'text-left'} font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown(openDropdown === 'resources' ? null : 'resources');
+                }}
+                aria-expanded={openDropdown === 'resources'}
+                aria-label={language === 'ar' ? 'قائمة الموارد' : 'Resources menu'}
+                aria-haspopup="true"
+              >
+                <span>{t('nav.resources')}</span>
+                <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
+                  openDropdown === 'resources' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
+                }`} aria-hidden="true" />
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === 'resources' ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className={`space-y-1 ${isRTL ? 'pr-4' : 'pl-4'} pt-2`}>
+                  {resourcesLinks.map((link, index) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className={`flex items-start gap-3 w-full px-3 py-2.5 rounded-md text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-[#0055ff] group transform ${isRTL ? 'flex-row-reverse hover:-translate-x-1' : 'hover:translate-x-1'}`}
+                      style={{
+                        animationDelay: openDropdown === 'resources' ? `${index * 30}ms` : '0ms'
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        closeMenu();
+                      }}
+                    >
+                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-medium text-sm transition-colors duration-200 ${isRTL ? 'text-right' : 'text-left'}`}>{link.name}</h3>
+                        <p className={`text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-200 ${isRTL ? 'text-right' : 'text-left'}`}>{link.description}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/about-us"
+              className={`block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 mt-2 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 ${isRTL ? 'text-right' : 'text-left'}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeMenu();
+              }}
+              aria-label={language === 'ar' ? 'من نحن' : 'About OfficeKit HR'}
+            >
+              {t('nav.about')}
+            </Link>
+
+            <Link
+              to="/pricing"
+              className={`block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 ${isRTL ? 'text-right' : 'text-left'}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeMenu();
+              }}
+              aria-label={language === 'ar' ? 'عرض خطط الأسعار' : 'View pricing plans'}
+            >
+              {t('nav.pricing')}
+            </Link>
+
+            <Link 
+              to="/contact" 
+              onClick={(e) => {
+                e.stopPropagation();
+                closeMenu();
+              }}
+              className="block mt-4"
+              aria-label={language === 'ar' ? 'اتصل بـ OfficeKit HR' : 'Contact OfficeKit HR'}
+            >
+              <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl w-full h-[44px] text-sm font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2">
+                {t('nav.getStarted')}
+              </Button>
+            </Link>
+          </div>
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
+  );
+};
+
+export default Navigation;

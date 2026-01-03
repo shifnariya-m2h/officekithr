@@ -44,8 +44,11 @@ const TrustedCompaniesShowcase = () => {
                 {/* Logo */}
                 <img
                   src={src}
-                  alt={`Company ${i + 1}`}
+                  alt={`Trusted Company ${i + 1} - OfficeKit HR Partner`}
                   className="relative z-10 h-12 w-auto object-contain group-hover:scale-110 transition-all duration-300"
+                  loading="lazy"
+                  width="160"
+                  height="80"
                 />
               </div>
             ))}

@@ -9,6 +9,7 @@ import { getAllPosts } from "@/services/blogService";
 import { useEffect, useState } from "react";
 import { BlogPost } from "@/types";
 import { extractExcerpt } from "@/utils/extractExcerpt";
+import { slugify } from "@/utils/slugify";
 
 const Blog = () => {
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
@@ -145,17 +146,22 @@ const categories = [
         const apiPosts = await getAllPosts();
         console.log("Fetched API posts:", apiPosts);
 
-        const normalizedApiPosts = (apiPosts || []).map((post: any) => ({
-          _id: post._id,
-          title: post.title,
-          excerpt: post.excerpt || (post.content ? extractExcerpt(post.content) : "No preview available."),
-          author: post.author || "Admin",
-          createdAt: post.createdAt?.split("T")[0] || new Date().toISOString().split("T")[0],
-          updates: post.updates || "General",
-          readTime: post.readTime || "4 min read",
-          image: post.image || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
-          link: `/blog/${post._id}`
-        } satisfies BlogPost));
+        const normalizedApiPosts = (apiPosts || []).map((post: any) => {
+          // Generate slug from title if not provided
+          const slug = post.slug || slugify(post.title || 'untitled');
+          return {
+            _id: post._id,
+            title: post.title,
+            excerpt: post.excerpt || (post.content ? extractExcerpt(post.content) : "No preview available."),
+            author: post.author || "Admin",
+            createdAt: post.createdAt?.split("T")[0] || new Date().toISOString().split("T")[0],
+            updates: post.updates || "General",
+            readTime: post.readTime || "4 min read",
+            image: post.image || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
+            link: `/blog/${slug}`,
+            slug: slug
+          } satisfies BlogPost;
+        });
 
         // Merge: API first, then fallback (deduped)
         const combined = [
@@ -219,26 +225,26 @@ const featuredPost = filteredPosts[0];
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
-      <section
-        className="pt-32 pb-20 bg-gradient-subtle bg-cover bg-center"
-        style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl font-bold text-foreground mb-6">
-              Insights & Updates from the <span className="gradient-text"> HR World </span>
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8">
-              Stay ahead with the latest trends, tips, and strategies for HR professionals.
-              Expert insights to help you build better workplaces.
-            </p>
-           <div className="flex flex-wrap justify-center gap-3">
+        {/* Hero Section */}
+        <section
+          className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 bg-gradient-subtle bg-cover bg-center"
+          style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
+        >
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+                Insights & Updates from the <span className="gradient-text"> HR World </span>
+              </h1>
+              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-muted-foreground mb-6 sm:mb-8">
+                Stay ahead with the latest trends, tips, and strategies for HR professionals.
+                Expert insights to help you build better workplaces.
+              </p>
+           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {categories.map((cat) => (
                 <Button
                   key={cat.label}
                   variant={activeCategory === cat.label ? "default" : "outline"}
-                  className="rounded-full"
+                  className="rounded-full text-xs sm:text-sm"
                   onClick={() => setActiveCategory(cat.label)}
                 >
                   {cat.label}
@@ -251,122 +257,118 @@ const featuredPost = filteredPosts[0];
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
+        <section className="py-12 sm:py-16 lg:py-20 bg-background">
+          <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <Badge className="bg-white font-normal py-2 text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent">
+              <div className="text-center mb-8 sm:mb-12">
+                <Badge className="bg-white font-normal py-2 text-[#3f5ffc] mb-3 sm:mb-4 border border-[#ededed]">
                   Blogs
                 </Badge>
-                <h2 className="text-3xl font-bold text-foreground mb-4">Featured Article</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-4">Featured Article</h2>
               </div>
 
-              <Card className="overflow-hidden border-border shadow-strong">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative">
-                    <img
-                      src={featuredPost.image}
-                      alt={featuredPost.title}
-                      className="w-full h-full object-cover min-h-[300px]"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                        Featured
-                      </span>
-                    </div>
-                  </div>
-                  <CardContent className="p-8 flex flex-col justify-center">
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
-                      <span className="flex items-center space-x-1">
-                        <Tag className="h-4 w-4" />
-                        <span>{featuredPost.updates}</span>
-                      </span>
-                      <span className="flex items-center space-x-1">
-                        <Calendar className="h-4 w-4" />
-                        {/* <span>{featuredPost.createdAt}</span> */}
-                        <span>{formatBlogDate(featuredPost.createdAt)}</span>
-                      </span>
-                      <span>{featuredPost.readTime}</span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-4">
-                      {featuredPost.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {featuredPost.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <User className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{featuredPost.author}</span>
+              <Link to={featuredPost.link} className="block">
+                <Card className="overflow-hidden border-border shadow-strong cursor-pointer">
+                  <div className="grid lg:grid-cols-2 gap-0">
+                    <div className="relative">
+                      <img
+                        src={featuredPost.image}
+                        alt={featuredPost.title}
+                        className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                          Featured
+                        </span>
                       </div>
-                      <Link to={featuredPost.link}>
-                        <Button className="btn-cta group">
-                          Read More
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
                     </div>
-                  </CardContent>
-                </div>
-              </Card>
+                    <CardContent className="p-6 sm:p-8 flex flex-col justify-center">
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
+                        <span className="flex items-center space-x-1">
+                          <Tag className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span>{featuredPost.updates}</span>
+                        </span>
+                        <span className="flex items-center space-x-1">
+                          <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span>{formatBlogDate(featuredPost.createdAt)}</span>
+                        </span>
+                        <span>{featuredPost.readTime}</span>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
+                        {featuredPost.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                        {featuredPost.excerpt}
+                      </p>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                        <div className="flex items-center space-x-2">
+                          <User className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                          <span className="text-xs sm:text-sm text-muted-foreground">{featuredPost.author}</span>
+                        </div>
+                        <Button className="btn-cta">
+                          Read More
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </div>
+                </Card>
+              </Link>
             </div>
           </div>
         </section>
       )}
 
       {/* Blog Grid - Latest Articles */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Latest Articles</h2>
-              <p className="text-muted-foreground">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-4">Latest Articles</h2>
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Stay updated with our latest insights and updates
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {latestPosts.map((post) => (
-                <Card key={post._id} className="overflow-hidden border-border shadow-medium hover:shadow-strong transition-shadow group">
-                  <div className="relative">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
-                      <span className="flex items-center space-x-1">
-                        <Tag className="h-3 w-3" />
-                        <span>{post.updates}</span>
-                      </span>
-                      <span>{post.readTime}</span>
+                <Link key={post._id} to={post.link} className="block">
+                  <Card className="overflow-hidden border-border shadow-medium cursor-pointer h-full flex flex-col">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-48 object-cover"
+                        loading="lazy"
+                      />
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-3 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <User className="h-3 w-3" />
-                        <span>{post.author}</span>
-                        <span>•</span>
-                        {/* <span>{post.createdAt}</span> */}
-                        <span>{formatBlogDate(featuredPost.createdAt)}</span>
+                    <CardContent className="p-4 sm:p-6 flex flex-col flex-grow">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
+                        <span className="flex items-center space-x-1">
+                          <Tag className="h-3 w-3" />
+                          <span>{post.updates}</span>
+                        </span>
+                        <span>{post.readTime}</span>
                       </div>
-                      <Link to={post.link}>
-                        <Button variant="ghost" size="sm" className="group">
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3 flex-grow">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between mt-auto">
+                        <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
+                          <User className="h-3 w-3" />
+                          <span>{post.author}</span>
+                          <span>•</span>
+                          <span>{formatBlogDate(post.createdAt)}</span>
+                        </div>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
 

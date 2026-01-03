@@ -160,9 +160,11 @@ const Navigation = () => {
       <Link to="/" className="relative z-20 mr-2 sm:mr-4 flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0">
         <img
           src="/NavLogo.png"
-          alt="OfficeKit"
+          alt="OfficeKit HR - AI-Powered HRMS Software"
           className="w-auto h-8 sm:h-10 transition-all duration-300 [.group\\/nav[data-visible='true']_&]:h-6 [.group\\/nav[data-visible='true']_&]:sm:h-7"
-          loading="lazy"
+          loading="eager"
+          width="120"
+          height="40"
         />
       </Link>
     );
@@ -189,11 +191,14 @@ const Navigation = () => {
             >
               <DropdownMenuTrigger asChild>
                 <button 
-                  className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-0 focus-visible:outline-none border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap"
+                  className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap"
                   onBlur={(e) => e.currentTarget.blur()}
+                  aria-label="Features menu"
+                  aria-expanded={featuresOpen}
+                  aria-haspopup="true"
                 >
                   <span>Features</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${featuresOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
               </DropdownMenuTrigger>
             </div>
@@ -249,11 +254,14 @@ const Navigation = () => {
             >
               <DropdownMenuTrigger asChild>
                 <button 
-                  className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-0 focus-visible:outline-none border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap"
+                  className="nav-link flex items-center space-x-1 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap"
                   onBlur={(e) => e.currentTarget.blur()}
+                  aria-label="Resources menu"
+                  aria-expanded={resourcesOpen}
+                  aria-haspopup="true"
                 >
                   <span>Resources</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
               </DropdownMenuTrigger>
             </div>
@@ -296,11 +304,19 @@ const Navigation = () => {
             </div>
           </DropdownMenu>
 
-          <Link to="/about-us" className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto">
+          <Link 
+            to="/about-us" 
+            className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
+            aria-label="About OfficeKit HR"
+          >
             About us
           </Link>
 
-          <Link to="/pricing" className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto">
+          <Link 
+            to="/pricing" 
+            className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
+            aria-label="View pricing plans"
+          >
             Pricing
           </Link>
         </div>
@@ -345,6 +361,8 @@ const Navigation = () => {
               <MobileNavToggle
                 isOpen={isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMobileMenuOpen}
               />
             </div>
           </div>
@@ -371,17 +389,19 @@ const Navigation = () => {
             <div className="space-y-1 w-full">
               <button
                 type="button"
-                className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50"
+                className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpenDropdown(openDropdown === 'features' ? null : 'features');
                 }}
                 aria-expanded={openDropdown === 'features'}
+                aria-label="Features menu"
+                aria-haspopup="true"
               >
                 <span>Features</span>
                 <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
                   openDropdown === 'features' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
-                }`} />
+                }`} aria-hidden="true" />
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
@@ -416,17 +436,19 @@ const Navigation = () => {
             <div className="space-y-1 w-full mt-2">
                 <button
                   type="button"
-                  className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50"
+                  className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
                   onClick={(e) => {
                     e.stopPropagation();
                     setOpenDropdown(openDropdown === 'resources' ? null : 'resources');
                   }}
                   aria-expanded={openDropdown === 'resources'}
+                  aria-label="Resources menu"
+                  aria-haspopup="true"
                 >
                   <span>Resources</span>
                   <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
                     openDropdown === 'resources' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
-                  }`} />
+                  }`} aria-hidden="true" />
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
@@ -460,22 +482,24 @@ const Navigation = () => {
 
               <Link
                 to="/about-us"
-                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 mt-2"
+                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 mt-2 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
                 onClick={(e) => {
                   e.stopPropagation();
                   closeMenu();
                 }}
+                aria-label="About OfficeKit HR"
               >
                 About us
               </Link>
 
               <Link
                 to="/pricing"
-                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50"
+                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
                 onClick={(e) => {
                   e.stopPropagation();
                   closeMenu();
                 }}
+                aria-label="View pricing plans"
               >
                 Pricing
               </Link>
@@ -487,8 +511,9 @@ const Navigation = () => {
                   closeMenu();
                 }}
                 className="block mt-4"
+                aria-label="Contact OfficeKit HR"
               >
-                <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl w-full h-[44px] text-sm font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl w-full h-[44px] text-sm font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2">
                   Contact Us
                 </Button>
               </Link>

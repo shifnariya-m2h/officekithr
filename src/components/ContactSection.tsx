@@ -6,9 +6,9 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Badge } from "./ui/badge";
-import { toast } from "react-toastify";
-
+import { useToast } from "@/hooks/use-toast"
 const ContactSection = () => {
+  const { toast } = useToast()
 
   const [formData, setFormData] = useState({
     name: "",
@@ -37,7 +37,7 @@ const ContactSection = () => {
 
     try {
       const res = await fetch(
-        "https://www.syncoraai.com/api/webhooks/website/LiQApK1h9PzXw4LtPUQe/leads",
+        "https://app.syncoraai.com/api/webhooks/website/LiQApK1h9PzXw4LtPUQe/leads",
         {
           method: "POST",
           headers: {
@@ -58,14 +58,11 @@ const ContactSection = () => {
           });
         }
 
-        toast.success("Your demo request has been submitted successfully. We'll contact you soon!", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast({
+          title: "Success",
+          variant: "success",
+          description: "Demo scheduled successfully!",
+        })
         setFormData({
           name: "",
           email: "",
@@ -75,24 +72,18 @@ const ContactSection = () => {
         });
       } else {
         const t = await res.text();
-        toast.error("Unable to submit your request. Please try again or contact us directly.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast({
+          title: "Error",
+          variant: "destructive",
+          description: "❌ There was a problem sending your form\n" + t,
+        })
       }
     } catch (err) {
-      toast.error("Unable to connect. Please check your internet connection and try again.", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+       toast({
+        title: "Error",
+        variant: "destructive",
+        description: "⚠️ Network error. Please try again later.",
+      })
     } finally {
       setLoading(false);
     }

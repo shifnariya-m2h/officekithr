@@ -112,7 +112,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 opacity-50 my-6"></div>
 
 
-        <div className="grid lg:grid-cols-4 gap-8 mt-12 mb-20">
+        <div className="grid lg:grid-cols-5 gap-8 mt-12 mb-20">
 
 
           {/* Company Links */}
@@ -184,32 +184,29 @@ const Footer = () => {
                   {link.name}
                 </Link>
               ))}
-
-              {/* <Link to='/ae'>UAE</Link> */}
             </div>
           </div>
-{/* 
+
+          {/* Global Regions */}
           <div className="space-y-6">
             <h3 className="text-lg font-semibold text-white">Global</h3>
             <div className="space-y-3">
-
               <Link
-
                 to="/"
-                className="block text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors flex items-center gap-2 group"
               >
+                <span                   className="block text-gray-300 hover:text-white transition-colors"></span>
                 India
               </Link>
               <Link
-
                 to="/ae"
-                className="block text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 hover:text-white transition-colors flex items-center gap-2 group"
               >
+                <span                   className="block text-gray-300 hover:text-white transition-colors"></span>
                 UAE
               </Link>
-
             </div>
-          </div> */}
+          </div>
 
           {/* Contact & Newsletter */}
           <div className="space-y-6">

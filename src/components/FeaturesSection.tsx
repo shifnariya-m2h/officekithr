@@ -68,7 +68,7 @@ export default () => {
           {/* Hiring & Onboarding */}
           <div
             ref={(el) => (sectionsRef.current[0] = el)}
-            className="grid mb-mb-tursioury lg:grid-cols-2 gap-12 lg:gap-16 items-center   p-6 rounded-2xl bg-[#f4f7fa]"
+            className="grid mb-mb-tursioury lg:grid-cols-2 gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa] max-w-full overflow-hidden"
           >
             <div className="space-y-8">
               <h3 className="text-3xl font-semibold text-hr-text-primary mb-6">
@@ -95,13 +95,15 @@ export default () => {
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <div className="w-[100%] flex items-center justify-center">
+            <div className="relative max-w-full overflow-hidden">
+              <div className="w-full flex items-center justify-center">
                 <img
-                  className="rounded-2xl "
+                  className="rounded-2xl w-full h-auto max-w-full"
                   src="/HiringOnboarding-min.png"
-                  alt="hiring and onboarding feature"
+                  alt="Hiring and onboarding feature - OfficeKit HR"
                   loading="lazy"
+                  width="800"
+                  height="600"
                 />
               </div>
             </div>
@@ -110,15 +112,17 @@ export default () => {
           {/* Time & Payroll */}
           <div
             ref={(el) => (sectionsRef.current[1] = el)}
-            className="grid mb-mb-tursioury lg:grid-cols-2 gap-12 lg:gap-32 items-center   p-6 rounded-2xl bg-[#f4f7fa]"
+            className="grid mb-mb-tursioury lg:grid-cols-2 gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa] max-w-full overflow-hidden"
           >
-            <div className="relative order-2 lg:order-1">
-              <div className="w-[100%] flex items-center justify-center">
+            <div className="relative order-2 lg:order-1 max-w-full overflow-hidden">
+              <div className="w-full flex items-center justify-center">
                 <img
-                  className="rounded-2xl "
+                  className="rounded-2xl w-full h-auto max-w-full"
                   src="/TimePayroll-min.png"
-                  alt="time and payroll feature"
+                  alt="Time and payroll feature - OfficeKit HR"
                   loading="lazy"
+                  width="800"
+                  height="600"
                 />
               </div>
             </div>
@@ -169,13 +173,15 @@ export default () => {
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <div className="w-[110%] flex items-center justify-center">
+            <div className="relative max-w-full overflow-hidden">
+              <div className="w-full flex items-center justify-center">
                 <img
-                  className="rounded-2xl "
+                  className="rounded-2xl w-full h-auto max-w-full"
                   src="/Performance&selfservice-min.png"
-                  alt="performance and self-service feature"
+                  alt="Performance and self-service feature - OfficeKit HR"
                   loading="lazy"
+                  width="800"
+                  height="600"
                 />
               </div>
             </div>

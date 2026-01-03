@@ -1,4 +1,3 @@
-// src/pages/index.tsx (or Home.tsx) - SAFE & ISOLATED HERO
 import React from "react";
 import Navbar from "./Navigation";
 import Hero from "./Hero";
@@ -8,25 +7,25 @@ import Features from "./Features";
 import Compliance from "./Compliance";
 import FAQ from "./FAQ";
 import Footer from "../components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const Home: React.FC = () => {
+const UaeLandingPage: React.FC = () => {
+  const { isRTL } = useLanguage();
+
   return (
-    <div className="min-h-screen flex flex-col">
-       <Navbar/>
-
-       <div className="relative isolate overflow-hidden">
+    <div className={`min-h-screen flex flex-col ${isRTL ? 'font-arabic' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+      <Navbar />
+      <div className="relative isolate overflow-hidden">
         <Hero />
       </div>
-
-       <PainPoints />
+      <PainPoints />
       <WhyOfficeKit />
       <Features />
       <Compliance />
       {/* <FAQ /> */}
-
-       <Footer />
+      <Footer />
     </div>
   );
 };
 
-export default Home;
+export default UaeLandingPage;

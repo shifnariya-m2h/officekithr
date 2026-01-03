@@ -10,5 +10,6 @@ export interface BlogPost {
   updates: string; 
   readTime: string;  
   image: string;
-  link: string;  
+  link: string;
+  slug?: string; // URL-friendly slug for routing
 }

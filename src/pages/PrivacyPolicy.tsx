@@ -145,33 +145,28 @@ function PrivacyPolicy() {
           We may revise this policy from time to time. Updates will be posted on
           our site with the latest effective date. Please review periodically.
         </p>
-        {/* 8. Location Data */}
+        {/* 8. Location Data (Mobile App Only) */}
         <h2 className="text-2xl font-semibold mt-10 mb-4">
-          8. Location Data
+          8. Location Data (Mobile App Only)
         </h2>
         <p className="mb-6">
-          When you use our Services, we may collect and process your device’s location information. This data is used to enable attendance marking via geofencing.
-          You can choose to enable or disable location permissions at any time through your device settings. We do not sell your location information to third parties. Location data may only be shared with authorized service providers or as required by law, as outlined in Section 3 of this Privacy Policy
+          When you use our mobile application, we may collect and process your device's location information to enable attendance marking via geofencing. This feature is optional and only available in our mobile app, not on the web platform. You can choose to enable or disable location permissions at any time through your device settings. We do not sell your location information to third parties. Location data may only be shared with authorized service providers or as required by law, as outlined in Section 3 of this Privacy Policy.
         </p>
-        {/* 9. Policy Updates */}
+        {/* 9. Target Audience and GDPR Compliance */}
         <h2 className="text-2xl font-semibold mt-10 mb-4">
-          9. Target audience and content
+          9. Target Audience and Data Protection Rights
         </h2>
         <p className="mb-6">
+          Our Services are intended for businesses and individuals aged 18 and above. We do not knowingly collect personal information from children under 13. If you are located in the European Economic Area (EEA), United Kingdom, or other regions with data protection laws, you have additional rights under GDPR and similar regulations, including the right to access, rectify, erase, restrict processing, data portability, and object to processing. To exercise these rights, please contact us at hello@officekithr.com. We collect information you provide directly (such as name, email, phone, company details, profile information, and communications with our team) as well as information collected automatically (such as usage activity, device and technical data, IP address, cookies, and tracking data for analytics and performance). This information is used solely to deliver and improve our Services and is not used for any purposes beyond those described in this Privacy Policy.
+        </p>
 
-          Our Services are intended for individuals aged 18 and above. We do not knowingly collect personal information from children under 13.
-          We collect information you provide directly (such as name, email, phone, company details, profile information, and communications with our team) as well as information collected automatically (such as usage activity, device and technical data, IP address, cookies, and tracking data for analytics and performance). This information is used solely to deliver and improve our Services and is not used for any purposes beyond those described in this Privacy Policy.        </p>
 
-
-{/* 10. Face Data Collection */}
+{/* 10. Biometric Data Collection (Mobile App Feature) */}
 <h2 className="text-2xl font-semibold mt-10 mb-4">
-  10. Face Data Collection
+  10. Biometric Data Collection (Mobile App Feature)
 </h2>
 <p className="mb-6">
-  When employees mark their attendance, the app captures a live facial image to verify identity in real time. 
-  The image is encrypted and securely stored in our AWS cloud database for authentication purposes only. 
-  This biometric data is never shared with external parties and is automatically deleted if the employee leaves the organization 
-  or their account is deactivated. The process ensures accurate attendance tracking while maintaining strict data privacy and security standards.
+  Our mobile application includes an optional facial recognition feature for attendance verification. When employees choose to use this feature, the app captures a live facial image to verify identity in real time. The image is encrypted and securely stored in our AWS cloud database for authentication purposes only. This biometric data is never shared with external parties and is automatically deleted if the employee leaves the organization or their account is deactivated. The process ensures accurate attendance tracking while maintaining strict data privacy and security standards. This feature is completely optional and only available in our mobile app.
 </p>
 
 

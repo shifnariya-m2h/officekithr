@@ -5,26 +5,48 @@ import DOMPurify from "dompurify";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { getAllPosts } from "@/services/blogService";
+import { slugify } from "@/utils/slugify";
 
 export default function BlogDetail() {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`http://52.66.55.51:5000/api/blogs/${id}`);
-        const data = await res.json();
-        setPost(data);
+        // Fetch all posts and find the one matching the slug
+        const allPosts = await getAllPosts();
+        const foundPost = allPosts.find((p: any) => {
+          // Check if post has a slug field, otherwise generate slug from title
+          const postSlug = p.slug || (p.title ? slugify(p.title) : '');
+          return postSlug === slug;
+        });
+
+        if (foundPost) {
+          setPost(foundPost);
+        } else {
+          // Fallback: try to fetch by ID if slug doesn't match (for backward compatibility)
+          // This handles old links that might still use IDs
+          try {
+            const res = await fetch(`http://52.66.55.51:5000/api/blogs/${slug}`);
+            if (res.ok) {
+              const data = await res.json();
+              setPost(data);
+            }
+          } catch (err) {
+            console.error("Failed to fetch by slug or ID:", err);
+          }
+        }
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching post:", err);
       } finally {
         setLoading(false);
       }
     };
     fetchPost();
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (

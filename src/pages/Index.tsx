@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import MobileApp from "@/components/MobileApp";
+ 
 
 const Index = () => {
   useEffect(() => {
@@ -46,6 +47,7 @@ const Index = () => {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
+  
     </div>
   );
 };
