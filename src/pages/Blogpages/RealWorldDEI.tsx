@@ -3,23 +3,18 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, User, ArrowLeft, Share2, BookmarkPlus } from "lucide-react";
+import { Calendar, User, Share2, BookmarkPlus } from "lucide-react";
 import { Link } from "react-router-dom";
+import BackToBlog from "@/components/BackToBlog";
 
 export default function DEIBlog() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <article className="pt-24 pb-16">
+      <article className="pt-24 pb-24">
         <div className="container mx-auto px-4 max-w-4xl">
-          <Link
-            to="/resources/blogs"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Link>
+          <BackToBlog className="mb-10 mt-2" />
 
           <header className="mb-8">
             <Badge className="mb-4">DEI</Badge>
@@ -39,7 +34,7 @@ export default function DEIBlog() {
               <span>8 min read</span>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <Button variant="outline" size="sm">
                 <Share2 className="h-4 w-4 mr-1" />
                 Share
@@ -48,6 +43,9 @@ export default function DEIBlog() {
                 <BookmarkPlus className="h-4 w-4 mr-1" />
                 Save
               </Button>
+              <Link to="/contact">
+                <Button variant="outline" size="sm">Contact Us</Button>
+              </Link>
             </div>
           </header>
 

@@ -211,6 +211,42 @@
   }
 }
 
+/* Blog content cleanup & spacing for HTML content */
+.blog-content {
+  line-height: 1.85;
+}
+
+.blog-content p {
+  margin: 0 0 1.1rem;
+}
+
+.blog-content h2 {
+  margin: 2.2rem 0 0.9rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.blog-content h3 {
+  margin: 1.6rem 0 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 0 0 1.1rem 1.25rem;
+}
+
+.blog-content li {
+  margin: 0.4rem 0;
+}
+
+.blog-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* required start conatct-us * */
 .required-asterisk {
   color: red;

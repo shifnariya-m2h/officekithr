@@ -1,12 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Calendar, User, ArrowLeft, Share2, BookmarkPlus } from "lucide-react";
+import { Calendar, User, Share2, BookmarkPlus, Clock } from "lucide-react";
 import DOMPurify from "dompurify";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { getAllPosts } from "@/services/blogService";
 import { slugify } from "@/utils/slugify";
+import BackToBlog from "@/components/BackToBlog";
 
 export default function BlogDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -64,22 +65,32 @@ export default function BlogDetail() {
     );
   }
 
+  const formatDateTime = (value?: string) => {
+    if (!value) return "";
+    const date = new Date(value);
+    return date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  };
+
   // Sanitize HTML to prevent XSS
-  const sanitizedContent = DOMPurify.sanitize(post.content);
+  const sanitizedContent = DOMPurify.sanitize(post.content || "");
+  const cleanedContent = sanitizedContent
+    .replace(/<p>(\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, "")
+    .replace(/(?:<br\s*\/?>\s*){3,}/gi, "<br /><br />")
+    .trim();
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <article className="pt-24 pb-16">
+      <article className="pt-24 pb-24">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Back Link */}
-          <Link
-            to="/resources/blogs"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 text-sm font-medium"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Link>
+          <BackToBlog className="mb-10 mt-2" />
 
           {/* Header */}
           <header className="mb-8">
@@ -109,11 +120,15 @@ export default function BlogDetail() {
                   })}
                 </span>
               </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                <span>{formatDateTime(post.createdAt || post.updatedAt)}</span>
+              </div>
               <span className="text-gray-500">5 min read</span>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                 <Share2 className="h-4 w-4" />
                 Share
@@ -122,7 +137,14 @@ export default function BlogDetail() {
                 <BookmarkPlus className="h-4 w-4" />
                 Save
               </button>
+              <Link
+                to="/contact"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Contact Us
+              </Link>
             </div>
+            <div className="h-px bg-border/80 my-8" />
           </header>
 
           {/* Featured Image */}
@@ -137,13 +159,7 @@ export default function BlogDetail() {
           {/* Blog Content - Preserve Editor Styles */}
           <div
             className="blog-content mb-16"
-            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-            style={{
-              // Allow inline styles
-              all: "revert",
-              fontFamily: "inherit",
-              lineHeight: "1.7",
-            }}
+            dangerouslySetInnerHTML={{ __html: cleanedContent }}
           />
 
           {/* CTA Section */}

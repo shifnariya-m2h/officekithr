@@ -227,7 +227,7 @@ const featuredPost = filteredPosts[0];
 
         {/* Hero Section */}
         <section
-          className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 bg-gradient-subtle bg-cover bg-center"
+          className="pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 lg:pb-10 bg-gradient-subtle bg-cover bg-center"
           style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
         >
           <div className="container mx-auto px-4 sm:px-6">
@@ -257,7 +257,7 @@ const featuredPost = filteredPosts[0];
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-12 sm:py-16 lg:py-20 bg-background">
+        <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-8 sm:mb-12">
