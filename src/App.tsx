@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Index from "./pages/Index";
@@ -44,6 +45,7 @@ import GoogleAdsWrapper from "./GoogleAdsWrapper";
 // import WhatsAppButton from "./hooks/WhatsAppButton";
 import ChatModal from "./AiAgent";
 import UaeLandingpage from './UaeLandingPage';
+import { HRPopup } from "./components/HRPopup";
 
 
 // import Text from './pages/test'
@@ -52,15 +54,58 @@ import UaeLandingpage from './UaeLandingPage';
 
 const queryClient = new QueryClient();
 
+const POPUP_AFTER_SCROLL_MS = 200;
+const POPUP_SESSION_KEY = "ok_hr_popup_session_shown";
+
 // Component to determine region based on route
 const AppRoutes = () => {
   const location = useLocation();
   const isUaeRoute = location.pathname.includes('/ae') || location.pathname.startsWith('/uae');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+useEffect(() => {
+  if (typeof window === "undefined" || isPopupOpen) return;
+
+  const sessionShown =
+    sessionStorage.getItem(POPUP_SESSION_KEY) === "true";
+  if (sessionShown) return;
+
+  let timerId: number;
+
+  // Show after 3 seconds anyway
+  timerId = window.setTimeout(() => {
+    setIsPopupOpen(true);
+  }, 3000);
+
+  // Or show on first scroll
+  const handleScroll = () => {
+    setIsPopupOpen(true);
+    window.removeEventListener("scroll", handleScroll);
+    clearTimeout(timerId);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    clearTimeout(timerId);
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [isPopupOpen, location.pathname]);
+
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !isPopupOpen) {
+      return;
+    }
+
+    sessionStorage.setItem(POPUP_SESSION_KEY, "true");
+  }, [isPopupOpen]);
   
   return (
     <LanguageProvider defaultLanguage="en" defaultRegion={isUaeRoute ? 'uae' : 'india'}>
       <GoogleAdsWrapper /> 
       <ChatModal />
+      {isPopupOpen && <HRPopup onClose={() => setIsPopupOpen(false)} />}
       <ScrollToTop />
       <Routes>
           <Route path="/" element={<Index />} />

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get User Location</title>
+</head>
+<body>
+  <button onclick="getLocation()">Get My Location</button>
+  <p id="status"></p>
+
+  <script>
+    function getLocation() {
+      const status = document.getElementById("status");
+
+      // Check if browser supports geolocation
+      if (navigator.geolocation) {
+        status.textContent = "Locating…";
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            status.textContent = `Latitude: ${lat}, Longitude: ${lon}`;
+          },
+          (error) => {
+            status.textContent = "Error: " + error.message;
+          }
+        );
+      } else {
+        status.textContent = "Geolocation not supported.";
+      }
+    }
+  </script>
+</body>
+</html>

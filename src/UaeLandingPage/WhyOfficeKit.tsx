@@ -23,20 +23,20 @@ const WhyOfficeKit: React.FC = () => {
   ];
 
   const title = language === 'ar' 
-    ? 'مبني من الصفر لـ' 
-    : 'Built from the ground up for';
+    ? 'صُنع خصيصاً لـ' 
+    : 'Built specifically for';
   
   const titleHighlight = language === 'ar'
-    ? 'واقع الموارد البشرية في الإمارات'
-    : 'UAE HR Realities';
+    ? 'الشركات في دولة الإمارات'
+    : 'UAE Businesses';
 
   const description = language === 'ar'
-    ? 'الموارد البشرية في الإمارات ليست مثل أي مكان آخر. تأتي مع قوانين العمل الخاصة بها، وتنسيقات البنوك، وتنوعات المناطق الحرة، ومتطلبات الهجرة.'
-    : "HR in the UAE isn't like anywhere else. It comes with its own labour laws, banking formats, free-zone variations, and immigration requirements.";
+    ? 'إدارة الموارد البشرية في دولة الإمارات لها متطلبات خاصة. قانون العمل الإماراتي مختلف، نظام الأجور WPS يحتاج ملفات SIF، والمناطق الحرة مثل DIFC وADGM لديها قواعدها الخاصة. OfficeKit HRMS على officekithr.com تم بناؤه مع مراعاة هذه الفروقات.'
+    : "HR management in the UAE has unique requirements. UAE Labour Law is different, WPS needs SIF files, and free zones like DIFC and ADGM have their own rules. OfficeKit HRMS on officekithr.com was built with these differences in mind.";
 
   const highlightText = language === 'ar'
-    ? 'معظم منصات HRMS ببساطة تخصيص الميزات العالمية. OfficeKit يفعل العكس.'
-    : "Most HRMS platforms simply customize global features. OfficeKit does the opposite.";
+    ? 'معظم أنظمة HRMS تحاول تعديل الحلول العالمية. OfficeKit صُمم من البداية للعمل في الإمارات.'
+    : "Most HRMS systems try to adapt global solutions. OfficeKit was designed from the start to work in the UAE.";
 
   return (
     <section className="py-24 bg-white overflow-hidden relative">
@@ -58,15 +58,15 @@ const WhyOfficeKit: React.FC = () => {
 
             <div className={`bg-white border-l-4 border-blue-600 p-6 rounded-r-xl mb-10 shadow-sm ${isRTL ? 'border-r-4 border-l-0 rounded-l-xl rounded-r-none' : ''}`}>
               <p className={`text-gray-700 text-lg ${isRTL ? 'text-right' : ''}`}>
-                {language === 'ar' ? (
+                    {language === 'ar' ? (
                   <>
-                    معظم منصات HRMS ببساطة تخصيص الميزات العالمية. <br />
-                    <strong className="text-blue-700">OfficeKit يفعل العكس.</strong>
+                    معظم أنظمة HRMS تحاول تعديل الحلول العالمية. <br />
+                    <strong className="text-blue-700">OfficeKit صُمم من البداية للعمل في الإمارات.</strong>
                   </>
                 ) : (
                   <>
-                    Most HRMS platforms simply customize global features. <br />
-                    <strong className="text-blue-700">OfficeKit does the opposite.</strong>
+                    Most HRMS systems try to adapt global solutions. <br />
+                    <strong className="text-blue-700">OfficeKit was designed from the start for the UAE.</strong>
                   </>
                 )}
               </p>

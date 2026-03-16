@@ -66,19 +66,45 @@ const Compliance: React.FC = () => {
   ];
 
   return (
-    <section id="compliance" className="py-20 bg-brand-50 border-y border-brand-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="compliance" className="pt-20 pb-0 bg-gradient-to-b from-blue-50/50 to-white border-t border-blue-100/50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, Math.sin(i) * 20, 0],
+              opacity: [0.1, 0.2, 0.1],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 8 + i * 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+            className="absolute w-20 h-20 rounded-full bg-blue-200/30 blur-2xl"
+            style={{
+              left: `${10 + i * 12}%`,
+              top: `${20 + (i % 3) * 30}%`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className={`text-center mb-12 ${isRTL ? 'font-arabic' : ''}`}
         >
-          <h2 className="text-3xl font-bold text-slate-900">
-            {language === 'ar' ? 'الضمان القانوني والامتثال' : 'Legal Assurance & Compliance'}
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            {language === 'ar' ? 'الامتثال الكامل للقوانين الإماراتية' : 'Full Compliance with UAE Regulations'}
           </h2>
-          <p className="mt-4 text-slate-600">
-            {language === 'ar' ? 'راحة البال مدمجة مباشرة في كود النظام.' : 'Peace of mind built directly into the system code.'}
+          <p className="mt-4 text-slate-600 text-lg max-w-3xl mx-auto">
+            {language === 'ar' ? 'OfficeKit HRMS على officekithr.com يضمن الامتثال التلقائي لجميع القوانين واللوائح الإماراتية.' : 'OfficeKit HRMS on officekithr.com ensures automatic compliance with all UAE laws and regulations.'}
           </p>
         </motion.div>
 
@@ -92,14 +118,15 @@ const Compliance: React.FC = () => {
           {complianceItems.map((item, index) => (
             <motion.div 
               key={index}
-              variants={item} 
-              className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow group ${isRTL ? 'text-right' : ''}`}
+              variants={item}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group border border-gray-100 ${isRTL ? 'text-right' : ''}`}
             >
-              <div className={`w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-100 transition-colors ${isRTL ? 'ml-auto' : ''}`}>
-                <item.icon className="text-brand-600" size={24} />
+              <div className={`w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${isRTL ? 'ml-auto' : ''}`}>
+                <item.icon className="text-white" size={24} />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-              <p className="text-sm text-slate-600">{item.description}</p>
+              <h3 className="font-bold text-slate-900 mb-2 text-lg">{item.title}</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>

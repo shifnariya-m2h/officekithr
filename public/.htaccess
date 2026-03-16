@@ -37,7 +37,7 @@ RewriteRule ^ index.html [QSA,L]
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   
   # Content Security Policy (Adjust as needed)
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://embed.tawk.to https://connect.facebook.net https://www.syncoraai.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https: blob:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://embed.tawk.to https://connect.facebook.net https://www.syncoraai.com; frame-src https://embed.tawk.to https://www.youtube.com;"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://embed.tawk.to https://connect.facebook.net https://www.syncoraai.com https://cdn.ampproject.org https://googleads.g.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https: blob:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://embed.tawk.to https://connect.facebook.net https://www.syncoraai.com https://www.google.com https://va.tawk.to; frame-src https://embed.tawk.to https://www.youtube.com;"
   
   # Remove Server Information
   Header unset Server

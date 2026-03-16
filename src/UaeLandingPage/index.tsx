@@ -13,16 +13,21 @@ const UaeLandingPage: React.FC = () => {
   const { isRTL } = useLanguage();
 
   return (
-    <div className={`min-h-screen flex flex-col ${isRTL ? 'font-arabic' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen flex flex-col bg-slate-50/30">
       <Navbar />
+
       <div className="relative isolate overflow-hidden">
         <Hero />
       </div>
-      <PainPoints />
-      <WhyOfficeKit />
-      <Features />
-      <Compliance />
-      {/* <FAQ /> */}
+
+      <div className="space-y-24 md:space-y-32 pb-20 mt-12">
+        <PainPoints />
+        <WhyOfficeKit />
+        <Features />
+        <Compliance />
+        <FAQ />
+      </div>
+
       <Footer />
     </div>
   );

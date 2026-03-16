@@ -30,7 +30,7 @@ export default function BlogDetail() {
           // Fallback: try to fetch by ID if slug doesn't match (for backward compatibility)
           // This handles old links that might still use IDs
           try {
-            const res = await fetch(`http://52.66.55.51:5000/api/blogs/${slug}`);
+            const res = await fetch(`https://api.officekithr.com/api/blogs/${slug}`);
             if (res.ok) {
               const data = await res.json();
               setPost(data);

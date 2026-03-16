@@ -141,12 +141,12 @@ const Features: React.FC = () => {
           className={`text-center mb-16 ${isRTL ? 'font-arabic' : ''}`}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {getText("OfficeKit HR: The Complete Suite", "OfficeKit HR: الحل الكامل")}
+            {getText("OfficeKit HRMS: Everything Your UAE Business Needs", "OfficeKit HRMS: كل ما تحتاجه شركتك في الإمارات")}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             {getText(
-              "From hiring to retiring, we cover every aspect of the employee lifecycle with precision and ease, built specifically for UAE regulations.",
-              "من التوظيف إلى التقاعد، نغطي كل جانب من جوانب دورة حياة الموظف بدقة وسهولة، مصمم خصيصاً للوائح الإمارات."
+              "Our HRMS platform on officekithr.com handles everything from recruitment to payroll, all while staying compliant with UAE Labour Law, WPS, and free zone regulations.",
+              "منصة HRMS الخاصة بنا على officekithr.com تتعامل مع كل شيء من التوظيف إلى كشوف المرتبات، مع الحفاظ على الامتثال الكامل لقانون العمل الإماراتي ونظام الأجور WPS ولوائح المناطق الحرة."
             )}
           </p>
         </motion.div>
