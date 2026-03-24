@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Calendar, User, Share2, BookmarkPlus, Clock } from "lucide-react";
+import { Calendar, User, Clock } from "lucide-react";
 import DOMPurify from "dompurify";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { getAllPosts } from "@/services/blogService";
 import { slugify } from "@/utils/slugify";
 import BackToBlog from "@/components/BackToBlog";
+import BlogActions from "@/components/BlogActions";
 
 export default function BlogDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -128,22 +129,7 @@ export default function BlogDetail() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                <Share2 className="h-4 w-4" />
-                Share
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                <BookmarkPlus className="h-4 w-4" />
-                Save
-              </button>
-              <Link
-                to="/contact"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                Contact Us
-              </Link>
-            </div>
+            <BlogActions title={post.title} />
             <div className="h-px bg-border/80 my-8" />
           </header>
 

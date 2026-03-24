@@ -2,9 +2,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, User, Share2, BookmarkPlus } from "lucide-react";
+import { Calendar, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import BackToBlog from "@/components/BackToBlog";
+import BlogActions from "@/components/BlogActions";
 
 export default function HRMSBlog() {
   return (
@@ -33,19 +34,7 @@ export default function HRMSBlog() {
               <span>10 min read</span>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-1" />
-                Share
-              </Button>
-              <Button variant="outline" size="sm">
-                <BookmarkPlus className="h-4 w-4 mr-1" />
-                Save
-              </Button>
-              <Link to="/contact">
-                <Button variant="outline" size="sm">Contact Us</Button>
-              </Link>
-            </div>
+            <BlogActions title="Why Businesses Need an HRMS in Today’s Competitive Landscape" />
           </header>
 
           <div className="aspect-video rounded-lg mb-8 overflow-hidden">
