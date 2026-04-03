@@ -18,7 +18,6 @@ import {
   MessageSquare
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { loadSyncoraBot } from "@/components/syncoraBot";
 
 const MobileApp = () => {
   const features = [
@@ -109,10 +108,10 @@ const MobileApp = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link to="/contact">
-                <Button className="btn-cta h-[44px] py-[22px] group"  >
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+                  <Button className="btn-cta h-[44px] py-[22px] group"  >
+                    Schedule Demo
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
                 </Link>
                 <Link to="https://www.youtube.com/watch?v=Tposa0O5s_k">
                   <Button
@@ -141,7 +140,7 @@ const MobileApp = () => {
                 {/* Phone Frame */}
                 <div className="flex justify-center lg:justify-end">
                   <img
-                    src="/mobile-mockup.png"
+                    src="/mobile-mockup.webp"
                     alt="Mobile App Mockup"
                     loading="lazy"
                   // className="w-full max-w-md shadow-lg rounded-lg"
@@ -212,7 +211,7 @@ const MobileApp = () => {
                 <img className="transform hover:scale-105 ease-out duration-300" src="/AppStore.svg" alt="playstore" loading="lazy" />
               </Link>
               <Link to='https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN' >
-                <img className="transform hover:scale-105 ease-out duration-300" src="/PlayStore.svg" alt="playstore" loading="lazy"/>
+                <img className="transform hover:scale-105 ease-out duration-300" src="/PlayStore.svg" alt="playstore" loading="lazy" />
               </Link>
             </div>
             <p className="text-sm text-muted-foreground mt-4">

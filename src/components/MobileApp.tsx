@@ -2,32 +2,13 @@ import { Link } from "react-router-dom";
 import { Badge } from "./ui/badge";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-
+import MobileMockUp from './.././../public/mobile-mockup.webp'
 type Props = {}
 
 function MobileApp({ }: Props) {
-       const phoneRef = useRef<HTMLImageElement | null>(null);
+    const phoneRef = useRef<HTMLImageElement | null>(null);
 
-    useEffect(() => {
-        if (phoneRef.current) {
-            // Initial fade + scale in
-            gsap.fromTo(
-                phoneRef.current,
-                { opacity: 0, y: 50, scale: 0.9 },
-                { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }
-            );
 
-            // Floating animation loop
-            gsap.to(phoneRef.current, {
-                y: -15,
-                duration: 2,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1,
-                delay: 1.2,
-            });
-        }
-    }, []);
     return (
         <section className="pt-12 sm:pt-16 lg:pt-p-tursioury pb-20 sm:pb-24 lg:pb-mb-common bg-[#01004f] min-h-screen lg:h-[1140px]">
             <div className="max-w-7xl relative mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,22 +30,22 @@ function MobileApp({ }: Props) {
                 <div className="lg:hidden">
                     {/* First 3 Cards */}
                     <div className="space-y-4 sm:space-y-6 max-w-md mx-auto mb-8 sm:mb-12">
-                        <img 
-                            className="w-full transform duration-500 ease-out hover:translate-y-2" 
-                            src="/mobile-app-keypoints/01.svg" 
-                            alt="mobileapp" 
-                            loading="lazy" 
+                        <img
+                            className="w-full transform duration-500 ease-out hover:translate-y-2"
+                            src="/mobile-app-keypoints/01.svg"
+                            alt="mobileapp"
+                            loading="lazy"
                         />
-                        <img 
-                            className="w-full transform duration-500 ease-out hover:translate-y-2" 
-                            src="/mobile-app-keypoints/02.svg" 
-                            alt="mobileapp" 
-                            loading="lazy" 
+                        <img
+                            className="w-full transform duration-500 ease-out hover:translate-y-2"
+                            src="/mobile-app-keypoints/02.svg"
+                            alt="mobileapp"
+                            loading="lazy"
                         />
-                        <img 
-                            className="w-full transform duration-500 ease-out hover:translate-y-2" 
-                            src="/mobile-app-keypoints/03.svg" 
-                            alt="mobileapp" 
+                        <img
+                            className="w-full transform duration-500 ease-out hover:translate-y-2"
+                            src="/mobile-app-keypoints/03.svg"
+                            alt="mobileapp"
                             loading="lazy"
                         />
                     </div>
@@ -72,10 +53,10 @@ function MobileApp({ }: Props) {
                     {/* Phone Mockup - Middle */}
                     <div className="flex justify-center mb-8 sm:mb-12">
                         <div className="w-full max-w-[240px] sm:max-w-[280px]">
-                            <img 
-                                ref={phoneRef} 
-                                src="/Free_Iphone_15_Mockup_4 copy.png" 
-                                alt="Phone Mockup" 
+                            <img
+                                ref={phoneRef}
+                                src={MobileMockUp}
+                                alt="Phone Mockup"
                                 className="w-full h-auto"
                                 loading="lazy"
                             />
@@ -84,22 +65,22 @@ function MobileApp({ }: Props) {
 
                     {/* Last 3 Cards */}
                     <div className="space-y-4 sm:space-y-6 max-w-md mx-auto mb-8">
-                        <img 
-                            className="w-full transform duration-500 ease-out hover:translate-y-2" 
-                            src="/mobile-app-keypoints/04.svg" 
-                            alt="mobileapp" 
-                            loading="lazy" 
-                        />
-                        <img 
-                            className="w-full transform duration-500 ease-out hover:translate-y-2" 
-                            src="/mobile-app-keypoints/05.svg" 
-                            alt="mobileapp" 
+                        <img
+                            className="w-full transform duration-500 ease-out hover:translate-y-2"
+                            src="/mobile-app-keypoints/04.svg"
+                            alt="mobileapp"
                             loading="lazy"
                         />
-                        <img 
-                            className="w-full transform duration-500 ease-out hover:translate-y-2" 
-                            src="/mobile-app-keypoints/06.svg" 
-                            alt="mobileapp" 
+                        <img
+                            className="w-full transform duration-500 ease-out hover:translate-y-2"
+                            src="/mobile-app-keypoints/05.svg"
+                            alt="mobileapp"
+                            loading="lazy"
+                        />
+                        <img
+                            className="w-full transform duration-500 ease-out hover:translate-y-2"
+                            src="/mobile-app-keypoints/06.svg"
+                            alt="mobileapp"
                             loading="lazy"
                         />
                     </div>
@@ -107,18 +88,18 @@ function MobileApp({ }: Props) {
                     {/* App Store Links - Mobile */}
                     <div className="flex justify-center gap-4 mt-8">
                         <Link to="https://apps.apple.com/in/app/officekit-app/id1382735899">
-                            <img 
-                                className="w-28 sm:w-32 h-auto transform hover:scale-105 ease-out duration-300" 
-                                src="/apple.svg" 
-                                alt="" 
+                            <img
+                                className="w-28 sm:w-32 h-auto transform hover:scale-105 ease-out duration-300"
+                                src="/apple.svg"
+                                alt=""
                                 loading="lazy"
                             />
                         </Link>
                         <Link to='https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN'>
-                            <img 
-                                className="w-28 sm:w-32 h-auto transform hover:scale-105 ease-out duration-300" 
-                                src="/play.svg" 
-                                alt="" 
+                            <img
+                                className="w-28 sm:w-32 h-auto transform hover:scale-105 ease-out duration-300"
+                                src="/play.svg"
+                                alt=""
                                 loading="lazy"
                             />
                         </Link>
@@ -129,68 +110,68 @@ function MobileApp({ }: Props) {
                 <div className="hidden lg:block">
                     <div className="flex justify-between items-center">
                         <div>
-                            <img 
-                                className="transform duration-500 ease-out hover:translate-y-2" 
-                                src="/mobile-app-keypoints/01.svg" 
-                                alt="mobileapp" 
-                                loading="lazy" 
+                            <img
+                                className="transform duration-500 ease-out hover:translate-y-2"
+                                src="/mobile-app-keypoints/01.svg"
+                                alt="mobileapp"
+                                loading="lazy"
                             />
-                            <img 
-                                className="my-6 transform duration-500 ease-out hover:translate-y-2" 
-                                src="/mobile-app-keypoints/02.svg" 
-                                alt="mobileapp" 
-                                loading="lazy" 
+                            <img
+                                className="my-6 transform duration-500 ease-out hover:translate-y-2"
+                                src="/mobile-app-keypoints/02.svg"
+                                alt="mobileapp"
+                                loading="lazy"
                             />
-                            <img 
-                                className="transform duration-500 ease-out hover:translate-y-2" 
-                                src="/mobile-app-keypoints/03.svg" 
-                                alt="mobileapp" 
+                            <img
+                                className="transform duration-500 ease-out hover:translate-y-2"
+                                src="/mobile-app-keypoints/03.svg"
+                                alt="mobileapp"
                                 loading="lazy"
                             />
                         </div>
                         <div>
-                            <img 
-                                className="transform duration-500 ease-out hover:translate-y-2" 
-                                src="/mobile-app-keypoints/04.svg" 
-                                alt="mobileapp" 
-                                loading="lazy" 
-                            />
-                            <img 
-                                className="my-6 transform duration-500 ease-out hover:translate-y-2" 
-                                src="/mobile-app-keypoints/05.svg" 
-                                alt="mobileapp" 
+                            <img
+                                className="transform duration-500 ease-out hover:translate-y-2"
+                                src="/mobile-app-keypoints/04.svg"
+                                alt="mobileapp"
                                 loading="lazy"
                             />
-                            <img 
-                                className="transform duration-500 ease-out hover:translate-y-2" 
-                                src="/mobile-app-keypoints/06.svg" 
-                                alt="mobileapp" 
+                            <img
+                                className="my-6 transform duration-500 ease-out hover:translate-y-2"
+                                src="/mobile-app-keypoints/05.svg"
+                                alt="mobileapp"
+                                loading="lazy"
+                            />
+                            <img
+                                className="transform duration-500 ease-out hover:translate-y-2"
+                                src="/mobile-app-keypoints/06.svg"
+                                alt="mobileapp"
                                 loading="lazy"
                             />
                         </div>
                     </div>
                     <div className="absolute top-[76%] w-[320px] h-auto left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <img 
-                            ref={phoneRef} 
-                            src="/Free_Iphone_15_Mockup_4 copy.png" 
-                            alt="Phone Mockup" 
+                        <img
+                            ref={phoneRef}
+                            src={MobileMockUp}
+                            alt="Phone Mockup"
                             loading="lazy"
                         />
 
                         <div className="flex gap-4 mt-10">
                             <Link to="https://apps.apple.com/in/app/officekit-app/id1382735899">
-                                <img 
-                                    className="transform hover:scale-105 ease-out duration-300" 
-                                    src="/apple.svg" 
-                                    alt="" 
+                                <img
+                                    className="transform hover:scale-105 ease-out duration-300"
+                                    src="/apple.svg"
+                                    alt=""
                                     loading="lazy"
                                 />
                             </Link>
                             <Link to='https://play.google.com/store/search?q=officekit&c=apps&hl=en_IN'>
-                                <img 
-                                    className="transform hover:scale-105 ease-out duration-300" 
-                                    src="/play.svg" 
-                                    alt="" 
+                                <img
+                                    className="transform hover:scale-105 ease-out duration-300"
+                                    src="/play.svg"
+                                    alt=""
                                     loading="lazy"
                                 />
                             </Link>

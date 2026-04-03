@@ -2,23 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    // Ensure video plays and loops
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Auto-play might be blocked, but video will play when user interacts
-      });
-    }
-  }, []);
-
   return (
-    <section 
+    <section
       className="relative bg-cover bg-center bg-no-repeat rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0"
       style={{
         backgroundImage: "url('/BG.png')",
@@ -45,16 +33,16 @@ const HeroSection = () => {
               <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center px-2">
                 <Link to="/contact" className="w-full sm:w-auto max-w-xs sm:max-w-none">
                   <Button
-                    className="bg-white text-[#0055ff] hover:bg-white/90 h-[40px] sm:h-[42px] md:h-[44px] px-5 sm:px-6 md:px-8 group font-semibold w-full sm:w-auto text-xs sm:text-sm md:text-base"
+                    className="bg-white !rounded-lg text-[#0055ff] hover:bg-white/90 h-[40px] sm:h-[42px] md:h-[44px] px-5 sm:px-6 md:px-8 group font-semibold w-full sm:w-auto text-xs sm:text-sm md:text-base"
                   >
                     Schedule Demo
                     <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link 
-                  to="https://www.youtube.com/watch?v=Tposa0O5s_k" 
-                  target="_blank" 
-                  className="flex items-center justify-center text-white border border-transparent hover:border-white bg-transparent hover:bg-white/10 rounded-full px-5 sm:px-6 md:px-8 h-[40px] sm:h-[42px] md:h-[44px] transition-all duration-300 group text-xs sm:text-sm md:text-base font-medium w-full sm:w-auto max-w-xs sm:max-w-none"
+                <Link
+                  to="https://www.youtube.com/watch?v=Tposa0O5s_k"
+                  target="_blank"
+                  className="flex items-center justify-center text-white border border-transparent hover:border-white bg-transparent hover:bg-white/10 !rounded-lg px-5 sm:px-6 md:px-8 h-[40px] sm:h-[42px] md:h-[44px] transition-all duration-300 group text-xs sm:text-sm md:text-base font-medium w-full sm:w-auto max-w-xs sm:max-w-none"
                 >
                   <span>Watch Overview</span>
                   <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-1" />
@@ -64,25 +52,34 @@ const HeroSection = () => {
           </>
         }
       >
-        <video
-          ref={videoRef}
-          src="/sequence-hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="h-full w-full"
-          style={{
-            objectFit: "fill",
-            width: "100%",
-            height: "100%",
-            display: "block",
-            minWidth: "100%",
-            minHeight: "100%",
-          }}
-          draggable={false}
-        />
+        <>
+          {/* Desktop Image */}
+          <img
+            src="/dashboardok.webp"
+            alt="OfficeKit App Overview Desktop"
+            className="hidden md:block h-full w-full"
+            style={{
+              objectFit: "fill",
+              width: "100%",
+              height: "100%",
+              minWidth: "100%",
+              minHeight: "100%",
+            }}
+            draggable={false}
+          />
+          {/* Mobile Image */}
+          <img
+            src="/mobile-mockup.webp"
+            alt="OfficeKit App Overview Mobile"
+            className="block md:hidden h-full w-full"
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "100%",
+            }}
+            draggable={false}
+          />
+        </>
       </ContainerScroll>
     </section>
   );

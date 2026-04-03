@@ -71,19 +71,17 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
             {/* Social Icons */}
             <div className="flex space-x-2">
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+              <a href="https://www.linkedin.com/company/officekithr/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://twitter.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="https://facebook.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+
+              <a href="https://www.facebook.com/officekithr/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="https://instagram.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+              <a href="https://www.instagram.com/officekit_hr/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://youtube.com" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+              <a href="https://www.youtube.com/channel/UC8zUtDkAkZUkOl0TkMhQpNw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
                 <YoutubeIcon className="h-5 w-5" />
               </a>
             </div>
@@ -195,14 +193,14 @@ const Footer = () => {
                 to="/"
                 className="text-gray-300 hover:text-white transition-colors flex items-center gap-2 group"
               >
-                <span                   className="block text-gray-300 hover:text-white transition-colors"></span>
+                <span className="block text-gray-300 hover:text-white transition-colors"></span>
                 India
               </Link>
               <Link
                 to="/ae"
                 className="block text-gray-300 hover:text-white transition-colors flex items-center gap-2 group"
               >
-                <span                   className="block text-gray-300 hover:text-white transition-colors"></span>
+                <span className="block text-gray-300 hover:text-white transition-colors"></span>
                 UAE
               </Link>
             </div>
