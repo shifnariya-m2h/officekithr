@@ -1,0 +1,2972 @@
+{
+  "/": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/eslint.config.js": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/postcss.config.js": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/App.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AppRoutes",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "App",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/GoogleAdsWrapper.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "GoogleAdsWrapper",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/main.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/types.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/vite-env.d.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/AiAgent": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/AiAgent/index.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AiAgentWidget",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/hooks": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/hooks/use-mobile.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "useIsMobile",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/hooks/use-toast.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "genId",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "dispatch",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "toast",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "useToast",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "addToRemoveQueue",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "reducer",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "update",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "dismiss",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "onOpenChange",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "dismiss",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/hooks/useGoogleAds.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "useGoogleAds",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/hooks/WhatsAppButton.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "WhatsAppButton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/lib": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/lib/utils.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "cn",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/components/BackToBlog.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "BackToBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/BlogActions.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "readBookmarks",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "writeBookmarks",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "BlogActions",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/Bookademo.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Bookademo",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/BotButton.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/ContactSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ContactSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/DemoPopup.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/EssentialHRStack.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "EssentialHRStack",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/FAQSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FAQSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/FeaturesSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/Footer.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Footer",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/HeroSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HeroSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/HRPopup.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRPopup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/InteractiveScrollAnimation.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "InteractiveScrollAnimation",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/MobileApp.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "MobileApp",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/MobileAppSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "MobileAppSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/Navigation.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Navigation",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ScrollToTop.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ScrollToTop",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/syncoraBot.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/TestimonialsSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "TestimonialsSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/text.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/TrustedCompanies.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "TrustedCompaniesShowcase",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/types.d.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/WhyOfficeKit.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/contexts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/contexts/LanguageContext.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "LanguageProvider",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "useLanguage",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/AboutUs.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AboutUs",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Contact.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Contact",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Index.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Index",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/NotFound.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "NotFound",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/ocr.jsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "CvParser",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "handleFileChange",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "handleUpload",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Pricing.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Pricing",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/PrivacyPolicy.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "PrivacyPolicy",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/TermsandConditions.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "TermsOfService",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Test.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "CursorDot",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/services": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/services/blogService.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "getAllPosts",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/UaeLandingPage/Compliance.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Compliance",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/FAQ.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Hero",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/Features.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Features",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/Hero.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Hero",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/index.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "UaeLandingPage",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/Navigation.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Navigation",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/PainPoints.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "PainPoints",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/UaeLandingPage/types.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/UaeLandingPage/WhyOfficeKit.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "WhyOfficeKit",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/utils": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/utils/extractExcerpt.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "extractExcerpt",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/utils/slugify.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "slugify",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "unslugify",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/AiPilot": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/AiPilot/index.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FaceKit",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/components/ui/accordion.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AccordionItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AccordionTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AccordionContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/alert-dialog.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AlertDialogHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogOverlay",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogAction",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDialogCancel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/alert.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Alert",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AlertDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/aspect-ratio.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/ui/avatar.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Avatar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AvatarImage",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AvatarFallback",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/badge.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Badge",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/breadcrumb.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "BreadcrumbSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "BreadcrumbEllipsis",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Breadcrumb",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "BreadcrumbList",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "BreadcrumbItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "BreadcrumbLink",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "BreadcrumbPage",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/button.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Button",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/calendar.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Calendar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "IconLeft",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "IconRight",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/card.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Card",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CardHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CardTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CardDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CardContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CardFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/carousel.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "useCarousel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Carousel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CarouselContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CarouselItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CarouselPrevious",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CarouselNext",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/chart.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "useChart",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "getPayloadConfigFromPayload",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ChartStyle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ChartContainer",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ChartTooltipContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ChartLegendContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/checkbox.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Checkbox",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/collapsible.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/components/ui/command.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "CommandDialog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandShortcut",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Command",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandInput",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandList",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandEmpty",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandGroup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "CommandItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/container-scroll-animation.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ContainerScroll",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Header",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Card",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/context-menu.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ContextMenuShortcut",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuSubTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuSubContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuCheckboxItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuRadioItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuLabel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ContextMenuSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/dialog.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "DialogHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DialogFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DialogOverlay",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DialogContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DialogTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DialogDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/drawer.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Drawer",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DrawerHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DrawerFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DrawerOverlay",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DrawerContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DrawerTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DrawerDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/dropdown-menu.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "DropdownMenuShortcut",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuSubTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuSubContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuCheckboxItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuRadioItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuLabel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "DropdownMenuSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/FeatureCard.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FeatureCard",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/form.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FormField",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "useFormField",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "FormItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "FormLabel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "FormControl",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "FormDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "FormMessage",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/hover-card.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HoverCardContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/input-otp.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "InputOTP",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "InputOTPGroup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "InputOTPSlot",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "InputOTPSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/input.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Input",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/label.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Label",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/macbook-scroll.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "MacbookScroll",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Lid",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Trackpad",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Keypad",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "KBtn",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SpeakerGrid",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "OptionKey",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "AceternityLogo",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/menubar.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "MenubarShortcut",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Menubar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarSubTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarSubContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarCheckboxItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarRadioItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarLabel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MenubarSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/navigation-menu.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "NavigationMenu",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavigationMenuList",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavigationMenuTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavigationMenuContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavigationMenuViewport",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavigationMenuIndicator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/pagination.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Pagination",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "PaginationLink",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "PaginationPrevious",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "PaginationNext",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "PaginationEllipsis",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "PaginationContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "PaginationItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/popover.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "PopoverContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/progress.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Progress",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/radio-group.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "RadioGroup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "RadioGroupItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/resizable-navbar.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Navbar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavBody",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavItems",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MobileNav",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MobileNavHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MobileNavMenu",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "MobileNavToggle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavbarLogo",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "NavbarButton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/resizable.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ResizablePanelGroup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ResizableHandle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/scroll-area.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ScrollArea",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ScrollBar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/select.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "SelectTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SelectScrollUpButton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SelectScrollDownButton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SelectContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SelectLabel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SelectItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SelectSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/separator.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Separator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/sheet.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "SheetHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SheetFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SheetOverlay",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SheetContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SheetTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SheetDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/sidebar.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "useSidebar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarProvider",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Sidebar",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarRail",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarInset",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarInput",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarSeparator",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarGroup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarGroupLabel",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarGroupAction",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarGroupContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenu",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuButton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuAction",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuBadge",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuSkeleton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuSub",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuSubItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "SidebarMenuSubButton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/skeleton.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Skeleton",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/slider.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Slider",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/sonner.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Toaster",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/switch.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Switch",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/table.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Table",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableHeader",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableBody",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableFooter",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableRow",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableHead",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableCell",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TableCaption",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/tabs.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "TabsList",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TabsTrigger",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "TabsContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/textarea.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Textarea",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/toast.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ToastViewport",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "Toast",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ToastAction",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ToastClose",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ToastTitle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ToastDescription",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/toaster.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Toaster",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/toggle-group.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ToggleGroup",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "ToggleGroupItem",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/toggle.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Toggle",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/tooltip.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "TooltipContent",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/components/ui/use-toast.ts": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/pages/face-lens": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/face-lens/index.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FaceLens",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/Blogpages/AIPoweredFeatures.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AIBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/BlogDetails.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "BlogDetail",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      },
+      {
+        "name": "formatDateTime",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/HRMSSystem.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "OfficeKitHRBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/HrStrategies.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRMSBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/MobileAppUpdates.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "MobileAppSecurityBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/NavigateHybrid.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRMSBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/NewPerfomenceBlog.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRMSBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/QualityQuatity.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRMSBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/RealWorldDEI.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "DEIBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/StreamliningPayroll.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRMSPayrollBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/Blogpages/WhyHrms.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HRMSBlog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/resources": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/resources/Blog.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Blog",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/resources/Community.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Community",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/resources/UseCases.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "UseCases",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/features/AttendanceAndLeave.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "AttendanceAndLeave",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/EmployementManagment.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "RecruitmentManagement",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/ExitManagement.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "ExitManagement",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/MobileApp.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "MobileApp",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/PayrollAndCompliance.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "PayrollAndCompliance",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/PerformanceAppraisal.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "PerformanceAppraisal",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/RecruitmentManagement.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "RecruitmentManagement",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/SelfServicePortal.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "SelfServicePortal",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/features/text.jsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": []
+  },
+  "/src/pages/AiPilot/components": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/AiPilot/components/Benifits.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Benefits",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/AiPilot/components/FeaturesSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FeaturesSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/AiPilot/components/Herosection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HeroSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/AiPilot/components/how-work.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HowItWorks",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/face-lens/components": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null
+  },
+  "/src/pages/face-lens/components/Benifits.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "Benefits",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/face-lens/components/FeaturesSection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "FeaturesSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/face-lens/components/Herosection.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HeroSection",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  },
+  "/src/pages/face-lens/components/how-work.tsx": {
+    "percentage": null,
+    "totalStatements": null,
+    "coveredStatements": null,
+    "testables": [
+      {
+        "name": "HowItWorks",
+        "percentage": null,
+        "totalStatements": null,
+        "coveredStatements": null
+      }
+    ]
+  }
+}

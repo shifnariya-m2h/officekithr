@@ -11,7 +11,7 @@ const TrustedCompaniesShowcase = () => {
     "/company-logos/chavara.webp",
     "/company-logos/clikon.webp",
     "/company-logos/clubsulaimani.webp",
-    "/company-logos/crowe.webp",
+    // "/company-logos/crowe.webp",
     "/company-logos/empire.webp",
     "/company-logos/kvn.webp",
     "/company-logos/landmark.webp",
