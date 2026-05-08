@@ -160,13 +160,13 @@ function TermsOfService() {
         </p>
         <p className="mb-2">
           📍 <strong>India Office:</strong> OfficeKit HRMS, Ground Floor, Cyber
-          Park, Calicut - 673016 <br /> 📞 +91 7994154069
+          Park, Calicut - 673016 <br /> 📞 + 91 8137932991
 
 
         </p>
         <p className="mb-2">
           📍 <strong>UAE Office:</strong> #906, Palace Towers, Dubai Silicon
-          Oasis, Dubai, UAE <br /> 📞 +971 52 815 5771
+          Oasis, Dubai, UAE <br /> 📞 +971 55 315 5343
         </p>
 
         <p className="mt-10 font-medium">

@@ -319,7 +319,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="font-semibold">Call Us</h4>
                     <p>
-                      <a href="tel:+917994154069">+91 7994154069</a>
+                      <a href="tel:+ 91 8137932991">+ 91 8137932991</a>
                     </p>
                     <p className="text-sm text-muted-foreground">
                       Mon-Fri, 9 AM - 6 PM IST
@@ -335,7 +335,7 @@ const ContactSection = () => {
                     <h4 className="font-semibold">Visit Us</h4>
                     <p className="text-muted-foreground">
                       +971 52 815 5771 <br />
-                      +971 55 199 7892 <br />
+                      +971 55 315 5343 <br />
                       #105, Bushager Building <br />
                       13 55 St, Al Garhoud, Dubai
                     </p>

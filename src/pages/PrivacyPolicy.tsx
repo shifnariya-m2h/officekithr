@@ -179,7 +179,7 @@ function PrivacyPolicy() {
         </p>
         <p className="mb-2">
           📍 <strong>India Office:</strong> OfficeKit HRMS, Ground Floor, Cyber
-          Park, Calicut - 673016 <br /> 📞 +91 7994154069
+          Park, Calicut - 673016 <br /> 📞 + 91 8137932991
         </p>
         <p className="mb-2">
           📍 <strong>UAE Office:</strong>  #105, Bushager Building ,

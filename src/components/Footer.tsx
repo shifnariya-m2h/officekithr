@@ -230,7 +230,7 @@ const Footer = () => {
                     href="tel:+917994154069"
                     className="hover:text-white transition-colors"
                   >
-                    +91 7994154069
+                    + 91 8137932991
                   </a>
                   <br />
                   Ground floor, Cyber Park Calicut - 673 016
@@ -248,10 +248,10 @@ const Footer = () => {
                   </a>
                   <br />
                   <a
-                    href="tel:+971551997892"
+                    href="tel:+971553155343"
                     className="hover:text-white transition-colors"
                   >
-                    +971 551997892
+                    +971 55 315 5343
                   </a>
                   <br />
                   #105, Bushager Building, 13 55 St - Al Garhoud - Dubai
