@@ -6,6 +6,8 @@ import { COMPARISONS } from "@/data/comparisons";
 import { GeoFaqSection } from "@/components/geo/GeoFaqSection";
 import { RelatedLinks } from "@/components/geo/RelatedLinks";
 import { AiContentBlock } from "@/components/geo/AiContentBlock";
+import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
+import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { comparisonWebPageSchema, breadcrumbSchema } from "@/seo/schema";
 import { absoluteUrl } from "@/seo/site-config";
 import { Button } from "@/components/ui/button";
@@ -44,15 +46,30 @@ const ComparisonPage = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
 
-        <header className="pt-36 pb-12 container mx-auto px-4 max-w-4xl">
-          <p className="text-sm font-medium text-primary mb-3">Software comparison</p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            {page.h1}
-          </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">{page.intro}</p>
-        </header>
+        <SeoHeroBanner
+          eyebrow="Software comparison"
+          title={page.h1}
+          subtitle={page.intro}
+        >
+          <Button asChild className="btn-cta group h-11">
+            <Link to="/contact">
+              Schedule comparison demo
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="h-11">
+            <Link to="/compare">All comparisons</Link>
+          </Button>
+        </SeoHeroBanner>
 
-        <section className="pb-12 container mx-auto px-4 max-w-4xl" aria-labelledby="compare-table">
+        <div className="container mx-auto px-4 max-w-4xl py-12">
+          <DirectAnswerBlock answer={page.directAnswer} definition={page.definition} />
+        </div>
+
+        <section
+          className="pb-12 container mx-auto px-4 max-w-4xl"
+          aria-labelledby="compare-table"
+        >
           <h2 id="compare-table" className="text-2xl font-semibold mb-6">
             Feature comparison
           </h2>
@@ -86,21 +103,15 @@ const ComparisonPage = () => {
           </div>
         </section>
 
-        <section className="py-12 bg-muted/20 container mx-auto px-4 max-w-4xl">
-          <AiContentBlock heading="When teams choose OfficeKit HR">
-            <ul className="list-disc pl-5 space-y-2 mt-2">
-              {page.whenOfficeKit.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </AiContentBlock>
-          <div className="mt-8">
-            <Link to="/contact">
-              <Button className="btn-cta group">
-                Schedule comparison demo
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+        <section className="py-12 bg-muted/20">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <AiContentBlock heading="When teams choose OfficeKit HR">
+              <ul className="list-disc pl-5 space-y-2 mt-2">
+                {page.whenOfficeKit.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </AiContentBlock>
           </div>
         </section>
 

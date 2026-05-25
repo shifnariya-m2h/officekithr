@@ -4,5 +4,7 @@ export const SEO_ASSETS = {
   sectionBg: "/RecruitmentManagement2.jpg",
   logo: "/NavLogo.png",
   ogImage: "/ImageThumbnail2.png",
-  favicon: "/favicon.ico",
+  favicon: "/favicon.svg",
+  faviconIco: "/favicon.ico",
+  appleTouchIcon: "/apple-touch-icon.png",
 } as const;

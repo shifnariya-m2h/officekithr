@@ -152,6 +152,12 @@ function urlEntry(path, priority = "0.7", changefreq = "monthly") {
 const { paths: dynamicPaths, manifest } = await fetchDynamicBlogs();
 const allPaths = [...new Set([...STATIC_PATHS, ...dynamicPaths])];
 
+/** Set PRERENDER_BLOGS=0 on CI for faster builds (~2 min). Sitemap still lists all blog URLs. */
+const prerenderBlogs = process.env.PRERENDER_BLOGS !== "0";
+const prerenderPaths = prerenderBlogs
+  ? allPaths
+  : [...STATIC_PATHS];
+
 const urls = allPaths
   .map((path) => {
     const p =
@@ -220,10 +226,10 @@ writeFileSync(
 );
 writeFileSync(
   join(SCRIPTS, "prerender-routes.json"),
-  JSON.stringify(allPaths, null, 2),
+  JSON.stringify(prerenderPaths, null, 2),
   "utf8"
 );
 
 console.log(
-  `[seo] sitemap: ${allPaths.length} URLs | blog manifest: ${Object.keys(manifest).length} posts`
+  `[seo] sitemap: ${allPaths.length} URLs | prerender: ${prerenderPaths.length} routes | blog manifest: ${Object.keys(manifest).length} posts`
 );

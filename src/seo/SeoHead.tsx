@@ -6,6 +6,7 @@ import { canonicalUrl } from "./site-config";
 import { SITE } from "./site-config";
 import { buildGraph, webPageSchema } from "./schema";
 import { resolveSeoConfig } from "./resolve-seo";
+import { SEO_ASSETS } from "@/lib/seo/assets";
 
 function absoluteImage(url: string): string {
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
@@ -50,6 +51,9 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <meta name="description" content={description} />
         <meta name="robots" content={robotsContent} />
         <link rel="canonical" href={canonical} />
+        <link rel="icon" href={SEO_ASSETS.favicon} type="image/svg+xml" />
+        <link rel="icon" href={SEO_ASSETS.faviconIco} sizes="32x32" />
+        <link rel="apple-touch-icon" href={SEO_ASSETS.appleTouchIcon} sizes="180x180" />
         {pathname === "/" && (
           <link rel="preload" as="image" href="/BG.png" fetchPriority="high" />
         )}

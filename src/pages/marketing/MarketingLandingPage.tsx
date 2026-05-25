@@ -3,9 +3,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { SeoBreadcrumb } from "@/components/seo/SeoBreadcrumb";
+import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { StickyDemoCta } from "@/components/seo/StickyDemoCta";
 import { getMarketingPage } from "@/data/marketing-pages";
+import { SEO_ASSETS } from "@/lib/seo/assets";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -54,27 +56,26 @@ const MarketingLandingPage = () => {
     >
       <div className="min-h-screen bg-background">
         <Navigation />
-        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-          <SeoBreadcrumb items={page.breadcrumb} className="mb-8" />
 
-          <header className="mb-10">
-            <p className="text-sm font-medium text-primary mb-2">OfficeKit HR</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              {page.h1}
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground max-w-3xl">{page.subtitle}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link to="/contact">
-                  Book free demo
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link to="/pricing">View pricing</Link>
-              </Button>
-            </div>
-          </header>
+        <SeoHeroBanner
+          eyebrow="OfficeKit HR"
+          title={page.h1}
+          subtitle={page.subtitle}
+          backgroundImage={page.heroImage ?? SEO_ASSETS.sectionBg}
+        >
+          <Button asChild size="lg" className="btn-cta h-11 group">
+            <Link to="/contact">
+              Book free demo
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="h-11">
+            <Link to="/pricing">View pricing</Link>
+          </Button>
+        </SeoHeroBanner>
+
+        <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <SeoBreadcrumb items={page.breadcrumb} className="mb-10" />
 
           <div className="mb-12">
             <DirectAnswerBlock answer={page.directAnswer} definition={page.definition} />
@@ -82,7 +83,7 @@ const MarketingLandingPage = () => {
 
           {page.highlights.length > 0 && (
             <section className="mb-12" aria-labelledby="highlights-heading">
-              <h2 id="highlights-heading" className="text-2xl font-semibold mb-6">
+              <h2 id="highlights-heading" className="text-2xl font-semibold mb-6 text-center">
                 Why teams choose OfficeKit HR
               </h2>
               <ul className="grid sm:grid-cols-2 gap-4">
@@ -178,7 +179,7 @@ const MarketingLandingPage = () => {
           )}
 
           {page.relatedLinks.length > 0 && (
-            <nav className="mb-16" aria-label="Related pages">
+            <nav className="mb-8" aria-label="Related pages">
               <h2 className="text-lg font-semibold mb-4">Related resources</h2>
               <ul className="flex flex-wrap gap-3">
                 {page.relatedLinks.map((link) => (

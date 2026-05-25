@@ -7,6 +7,9 @@ export type GeoLandingConfig = {
   metaDescription: string;
   h1: string;
   subtitle: string;
+  /** Answer-first paragraph for featured snippets and AI crawlers. */
+  directAnswer: string;
+  definition?: { term: string; meaning: string };
   /** Factual blocks for LLM retrieval — plain language, no hype. */
   facts: { heading: string; body: string }[];
   capabilities: string[];
@@ -24,6 +27,13 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
     h1: "HRMS software built for India",
     subtitle:
       "Unified recruitment, core HR, payroll compliance, and employee self-service for teams that outgrow spreadsheets.",
+    directAnswer:
+      "OfficeKit HR is HRMS software for India that covers recruitment, core HR, attendance, leave, statutory payroll (PF, ESI, professional tax, TDS), and employee self-service for growing companies across metros and tier-2 cities.",
+    definition: {
+      term: "HRMS (India)",
+      meaning:
+        "Human Resource Management Systems adapted to Indian labor laws, tax statutes, and payroll compliance requirements.",
+    },
     facts: [
       {
         heading: "What makes a strong HRMS in India",
@@ -74,6 +84,13 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
     h1: "Payroll software for UAE employers",
     subtitle:
       "Process salaries on time, stay aligned with UAE labour rules, and connect payroll to attendance and HR records.",
+    directAnswer:
+      "OfficeKit HR is payroll software for UAE employers that links employee records, attendance, and leave to monthly pay runs, WPS-aligned salary files, and audit-ready registers for Dubai, Abu Dhabi, and GCC entities.",
+    definition: {
+      term: "UAE payroll software",
+      meaning:
+        "Systems that calculate salaries, generate WPS/SIF outputs where required, and maintain payroll records aligned with UAE labour regulations.",
+    },
     facts: [
       {
         heading: "UAE payroll requirements",
@@ -119,6 +136,13 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
     h1: "WPS compliance for UAE payroll",
     subtitle:
       "Reduce rejected salary files and reconciliation delays with payroll tied to employee records and attendance.",
+    directAnswer:
+      "OfficeKit HR WPS compliance software helps UAE payroll teams validate salary components, generate WPS-compatible files, and reconcile bank transfers before submission—integrated with core HR and attendance data.",
+    definition: {
+      term: "UAE WPS",
+      meaning:
+        "The Wages Protection System requires employers to pay salaries through approved channels; compliant software reduces rejected files and labour penalties.",
+    },
     facts: [
       {
         heading: "What is UAE WPS",
@@ -162,6 +186,13 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
     h1: "AI HR software for the GCC",
     subtitle:
       "Automate repetitive HR work while keeping payroll and compliance under human oversight.",
+    directAnswer:
+      "OfficeKit HR is AI-assisted HR software for the GCC that automates routine workflows—recruitment routing, reminders, and analytics—while keeping UAE/KSA payroll and compliance under configurable, auditable controls.",
+    definition: {
+      term: "AI HR software (GCC)",
+      meaning:
+        "HR platforms that use automation and machine learning for tasks like screening, policy routing, and reporting, without replacing statutory payroll sign-off.",
+    },
     facts: [
       {
         heading: "AI in HR for GCC enterprises",

@@ -14,6 +14,9 @@ export type ComparisonConfig = {
   competitorName: string;
   h1: string;
   intro: string;
+  /** Concise answer for AI/search extractability. */
+  directAnswer: string;
+  definition?: { term: string; meaning: string };
   rows: ComparisonRow[];
   whenOfficeKit: string[];
   faqs: FaqItem[];
@@ -31,6 +34,13 @@ export const COMPARISONS: Record<string, ComparisonConfig> = {
     h1: "OfficeKit HR as a greytHR alternative",
     intro:
       "Teams evaluating greytHR often need stronger GCC payroll, WPS support, or AI-assisted workflows. This page summarizes factual differences to help HR and IT leaders shortlist vendors.",
+    directAnswer:
+      "OfficeKit HR is a greytHR alternative for teams that need India and GCC payroll on one HRMS, built-in UAE WPS workflows, AI-assisted HR automation, and Arabic/English employee self-service alongside Indian statutory payroll.",
+    definition: {
+      term: "greytHR alternative",
+      meaning:
+        "An HRMS vendor evaluated when greytHR lacks required GCC payroll, WPS depth, or unified modules for your operating regions.",
+    },
     rows: [
       {
         aspect: "Primary regions",

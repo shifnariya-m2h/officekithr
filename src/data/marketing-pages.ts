@@ -13,6 +13,8 @@ export type MarketingPageConfig = {
   metaDescription: string;
   h1: string;
   subtitle: string;
+  /** Optional hero background (defaults to shared HR banner). */
+  heroImage?: string;
   /** First paragraph — optimized for AI answer extraction */
   directAnswer: string;
   definition?: { term: string; meaning: string };

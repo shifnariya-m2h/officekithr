@@ -6,6 +6,8 @@ import { GEO_LANDINGS } from "@/data/geo-landings";
 import { GeoFaqSection } from "@/components/geo/GeoFaqSection";
 import { AiFactGrid } from "@/components/geo/AiContentBlock";
 import { RelatedLinks } from "@/components/geo/RelatedLinks";
+import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
+import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { breadcrumbSchema } from "@/seo/schema";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
@@ -34,32 +36,27 @@ const GeoLandingPage = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
 
-        <header className="pt-36 pb-16 bg-gradient-subtle">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <p className="text-sm font-medium text-primary mb-3">OfficeKit HR Solutions</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-6">
-              {page.h1}
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              {page.subtitle}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact">
-                <Button className="btn-cta h-11 group">
-                  Book a demo
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-                </Button>
-              </Link>
-              <Link to="/pricing">
-                <Button variant="outline" className="h-11">
-                  View pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </header>
+        <SeoHeroBanner
+          eyebrow="OfficeKit HR Solutions"
+          title={page.h1}
+          subtitle={page.subtitle}
+        >
+          <Button asChild className="btn-cta h-11 group">
+            <Link to="/contact">
+              Book a demo
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="h-11">
+            <Link to="/pricing">View pricing</Link>
+          </Button>
+        </SeoHeroBanner>
 
-        <section className="py-16 bg-background" aria-labelledby="facts-heading">
+        <div className="container mx-auto px-4 max-w-4xl py-12 md:py-16">
+          <DirectAnswerBlock answer={page.directAnswer} definition={page.definition} />
+        </div>
+
+        <section className="py-12 bg-background" aria-labelledby="facts-heading">
           <div className="container mx-auto px-4 max-w-5xl">
             <h2 id="facts-heading" className="sr-only">
               Key facts
@@ -72,7 +69,7 @@ const GeoLandingPage = () => {
           <div className="container mx-auto px-4 max-w-4xl">
             <h2
               id="capabilities-heading"
-              className="text-2xl font-semibold text-foreground mb-8"
+              className="text-2xl font-semibold text-foreground mb-8 text-center"
             >
               Capabilities
             </h2>
@@ -80,7 +77,7 @@ const GeoLandingPage = () => {
               {page.capabilities.map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 items-start text-muted-foreground"
+                  className="flex gap-3 items-start text-muted-foreground rounded-lg border bg-card p-4"
                 >
                   <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" aria-hidden />
                   <span>{item}</span>

@@ -6,7 +6,17 @@
 npm run build
 ```
 
-`npm run build` installs Playwright’s Chromium binary (needed for prerender). On CI (e.g. Cloudflare Pages), ensure the build command is `npm run build`, not `vite build` alone.
+`npm run build` uses Playwright Chromium for prerender (installed once via `postinstall` / `ensure-playwright.mjs`). On CI (e.g. Cloudflare Pages), use `npm run build`, not `vite build` alone.
+
+### Faster builds (~2 min vs ~5+ min)
+
+| Option | Command / env | Effect |
+|--------|----------------|--------|
+| **Parallel prerender** (default) | `npm run build` | 6 routes at a time (`PRERENDER_CONCURRENCY=8` optional) |
+| **Skip dynamic blog HTML** | `npm run build:fast` or `PRERENDER_BLOGS=0` | Prerender ~52 static URLs only; sitemap + `blog-seo-manifest.json` still list all posts |
+| **SPA only** | `npm run build:spa` | No Playwright step |
+
+On Cloudflare Pages → **Settings → Environment variables** → add `PRERENDER_BLOGS` = `0` and keep `npm run build` if deploy time is the bottleneck.
 
 This generates:
 

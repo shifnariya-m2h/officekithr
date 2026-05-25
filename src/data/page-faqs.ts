@@ -64,6 +64,8 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
     ],
   },
   "/features/recruitment-management": {
+    summary:
+      "OfficeKit HR recruitment management covers applicant tracking, job posts, interview scheduling, offers, and digital onboarding linked to core HR records.",
     faqs: [
       {
         question: "Does OfficeKit include applicant tracking?",

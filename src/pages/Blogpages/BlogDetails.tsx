@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { getPostBySlug } from "@/services/blogService";
 import { PageJsonLd } from "@/components/PageJsonLd";
-import { usePageSeo } from "@/seo/SeoContext";
+import { usePageSeo, useSeoContext } from "@/seo/SeoContext";
 import { articleSchema, breadcrumbSchema } from "@/seo/schema";
 import { absoluteUrl, SITE } from "@/seo/site-config";
 import BackToBlog from "@/components/BackToBlog";
@@ -15,8 +15,10 @@ import BlogActions from "@/components/BlogActions";
 
 export default function BlogDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { blogManifest } = useSeoContext();
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const manifestEntry = slug ? blogManifest[slug] : undefined;
 
   useEffect(() => {
     if (!slug) return;
@@ -44,6 +46,7 @@ export default function BlogDetail() {
   const seoConfig = useMemo(() => {
     const path = slug ? `/blog/${slug}` : "/resources/blogs";
     if (loading) {
+      if (manifestEntry) return null;
       return {
         path,
         title: "Loading… | OfficeKit HR Blog",
@@ -65,7 +68,7 @@ export default function BlogDetail() {
       type: "article" as const,
       ogImage: post.image,
     };
-  }, [slug, loading, post, excerpt]);
+  }, [slug, loading, post, excerpt, manifestEntry]);
 
   usePageSeo(seoConfig);
 
