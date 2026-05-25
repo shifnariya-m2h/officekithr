@@ -21,6 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import {
   Navbar,
   NavBody,
@@ -111,7 +112,7 @@ const Navigation = () => {
       name: language === 'ar' ? 'إدارة الموظفين' : 'Employee Management', 
       nameEn: 'Employee Management',
       nameAr: 'إدارة الموظفين',
-      href: "/features/employe-managment", 
+      href: "/features/employee-management", 
       icon: IdCard, 
       description: language === 'ar' ? 'جميع بيانات الموظفين، موحدة.' : 'All employee data, unified.' 
     },
@@ -266,7 +267,7 @@ const Navigation = () => {
             <div className="pointer-events-auto">
               <DropdownMenuTrigger asChild>
                 <button 
-                  className={`nav-link flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap`}
+                  className={`nav-menu-trigger flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap dark:text-neutral-300 dark:hover:bg-neutral-800`}
                   onBlur={(e) => e.currentTarget.blur()}
                   aria-label="Language menu"
                 >
@@ -315,7 +316,7 @@ const Navigation = () => {
             >
               <DropdownMenuTrigger asChild>
                 <button 
-                  className={`nav-link flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap`}
+                  className={`nav-menu-trigger flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap dark:text-neutral-300 dark:hover:bg-neutral-800`}
                   onBlur={(e) => e.currentTarget.blur()}
                   aria-label={language === 'ar' ? 'قائمة الميزات' : 'Features menu'}
                   aria-expanded={featuresOpen}
@@ -378,7 +379,7 @@ const Navigation = () => {
             >
               <DropdownMenuTrigger asChild>
                 <button 
-                  className={`nav-link flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 rounded-full border-none bg-transparent cursor-pointer px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap`}
+                  className={`nav-menu-trigger flex items-center ${isRTL ? 'space-x-reverse' : 'space-x-1'} px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap dark:text-neutral-300 dark:hover:bg-neutral-800`}
                   onBlur={(e) => e.currentTarget.blur()}
                   aria-label={language === 'ar' ? 'قائمة الموارد' : 'Resources menu'}
                   aria-expanded={resourcesOpen}
@@ -454,7 +455,7 @@ const Navigation = () => {
             className="bg-[#25D366] rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform hover:scale-110 active:scale-95 w-9 h-9 flex-shrink-0"
             aria-label="WhatsApp"
           >
-            <i className="bi bi-whatsapp text-white text-[20px]"></i>
+            <WhatsAppIcon size={20} />
           </button>
 
           {/* Contact Button */}
@@ -479,7 +480,7 @@ const Navigation = () => {
               className="bg-[#25D366] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95 w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0"
               aria-label="WhatsApp"
             >
-              <i className="bi bi-whatsapp text-white text-[18px] sm:text-[20px]"></i>
+              <WhatsAppIcon size={18} />
             </button>
             <div data-hamburger>
               <MobileNavToggle

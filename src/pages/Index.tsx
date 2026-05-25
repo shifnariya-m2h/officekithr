@@ -11,7 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import MobileApp from "@/components/MobileApp";
- 
+import { HomeFaqSchema } from "@/components/HomeFaqSchema";
 
 const Index = () => {
   useEffect(() => {
@@ -35,7 +35,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <HomeFaqSchema />
       <Navigation />
+      <main id="main-content">
       <HeroSection />
       <TrustedCompanies />
       <WhyOfficeKit />
@@ -46,8 +48,8 @@ const Index = () => {
       {/* <MobileAppSection /> */}
       <TestimonialsSection />
       <ContactSection />
+      </main>
       <Footer />
-  
     </div>
   );
 };

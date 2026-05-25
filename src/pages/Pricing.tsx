@@ -72,30 +72,6 @@ const Pricing = () => {
       notIncluded: []
     }
   ];
-  const faqs = [
-    {
-      question: "Can I customize OfficeKit HR to fit my company’s needs?",
-      answer: "Yes, OfficeKit HR is fully configurable. You can select modules and features that best match your HR requirements."
-    },
-    {
-      question: "Do you offer both cloud and on-premise deployment?",
-      answer: "Absolutely. We support cloud, on-premise, and hybrid models depending on your organization’s preference."
-    },
-    {
-      question: "Is pricing based on the number of employees?",
-      answer: "Yes, pricing is flexible and typically based on user count and selected modules, ensuring you pay only for what you use."
-    },
-    {
-      question: "Do you provide support and training?",
-      answer: "Yes, we provide onboarding support, training sessions, and ongoing customer assistance to ensure smooth adoption."
-    },
-    {
-      question: "Is there a free trial or demo available?",
-      answer: "Yes, you can schedule a free demo to experience how OfficeKit HR can work for your business."
-    }
-  ];
-
-
   return (
     <div className="min-h-screen bg-background"
 
@@ -105,7 +81,7 @@ const Pricing = () => {
       {/* Hero Section */}
       <section className="pt-44 pb-20 bg-gradient-subtle bg-cover bg-center"
         style={{
-          backgroundImage: "url('/RecruitmentManagement2.png')",
+          backgroundImage: "url('/RecruitmentManagement2.jpg')",
         }}
       >
         <div className="container mx-auto px-4">
@@ -168,24 +144,6 @@ const Pricing = () => {
         </div>
       </section>
 
-
-      {/* FAQ */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-[44px] font-semibold text-foreground mb-6">Pricing <span className="gradient-text" >FAQ</span></h2>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-card rounded-xl p-6 border border-border">
-                <h3 className="font-semibold text-foreground mb-3">{faq.question}</h3>
-                <p className="text-muted-foreground">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>

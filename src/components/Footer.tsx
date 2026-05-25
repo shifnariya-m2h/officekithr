@@ -20,6 +20,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import { PreFooterGeo } from "@/components/geo/PreFooterGeo";
+import { SITE } from "@/seo/site-config";
+
+const solutionsLinks = [
+  { name: "HRMS software India", href: "/solutions/best-hrms-software-india" },
+  { name: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+  { name: "WPS compliance", href: "/solutions/wps-compliance-software" },
+  { name: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+  { name: "greytHR alternative", href: "/compare/greythr-alternative" },
+];
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -48,6 +58,8 @@ const Footer = () => {
   };
 
   return (
+    <>
+    <PreFooterGeo />
     <footer className="bg-gray-900 pt-p-tursioury pb-[32px] text-gray-100">
 
       {/* Main Footer */}
@@ -71,14 +83,14 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
             {/* Social Icons */}
             <div className="flex space-x-2">
-              <a href="https://www.linkedin.com/company/officekithr/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+              <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
 
-              <a href="https://www.facebook.com/officekithr/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+              <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="https://www.instagram.com/officekit_hr/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
+              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="https://www.youtube.com/channel/UC8zUtDkAkZUkOl0TkMhQpNw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
@@ -110,7 +122,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 opacity-50 my-6"></div>
 
 
-        <div className="grid lg:grid-cols-5 gap-8 mt-12 mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 mt-12 mb-20">
 
 
           {/* Company Links */}
@@ -182,6 +194,33 @@ const Footer = () => {
                   {link.name}
                 </Link>
               ))}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <h3 className="text-lg font-semibold text-white">Solutions</h3>
+            <div className="space-y-3">
+              <Link
+                to="/solutions"
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                All solutions
+              </Link>
+              {solutionsLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="block text-gray-300 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link
+                to="/compare"
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                Compare HRMS
+              </Link>
             </div>
           </div>
 
@@ -299,6 +338,7 @@ const Footer = () => {
 
       {/* </div> */}
     </footer>
+    </>
   );
 };
 

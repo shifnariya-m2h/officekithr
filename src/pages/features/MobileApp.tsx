@@ -76,16 +76,15 @@ const MobileApp = () => {
       <section
         className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
         style={{
-          backgroundImage: "url('/RecruitmentManagement2.png')",
+          backgroundImage: "url('/RecruitmentManagement2.jpg')",
         }}
       >
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-2xl font-semibold text-foreground leading-tight mb-3">
+              <p className="text-2xl font-semibold text-foreground leading-tight mb-3">
                 Mobile App
-
-              </h1>
+              </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-snug mb-6" style={{ lineHeight: 1.2 }}>
                 Missed Approvals and HR Delays? <span className="gradient-text">Stay Connected, Wherever You Are. </span>
 

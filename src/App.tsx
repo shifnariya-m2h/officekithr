@@ -1,171 +1,243 @@
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import AboutUs from "./pages/AboutUs";
-import Pricing from "./pages/Pricing";
-import Contact from "./pages/Contact";
-import RecruitmentManagement from "./pages/features/RecruitmentManagement";
-import AttendanceAndLeave from "./pages/features/AttendanceAndLeave";
-import PayrollAndCompliance from "./pages/features/PayrollAndCompliance";
-import PerformanceAppraisal from "./pages/features/PerformanceAppraisal";
-import SelfServicePortal from "./pages/features/SelfServicePortal";
-import ExitManagement from "./pages/features/ExitManagement";
-import MobileApp from "./pages/features/MobileApp";
-import Employeemanagment from "./pages/features/EmployementManagment"
-import OkaiLens from "./pages/face-lens"
-import Chatbot from "./pages/AiPilot"
-
-import Blog from "./pages/resources/Blog";
-import UseCases from "./pages/resources/UseCases";
-import Community from "./pages/resources/Community";
 import ScrollToTop from "./components/ScrollToTop";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsAndCondition from "./pages/TermsandConditions";
-import Blog1 from './pages/Blogpages/HrStrategies'
-import NewPerfomenceBlog from './pages/Blogpages/NewPerfomenceBlog'
-import StreamliningPayroll from './pages/Blogpages/StreamliningPayroll'
-import MobileAppUpdates from './pages/Blogpages/MobileAppUpdates'
-// import { DemoPopup } from "@/components/DemoPopup"
-import NavigateHybrid from "./pages/Blogpages/NavigateHybrid";
-import QualityQuatity from "./pages/Blogpages/QualityQuatity";
-import WhyHrms from "./pages/Blogpages/WhyHrms";
-import AIPoweredFeatures from "./pages/Blogpages/AIPoweredFeatures";
-import HRMSSystem from "./pages/Blogpages/HRMSSystem";
-import RealWorldDEI from "./pages/Blogpages/RealWorldDEI";
-import BlogDetail from "./pages/Blogpages/BlogDetails";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
-// import WhatsAppButton from "./hooks/WhatsAppButton";
 import ChatModal from "./AiAgent";
-import UaeLandingpage from './UaeLandingPage';
-import { HRPopup } from "./components/HRPopup";
+import { SeoProvider } from "@/seo/SeoContext";
+import { SeoHead } from "@/seo/SeoHead";
+import { DeferredScripts } from "@/components/DeferredScripts";
+import { CookieConsent } from "@/components/CookieConsent";
+import { SkipLink } from "@/components/SkipLink";
+import { LegacyRedirect } from "@/components/LegacyRedirect";
+import { MARKETING_PAGES } from "@/data/marketing-pages";
 
-
-// import Text from './pages/test'
-
-// import BotButton from "./components/BotButton";
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Contact = lazy(() => import("./pages/Contact"));
+const RecruitmentManagement = lazy(() => import("./pages/features/RecruitmentManagement"));
+const AttendanceAndLeave = lazy(() => import("./pages/features/AttendanceAndLeave"));
+const PayrollAndCompliance = lazy(() => import("./pages/features/PayrollAndCompliance"));
+const PerformanceAppraisal = lazy(() => import("./pages/features/PerformanceAppraisal"));
+const SelfServicePortal = lazy(() => import("./pages/features/SelfServicePortal"));
+const ExitManagement = lazy(() => import("./pages/features/ExitManagement"));
+const MobileApp = lazy(() => import("./pages/features/MobileApp"));
+const Employeemanagment = lazy(() => import("./pages/features/EmployementManagment"));
+const OkaiLens = lazy(() => import("./pages/face-lens"));
+const Chatbot = lazy(() => import("./pages/AiPilot"));
+const Blog = lazy(() => import("./pages/resources/Blog"));
+const UseCases = lazy(() => import("./pages/resources/UseCases"));
+const Community = lazy(() => import("./pages/resources/Community"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsAndCondition = lazy(() => import("./pages/TermsandConditions"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const Blog1 = lazy(() => import("./pages/Blogpages/HrStrategies"));
+const NewPerfomenceBlog = lazy(() => import("./pages/Blogpages/NewPerfomenceBlog"));
+const StreamliningPayroll = lazy(() => import("./pages/Blogpages/StreamliningPayroll"));
+const MobileAppUpdates = lazy(() => import("./pages/Blogpages/MobileAppUpdates"));
+const NavigateHybrid = lazy(() => import("./pages/Blogpages/NavigateHybrid"));
+const QualityQuatity = lazy(() => import("./pages/Blogpages/QualityQuatity"));
+const WhyHrms = lazy(() => import("./pages/Blogpages/WhyHrms"));
+const AIPoweredFeatures = lazy(() => import("./pages/Blogpages/AIPoweredFeatures"));
+const HRMSSystem = lazy(() => import("./pages/Blogpages/HRMSSystem"));
+const RealWorldDEI = lazy(() => import("./pages/Blogpages/RealWorldDEI"));
+const BlogDetail = lazy(() => import("./pages/Blogpages/BlogDetails"));
+const UaeLandingpage = lazy(() => import("./UaeLandingPage"));
+const SolutionsHub = lazy(() => import("./pages/geo/SolutionsHub"));
+const GeoLandingPage = lazy(() => import("./pages/geo/GeoLandingPage"));
+const CompareHub = lazy(() => import("./pages/compare/CompareHub"));
+const ComparisonPage = lazy(() => import("./pages/compare/ComparisonPage"));
+const MarketingLandingPage = lazy(
+  () => import("./pages/marketing/MarketingLandingPage")
+);
+const HRPopup = lazy(() =>
+  import("./components/HRPopup").then((m) => ({ default: m.HRPopup }))
+);
 
 const queryClient = new QueryClient();
-
-const POPUP_AFTER_SCROLL_MS = 200;
 const POPUP_SESSION_KEY = "ok_hr_popup_session_shown";
+const POPUP_DELAY_MS = 12000;
 
-// Component to determine region based on route
+function PageLoader() {
+  return (
+    <div
+      className="min-h-[40vh] flex items-center justify-center text-muted-foreground"
+      role="status"
+      aria-live="polite"
+    >
+      Loading…
+    </div>
+  );
+}
+
 const AppRoutes = () => {
   const location = useLocation();
-  const isUaeRoute = location.pathname.includes('/ae') || location.pathname.startsWith('/uae');
+  const isUaeRoute =
+    location.pathname.includes("/ae") ||
+    location.pathname.startsWith("/uae");
+  const isHome = location.pathname === "/";
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-useEffect(() => {
-  if (typeof window === "undefined" || isPopupOpen) return;
+  useEffect(() => {
+    if (typeof window === "undefined" || !isHome || isPopupOpen) return;
 
-  const sessionShown =
-    sessionStorage.getItem(POPUP_SESSION_KEY) === "true";
-  if (sessionShown) return;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reducedMotion) return;
 
-  let timerId: number;
+    const sessionShown =
+      sessionStorage.getItem(POPUP_SESSION_KEY) === "true";
+    if (sessionShown) return;
 
-  // Show after 3 seconds anyway
-  timerId = window.setTimeout(() => {
-    setIsPopupOpen(true);
-  }, 3000);
+    const timerId = window.setTimeout(() => {
+      setIsPopupOpen(true);
+    }, POPUP_DELAY_MS);
 
-  // Or show on first scroll
-  const handleScroll = () => {
-    setIsPopupOpen(true);
-    window.removeEventListener("scroll", handleScroll);
-    clearTimeout(timerId);
-  };
-
-  window.addEventListener("scroll", handleScroll);
-
-  return () => {
-    clearTimeout(timerId);
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [isPopupOpen, location.pathname]);
-
+    return () => clearTimeout(timerId);
+  }, [isPopupOpen, isHome, location.pathname]);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !isPopupOpen) {
-      return;
+    if (isPopupOpen) {
+      sessionStorage.setItem(POPUP_SESSION_KEY, "true");
     }
-
-    sessionStorage.setItem(POPUP_SESSION_KEY, "true");
   }, [isPopupOpen]);
-  
+
   return (
-    <LanguageProvider defaultLanguage="en" defaultRegion={isUaeRoute ? 'uae' : 'india'}>
-      <GoogleAdsWrapper /> 
+    <LanguageProvider
+      defaultLanguage="en"
+      defaultRegion={isUaeRoute ? "uae" : "india"}
+    >
+      <SkipLink />
+      <SeoHead />
+      <CookieConsent />
+      <DeferredScripts />
+      <GoogleAdsWrapper />
       <ChatModal />
-      {isPopupOpen && <HRPopup onClose={() => setIsPopupOpen(false)} />}
+      {isPopupOpen && (
+        <Suspense fallback={null}>
+          <HRPopup onClose={() => setIsPopupOpen(false)} />
+        </Suspense>
+      )}
       <ScrollToTop />
-      <Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* Feature Pages */}
-          <Route path="/features/recruitment-management" element={<RecruitmentManagement />} />
-          <Route path="/features/attendance-and-leave" element={<AttendanceAndLeave />} />
-          <Route path="/features/payroll-and-compliance" element={<PayrollAndCompliance />} />
-          <Route path="/features/performance-appraisal" element={<PerformanceAppraisal />} />
-          <Route path="/features/self-service-portal" element={<SelfServicePortal />} />
+          <Route
+            path="/features/recruitment-management"
+            element={<RecruitmentManagement />}
+          />
+          <Route
+            path="/features/attendance-and-leave"
+            element={<AttendanceAndLeave />}
+          />
+          <Route
+            path="/features/payroll-and-compliance"
+            element={<PayrollAndCompliance />}
+          />
+          <Route
+            path="/features/performance-appraisal"
+            element={<PerformanceAppraisal />}
+          />
+          <Route
+            path="/features/self-service-portal"
+            element={<SelfServicePortal />}
+          />
           <Route path="/features/exit-management" element={<ExitManagement />} />
           <Route path="/features/mobile-app" element={<MobileApp />} />
-          <Route path="/features/employe-managment" element={<Employeemanagment />} />
+          <Route
+            path="/features/employee-management"
+            element={<Employeemanagment />}
+          />
+          <Route
+            path="/features/employe-managment"
+            element={
+              <LegacyRedirect to="/features/employee-management" />
+            }
+          />
           <Route path="/features/face-kit" element={<OkaiLens />} />
           <Route path="/features/ai-pilot" element={<Chatbot />} />
 
-
-          {/* Resource Pages */}
           <Route path="/resources/blogs" element={<Blog />} />
           <Route path="/resources/use-cases" element={<UseCases />} />
           <Route path="/resources/community" element={<Community />} />
 
-          {/* policies */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
 
-          {/* blogs */}
           <Route path="/resources/blogs/hrblogs" element={<Blog1 />} />
-          <Route path="/resources/blogs/newperfomenceblog" element={<NewPerfomenceBlog />} />
-          <Route path="/resources/blogs/streamliningpayroll" element={<StreamliningPayroll />} />
-          <Route path="/resources/blogs/mobileappupdates" element={<MobileAppUpdates />} />
-          <Route path="/resources/blogs/navigatehybrid" element={<NavigateHybrid />} />
-          <Route path="/resources/blogs/qualityvsquatity" element={<QualityQuatity />} />
+          <Route
+            path="/resources/blogs/performance-management-tools"
+            element={<NewPerfomenceBlog />}
+          />
+          <Route
+            path="/resources/blogs/newperfomenceblog"
+            element={
+              <LegacyRedirect to="/resources/blogs/performance-management-tools" />
+            }
+          />
+          <Route
+            path="/resources/blogs/streamliningpayroll"
+            element={<StreamliningPayroll />}
+          />
+          <Route
+            path="/resources/blogs/mobileappupdates"
+            element={<MobileAppUpdates />}
+          />
+          <Route
+            path="/resources/blogs/navigatehybrid"
+            element={<NavigateHybrid />}
+          />
+          <Route
+            path="/resources/blogs/quality-vs-quantity-hiring"
+            element={<QualityQuatity />}
+          />
+          <Route
+            path="/resources/blogs/qualityvsquatity"
+            element={
+              <LegacyRedirect to="/resources/blogs/quality-vs-quantity-hiring" />
+            }
+          />
           <Route path="/resources/blogs/whyhrms" element={<WhyHrms />} />
           <Route path="/resources/blogs/aipowered" element={<AIPoweredFeatures />} />
           <Route path="/resources/blogs/hrmssystem" element={<HRMSSystem />} />
           <Route path="/resources/blogs/realworld-dei" element={<RealWorldDEI />} />
 
+          {Object.keys(MARKETING_PAGES).map((slug) => (
+            <Route
+              key={slug}
+              path={`/${slug}`}
+              element={<MarketingLandingPage />}
+            />
+          ))}
 
-          {/* uae page */}
+          <Route path="/solutions" element={<SolutionsHub />} />
+          <Route path="/solutions/:slug" element={<GeoLandingPage />} />
+          <Route path="/compare" element={<CompareHub />} />
+          <Route path="/compare/:slug" element={<ComparisonPage />} />
+
           <Route path="/ae" element={<UaeLandingpage />} />
-
-
-
-          {/* <Route path="/test" element={<Text />} /> */}
-
-
-          {/* blogs  */}
+          <Route path="/uae" element={<LegacyRedirect to="/ae" />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
 
-
-
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </LanguageProvider>
-    );
+      </Suspense>
+    </LanguageProvider>
+  );
 };
 
 const App = () => (
@@ -191,7 +263,9 @@ const App = () => (
           v7_relativeSplatPath: true,
         }}
       >
-        <AppRoutes />
+        <SeoProvider>
+          <AppRoutes />
+        </SeoProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

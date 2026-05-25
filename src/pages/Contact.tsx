@@ -21,7 +21,7 @@ const Contact = () => {
         </div> */}
       {/* </section> */}
 
-      <ContactSection />
+      <ContactSection headingLevel="h1" />
 
       <Footer />
     </div>

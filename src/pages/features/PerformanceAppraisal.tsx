@@ -66,7 +66,7 @@ const PerformanceAppraisal = () => {
       <section
         className="pt-40 pb-20 bg-gradient-subtle bg-cover bg-center"
         style={{
-          backgroundImage: "url('/RecruitmentManagement2.png')",
+          backgroundImage: "url('/RecruitmentManagement2.jpg')",
         }}
       >
         <div className="container mx-auto px-4">

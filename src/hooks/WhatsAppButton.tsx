@@ -1,35 +1,23 @@
-import React from "react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 const WhatsAppButton = () => {
-  const phone = "917994470903"; 
+  const phone = "917994470903";
   const message = "Hi";
 
   const openWhatsApp = () => {
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <div
+    <button
+      type="button"
       onClick={openWhatsApp}
-      style={{
-        position: "fixed",
-        bottom: "20px",
-        right: "90px", 
-        cursor: "pointer",
-        backgroundColor: "#25D366",
-        width: "60px",
-        height: "60px",
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-        zIndex: 9998,  
-      }}
+      aria-label="Chat on WhatsApp"
+      className="fixed bottom-5 right-[90px] z-[9998] flex h-[60px] w-[60px] cursor-pointer items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_8px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
     >
-      <i className="bi bi-whatsapp" style={{ fontSize: 34, color: "white" }}></i>
-    </div>
+      <WhatsAppIcon size={34} />
+    </button>
   );
 };
 

@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, User, ArrowRight, Tag } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { getAllPosts } from "@/services/blogService";
 import { useEffect, useState } from "react";
@@ -14,18 +14,22 @@ import { slugify } from "@/utils/slugify";
 const Blog = () => {
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState("All Posts");
-
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-const categories = [
-    { label: "All Posts", link: "/resources/blogs" },
-    { label: "HR Best Practices", link: "/resources/blogs/hr-best-practices" },
-    { label: "Product Updates", link: "/resources/blogs/product-updates" },
-    { label: "Compliance News", link: "/resources/blogs/compliance-news" },
-    { label: "Leadership & Culture", link: "/resources/blogs/leadership-culture" },
-    { label: "Remote Work", link: "/resources/blogs/remote-work" },
+  const categories = [
+    { label: "All Posts", param: "" },
+    { label: "HR Best Practices", param: "HR Best Practices" },
+    { label: "Product Updates", param: "Product Updates" },
+    { label: "Compliance News", param: "Compliance News" },
+    { label: "Leadership & Culture", param: "Leadership & Culture" },
+    { label: "Remote Work", param: "Remote Work" },
   ];
+
+  const categoryParam = searchParams.get("category") || "";
+  const activeCategory =
+    categories.find((c) => c.param === categoryParam)?.label ?? "All Posts";
+
   // Hardcoded fallback posts
   const fallbackPosts: BlogPost[] = [
     {
@@ -48,7 +52,7 @@ const categories = [
       updates: "Product Updates",
       readTime: "3 min read",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-      link: "/resources/blogs/newperfomenceblog"
+      link: "/resources/blogs/performance-management-tools"
     },
     {
       _id: "3",
@@ -92,7 +96,7 @@ const categories = [
       updates: "Product Updates",
       readTime: "3 min read",
       image: "https://media.istockphoto.com/id/2124660831/photo/human-resources-management-concept-headhunters-recruit-employees-using-candidate-resumes.jpg?s=612x612&w=0&k=20&c=e8gfkrHenE0WfD8QD9_Mxd-FfWEBs5-Bt2THMrWvYaM=",
-      link: "/resources/blogs/qualityvsquatity"
+      link: "/resources/blogs/quality-vs-quantity-hiring"
     },
     {
       _id: "7",
@@ -144,7 +148,6 @@ const categories = [
     const fetchPosts = async () => {
       try {
         const apiPosts = await getAllPosts();
-        console.log("Fetched API posts:", apiPosts);
 
         const normalizedApiPosts = (apiPosts || []).map((post: any) => {
           // Generate slug from title if not provided
@@ -228,7 +231,7 @@ const featuredPost = filteredPosts[0];
         {/* Hero Section */}
         <section
           className="pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 lg:pb-10 bg-gradient-subtle bg-cover bg-center"
-          style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
+          style={{ backgroundImage: "url('/RecruitmentManagement2.jpg')" }}
         >
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center max-w-4xl mx-auto">
@@ -245,7 +248,13 @@ const featuredPost = filteredPosts[0];
                   key={cat.label}
                   variant={activeCategory === cat.label ? "default" : "outline"}
                   className="rounded-full text-xs sm:text-sm"
-                  onClick={() => setActiveCategory(cat.label)}
+                  onClick={() => {
+                    if (cat.param) {
+                      setSearchParams({ category: cat.param });
+                    } else {
+                      setSearchParams({});
+                    }
+                  }}
                 >
                   {cat.label}
                 </Button>

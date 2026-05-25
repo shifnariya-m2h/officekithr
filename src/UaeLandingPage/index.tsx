@@ -1,4 +1,5 @@
 import React from "react";
+import { UaeFonts } from "@/components/UaeFonts";
 import Navbar from "./Navigation";
 import Hero from "./Hero";
 import PainPoints from "./PainPoints";
@@ -14,6 +15,7 @@ const UaeLandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50/30">
+      <UaeFonts />
       <Navbar />
 
       <div className="relative isolate overflow-hidden">

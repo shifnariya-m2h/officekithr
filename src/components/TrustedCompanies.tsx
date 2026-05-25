@@ -11,7 +11,6 @@ const TrustedCompaniesShowcase = () => {
     "/company-logos/chavara.webp",
     "/company-logos/clikon.webp",
     "/company-logos/clubsulaimani.webp",
-    // "/company-logos/crowe.webp",
     "/company-logos/empire.webp",
     "/company-logos/kvn.webp",
     "/company-logos/landmark.webp",
@@ -33,107 +32,71 @@ const TrustedCompaniesShowcase = () => {
     "/company-logos/yesbharath.webp",
   ];
 
-  // Split into 3 rows
   const third = Math.ceil(logos.length / 3);
-  const row1 = logos.slice(0, third);
-  const row2 = logos.slice(third, third * 2);
-  const row3 = logos.slice(third * 2);
+  const chunk1 = logos.slice(0, third);
+  const chunk2 = logos.slice(third, third * 2);
+  const chunk3 = logos.slice(third * 2);
 
-  // ✅ ONLY duplicate twice (important)
-  const row1Repeated = [...row1, ...row1];
-  const row2Repeated = [...row2, ...row2];
-  const row3Repeated = [...row3, ...row3];
+  const duplicate = (arr: string[]) => [...arr, ...arr];
+  const row1 = duplicate(chunk1);
+  const row2 = duplicate(chunk2);
+  const row3 = duplicate(chunk3);
 
-  const LogoCard = ({ src, index }: { src: string; index: number }) => (
-    <div className="relative group flex items-center justify-center w-40 h-24 sm:w-48 sm:h-28 lg:w-56 lg:h-32 rounded-2xl bg-white shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 border border-transparent hover:border-neutral-100 mx-3 sm:mx-4 flex-shrink-0 p-3 sm:p-4 cursor-pointer">
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 blur-xl transition-all duration-500 rounded-2xl" />
+  const LogoItem = ({ src, label }: { src: string; label: string }) => (
+    <div className="flex h-16 w-36 sm:h-20 sm:w-44 md:h-24 md:w-52 flex-shrink-0 items-center justify-center px-1">
       <img
         src={src}
-        alt={`Trusted Company ${index + 1}`}
-        className="relative z-10 w-auto h-12 sm:h-16 lg:h-20 object-contain"
+        alt={label}
+        className="h-10 w-auto max-w-[92%] object-contain sm:h-12 md:h-14"
         loading="lazy"
+        decoding="async"
       />
     </div>
   );
 
   return (
-    <section className="py-20 lg:py-28 bg-background relative overflow-hidden">
-
-      {/* ✅ FIXED CSS */}
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        .marquee {
-          animation: marquee 22s linear infinite;
-          display: flex;
-          width: max-content;
-          will-change: transform;
-        }
-
-        .marquee-slow {
-          animation: marquee 30s linear infinite reverse;
-        }
-
-        .marquee-medium {
-          animation: marquee 26s linear infinite;
-        }
-
-        .marquee-track:hover .marquee {
-          animation-play-state: paused;
-        }
-      `}</style>
-
+    <section
+      className="relative overflow-hidden bg-background py-12 lg:py-16"
+      aria-labelledby="trusted-companies-heading"
+    >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h1 className="text-2xl lg:text-2xl font-semibold text-hr-text-primary">
-            Trusted by Leading Companies{" "}
-            <span className="leading-snug gradient-text text-4xl font-semibold">
-              Across the Globe
-            </span>
-          </h1>
+        <div className="mb-6 text-center lg:mb-8">
+          <h2
+            id="trusted-companies-heading"
+            className="text-lg font-semibold text-foreground sm:text-xl lg:text-2xl"
+          >
+            Trusted by leading companies across the globe
+          </h2>
         </div>
       </div>
 
-      {/* Fade edges */}
       <div className="relative">
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-24 lg:w-40 z-10 bg-gradient-to-r from-background to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-24 lg:w-40 z-10 bg-gradient-to-l from-background to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-background to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-background to-transparent sm:w-20" />
 
-        {/* Row 1 */}
-        <div className="marquee-track overflow-hidden mb-10 p-2">
-          <div className="marquee">
-            {row1Repeated.map((src, i) => (
-              <LogoCard key={`r1-${i}`} src={src} index={i % row1.length} />
+        <div className="marquee-track mb-4 overflow-hidden sm:mb-5">
+          <div className="animate-marquee flex w-max items-center">
+            {row1.map((src, i) => (
+              <LogoItem key={`r1-${src}-${i}`} src={src} label={`Partner ${i + 1}`} />
             ))}
           </div>
         </div>
 
-        {/* Row 2 (reverse) */}
-        <div className="marquee-track overflow-hidden mb-10 p-2">
-          <div className="marquee marquee-slow">
-            {row2Repeated.map((src, i) => (
-              <LogoCard key={`r2-${i}`} src={src} index={i % row2.length} />
+        <div className="marquee-track mb-4 overflow-hidden sm:mb-5">
+          <div className="animate-marquee-reverse flex w-max items-center">
+            {row2.map((src, i) => (
+              <LogoItem key={`r2-${src}-${i}`} src={src} label={`Partner ${i + 1}`} />
             ))}
           </div>
         </div>
 
-        {/* Row 3 */}
-        <div className="marquee-track overflow-hidden p-2">
-          <div className="marquee marquee-medium">
-            {row3Repeated.map((src, i) => (
-              <LogoCard key={`r3-${i}`} src={src} index={i % row3.length} />
+        <div className="marquee-track overflow-hidden">
+          <div className="animate-marquee flex w-max items-center">
+            {row3.map((src, i) => (
+              <LogoItem key={`r3-${src}-${i}`} src={src} label={`Partner ${i + 1}`} />
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="text-center mt-14">
-        <p className="text-gray-600 text-sm lg:text-base font-medium">
-          Powering innovation for companies across industries
-        </p>
       </div>
     </section>
   );

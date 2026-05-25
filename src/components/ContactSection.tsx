@@ -6,8 +6,18 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Badge } from "./ui/badge";
-import { useToast } from "@/hooks/use-toast"
-const ContactSection = () => {
+import { useToast } from "@/hooks/use-toast";
+import { submitLead } from "@/lib/api/leads";
+import { trackDemoConversion } from "@/lib/analytics";
+import { SEO_ASSETS } from "@/lib/seo/assets";
+
+type ContactSectionProps = {
+  /** Use h1 only on /contact; homepage uses h2 to avoid duplicate H1s. */
+  headingLevel?: "h1" | "h2";
+};
+
+const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
+  const HeadingTag = headingLevel;
   const { toast } = useToast()
 
   const [formData, setFormData] = useState({
@@ -104,26 +114,10 @@ const ContactSection = () => {
       source: "Officekit-API Integration",
     };
 
-    const res = await fetch(
-      "https://app.syncoraai.com/api/leads/external",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-Key":
-            "sk_live_7a1MD0fWoiet_dMJVNfV1vFQFh5uVaO1YSLFpWHkmBgPw",
-        },
-        body: JSON.stringify(payload),
-      }
-    );
+    const res = await submitLead(payload);
 
     if (res.ok) {
-      // Google Ads Conversion
-      if (window.gtag) {
-        window.gtag("event", "conversion", {
-          send_to: "AW-17365780413/MAzACIaay74bEL2P09hA",
-        });
-      }
+      trackDemoConversion("contact_form");
 
       toast({
         title: "Success",
@@ -165,15 +159,15 @@ const ContactSection = () => {
       {/* 🔹 Top Section */}
       <section
         className="relative bg-cover bg-center py-28 text-center"
-        style={{ backgroundImage: "url('/RecruitmentManagement2.png')" }}
+        style={{ backgroundImage: `url('${SEO_ASSETS.sectionBg}')` }}
       >
         <div className="relative container mx-auto px-4">
           <Badge className="bg-white font-normal py-2 text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent">
             Contact Us
           </Badge>
-          <h2 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+          <HeadingTag className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
             Ready to Transform <span className="gradient-text">Your HR?</span>
-          </h2>
+          </HeadingTag>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Book a free personalized demo with our team and explore how
             OfficeKit can work for you.

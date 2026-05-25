@@ -1,14 +1,17 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import BackToBlog from "@/components/BackToBlog";
-import BlogActions from "@/components/BlogActions";
+import { StaticBlogHeader } from "@/components/StaticBlogHeader";
+import { StaticBlogShell } from "@/components/StaticBlogShell";
+import { STATIC_BLOG_POSTS } from "@/data/static-blog-posts";
+
+const meta = STATIC_BLOG_POSTS["/resources/blogs/aipowered"];
 
 export default function AIBlog() {
   return (
+    <StaticBlogShell meta={meta}>
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -16,26 +19,7 @@ export default function AIBlog() {
         <div className="container mx-auto px-4 max-w-4xl">
           <BackToBlog className="mb-10 mt-2" />
 
-          <header className="mb-8">
-            <Badge className="mb-4">AI in HRMS</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Why Embrace AI-Powered Features in HRMS?
-            </h1>
-
-            <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>Karthik</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>October 13, 2025</span>
-              </div>
-              <span>5 min read</span>
-            </div>
-
-            <BlogActions title="Why Embrace AI-Powered Features in HRMS?" />
-          </header>
+          <StaticBlogHeader meta={meta} />
 
           <div className="aspect-video rounded-lg mb-8 overflow-hidden">
             <img
@@ -166,5 +150,6 @@ export default function AIBlog() {
 
       <Footer />
     </div>
+    </StaticBlogShell>
   );
 }
