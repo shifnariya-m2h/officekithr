@@ -6,6 +6,8 @@
 npm run build
 ```
 
+`npm run build` installs Playwright’s Chromium binary (needed for prerender). On CI (e.g. Cloudflare Pages), ensure the build command is `npm run build`, not `vite build` alone.
+
 This generates:
 
 - `public/sitemap.xml` + `robots.txt`
