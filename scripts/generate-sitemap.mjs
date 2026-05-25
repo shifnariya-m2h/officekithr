@@ -152,11 +152,16 @@ function urlEntry(path, priority = "0.7", changefreq = "monthly") {
 const { paths: dynamicPaths, manifest } = await fetchDynamicBlogs();
 const allPaths = [...new Set([...STATIC_PATHS, ...dynamicPaths])];
 
-/** Set PRERENDER_BLOGS=0 on CI for faster builds (~2 min). Sitemap still lists all blog URLs. */
-const prerenderBlogs = process.env.PRERENDER_BLOGS !== "0";
-const prerenderPaths = prerenderBlogs
-  ? allPaths
-  : [...STATIC_PATHS];
+/**
+ * Prerender route list (separate from sitemap URL count).
+ * - PRERENDER_BLOGS=0 → static pages only (~52 routes, ~2 min)
+ * - On CI (Cloudflare/GitHub), blogs are skipped unless PRERENDER_BLOGS=1
+ */
+const onCi = Boolean(process.env.CI || process.env.CF_PAGES);
+const prerenderBlogs =
+  process.env.PRERENDER_BLOGS === "1" ||
+  (process.env.PRERENDER_BLOGS !== "0" && !onCi);
+const prerenderPaths = prerenderBlogs ? allPaths : [...STATIC_PATHS];
 
 const urls = allPaths
   .map((path) => {

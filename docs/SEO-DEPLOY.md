@@ -6,17 +6,18 @@
 npm run build
 ```
 
-`npm run build` uses Playwright Chromium for prerender (installed once via `postinstall` / `ensure-playwright.mjs`). On CI (e.g. Cloudflare Pages), use `npm run build`, not `vite build` alone.
+**Cloudflare / Netlify / GitHub CI:** `npm run build` **skips Playwright prerender** (fast ~2–3 min). Sitemap + `blog-seo-manifest.json` still generate. Set env `PRERENDER=1` only when you need static HTML files in `dist/`.
 
-### Faster builds (~2 min vs ~5+ min)
+**Local full SEO build:** `PRERENDER=1 npm run build` (installs Chromium via `ensure-playwright.mjs`).
 
-| Option | Command / env | Effect |
-|--------|----------------|--------|
-| **Parallel prerender** (default) | `npm run build` | 6 routes at a time (`PRERENDER_CONCURRENCY=8` optional) |
-| **Skip dynamic blog HTML** | `npm run build:fast` or `PRERENDER_BLOGS=0` | Prerender ~52 static URLs only; sitemap + `blog-seo-manifest.json` still list all posts |
-| **SPA only** | `npm run build:spa` | No Playwright step |
+| Command / env | Effect |
+|---------------|--------|
+| `npm run build` on CI | Sitemap + Vite only — **no hang, no Playwright** |
+| `PRERENDER=1` | Full prerender (local or CI) |
+| `PRERENDER_BLOGS=0` | Static routes only when prerender runs |
+| `npm run build:spa` | No sitemap script chain issues — sitemap + vite only |
 
-On Cloudflare Pages → **Settings → Environment variables** → add `PRERENDER_BLOGS` = `0` and keep `npm run build` if deploy time is the bottleneck.
+Build command on host must stay **`npm run build`** (runs `scripts/run-build.mjs`).
 
 This generates:
 

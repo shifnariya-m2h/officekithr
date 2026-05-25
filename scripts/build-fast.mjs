@@ -9,4 +9,5 @@ import { fileURLToPath } from "url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 process.env.PRERENDER_BLOGS = "0";
-execSync("npm run build", { stdio: "inherit", cwd: ROOT, env: process.env });
+process.env.PRERENDER = "1";
+execSync("node scripts/run-build.mjs", { stdio: "inherit", cwd: ROOT, env: process.env });
