@@ -9,7 +9,14 @@ export function CookieConsent() {
   useEffect(() => {
     const existing = getConsent();
     if (existing === "accepted") {
-      loadAnalytics();
+      const schedule =
+        "requestIdleCallback" in window
+          ? () =>
+              window.requestIdleCallback(() => loadAnalytics(), {
+                timeout: 5000,
+              })
+          : () => window.setTimeout(loadAnalytics, 3000);
+      schedule();
       return;
     }
     if (existing === "rejected") return;

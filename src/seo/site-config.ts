@@ -11,8 +11,8 @@ export const SITE = {
   twitter: "@officekit",
   email: "hello@officekithr.com",
   phone: "+91-7994154069",
-  logo: `${env.siteUrl}/NavLogo.png`,
-  ogImage: `${env.siteUrl}/ImageThumbnail2.png`,
+  logo: `${env.siteUrl}/NavLogo.webp`,
+  ogImage: `${env.siteUrl}/ImageThumbnail2.webp`,
   areasServed: ["IN", "AE", "KW", "SA", "QA"],
   social: {
     linkedin: "https://www.linkedin.com/company/officekithr/",

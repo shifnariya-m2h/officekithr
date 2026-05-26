@@ -15,7 +15,8 @@ export default defineConfig({
     },
   },
   build: {
-    target: "es2015",
+    target: "es2018",
+    cssCodeSplit: true,
     minify: "terser",
     terserOptions: {
       compress: {
@@ -25,19 +26,43 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
-          "ui-vendor": [
-            "@radix-ui/react-dialog",
-            "@radix-ui/react-dropdown-menu",
-            "@radix-ui/react-accordion",
-          ],
-          "animation-vendor": ["framer-motion", "gsap", "lottie-react"],
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (
+            id.includes("framer-motion") ||
+            id.includes("motion/") ||
+            id.includes("motion-dom")
+          ) {
+            return "motion-vendor";
+          }
+          if (id.includes("gsap")) return "gsap-vendor";
+          if (id.includes("lottie")) return "lottie-vendor";
+          if (id.includes("axios")) return "http-vendor";
+          if (
+            id.includes("react-dom") ||
+            id.includes("react-router") ||
+            /[/\\]react[/\\]/.test(id)
+          ) {
+            return "react-vendor";
+          }
+          if (id.includes("@radix-ui")) return "ui-vendor";
+          if (id.includes("recharts") || id.includes("d3-")) {
+            return "charts-vendor";
+          }
+          if (
+            id.includes("lucide-react") ||
+            id.includes("@tabler/icons") ||
+            id.includes("react-icons")
+          ) {
+            return "icons-vendor";
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 600,
     sourcemap: false,
+    modulePreload: { polyfill: false },
+    cssMinify: true,
   },
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom"],

@@ -55,7 +55,13 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <link rel="icon" href={SEO_ASSETS.faviconIco} sizes="32x32" />
         <link rel="apple-touch-icon" href={SEO_ASSETS.appleTouchIcon} sizes="180x180" />
         {pathname === "/" && (
-          <link rel="preload" as="image" href="/BG.png" fetchPriority="high" />
+          <link
+            rel="preload"
+            as="image"
+            href={SEO_ASSETS.heroBg}
+            fetchPriority="high"
+            type="image/webp"
+          />
         )}
 
         {langs?.map(({ lang, path }) => (
@@ -83,6 +89,7 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
 
         <meta name="application-name" content={SITE.name} />
         <meta name="author" content={SITE.name} />
+        <meta name="format-detection" content="telephone=no" />
         <meta
           name="geo.region"
           content="IN;AE;KW;SA;QA"

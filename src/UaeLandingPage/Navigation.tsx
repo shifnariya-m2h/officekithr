@@ -243,7 +243,7 @@ const Navigation = () => {
     return (
       <Link to="/" className={`relative z-20 ${isRTL ? 'ml-2 sm:ml-4' : 'mr-2 sm:mr-4'} flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0`}>
         <img
-          src="/NavLogo.png"
+          src="/NavLogo.webp"
           alt="OfficeKit HR - AI-Powered HRMS Software"
           className="w-auto h-8 sm:h-10 transition-all duration-300 [.group\\/nav[data-visible='true']_&]:h-6 [.group\\/nav[data-visible='true']_&]:sm:h-7"
           loading="eager"

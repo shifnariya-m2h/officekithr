@@ -1,9 +1,9 @@
 /** Canonical public asset paths (files live in /public). */
 export const SEO_ASSETS = {
-  heroBg: "/BG.png",
+  heroBg: "/BG.webp",
   sectionBg: "/RecruitmentManagement2.jpg",
-  logo: "/NavLogo.png",
-  ogImage: "/ImageThumbnail2.png",
+  logo: "/NavLogo.webp",
+  ogImage: "/ImageThumbnail2.webp",
   favicon: "/favicon.svg",
   faviconIco: "/favicon.ico",
   appleTouchIcon: "/apple-touch-icon.png",

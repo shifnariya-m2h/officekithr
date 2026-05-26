@@ -19,10 +19,12 @@
 
 .animate-marquee {
   animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee-reverse {
   animation: marquee 45s linear infinite reverse;
+  will-change: transform;
 }
 
 .marquee-track:hover .animate-marquee,
@@ -72,7 +74,7 @@
     --secondary-foreground: 225 15% 25%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 215 15% 50%;
+    --muted-foreground: 215 16% 38%;
 
     --accent: 220 15% 95%;
     --accent-foreground: 225 15% 25%;

@@ -47,6 +47,8 @@ const TrustedCompaniesShowcase = () => {
       <img
         src={src}
         alt={label}
+        width={160}
+        height={56}
         className="h-10 w-auto max-w-[92%] object-contain sm:h-12 md:h-14"
         loading="lazy"
         decoding="async"
@@ -56,7 +58,7 @@ const TrustedCompaniesShowcase = () => {
 
   return (
     <section
-      className="relative overflow-hidden bg-background py-12 lg:py-16"
+      className="relative overflow-hidden bg-background py-12 lg:py-16 [content-visibility:auto] [contain-intrinsic-size:1px_480px]"
       aria-labelledby="trusted-companies-heading"
     >
       <div className="container mx-auto px-6 lg:px-8">

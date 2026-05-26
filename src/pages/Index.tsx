@@ -1,33 +1,24 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import TrustedCompanies from "@/components/TrustedCompanies";
-import WhyOfficeKit from "@/components/WhyOfficeKit";
-import FeaturesSection from "@/components/FeaturesSection";
-import EssentialHRStack from "@/components/EssentialHRStack";
-import MobileAppSection from "@/components/MobileAppSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
-import MobileApp from "@/components/MobileApp";
 import { HomeFaqSchema } from "@/components/HomeFaqSchema";
+import { LazySection } from "@/components/LazySection";
 
 const Index = () => {
   useEffect(() => {
-    // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
+            entry.target.classList.add("in-view");
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
-    const elements = document.querySelectorAll('.section-fade-in');
+    const elements = document.querySelectorAll(".section-fade-in");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -38,18 +29,37 @@ const Index = () => {
       <HomeFaqSchema />
       <Navigation />
       <main id="main-content">
-      <HeroSection />
-      <TrustedCompanies />
-      <WhyOfficeKit />
-      <FeaturesSection />
-      {/* <EssentialHRStack /> */}
-      <FAQSection />
-      <MobileApp />
-      {/* <MobileAppSection /> */}
-      <TestimonialsSection />
-      <ContactSection />
+        <HeroSection />
+        <LazySection
+          loader={() => import("@/components/TrustedCompanies")}
+          minHeight="14rem"
+        />
+        <LazySection
+          loader={() => import("@/components/WhyOfficeKit")}
+          minHeight="20rem"
+        />
+        <LazySection
+          loader={() => import("@/components/FeaturesSection")}
+          minHeight="24rem"
+        />
+        <LazySection
+          loader={() => import("@/components/FAQSection")}
+          minHeight="20rem"
+        />
+        <LazySection
+          loader={() => import("@/components/MobileApp")}
+          minHeight="28rem"
+        />
+        <LazySection
+          loader={() => import("@/components/TestimonialsSection")}
+          minHeight="16rem"
+        />
+        <LazySection
+          loader={() => import("@/components/ContactSection")}
+          minHeight="20rem"
+        />
       </main>
-      <Footer />
+      <LazySection loader={() => import("@/components/Footer")} minHeight="12rem" />
     </div>
   );
 };

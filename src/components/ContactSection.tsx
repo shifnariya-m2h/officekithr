@@ -162,7 +162,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
         style={{ backgroundImage: `url('${SEO_ASSETS.sectionBg}')` }}
       >
         <div className="relative container mx-auto px-4">
-          <Badge className="bg-white font-normal py-2 text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent">
+          <Badge className="bg-white font-normal py-2 text-[#1d4ed8] mb-4 border border-[#ededed] hover:bg-transparent">
             Contact Us
           </Badge>
           <HeadingTag className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">

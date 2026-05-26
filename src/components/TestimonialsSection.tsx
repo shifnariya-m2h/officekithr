@@ -32,7 +32,7 @@ const TestimonialsSection = () => {
     <section className="mb-mb-common bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-mb-tursioury section-fade-in">
-          <Badge className="bg-white mb-2 font-normal py-2 text-[#3f5ffc]  border border-[#ededed] hover:bg-transparent"  >
+          <Badge className="bg-white mb-2 font-normal py-2 text-[#1d4ed8] border border-[#ededed] hover:bg-transparent">
             Testimonials
           </Badge>
 
@@ -71,9 +71,12 @@ const TestimonialsSection = () => {
               <div className="flex items-center space-x-4">
                 <img
                   src={testimonial.image}
-                  alt={testimonial.name}
+                  alt={`${testimonial.name}, ${testimonial.role} at ${testimonial.company}`}
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full object-cover border-2 border-border group-hover:border-primary transition-colors"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <div className="font-semibold text-foreground">

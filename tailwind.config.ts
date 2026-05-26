@@ -28,6 +28,10 @@ export default {
 				'mb-tursioury': "64px",
 			},
 			colors: {
+				'hr-text': {
+					primary: 'hsl(225 20% 12%)',
+					secondary: 'hsl(215 16% 38%)',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

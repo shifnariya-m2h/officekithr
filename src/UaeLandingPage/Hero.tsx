@@ -183,6 +183,9 @@ const Hero: React.FC = () => {
                             loop
                             muted
                             playsInline
+                            preload="none"
+                            width={512}
+                            height={294}
                             className="dark:hidden h-full w-full object-cover"
                           />
                       </div>

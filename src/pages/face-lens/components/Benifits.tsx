@@ -1,7 +1,7 @@
 import React from "react";
 import { Check } from "lucide-react";
-import bgImage from "../../../../public/benifitbg.jpg";
-import phone from "../../../../public/benifit-hero-removebg.png";
+const bgImage = "/benifitbg.webp";
+const phone = "/benifit-hero-removebg.webp";
  
 
 function Benefits() {

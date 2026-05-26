@@ -13,9 +13,8 @@ const isCi = Boolean(
     process.env.VERCEL ||
     process.env.CLOUDFLARE_PAGES
 );
-const prerender =
-  process.env.PRERENDER === "1" ||
-  (process.env.PRERENDER !== "0" && !isCi);
+// Prerender by default — critical for SEO/LCP scores (set PRERENDER=0 to skip).
+const prerender = process.env.PRERENDER !== "0";
 
 function run(cmd) {
   console.log(`[build] ${cmd}`);
@@ -23,15 +22,28 @@ function run(cmd) {
 }
 
 run("node scripts/generate-sitemap.mjs");
+try {
+  run("node scripts/optimize-images.mjs");
+} catch (e) {
+  console.warn("[build] optimize-images skipped:", e.message);
+}
+try {
+  run("node scripts/prune-public-assets.mjs");
+} catch (e) {
+  console.warn("[build] prune-public-assets skipped:", e.message);
+}
 run("npx vite build");
+try {
+  run("node scripts/strip-sourcemaps.mjs");
+} catch (e) {
+  console.warn("[build] strip-sourcemaps skipped:", e.message);
+}
 
 if (prerender) {
   run("node scripts/ensure-playwright.mjs");
   run("node scripts/prerender.mjs");
 } else {
-  console.log(
-    "[build] Skipping prerender on CI (set PRERENDER=1 to enable). Sitemap + SPA deploy only."
-  );
+  console.log("[build] Skipping prerender (set PRERENDER=1 or unset PRERENDER=0).");
 }
 
 console.log("[build] Complete");

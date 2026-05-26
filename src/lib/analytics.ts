@@ -9,7 +9,7 @@ declare global {
 
 let analyticsLoaded = false;
 
-export function loadAnalytics(): void {
+function injectGtagScript(): void {
   if (
     analyticsLoaded ||
     typeof window === "undefined" ||
@@ -35,6 +35,21 @@ export function loadAnalytics(): void {
     if (env.gtagId) window.gtag?.("config", env.gtagId);
     if (env.googleAdsId) window.gtag?.("config", env.googleAdsId);
   };
+}
+
+/** Defers GTM/gtag until after first paint to protect LCP & TBT. */
+export function loadAnalytics(): void {
+  if (analyticsLoaded || typeof window === "undefined" || env.disableAnalytics) {
+    return;
+  }
+
+  const run = () => injectGtagScript();
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(run, { timeout: 4000 });
+  } else {
+    window.setTimeout(run, 2500);
+  }
 }
 
 export function trackPageView(path: string): void {

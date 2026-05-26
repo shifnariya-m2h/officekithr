@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/run-build.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "prune:public": "node scripts/prune-public-assets.mjs",
     "build:fast": "node scripts/build-fast.mjs",
     "build:spa": "node scripts/generate-sitemap.mjs && vite build",
     "build:dev": "vite build --mode development",

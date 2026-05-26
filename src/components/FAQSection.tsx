@@ -16,7 +16,7 @@ const FAQSection = () => {
     <section className="mb-mb-common bg-background" aria-labelledby="faq-heading">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <Badge className="bg-white mb-2 font-normal py-2 text-[#3f5ffc] border border-[#ededed] hover:bg-transparent">
+          <Badge className="bg-white mb-2 font-normal py-2 text-[#1d4ed8] border border-[#ededed] hover:bg-transparent">
             FAQs
           </Badge>
           <h2
@@ -90,8 +90,11 @@ const FAQSection = () => {
                     productFaqs.find((_, i) => `product-${i}` === selected)
                       ?.image || "/hrb0.webp"
                   }
-                  alt=""
+                  alt="OfficeKit HR product feature illustration"
                   loading="lazy"
+                  width={640}
+                  height={480}
+                  decoding="async"
                 />
               </div>
             </div>

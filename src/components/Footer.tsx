@@ -70,9 +70,12 @@ const Footer = () => {
           <Link to="/" className="flex items-center space-x-2">
             <img
               src="/Footer logo2.png"
-              alt="OfficeKit"
+              alt="OfficeKit HR logo"
+              width={140}
+              height={44}
               className="h-11 w-auto brightness-0 invert"
               loading="lazy"
+              decoding="async"
             />
           </Link>
 
@@ -83,18 +86,18 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
             {/* Social Icons */}
             <div className="flex space-x-2">
-              <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on LinkedIn">
+              <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white p-2.5 min-w-11 min-h-11 inline-flex items-center justify-center rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
 
-              <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on Facebook">
+              <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white p-2.5 min-w-11 min-h-11 inline-flex items-center justify-center rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on Instagram">
+              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white p-2.5 min-w-11 min-h-11 inline-flex items-center justify-center rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://www.youtube.com/channel/UC8zUtDkAkZUkOl0TkMhQpNw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800">
-                <YoutubeIcon className="h-5 w-5" />
+              <a href="https://www.youtube.com/channel/UC8zUtDkAkZUkOl0TkMhQpNw" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white p-2.5 min-w-11 min-h-11 inline-flex items-center justify-center rounded-lg hover:bg-gray-800" aria-label="OfficeKit HR on YouTube">
+                <YoutubeIcon className="h-5 w-5" aria-hidden />
               </a>
             </div>
 
@@ -230,16 +233,14 @@ const Footer = () => {
             <div className="space-y-3">
               <Link
                 to="/"
-                className="text-gray-300 hover:text-white transition-colors flex items-center gap-2 group"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
               >
-                <span className="block text-gray-300 hover:text-white transition-colors"></span>
                 India
               </Link>
               <Link
                 to="/ae"
-                className="block text-gray-300 hover:text-white transition-colors flex items-center gap-2 group"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
               >
-                <span className="block text-gray-300 hover:text-white transition-colors"></span>
                 UAE
               </Link>
             </div>
@@ -306,25 +307,25 @@ const Footer = () => {
         <div className="border-t border-gray-700 opacity-50 my-6"></div>
         <div className="container mx-auto px-2 py-2">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-300 text-sm">
               © 2025 OfficeKit inc. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link
                 to="/privacy-policy"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors py-2 inline-block"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms-and-condition"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors py-2 inline-block"
               >
                 Terms of Service
               </Link>
               <Link
                 to="/cookie-policy"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors py-2 inline-block"
               >
                 Cookie Policy
               </Link>

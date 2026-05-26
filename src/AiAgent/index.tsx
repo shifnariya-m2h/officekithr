@@ -1,40 +1,90 @@
-import { useState } from "react";
+import { useState, useEffect, type ComponentType, type CSSProperties } from "react";
 import "./ChatModal.css";
-import Lottie from "lottie-react";
-import robotAnimation from "../../public/lottie/Robot-Bot3D.json";
+
+type LottieProps = {
+  animationData: object;
+  loop?: boolean;
+  style?: CSSProperties;
+};
 
 export default function AiAgentWidget() {
   const [open, setOpen] = useState(false);
+  const [LottiePlayer, setLottiePlayer] = useState<ComponentType<LottieProps> | null>(null);
+  const [robotAnimation, setRobotAnimation] = useState<object | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    let cancelled = false;
+    Promise.all([
+      import("lottie-react"),
+      import("../../public/lottie/Robot-Bot3D.json"),
+    ]).then(([lottie, data]) => {
+      if (cancelled) return;
+      setLottiePlayer(() => lottie.default);
+      setRobotAnimation(data.default);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [open]);
 
   return (
     <>
-      {/* Floating AI Agent Button */}
       {!open && (
-        <div className="ai-agent-btn" onClick={() => setOpen(true)}>
+        <button
+          type="button"
+          className="ai-agent-btn"
+          onClick={() => setOpen(true)}
+          aria-label="Open AI Agent chat"
+        >
           <div className="icon-container">
-            <Lottie animationData={robotAnimation} loop style={{ width: 36, height: 36 }} />
+            {LottiePlayer && robotAnimation ? (
+              <LottiePlayer
+                animationData={robotAnimation}
+                loop
+                style={{ width: 36, height: 36 }}
+              />
+            ) : (
+              <span aria-hidden>🤖</span>
+            )}
           </div>
           <span>AI Agent</span>
-        </div>
+        </button>
       )}
 
-      {/* OVERLAY */}
-      {open && <div className="modal-overlay" onClick={() => setOpen(false)} />}
+      {open && (
+        <div
+          className="modal-overlay"
+          role="presentation"
+          onClick={() => setOpen(false)}
+          onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
+        />
+      )}
 
-      {/* Popup Modal — always mounted so iframe pre-loads, hidden when closed */}
       <div className="chat-modal" style={{ display: open ? "flex" : "none" }}>
-        <button className="close-btn" onClick={() => setOpen(false)}>✖</button>
+        <button
+          type="button"
+          className="close-btn"
+          onClick={() => setOpen(false)}
+          aria-label="Close AI Agent"
+        >
+          ✖
+        </button>
 
-        <iframe
-          src="https://www.jotform.com/app/253280741778465"
-          style={{
-            width: "100%",
-            height: "100%",
-            border: "none",
-            borderRadius: "8px"
-          }}
-          allow="microphone"
-        ></iframe>
+        {open && (
+          <iframe
+            title="OfficeKit AI Agent"
+            src="https://www.jotform.com/app/253280741778465"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              borderRadius: "8px",
+            }}
+            allow="microphone"
+            loading="lazy"
+          />
+        )}
       </div>
     </>
   );

@@ -163,12 +163,12 @@ const Navigation = () => {
     return (
       <Link to="/" className="relative z-20 mr-2 sm:mr-4 flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0">
         <img
-          src="/NavLogo.png"
+          src="/NavLogo.webp"
           alt="OfficeKit HR - AI-Powered HRMS Software"
           className="w-auto h-8 sm:h-10 transition-all duration-300 [.group\\/nav[data-visible='true']_&]:h-6 [.group\\/nav[data-visible='true']_&]:sm:h-7"
           loading="eager"
-          width="120"
-          height="40"
+          width={120}
+          height={40}
         />
       </Link>
     );
@@ -234,7 +234,7 @@ const Navigation = () => {
                       <h3 className="font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5">
                         {link.name}
                       </h3>
-                      <p className="text-xs text-gray-500 transition-colors duration-200">
+                      <p className="text-xs text-gray-600 transition-colors duration-200">
                         {link.description}
                       </p>
                     </div>
@@ -297,7 +297,7 @@ const Navigation = () => {
                       <h3 className="font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5">
                         {link.name}
                       </h3>
-                      <p className="text-xs text-gray-500 transition-colors duration-200">
+                      <p className="text-xs text-gray-600 transition-colors duration-200">
                         {link.description}
                       </p>
                     </div>
@@ -331,8 +331,8 @@ const Navigation = () => {
           <button
             type="button"
             onClick={handleWhatsAppClick}
-            className="bg-[#25D366] rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform hover:scale-110 active:scale-95 w-9 h-9 flex-shrink-0"
-            aria-label="WhatsApp"
+            className="bg-[#25D366] rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform hover:scale-110 active:scale-95 min-w-11 min-h-11 w-11 h-11 flex-shrink-0"
+            aria-label="Chat with OfficeKit HR on WhatsApp"
           >
             <WhatsAppIcon size={20} />
           </button>
@@ -356,8 +356,8 @@ const Navigation = () => {
             <button
               type="button"
               onClick={handleWhatsAppClick}
-              className="bg-[#25D366] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95 w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0"
-              aria-label="WhatsApp"
+              className="bg-[#25D366] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95 min-w-11 min-h-11 w-11 h-11 flex-shrink-0"
+              aria-label="Chat with OfficeKit HR on WhatsApp"
             >
               <WhatsAppIcon size={18} />
             </button>
@@ -429,7 +429,7 @@ const Navigation = () => {
                       <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium text-sm transition-colors duration-200">{link.name}</h3>
-                        <p className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-200">{link.description}</p>
+                        <p className="text-xs text-gray-600 group-hover:text-gray-800 transition-colors duration-200">{link.description}</p>
                       </div>
                     </Link>
                   ))}
@@ -476,7 +476,7 @@ const Navigation = () => {
                         <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-medium text-sm transition-colors duration-200">{link.name}</h3>
-                          <p className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-200">{link.description}</p>
+                          <p className="text-xs text-gray-600 group-hover:text-gray-800 transition-colors duration-200">{link.description}</p>
                         </div>
                       </Link>
                     ))}

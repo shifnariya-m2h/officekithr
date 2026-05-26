@@ -20,6 +20,7 @@ fixes-summary.docx
 
 node_modules
 dist
+assets-archive
 dist-ssr
 *.local
 

@@ -37,7 +37,7 @@ export default () => {
             {/* Left Content */}
             <div className="space-y-8">
               <div className=" ">
-                <Badge className="bg-white font-normal py-2  text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent"  >
+                <Badge className="bg-white font-normal py-2 text-[#1d4ed8] mb-4 border border-[#ededed] hover:bg-transparent">
                   Better Starts here
                 </Badge>
                 <div className="">
@@ -54,12 +54,11 @@ export default () => {
 
 
               <Button
+                asChild
                 variant="outline"
-                className="btn-cta gradient-text font-normal"
+                className="btn-cta gradient-text font-normal min-h-11"
               >
-                <Link to="/about-us" className="flex items-center space-x-2">
-                  Learn more
-                </Link>
+                <Link to="/about-us">Learn more about OfficeKit HR</Link>
               </Button>
 
 

@@ -16,7 +16,7 @@
   <meta property="og:title" content="OfficeKit HR | AI-Powered HRMS for India, UAE &amp; GCC" />
   <meta property="og:description" content="AI-powered HRMS for recruitment, payroll, attendance, and compliance across India and the GCC." />
   <meta property="og:url" content="https://www.officekithr.com/" />
-  <meta property="og:image" content="https://www.officekithr.com/ImageThumbnail2.png" />
+  <meta property="og:image" content="https://www.officekithr.com/ImageThumbnail2.webp" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
@@ -27,10 +27,18 @@
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta name="theme-color" content="#0055ff" />
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#01004f;color:#fff}
+    #root{min-height:100vh}
+    .hero-lcp-placeholder{position:fixed;inset:0;background:linear-gradient(160deg,#0055ff 0%,#01004f 55%);z-index:-1}
+  </style>
+  <link rel="preload" as="image" href="/BG.webp" fetchpriority="high" type="image/webp" crossorigin="anonymous" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://api.officekithr.com" />
 </head>
 <body>
+  <div class="hero-lcp-placeholder" aria-hidden="true"></div>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

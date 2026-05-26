@@ -54,7 +54,7 @@ const EssentialHRStack = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 section-fade-in">
           <div className="text-center mb-32">
-            <Badge className="bg-white mb-2 text-[#3f5ffc] border border-[#ededed] hover:bg-white"  >
+            <Badge className="bg-white mb-2 text-[#1d4ed8] border border-[#ededed] hover:bg-white">
               Essential HR Stack
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-semibold text-hr-text-primary mb-3">

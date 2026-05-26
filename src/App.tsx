@@ -1,15 +1,9 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
-import ChatModal from "./AiAgent";
+import { DeferredChatWidget } from "@/components/DeferredChatWidget";
 import { SeoProvider } from "@/seo/SeoContext";
 import { SeoHead } from "@/seo/SeoHead";
 import { DeferredScripts } from "@/components/DeferredScripts";
@@ -17,6 +11,13 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
 import { LegacyRedirect } from "@/components/LegacyRedirect";
 import { MARKETING_PAGES } from "@/data/marketing-pages";
+
+const Toaster = lazy(() =>
+  import("@/components/ui/toaster").then((m) => ({ default: m.Toaster }))
+);
+const TooltipProvider = lazy(() =>
+  import("@/components/ui/tooltip").then((m) => ({ default: m.TooltipProvider }))
+);
 
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -62,7 +63,6 @@ const HRPopup = lazy(() =>
   import("./components/HRPopup").then((m) => ({ default: m.HRPopup }))
 );
 
-const queryClient = new QueryClient();
 const POPUP_SESSION_KEY = "ok_hr_popup_session_shown";
 const POPUP_DELAY_MS = 12000;
 
@@ -120,8 +120,8 @@ const AppRoutes = () => {
       <SeoHead />
       <CookieConsent />
       <DeferredScripts />
-      <GoogleAdsWrapper />
-      <ChatModal />
+      <DeferredAnalytics />
+      <DeferredChatWidget />
       {isPopupOpen && (
         <Suspense fallback={null}>
           <HRPopup onClose={() => setIsPopupOpen(false)} />
@@ -240,35 +240,36 @@ const AppRoutes = () => {
   );
 };
 
+function DeferredAnalytics() {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const run = () => setOn(true);
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(run, { timeout: 5000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = window.setTimeout(run, 4000);
+    return () => clearTimeout(t);
+  }, []);
+  return on ? <GoogleAdsWrapper /> : null;
+}
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
+  <Suspense fallback={null}>
     <TooltipProvider>
       <Toaster />
-      <Sonner />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
-        <SeoProvider>
-          <AppRoutes />
-        </SeoProvider>
-      </BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
+      <SeoProvider>
+        <AppRoutes />
+      </SeoProvider>
+    </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>
+  </Suspense>
 );
 
 export default App;
