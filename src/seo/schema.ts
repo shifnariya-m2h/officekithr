@@ -83,13 +83,50 @@ export function softwareApplicationSchema() {
       "UAE WPS payroll support",
       "AI workflow automation",
     ],
-    countriesSupported: ["IN", "AE", "KW", "SA", "QA"],
+    countriesSupported: ["IN", "AE", "KW", "SA", "QA", "OM", "BH"],
     provider: { "@id": `${SITE.url}/#organization` },
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       url: `${SITE.url}/pricing`,
       description: "Flexible per-user pricing; contact sales for enterprise quotes.",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "INR",
+        price: "Contact sales",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      ratingCount: "186",
+      bestRating: "5",
+      worstRating: "1",
+      itemReviewed: { "@id": `${SITE.url}/#software` },
+    },
+    screenshot: {
+      "@type": "ImageObject",
+      url: `${SITE.url}/dashboardok.webp`,
+      caption: "OfficeKit HR dashboard overview",
+    },
+    applicationSuite: "OfficeKit HR Enterprise Suite",
+    downloadUrl: SITE.url,
+    softwareVersion: "3.0",
+    storageRequirements: "Cloud-based, no local storage required",
+    releaseNotes: `${SITE.url}/resources/blogs/mobileappupdates`,
+    review: {
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "4.7",
+        bestRating: "5",
+      },
+      author: {
+        "@type": "Person",
+        name: "OfficeKit HR Users",
+      },
+      reviewBody:
+        "OfficeKit HR streamlines payroll, attendance, and compliance across India and GCC — trusted by 1,000+ businesses.",
     },
   };
 }

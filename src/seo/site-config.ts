@@ -13,7 +13,7 @@ export const SITE = {
   phone: "+91-7994154069",
   logo: `${env.siteUrl}/NavLogo.webp`,
   ogImage: `${env.siteUrl}/ImageThumbnail2.webp`,
-  areasServed: ["IN", "AE", "KW", "SA", "QA"],
+  areasServed: ["IN", "AE", "KW", "SA", "QA", "OM", "BH"],
   social: {
     linkedin: "https://www.linkedin.com/company/officekithr/",
     facebook: "https://www.facebook.com/officekithr/",

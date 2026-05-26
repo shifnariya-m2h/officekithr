@@ -63,6 +63,10 @@ const ComparisonPage = lazy(() => import("./pages/compare/ComparisonPage"));
 const MarketingLandingPage = lazy(
   () => import("./pages/marketing/MarketingLandingPage")
 );
+const ComplianceHub = lazy(() => import("./pages/compliance/ComplianceHub"));
+const CompliancePage = lazy(() => import("./pages/compliance/CompliancePage"));
+const LongtailHub = lazy(() => import("./pages/longtail/LongtailHub"));
+const LongtailPage = lazy(() => import("./pages/longtail/LongtailPage"));
 const HRPopup = lazy(() =>
   import("./components/HRPopup").then((m) => ({ default: m.HRPopup }))
 );
@@ -217,6 +221,14 @@ const AppRoutes = () => {
           <Route path="/ae" element={<UaeLandingpage />} />
           <Route path="/uae" element={<LegacyRedirect to="/ae" />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
+
+          {/* Compliance pages */}
+          <Route path="/compliance" element={<ComplianceHub />} />
+          <Route path="/compliance/:slug" element={<CompliancePage />} />
+
+          {/* Long-tail keyword pages */}
+          <Route path="/resources/guides" element={<LongtailHub />} />
+          <Route path="/longtail/:slug" element={<LongtailPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

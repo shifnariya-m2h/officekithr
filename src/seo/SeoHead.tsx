@@ -90,11 +90,13 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <meta name="application-name" content={SITE.name} />
         <meta name="author" content={SITE.name} />
         <meta name="format-detection" content="telephone=no" />
-        <meta
-          name="geo.region"
-          content="IN;AE;KW;SA;QA"
-        />
+        <meta name="geo.region" content="IN;AE;KW;SA;QA;OM;BH" />
+        <meta name="geo.placename" content="India, UAE, Saudi Arabia, Kuwait, Qatar, Oman, Bahrain" />
+        <meta name="ICBM" content="11.2588, 75.7804" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full site content" />
+        <meta name="language" content={pathname.startsWith("/ae") ? "ar" : "en"} />
+        <meta name="classification" content="Human Resource Management Software" />
 
         <script type="application/ld+json">{schemaJson}</script>
       </Helmet>

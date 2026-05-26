@@ -1,5 +1,9 @@
 import { STATIC_BLOG_POSTS } from "@/data/static-blog-posts";
 import { MARKETING_PAGES } from "@/data/marketing-pages";
+import { GEO_LANDINGS_NEW } from "@/data/geo-landings-new";
+import { COMPARISONS_NEW } from "@/data/comparisons-new";
+import { PAYROLL_COMPLIANCE } from "@/data/payroll-compliance";
+import { LONGTAIL_PAGES } from "@/data/longtail-keywords";
 import { SITE } from "./site-config";
 
 export type RouteSeoConfig = {
@@ -207,6 +211,44 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
     ogImage: meta.image,
     type: "article" as const,
   })),
+  // New GEO landing pages (KSA, Kuwait, Qatar, Oman, Bahrain, Kerala)
+  ...Object.values(GEO_LANDINGS_NEW).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  // New comparison pages (Zoho, factoHR, Officenet, PocketHRMS, Keka)
+  ...Object.values(COMPARISONS_NEW).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  // Payroll compliance pages
+  ...Object.values(PAYROLL_COMPLIANCE).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  // Long-tail keyword pages
+  ...Object.values(LONGTAIL_PAGES).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  // Compliance hub
+  {
+    path: "/compliance",
+    title: "Payroll Compliance Guide | India, UAE, KSA, GCC — OfficeKit HR",
+    description:
+      "Country-specific payroll compliance guides for India, UAE, Saudi Arabia, Kuwait, Qatar, Oman, and Bahrain. OfficeKit HR.",
+  },
+  // Longtail hub
+  {
+    path: "/resources/guides",
+    title: "HR Knowledge Base & Guides | OfficeKit HR",
+    description:
+      "In-depth guides on HRMS, payroll, compliance, and HR automation for India and GCC businesses.",
+  },
 ];
 
 const routeMap = new Map(

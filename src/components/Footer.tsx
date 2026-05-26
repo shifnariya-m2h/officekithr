@@ -26,9 +26,12 @@ import { SITE } from "@/seo/site-config";
 const solutionsLinks = [
   { name: "HRMS software India", href: "/solutions/best-hrms-software-india" },
   { name: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+  { name: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
   { name: "WPS compliance", href: "/solutions/wps-compliance-software" },
   { name: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
   { name: "greytHR alternative", href: "/compare/greythr-alternative" },
+  { name: "Keka alternative", href: "/compare/keka-alternative" },
+  { name: "Payroll compliance", href: "/compliance" },
 ];
 
 const Footer = () => {
@@ -204,10 +207,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Solutions</h3>
             <div className="space-y-3">
               <Link
-                to="/solutions"
+                to="/resources/blogs"
                 className="block text-gray-300 hover:text-white transition-colors"
               >
-                All solutions
+                Blog
+              </Link>
+              <Link
+                to="/resources/guides"
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                HR Guides
+              </Link>
+              <Link
+                to="/compliance"
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                Payroll Compliance
               </Link>
               {solutionsLinks.map((link) => (
                 <Link
@@ -242,6 +257,42 @@ const Footer = () => {
                 className="block py-2 text-gray-300 hover:text-white transition-colors"
               >
                 UAE
+              </Link>
+              <Link
+                to="/solutions/payroll-software-ksa"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+              >
+                Saudi Arabia
+              </Link>
+              <Link
+                to="/solutions/hrms-software-kuwait"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+              >
+                Kuwait
+              </Link>
+              <Link
+                to="/solutions/payroll-software-qatar"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+              >
+                Qatar
+              </Link>
+              <Link
+                to="/solutions/hrms-software-oman"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+              >
+                Oman
+              </Link>
+              <Link
+                to="/solutions/hrms-software-bahrain"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+              >
+                Bahrain
+              </Link>
+              <Link
+                to="/solutions/payroll-software-kerala"
+                className="block py-2 text-gray-300 hover:text-white transition-colors"
+              >
+                Kerala
               </Link>
             </div>
           </div>
