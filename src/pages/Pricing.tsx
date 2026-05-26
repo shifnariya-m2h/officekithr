@@ -1,10 +1,10 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
-const PRICING_BOX_IMAGE = encodeURI("/Box 01.webp");
-const PRICING_CTA_IMAGE = encodeURI("/button x .png");
-const PRICING_PHONE = "7994154069";
+const PRICING_HEADSET_IMAGE = "/pricing-headset.png";
 
 const Pricing = () => {
   const plans = [
@@ -118,33 +118,40 @@ const Pricing = () => {
             </p>
           </div>
 
-          {/* Right Image with call CTA overlay */}
-          <div className="flex justify-center">
-            <div className="relative inline-block max-w-full">
-              <img
-                src={PRICING_BOX_IMAGE}
-                alt="Pricing illustration"
-                className="rounded-2xl max-w-full h-auto"
-                width={560}
-                height={560}
-                loading="lazy"
-                decoding="async"
-              />
-              <a
-                href={`tel:+91${PRICING_PHONE}`}
-                className="absolute bottom-8 right-9 block h-11 w-[200px] rounded-lg shadow-lg transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055ff] focus-visible:ring-offset-2"
-                aria-label={`Call us at +91 ${PRICING_PHONE}`}
-              >
-                <img
-                  src={PRICING_CTA_IMAGE}
-                  alt=""
-                  width={200}
-                  height={44}
-                  className="h-11 w-[200px] object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
+          {/* Sales expert CTA */}
+          <div className="flex w-full justify-center md:justify-end">
+            <div className="w-full max-w-[560px] overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0055ff] via-[#0058ff] to-[#0046d9] p-6 shadow-[0_20px_50px_-12px_rgba(0,85,255,0.4)] md:p-8">
+              <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-6">
+                <div className="flex-1 text-white">
+                  <h3 className="text-2xl font-bold leading-tight tracking-tight md:text-[28px]">
+                    Talk to our Sales Expert
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-white/90 md:text-[15px]">
+                    Connect with our specialists who understand real HR
+                    challenges. We&apos;ll listen to your needs, guide you
+                    through the best-fit modules, and suggest the right pricing
+                    plan for your business.
+                  </p>
+                </div>
+
+                <div className="flex w-full shrink-0 flex-col items-center rounded-2xl bg-[#001a4d] px-5 pb-5 pt-4 md:w-[220px]">
+                  <img
+                    src={PRICING_HEADSET_IMAGE}
+                    alt=""
+                    className="h-auto w-44 object-contain md:w-52 lg:w-56"
+                    width={224}
+                    height={212}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <Button
+                    asChild
+                    className="mt-3 h-11 w-full max-w-[200px] rounded-full bg-white px-6 text-[15px] font-semibold text-[#0055ff] shadow-md transition-colors hover:bg-white/95 hover:text-[#0044cc]"
+                  >
+                    <Link to="/contact">Contact Sales</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
