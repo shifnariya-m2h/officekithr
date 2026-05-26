@@ -1,4 +1,5 @@
 import React from "react";
+import { PartnerLogo } from "@/components/ui/PartnerLogo";
 
 const TrustedCompaniesShowcase = () => {
   const logos = [
@@ -44,15 +45,7 @@ const TrustedCompaniesShowcase = () => {
 
   const LogoItem = ({ src, label }: { src: string; label: string }) => (
     <div className="flex h-16 w-36 sm:h-20 sm:w-44 md:h-24 md:w-52 flex-shrink-0 items-center justify-center px-1">
-      <img
-        src={src}
-        alt={label}
-        width={160}
-        height={56}
-        className="h-10 w-auto max-w-[92%] object-contain sm:h-12 md:h-14"
-        loading="lazy"
-        decoding="async"
-      />
+      <PartnerLogo src={src} label={label} />
     </div>
   );
 

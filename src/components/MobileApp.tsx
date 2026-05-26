@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { Badge } from "./ui/badge";
-import { useRef } from "react";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
+import { HERO_IMAGES } from "@/lib/seo/assets";
 
-const MOBILE_MOCKUP = "/mobile-mockup.webp";
 const KEYPOINT = { width: 360, height: 120 };
 
 function MobileApp() {
-  const phoneRef = useRef<HTMLImageElement | null>(null);
 
   const keypointImg = (src: string, label: string) => (
     <img
@@ -49,13 +48,14 @@ function MobileApp() {
 
           <div className="flex justify-center mb-8 sm:mb-12">
             <div className="w-full max-w-[240px] sm:max-w-[280px]">
-              <img
-                ref={phoneRef}
-                src={MOBILE_MOCKUP}
-                alt="OfficeKit HR mobile app on phone"
+              <OptimizedImage
+                src={HERO_IMAGES.mobile.src}
+                srcSet={HERO_IMAGES.mobile.srcSet}
+                sizes="(max-width: 640px) 240px, 280px"
+                alt={HERO_IMAGES.mobile.alt}
                 className="w-full h-auto"
-                width={750}
-                height={1500}
+                width={HERO_IMAGES.mobile.width}
+                height={HERO_IMAGES.mobile.height}
                 loading="lazy"
                 decoding="async"
               />
@@ -118,12 +118,14 @@ function MobileApp() {
             </div>
           </div>
           <div className="absolute top-[76%] w-[320px] h-auto left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <img
-              ref={phoneRef}
-              src={MOBILE_MOCKUP}
-              alt="OfficeKit HR mobile app on phone"
-              width={750}
-              height={1500}
+            <OptimizedImage
+              src={HERO_IMAGES.mobile.src}
+              srcSet={HERO_IMAGES.mobile.srcSet}
+              sizes="320px"
+              alt={HERO_IMAGES.mobile.alt}
+              width={HERO_IMAGES.mobile.width}
+              height={HERO_IMAGES.mobile.height}
+              className="w-full h-auto"
               loading="lazy"
               decoding="async"
             />

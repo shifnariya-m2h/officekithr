@@ -10,14 +10,16 @@ export const SEO_ASSETS = {
   appleTouchIcon: "/apple-touch-icon.png",
 } as const;
 
-/** Nav logo intrinsic ratio (916×272). */
+/** Nav logo display size (2× asset: NavLogo.webp 274×82). */
 export const NAV_LOGO_WIDTH = 137;
-export const NAV_LOGO_HEIGHT = 40;
+export const NAV_LOGO_HEIGHT = 41;
 
 export const HERO_IMAGES = {
   mobile: {
     src: "/mobile-mockup-480.webp",
-    srcSet: "/mobile-mockup-480.webp 480w, /mobile-mockup.webp 750w",
+    srcSet:
+      "/mobile-mockup-480.webp 480w, /mobile-mockup-768.webp 768w, /mobile-mockup.webp 750w",
+    sizes: "(max-width: 768px) 240px, 480px",
     width: 480,
     height: 960,
     alt: "OfficeKit HR mobile app overview",
@@ -25,8 +27,16 @@ export const HERO_IMAGES = {
   desktop: {
     src: "/dashboardok-1024.webp",
     srcSet: "/dashboardok-1024.webp 1024w, /dashboardok.webp 1440w",
+    sizes: "(min-width: 1280px) 1024px, 90vw",
     width: 1024,
     height: 697,
     alt: "OfficeKit HR dashboard overview on desktop",
+  },
+  heroBg: {
+    src: SEO_ASSETS.heroBg768,
+    srcSet: `${SEO_ASSETS.heroBg768} 768w, ${SEO_ASSETS.heroBg} 1280w`,
+    sizes: "100vw",
+    width: 1280,
+    height: 1119,
   },
 } as const;

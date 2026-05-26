@@ -8,9 +8,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public");
-const MIN_BYTES = 4_000;
+const MIN_BYTES = 2_000;
 const QUALITY = 82;
-const LOGO_QUALITY = 78;
+const LOGO_QUALITY = 72;
+const PARTNER_LOGO_MAX_WIDTH = 160;
 
 /** In-place max width (keeps aspect ratio). */
 const RESIZE_IN_PLACE = [
@@ -22,12 +23,17 @@ const RESIZE_IN_PLACE = [
   { match: /TimePayroll-min\.webp$/i, width: 800 },
   { match: /Performance-selfservice-min\.webp$/i, width: 800 },
   { match: /hrb0\.webp$/i, width: 640 },
-  { match: /[/\\]company-logos[/\\].+\.webp$/i, width: 320, quality: LOGO_QUALITY },
+  {
+    match: /[/\\]company-logos[/\\].+\.webp$/i,
+    width: PARTNER_LOGO_MAX_WIDTH,
+    quality: LOGO_QUALITY,
+  },
 ];
 
 /** Additional variants (stem-width.webp). */
 const VARIANTS = [
   { stem: "mobile-mockup", width: 480, quality: QUALITY },
+  { stem: "mobile-mockup", width: 768, quality: QUALITY },
   { stem: "dashboardok", width: 1024, quality: QUALITY },
   { stem: "BG", width: 768, quality: QUALITY },
 ];
@@ -119,7 +125,9 @@ for (const file of walk(PUBLIC, [], (n) => /\.webp$/i.test(n))) {
   const w = imageWidth(file);
   const isLogo = /[/\\]company-logos[/\\]/.test(file);
   const needsResize = w && w > target.width;
-  const needsRecompress = isLogo && stat.size > 12_000;
+  const isPartnerLogo = /[/\\]company-logos[/\\]/.test(file);
+  const needsRecompress =
+    isLogo && stat.size > (isPartnerLogo ? 6_000 : 12_000);
   if (!needsResize && !needsRecompress) continue;
   const tmp = `${file}.opt.tmp`;
   const outWidth = needsResize ? target.width : w;

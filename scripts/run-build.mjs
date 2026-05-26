@@ -33,10 +33,16 @@ try {
   console.warn("[build] prune-public-assets skipped:", e.message);
 }
 run("npx vite build");
-try {
-  run("node scripts/strip-sourcemaps.mjs");
-} catch (e) {
-  console.warn("[build] strip-sourcemaps skipped:", e.message);
+if (process.env.STRIP_SOURCEMAPS === "1") {
+  try {
+    run("node scripts/strip-sourcemaps.mjs");
+  } catch (e) {
+    console.warn("[build] strip-sourcemaps skipped:", e.message);
+  }
+} else {
+  console.log(
+    "[build] Keeping source maps (set STRIP_SOURCEMAPS=1 before deploy to omit .map uploads)."
+  );
 }
 
 if (prerender) {

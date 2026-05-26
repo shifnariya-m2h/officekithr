@@ -139,10 +139,15 @@ const MobileApp = () => {
                 {/* Phone Frame */}
                 <div className="flex justify-center lg:justify-end">
                   <img
-                    src="/mobile-mockup.webp"
-                    alt="Mobile App Mockup"
+                    src="/mobile-mockup-480.webp"
+                    srcSet="/mobile-mockup-480.webp 480w, /mobile-mockup-768.webp 768w, /mobile-mockup.webp 750w"
+                    sizes="288px"
+                    alt="OfficeKit HR mobile app overview"
+                    width={480}
+                    height={960}
+                    className="w-full h-auto"
                     loading="lazy"
-                  // className="w-full max-w-md shadow-lg rounded-lg"
+                    decoding="async"
                   />
                 </div>
               </div>

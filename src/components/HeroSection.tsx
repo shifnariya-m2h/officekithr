@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LazyContainerScroll } from "@/components/ui/LazyContainerScroll";
-import { HERO_IMAGES, SEO_ASSETS } from "@/lib/seo/assets";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
+import { HERO_IMAGES } from "@/lib/seo/assets";
 
 const HeroSection = () => {
   const titleBlock = (
@@ -44,18 +45,19 @@ const HeroSection = () => {
       <source
         media="(min-width: 768px)"
         srcSet={HERO_IMAGES.desktop.srcSet}
-        sizes="(min-width: 1280px) 1024px, 90vw"
+        sizes={HERO_IMAGES.desktop.sizes}
         type="image/webp"
       />
-      <img
+      <OptimizedImage
         src={HERO_IMAGES.mobile.src}
         srcSet={HERO_IMAGES.mobile.srcSet}
+        sizes={HERO_IMAGES.mobile.sizes}
         alt={HERO_IMAGES.mobile.alt}
         width={HERO_IMAGES.mobile.width}
         height={HERO_IMAGES.mobile.height}
-        sizes="(min-width: 768px) 960px, 50vw"
         className="h-full w-full object-contain md:object-fill"
         fetchPriority="high"
+        loading="eager"
         decoding="async"
         draggable={false}
       />
@@ -64,17 +66,18 @@ const HeroSection = () => {
 
   return (
     <section className="relative rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0">
-      <img
-        src={SEO_ASSETS.heroBg768}
-        srcSet={`${SEO_ASSETS.heroBg768} 768w, ${SEO_ASSETS.heroBg} 1280w`}
+      <OptimizedImage
+        src={HERO_IMAGES.heroBg.src}
+        srcSet={HERO_IMAGES.heroBg.srcSet}
+        sizes={HERO_IMAGES.heroBg.sizes}
         alt=""
-        aria-hidden
-        width={1280}
-        height={1119}
+        width={HERO_IMAGES.heroBg.width}
+        height={HERO_IMAGES.heroBg.height}
         className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
         fetchPriority="high"
+        loading="eager"
         decoding="async"
-        sizes="100vw"
+        decorative
       />
       <div className="relative z-10 flex flex-col flex-1">
         <LazyContainerScroll titleComponent={titleBlock}>

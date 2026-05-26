@@ -31,6 +31,7 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
 
 const Navigation = () => {
   const { language, setLanguage, t, isRTL } = useLanguage();
@@ -239,20 +240,14 @@ const Navigation = () => {
   }, []);
 
   // Custom Logo Component
-  const NavbarLogo = () => {
-    return (
-      <Link to="/" className={`relative z-20 ${isRTL ? 'ml-2 sm:ml-4' : 'mr-2 sm:mr-4'} flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0`}>
-        <img
-          src="/NavLogo.webp"
-          alt="OfficeKit HR - AI-Powered HRMS Software"
-          className="w-auto h-8 sm:h-10 transition-all duration-300 [.group\\/nav[data-visible='true']_&]:h-6 [.group\\/nav[data-visible='true']_&]:sm:h-7"
-          loading="eager"
-          width={137}
-          height={40}
-        />
-      </Link>
-    );
-  };
+  const NavbarLogo = () => (
+    <Link
+      to="/"
+      className={`relative z-20 ${isRTL ? "ml-2 sm:ml-4" : "mr-2 sm:mr-4"} flex items-center space-x-2 px-2 py-1 transition-all duration-300 group/nav flex-shrink-0`}
+    >
+      <NavBrandLogo />
+    </Link>
+  );
 
   return (
     <Navbar className={`!fixed !top-0 left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'font-arabic' : ''}`}>

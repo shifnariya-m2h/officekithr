@@ -251,8 +251,11 @@ export const NavbarLogo = () => {
       <img
         src="/NavLogo.webp"
         alt="OfficeKit HR"
-        width={30}
-        height={30}
+        width={137}
+        height={41}
+        className="h-8 w-auto object-contain"
+        loading="eager"
+        decoding="async"
       />
       <span className="font-medium text-black dark:text-white">OfficeKit HR</span>
     </a>

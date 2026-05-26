@@ -31,7 +31,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // Single animation runtime — avoids duplicate motion + framer-motion chunks.
+      "motion/react": "framer-motion",
     },
+    dedupe: ["react", "react-dom", "framer-motion"],
   },
   build: {
     target: "es2018",
@@ -79,8 +82,16 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 600,
-    sourcemap: false,
-    modulePreload: { polyfill: false },
+    /** Hidden maps: debuggable in Lighthouse/Sentry without exposing //# sourceMappingURL */
+    sourcemap: "hidden",
+    modulePreload: {
+      polyfill: false,
+      resolveDependencies: (_filename, deps) =>
+        deps.filter(
+          (dep) =>
+            !/lottie-vendor|motion-vendor|gsap-vendor|charts-vendor/.test(dep)
+        ),
+    },
     cssMinify: true,
   },
   optimizeDeps: {
