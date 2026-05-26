@@ -1,15 +1,20 @@
 #!/usr/bin/env node
 /**
- * Smoke-test Syncora external leads API (same as public/api/leads.php).
+ * Smoke-test Syncora external leads API.
  * Usage: node scripts/test-syncora-lead.mjs
  */
 import { loadViteEnv } from "./load-env.mjs";
 
 const root = new URL("..", import.meta.url).pathname;
-const apiKey = loadViteEnv(root, "SYNCORA_API_KEY");
+const apiKey = loadViteEnv(root, "VITE_SYNCORA_API_KEY");
+const apiUrl = loadViteEnv(
+  root,
+  "VITE_SYNCORA_LEADS_URL",
+  "https://app.syncoraai.com/api/leads/external",
+);
 
 if (!apiKey) {
-  console.error("Missing SYNCORA_API_KEY in .env");
+  console.error("Missing VITE_SYNCORA_API_KEY in .env");
   process.exit(1);
 }
 
@@ -22,7 +27,7 @@ const payload = {
   source: "API Integration",
 };
 
-const res = await fetch("https://app.syncoraai.com/api/leads/external", {
+const res = await fetch(apiUrl, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

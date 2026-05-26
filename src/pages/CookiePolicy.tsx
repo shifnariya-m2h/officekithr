@@ -32,7 +32,7 @@ function CookiePolicy() {
             <strong>Marketing:</strong> Google Ads conversion tracking (only after consent).
           </li>
           <li>
-            <strong>Support chat:</strong> Tawk.to live chat widget (loaded after page idle).
+            <strong>Support chat:</strong> AskMyBot widget (bottom-right corner).
           </li>
         </ul>
 

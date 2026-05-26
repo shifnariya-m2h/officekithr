@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { trackDemoConversion } from "@/lib/analytics";
-import { buildLeadSource, submitLead } from "@/lib/api/leads";
+import { POPUP_LEAD_SOURCE, submitLead } from "@/lib/api/leads";
 
 interface HRPopupProps {
   onClose: () => void;
@@ -59,7 +59,9 @@ export const HRPopup: React.FC<HRPopupProps> = ({ onClose }) => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        source: buildLeadSource("websitepopup"),
+        companyName: "",
+        jobTitle: "",
+        source: POPUP_LEAD_SOURCE,
       });
 
       if (!res.ok) {

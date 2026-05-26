@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { buildLeadSource, submitLead } from "@/lib/api/leads";
+import { buildUtmSource, submitLead } from "@/lib/api/leads";
 import { trackDemoConversion } from "@/lib/analytics";
 import { SEO_ASSETS } from "@/lib/seo/assets";
 
@@ -48,8 +48,8 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
       email: formData.email,
       phone: formData.phone,
       companyName: formData.companyName,
-      jobTitle: formData.message || undefined,
-      source: buildLeadSource("contact"),
+      jobTitle: formData.message,
+      source: buildUtmSource("contact"),
     });
 
     if (res.ok) {

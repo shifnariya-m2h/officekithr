@@ -3,11 +3,14 @@ import { env } from "@/lib/env";
 export interface SyncoraLeadPayload {
   name: string;
   email: string;
-  companyName?: string;
-  jobTitle?: string;
+  companyName: string;
+  jobTitle: string;
   phone: string;
   source: string;
 }
+
+/** HR popup — fixed source label (no UTM). */
+export const POPUP_LEAD_SOURCE = "websitepopup";
 
 const UTM_KEYS = [
   "utm_source",
@@ -17,45 +20,39 @@ const UTM_KEYS = [
   "utm_term",
 ] as const;
 
-/** Base label + page path + UTM query (when present). */
-export function buildLeadSource(base: string): string {
-  const parts = [base];
-
+/** Contact forms — UTM query string when present, otherwise fallback label. */
+export function buildUtmSource(fallback = "contact"): string {
   try {
     const url = new URL(window.location.href);
-    parts.push(url.pathname);
-
     const utm = UTM_KEYS.flatMap((key) => {
       const value = url.searchParams.get(key);
       return value ? [`${key}=${value}`] : [];
     });
-
-    if (utm.length > 0) {
-      parts.push(utm.join("&"));
-    }
+    if (utm.length > 0) return utm.join("&");
   } catch {
-    /* ignore invalid URL in non-browser contexts */
+    /* ignore */
   }
-
-  return parts.join("|");
+  return fallback;
 }
 
 export async function submitLead(
-  payload: Omit<SyncoraLeadPayload, "source"> & { source?: string },
-  sourceBase = "Officekit-Website",
+  payload: SyncoraLeadPayload,
 ): Promise<Response> {
   const body: SyncoraLeadPayload = {
-    name: payload.name,
-    email: payload.email,
-    phone: payload.phone,
-    companyName: payload.companyName ?? "",
-    jobTitle: payload.jobTitle ?? "",
-    source: payload.source ?? buildLeadSource(sourceBase),
+    name: payload.name.trim(),
+    email: payload.email.trim(),
+    companyName: payload.companyName.trim(),
+    jobTitle: payload.jobTitle.trim(),
+    phone: payload.phone.trim(),
+    source: payload.source.trim(),
   };
 
-  return fetch(env.leadsApiUrl, {
+  return fetch(env.syncoraLeadsUrl, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key": env.syncoraApiKey,
+    },
     body: JSON.stringify(body),
   });
 }

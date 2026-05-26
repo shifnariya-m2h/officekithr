@@ -28,10 +28,11 @@
   <meta name="theme-color" content="#0055ff" />
 
   <style>
-    html{scroll-behavior:smooth;position:relative}
+    html{scroll-behavior:smooth}
     body{margin:0;background:#01004f;color:#fff;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-    #root{min-height:100vh}
-    .hero-lcp-placeholder{position:fixed;inset:0;background:linear-gradient(160deg,#0055ff 0%,#01004f 55%);z-index:-1}
+    #root{position:relative;z-index:1;min-height:100vh;isolation:isolate}
+    .hero-lcp-placeholder{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(160deg,#0055ff 0%,#01004f 55%)}
+    .hero-lcp-placeholder.is-hidden{display:none}
     h1{font-weight:700;line-height:1.15}
   </style>
   <link rel="preload" as="image" href="/BG-768.webp" fetchpriority="high" type="image/webp" media="(max-width: 767px)" />
@@ -41,6 +42,7 @@
   <link rel="preload" as="image" href="/NavLogo.webp" fetchpriority="high" type="image/webp" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://api.officekithr.com" />
+  <link rel="dns-prefetch" href="https://www.askmybot.ai" />
   <script>
     /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
     (function(w){"use strict";if(!w.loadCSS){w.loadCSS=function(){}}var rp=w.loadCSS.relpreload={};rp.support=function(){try{return w.document.createElement("link").relList.supports("preload")}catch(e){return false}};rp.poly=function(){var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"){w.loadCSS(link.href,link);link.rel=null}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,300);if(w.addEventListener){w.addEventListener("load",function(){w.clearInterval(run)})}else if(w.attachEvent){w.attachEvent("onload",function(){w.clearInterval(run)})}}if(rp.support()){var orig=w.loadCSS;w.loadCSS=function(href,before,media,attributes){var link=w.document.createElement("link");link.rel="stylesheet";link.href=href;link.media="only x";function onloadcssdefined(cb){for(var i=0;i<w.document.styleSheets.length;i++){if(w.document.styleSheets[i].href===link.href){return cb()}}setTimeout(function(){onloadcssdefined(cb)})}onloadcssdefined(function(){link.media=media||"all"});if(before&&before.parentNode){before.parentNode.insertBefore(link,before.nextSibling)}else{w.document.getElementsByTagName("head")[0].appendChild(link)}return link}}})(typeof global!=="undefined"?global:this);

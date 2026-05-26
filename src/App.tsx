@@ -8,10 +8,9 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import { BackToTopButton } from "@/components/BackToTopButton";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
-import { DeferredChatWidget } from "@/components/DeferredChatWidget";
 import { SeoProvider } from "@/seo/SeoContext";
 import { SeoHead } from "@/seo/SeoHead";
-import { DeferredScripts } from "@/components/DeferredScripts";
+import { AskMyBotLoader } from "@/components/AskMyBotLoader";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
 import { LegacyRedirect } from "@/components/LegacyRedirect";
@@ -105,9 +104,8 @@ const AppRoutes = () => {
       <SkipLink />
       <SeoHead />
       <CookieConsent />
-      <DeferredScripts />
+      <AskMyBotLoader />
       <DeferredAnalytics />
-      <DeferredChatWidget />
       {isPopupOpen && (
         <Suspense fallback={null}>
           <HRPopup onClose={() => setIsPopupOpen(false)} />
