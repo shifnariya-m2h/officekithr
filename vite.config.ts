@@ -1,6 +1,25 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+
+/** Load built CSS asynchronously so it does not block first paint. */
+function asyncCssPlugin(): Plugin {
+  return {
+    name: "async-css",
+    apply: "build",
+    transformIndexHtml: {
+      order: "post",
+      handler(html) {
+        return html.replace(
+          /<link rel="stylesheet" crossorigin href="(\/assets\/[^"]+\.css)">/g,
+          (_match, href) =>
+            `<link rel="preload" href="${href}" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'">` +
+            `<noscript><link rel="stylesheet" crossorigin href="${href}"></noscript>`
+        );
+      },
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,7 +27,7 @@ export default defineConfig({
     host: "::",
     port: 8085,
   },
-  plugins: [react()],
+  plugins: [react(), asyncCssPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

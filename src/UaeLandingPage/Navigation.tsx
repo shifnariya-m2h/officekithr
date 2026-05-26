@@ -247,8 +247,8 @@ const Navigation = () => {
           alt="OfficeKit HR - AI-Powered HRMS Software"
           className="w-auto h-8 sm:h-10 transition-all duration-300 [.group\\/nav[data-visible='true']_&]:h-6 [.group\\/nav[data-visible='true']_&]:sm:h-7"
           loading="eager"
-          width="120"
-          height="40"
+          width={137}
+          height={40}
         />
       </Link>
     );

@@ -2,21 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LazyContainerScroll } from "@/components/ui/LazyContainerScroll";
-import { SEO_ASSETS } from "@/lib/seo/assets";
-
-const heroDashboard = {
-  src: "/dashboardok.webp",
-  width: 1440,
-  height: 980,
-  alt: "OfficeKit HR dashboard overview on desktop",
-};
-
-const heroMobile = {
-  src: "/mobile-mockup.webp",
-  width: 750,
-  height: 1500,
-  alt: "OfficeKit HR mobile app overview",
-};
+import { HERO_IMAGES, SEO_ASSETS } from "@/lib/seo/assets";
 
 const HeroSection = () => {
   const titleBlock = (
@@ -57,17 +43,19 @@ const HeroSection = () => {
     <picture>
       <source
         media="(min-width: 768px)"
-        srcSet={heroDashboard.src}
+        srcSet={HERO_IMAGES.desktop.srcSet}
+        sizes="(min-width: 1280px) 1024px, 90vw"
         type="image/webp"
       />
       <img
-        src={heroMobile.src}
-        alt={heroMobile.alt}
-        width={heroMobile.width}
-        height={heroMobile.height}
-        sizes="(min-width: 768px) 960px, 100vw"
+        src={HERO_IMAGES.mobile.src}
+        srcSet={HERO_IMAGES.mobile.srcSet}
+        alt={HERO_IMAGES.mobile.alt}
+        width={HERO_IMAGES.mobile.width}
+        height={HERO_IMAGES.mobile.height}
+        sizes="(min-width: 768px) 960px, 50vw"
         className="h-full w-full object-contain md:object-fill"
-        fetchPriority="low"
+        fetchPriority="high"
         decoding="async"
         draggable={false}
       />
@@ -76,13 +64,13 @@ const HeroSection = () => {
 
   return (
     <section className="relative rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0">
-      {/* LCP background — discoverable img, not CSS background-image */}
       <img
-        src={SEO_ASSETS.heroBg}
+        src={SEO_ASSETS.heroBg768}
+        srcSet={`${SEO_ASSETS.heroBg768} 768w, ${SEO_ASSETS.heroBg} 1280w`}
         alt=""
         aria-hidden
-        width={1920}
-        height={1080}
+        width={1280}
+        height={1119}
         className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
         fetchPriority="high"
         decoding="async"

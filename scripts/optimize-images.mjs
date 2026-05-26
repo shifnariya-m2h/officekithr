@@ -1,5 +1,5 @@
 /**
- * Batch-convert large PNG/JPG in /public to WebP (keeps originals).
+ * Batch-optimize WebP/PNG/JPG in /public (resize + recompress).
  * Requires: cwebp (brew install webp)
  */
 import { execSync } from "child_process";
@@ -8,17 +8,28 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public");
-const MIN_BYTES = 80_000;
+const MIN_BYTES = 4_000;
 const QUALITY = 82;
+const LOGO_QUALITY = 78;
 
-/** Hero / feature images: max width for display (saves MB on slow networks). */
-const RESIZE_TARGETS = [
-  { match: /dashboardok\.webp$/i, width: 1440 },
-  { match: /mobile-mockup\.webp$/i, width: 750 },
+/** In-place max width (keeps aspect ratio). */
+const RESIZE_IN_PLACE = [
+  { match: /[/\\]NavLogo\.webp$/i, width: 274, quality: LOGO_QUALITY },
+  { match: /dashboardok\.webp$/i, width: 1440, quality: QUALITY },
+  { match: /mobile-mockup\.webp$/i, width: 750, quality: QUALITY },
+  { match: /[/\\]BG\.webp$/i, width: 1280, quality: QUALITY },
   { match: /HiringOnboardings\.webp$/i, width: 800 },
   { match: /TimePayroll-min\.webp$/i, width: 800 },
   { match: /Performance-selfservice-min\.webp$/i, width: 800 },
   { match: /hrb0\.webp$/i, width: 640 },
+  { match: /[/\\]company-logos[/\\].+\.webp$/i, width: 320, quality: LOGO_QUALITY },
+];
+
+/** Additional variants (stem-width.webp). */
+const VARIANTS = [
+  { stem: "mobile-mockup", width: 480, quality: QUALITY },
+  { stem: "dashboardok", width: 1024, quality: QUALITY },
+  { stem: "BG", width: 768, quality: QUALITY },
 ];
 
 function hasCwebp() {
@@ -30,13 +41,42 @@ function hasCwebp() {
   }
 }
 
-function walk(dir, acc = []) {
+function imageWidth(file) {
+  try {
+    const out = execSync(`sips -g pixelWidth "${file}"`, { encoding: "utf8" });
+    const m = out.match(/pixelWidth:\s*(\d+)/);
+    return m ? Number(m[1]) : null;
+  } catch {
+    return null;
+  }
+}
+
+function toWebp(input, output, { width, quality = QUALITY }) {
+  const resizeFlag = width ? `-resize ${width} 0` : "";
+  execSync(
+    `cwebp -q ${quality} ${resizeFlag} "${input}" -o "${output}"`.trim(),
+    { stdio: "pipe" }
+  );
+}
+
+function walk(dir, acc = [], filter = () => true) {
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, ent.name);
-    if (ent.isDirectory()) walk(p, acc);
-    else if (/\.(png|jpe?g)$/i.test(ent.name)) acc.push(p);
+    if (ent.isDirectory()) walk(p, acc, filter);
+    else if (filter(ent.name)) acc.push(p);
   }
   return acc;
+}
+
+function maybeReplace(file, tmp, { force = false } = {}) {
+  const before = fs.statSync(file).size;
+  const after = fs.statSync(tmp).size;
+  if (force || after < before * 0.98) {
+    fs.renameSync(tmp, file);
+    return true;
+  }
+  fs.unlinkSync(tmp);
+  return false;
 }
 
 if (!hasCwebp()) {
@@ -44,65 +84,78 @@ if (!hasCwebp()) {
   process.exit(1);
 }
 
-let converted = 0;
-for (const file of walk(PUBLIC)) {
+let changed = 0;
+
+// PNG/JPG → WebP
+for (const file of walk(PUBLIC, [], (n) => /\.(png|jpe?g)$/i.test(n))) {
   const stat = fs.statSync(file);
-  if (stat.size < MIN_BYTES) continue;
+  if (stat.size < 80_000) continue;
   const out = file.replace(/\.(png|jpe?g)$/i, ".webp");
   if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= stat.mtimeMs) continue;
   try {
-    const resize = RESIZE_TARGETS.find((t) => t.match.test(file));
-    const resizeFlag = resize ? `-resize ${resize.width} 0` : "";
-    const target = resize ? file : out;
-    execSync(`cwebp -q ${QUALITY} ${resizeFlag} "${file}" -o "${target}"`.trim(), {
-      stdio: "pipe",
-    });
+    const resize = RESIZE_IN_PLACE.find((t) => t.match.test(file));
+    const q = resize?.quality ?? QUALITY;
     if (resize) {
+      toWebp(file, out, { width: resize.width, quality: q });
       fs.renameSync(file, out);
+    } else {
+      toWebp(file, out, { quality: q });
     }
-    converted++;
-    const after = fs.statSync(out).size;
+    changed++;
     console.log(
-      `[optimize-images] ${path.basename(file)} → ${path.basename(out)} (${(stat.size / 1024).toFixed(0)}K → ${(after / 1024).toFixed(0)}K)`
+      `[optimize-images] ${path.basename(file)} → ${path.basename(out)} (${(stat.size / 1024).toFixed(0)}K → ${(fs.statSync(out).size / 1024).toFixed(0)}K)`
     );
   } catch (e) {
     console.warn(`[optimize-images] skip ${file}:`, e.message);
   }
 }
-function walkWebp(dir, acc = []) {
-  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, ent.name);
-    if (ent.isDirectory()) walkWebp(p, acc);
-    else if (/\.webp$/i.test(ent.name)) acc.push(p);
-  }
-  return acc;
-}
 
-for (const file of walkWebp(PUBLIC)) {
-  const resize = RESIZE_TARGETS.find((t) => t.match.test(file));
-  if (!resize) continue;
+// Resize / recompress existing WebP in place
+for (const file of walk(PUBLIC, [], (n) => /\.webp$/i.test(n))) {
+  const target = RESIZE_IN_PLACE.find((t) => t.match.test(file));
+  if (!target) continue;
   const stat = fs.statSync(file);
   if (stat.size < MIN_BYTES) continue;
+  const w = imageWidth(file);
+  const isLogo = /[/\\]company-logos[/\\]/.test(file);
+  const needsResize = w && w > target.width;
+  const needsRecompress = isLogo && stat.size > 12_000;
+  if (!needsResize && !needsRecompress) continue;
   const tmp = `${file}.opt.tmp`;
+  const outWidth = needsResize ? target.width : w;
   try {
-    execSync(
-      `cwebp -q ${QUALITY} -resize ${resize.width} 0 "${file}" -o "${tmp}"`,
-      { stdio: "pipe" }
-    );
-    const after = fs.statSync(tmp).size;
-    if (after < stat.size * 0.98) {
-      fs.renameSync(tmp, file);
-      converted++;
+    toWebp(file, tmp, {
+      width: outWidth,
+      quality: target.quality ?? QUALITY,
+    });
+    if (maybeReplace(file, tmp, { force: needsRecompress && !needsResize })) {
+      changed++;
       console.log(
-        `[optimize-images] resized ${path.basename(file)} (${(stat.size / 1024).toFixed(0)}K → ${(after / 1024).toFixed(0)}K)`
+        `[optimize-images] ${needsResize ? "resized" : "recompressed"} ${path.relative(PUBLIC, file)}`
       );
-    } else {
-      fs.unlinkSync(tmp);
     }
   } catch (e) {
     if (fs.existsSync(tmp)) fs.unlinkSync(tmp);
-    console.warn(`[optimize-images] skip resize ${file}:`, e.message);
+    console.warn(`[optimize-images] skip ${file}:`, e.message);
   }
 }
 
-console.log(`[optimize-images] ${converted} file(s) converted.`);
+// Generate width-suffixed variants
+for (const { stem, width, quality } of VARIANTS) {
+  const base = path.join(PUBLIC, `${stem}.webp`);
+  if (!fs.existsSync(base)) continue;
+  const out = path.join(PUBLIC, `${stem}-${width}.webp`);
+  const srcMtime = fs.statSync(base).mtimeMs;
+  if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= srcMtime) continue;
+  try {
+    toWebp(base, out, { width, quality });
+    changed++;
+    console.log(
+      `[optimize-images] variant ${path.basename(out)} (${(fs.statSync(out).size / 1024).toFixed(0)}K)`
+    );
+  } catch (e) {
+    console.warn(`[optimize-images] skip variant ${stem}-${width}:`, e.message);
+  }
+}
+
+console.log(`[optimize-images] ${changed} file(s) updated.`);
