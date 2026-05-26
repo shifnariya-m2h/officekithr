@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +8,19 @@ import { Link } from "react-router-dom";
 
 const PRICING_HEADSET_IMAGE = "/pricing-headset.png";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Pricing = () => {
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    setReduceMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }, []);
   const plans = [
     {
       name: "Starter",
@@ -90,10 +104,15 @@ const Pricing = () => {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight  mb-6">
-              Invest Less, Achieve More <br /> with  <span className="gradient-text" >OfficeKit HR </span>
-            </h1>
-
+            <motion.h1
+              className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6"
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              Invest Less, Achieve More <br /> with{" "}
+              <span className="gradient-text">OfficeKit HR </span>
+            </motion.h1>
           </div>
         </div>
       </section>
@@ -101,7 +120,13 @@ const Pricing = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Text */}
-          <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeUp}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+          >
             <Badge className=" bg-white font-normal py-2  text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent"  >
               Pricing
             </Badge>
@@ -116,13 +141,42 @@ const Pricing = () => {
               company<br /> scaling operations, or a large enterprise needing a compliant
               solution,<br /> we have a plan tailored for you.
             </p>
-          </div>
+          </motion.div>
 
           {/* Sales expert CTA */}
-          <div className="flex w-full justify-center md:justify-end">
-            <div className="w-full max-w-[560px] overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0055ff] via-[#0058ff] to-[#0046d9] p-6 shadow-[0_20px_50px_-12px_rgba(0,85,255,0.4)] md:p-8">
-              <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-6">
-                <div className="flex-1 text-white">
+          <motion.div
+            className="flex w-full justify-center md:justify-end"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={{
+              hidden: { opacity: 0, x: 32, scale: 0.97 },
+              visible: { opacity: 1, x: 0, scale: 1 },
+            }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          >
+            <motion.div
+              className="relative w-full max-w-[560px] overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0055ff] via-[#0058ff] to-[#0046d9] p-6 shadow-[0_20px_50px_-12px_rgba(0,85,255,0.4)] md:p-8 animate-pricing-cta-glow"
+              whileHover={reduceMotion ? undefined : { y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            >
+              <div
+                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-cyan-300/20 blur-2xl"
+                aria-hidden
+              />
+
+              <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:gap-6">
+                <motion.div
+                  className="flex-1 text-white"
+                  initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: 0.2 }}
+                >
                   <h3 className="text-2xl font-bold leading-tight tracking-tight md:text-[28px]">
                     Talk to our Sales Expert
                   </h3>
@@ -132,28 +186,46 @@ const Pricing = () => {
                     through the best-fit modules, and suggest the right pricing
                     plan for your business.
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="flex w-full shrink-0 flex-col items-center rounded-2xl bg-[#001a4d] px-5 pb-5 pt-4 md:w-[220px]">
-                  <img
+                <motion.div
+                  className="flex w-full shrink-0 flex-col items-center rounded-2xl bg-[#001a4d] px-5 pb-5 pt-4 md:w-[220px]"
+                  initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.35 }}
+                >
+                  <motion.img
                     src={PRICING_HEADSET_IMAGE}
                     alt=""
-                    className="h-auto w-44 object-contain md:w-52 lg:w-56"
+                    className={`h-auto w-44 object-contain md:w-52 lg:w-56 ${reduceMotion ? "" : "animate-pricing-headset-float"}`}
                     width={224}
                     height={212}
                     loading="lazy"
                     decoding="async"
+                    whileHover={reduceMotion ? undefined : { scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 18 }}
                   />
-                  <Button
-                    asChild
-                    className="mt-3 h-11 w-full max-w-[200px] rounded-full bg-white px-6 text-[15px] font-semibold text-[#0055ff] shadow-md transition-colors hover:bg-white/95 hover:text-[#0044cc]"
+                  <motion.div
+                    className="mt-3 w-full max-w-[200px]"
+                    initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
+                    whileHover={reduceMotion ? undefined : { scale: 1.04 }}
+                    whileTap={reduceMotion ? undefined : { scale: 0.97 }}
                   >
-                    <Link to="/contact">Contact Sales</Link>
-                  </Button>
-                </div>
+                    <Button
+                      asChild
+                      className="h-11 w-full rounded-full bg-white px-6 text-[15px] font-semibold text-[#0055ff] shadow-md transition-colors hover:bg-white/95 hover:text-[#0044cc]"
+                    >
+                      <Link to="/contact">Contact Sales</Link>
+                    </Button>
+                  </motion.div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
