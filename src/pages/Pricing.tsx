@@ -2,6 +2,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 
+const PRICING_BOX_IMAGE = encodeURI("/Box 01.webp");
+const PRICING_CTA_IMAGE = encodeURI("/button x .png");
+const PRICING_PHONE = "7994154069";
+
 const Pricing = () => {
   const plans = [
     {
@@ -114,31 +118,33 @@ const Pricing = () => {
             </p>
           </div>
 
-          {/* Right Image with button on top */}
+          {/* Right Image with call CTA overlay */}
           <div className="flex justify-center">
-            <div className="relative">
-              {/* Main Box Image */}
+            <div className="relative inline-block max-w-full">
               <img
-                src="/Box 01.png"
-                alt="Pricing Illustration"
-                className=" rounded-2xl  "  
+                src={PRICING_BOX_IMAGE}
+                alt="Pricing illustration"
+                className="rounded-2xl max-w-full h-auto"
+                width={560}
+                height={560}
                 loading="lazy"
+                decoding="async"
               />
-
-
-
-              <a href="tel:7994154069">
-                <button
-                  className="absolute bottom-8 right-9 h-[44px] w-[200px] bg-cover bg-center rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity duration-300"
-                  style={{ backgroundImage: "url('/button x .png')" }}
-                >
-                  {/* Optional: text inside button if needed */}
-                </button>
+              <a
+                href={`tel:+91${PRICING_PHONE}`}
+                className="absolute bottom-8 right-9 block h-11 w-[200px] rounded-lg shadow-lg transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055ff] focus-visible:ring-offset-2"
+                aria-label={`Call us at +91 ${PRICING_PHONE}`}
+              >
+                <img
+                  src={PRICING_CTA_IMAGE}
+                  alt=""
+                  width={200}
+                  height={44}
+                  className="h-11 w-[200px] object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
               </a>
-
-
-
-
             </div>
           </div>
         </div>
