@@ -13,7 +13,8 @@
     "build:dev": "vite build --mode development",
     "seo:sitemap": "node scripts/generate-sitemap.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:syncora-lead": "node scripts/test-syncora-lead.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

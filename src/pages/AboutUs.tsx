@@ -54,7 +54,8 @@ const AboutUs = () => {
     {
       name: "Haris PT",
       role: "Co Founder & CEO",
-      image: "https://officekit.thebetaprojects.com/_next/image?url=https%3A%2F%2Fmanage.officekit.thebetaprojects.com%2Fstorage%2Fteam%2FharisPT.webp&w=256&q=75",
+      image: "/haris-ceo.webp",
+      linkedin: "https://www.linkedin.com/in/harispt/",
       bio: (
         <>
           Serial Entrepreneur with 20+ Years of <br />
@@ -65,7 +66,8 @@ const AboutUs = () => {
     {
       name: "Mohammed Faizan Lanka",
       role: "Co Founder & CTO",
-      image: "https://officekit.thebetaprojects.com/_next/image?url=https%3A%2F%2Fmanage.officekit.thebetaprojects.com%2Fstorage%2Fteam%2FfaizanLanka.webp&w=256&q=75",
+      image: "/faizan-seo.webp",
+      linkedin: "https://www.linkedin.com/in/mohammedfaizanlanka/",
       bio: "Technocrat with 14+ Years of Experience in BFSI, HR and Data Analytics domains."
     }
   ];
@@ -197,12 +199,22 @@ const AboutUs = () => {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {team.map((member, index) => (
-              <div key={index} className="text-center feature-card">
+              <a
+                key={index}
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${member.name} on LinkedIn`}
+                className="text-center feature-card block transition-shadow hover:shadow-lg hover:border-primary/30 cursor-pointer"
+              >
                 <img
                   src={member.image}
                   alt={member.name}
+                  width={128}
+                  height={128}
                   className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-border"
                   loading="lazy"
+                  decoding="async"
                 />
                 <h3 className="text-xl font-semibold text-foreground mb-2">
                   {member.name}
@@ -211,7 +223,7 @@ const AboutUs = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {member.bio}
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </div>

@@ -1,7 +1,12 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useState } from "react";
+import {
+  HR_POPUP_SESSION_KEY,
+  useHrPopupTrigger,
+} from "@/hooks/useHrPopupTrigger";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
+import { BackToTopButton } from "@/components/BackToTopButton";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
 import { DeferredChatWidget } from "@/components/DeferredChatWidget";
 import { SeoProvider } from "@/seo/SeoContext";
@@ -63,9 +68,6 @@ const HRPopup = lazy(() =>
   import("./components/HRPopup").then((m) => ({ default: m.HRPopup }))
 );
 
-const POPUP_SESSION_KEY = "ok_hr_popup_session_shown";
-const POPUP_DELAY_MS = 12000;
-
 function PageLoader() {
   return (
     <div
@@ -85,29 +87,13 @@ const AppRoutes = () => {
     location.pathname.startsWith("/uae");
   const isHome = location.pathname === "/";
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const openHrPopup = useCallback(() => setIsPopupOpen(true), []);
 
-  useEffect(() => {
-    if (typeof window === "undefined" || !isHome || isPopupOpen) return;
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reducedMotion) return;
-
-    const sessionShown =
-      sessionStorage.getItem(POPUP_SESSION_KEY) === "true";
-    if (sessionShown) return;
-
-    const timerId = window.setTimeout(() => {
-      setIsPopupOpen(true);
-    }, POPUP_DELAY_MS);
-
-    return () => clearTimeout(timerId);
-  }, [isPopupOpen, isHome, location.pathname]);
+  useHrPopupTrigger(isHome, isPopupOpen, openHrPopup);
 
   useEffect(() => {
     if (isPopupOpen) {
-      sessionStorage.setItem(POPUP_SESSION_KEY, "true");
+      sessionStorage.setItem(HR_POPUP_SESSION_KEY, "true");
     }
   }, [isPopupOpen]);
 
@@ -128,6 +114,7 @@ const AppRoutes = () => {
         </Suspense>
       )}
       <ScrollToTop />
+      <BackToTopButton />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -248,7 +235,7 @@ function DeferredAnalytics() {
       const id = window.requestIdleCallback(run, { timeout: 5000 });
       return () => window.cancelIdleCallback(id);
     }
-    const t = window.setTimeout(run, 4000);
+    const t = setTimeout(run, 4000);
     return () => clearTimeout(t);
   }, []);
   return on ? <GoogleAdsWrapper /> : null;

@@ -10,9 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { trackDemoConversion } from "@/lib/analytics";
-import { env } from "@/lib/env";
-
-const HR_POPUP_ENDPOINT = env.hrPopupApiUrl;
+import { buildLeadSource, submitLead } from "@/lib/api/leads";
 
 interface HRPopupProps {
   onClose: () => void;
@@ -57,16 +55,11 @@ export const HRPopup: React.FC<HRPopupProps> = ({ onClose }) => {
     setStatus("submitting");
 
     try {
-      const payload = {
-        ...formData,
-        pageUrl: window.location.href,
-        submittedAt: new Date().toISOString(),
-      };
-
-      const res = await fetch(HR_POPUP_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const res = await submitLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        source: buildLeadSource("websitepopup"),
       });
 
       if (!res.ok) {

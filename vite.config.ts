@@ -1,6 +1,7 @@
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { syncoraLeadsDevPlugin } from "./vite/syncoraLeadsDev";
 
 /** Load built CSS asynchronously so it does not block first paint. */
 function asyncCssPlugin(): Plugin {
@@ -22,12 +23,15 @@ function asyncCssPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
   server: {
     host: "::",
     port: 8085,
   },
-  plugins: [react(), asyncCssPlugin()],
+  plugins: [react(), asyncCssPlugin(), syncoraLeadsDevPlugin(env.SYNCORA_API_KEY)],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -97,4 +101,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom"],
   },
+};
 });

@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { submitLead } from "@/lib/api/leads";
+import { buildLeadSource, submitLead } from "@/lib/api/leads";
 import { trackDemoConversion } from "@/lib/analytics";
 import { SEO_ASSETS } from "@/lib/seo/assets";
 
@@ -38,83 +38,19 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
     });
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-
-
-
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await fetch(
-  //       "https://app.syncoraai.com/api/webhooks/website/LiQApK1h9PzXw4LtPUQe/leads",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           "X-Syncora-Public-Key": "PUB_d9f73a87-a96f-4549-949e-c6acd8ff21b2",
-  //         },
-  //         body: JSON.stringify(formData),
-  //       }
-  //     );
-
-
-
-  //     if (res.ok) {
-
-  //       if (window.gtag) {
-  //         window.gtag('event', 'conversion', {
-  //           send_to: 'AW-17365780413/MAzACIaay74bEL2P09hA'
-  //         });
-  //       }
-
-  //       toast({
-  //         title: "Success",
-  //         variant: "success",
-  //         description: "Demo scheduled successfully!",
-  //       })
-  //       setFormData({
-  //         name: "",
-  //         email: "",
-  //         phone: "",
-  //         companyName: "",
-  //         message: "",
-  //       });
-  //     } else {
-  //       const t = await res.text();
-  //       toast({
-  //         title: "Error",
-  //         variant: "destructive",
-  //         description: "❌ There was a problem sending your form\n" + t,
-  //       })
-  //     }
-  //   } catch (err) {
-  //      toast({
-  //       title: "Error",
-  //       variant: "destructive",
-  //       description: "⚠️ Network error. Please try again later.",
-  //     })
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setLoading(true);
 
   try {
-    const payload = {
+    const res = await submitLead({
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
       companyName: formData.companyName,
-      message__c: formData.message,
-      source: "Officekit-API Integration",
-    };
-
-    const res = await submitLead(payload);
+      jobTitle: formData.message || undefined,
+      source: buildLeadSource("contact"),
+    });
 
     if (res.ok) {
       trackDemoConversion("contact_form");

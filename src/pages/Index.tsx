@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { HomeFaqSchema } from "@/components/HomeFaqSchema";
 import { LazySection } from "@/components/LazySection";
+import { HR_POPUP_SENTINEL_ID } from "@/hooks/useHrPopupTrigger";
 
 const Index = () => {
   useEffect(() => {
@@ -30,6 +31,11 @@ const Index = () => {
       <Navigation />
       <main id="main-content">
         <HeroSection />
+        <div
+          id={HR_POPUP_SENTINEL_ID}
+          className="h-px w-full shrink-0 pointer-events-none"
+          aria-hidden
+        />
         <LazySection
           loader={() => import("@/components/TrustedCompanies")}
           minHeight="14rem"

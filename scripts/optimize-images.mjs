@@ -23,6 +23,7 @@ const RESIZE_IN_PLACE = [
   { match: /TimePayroll-min\.webp$/i, width: 800 },
   { match: /Performance-selfservice-min\.webp$/i, width: 800 },
   { match: /hrb0\.webp$/i, width: 640 },
+  { match: /[/\\](haris-ceo|faizan-seo)\.webp$/i, width: 256 },
   {
     match: /[/\\]company-logos[/\\].+\.webp$/i,
     width: PARTNER_LOGO_MAX_WIDTH,
