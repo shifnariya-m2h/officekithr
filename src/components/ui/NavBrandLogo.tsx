@@ -1,4 +1,10 @@
-import { NAV_LOGO_HEIGHT, NAV_LOGO_WIDTH, SEO_ASSETS } from "@/lib/seo/assets";
+import {
+  NAV_LOGO_HEIGHT,
+  NAV_LOGO_SIZES,
+  NAV_LOGO_SRCSET,
+  NAV_LOGO_WIDTH,
+  SEO_ASSETS,
+} from "@/lib/seo/assets";
 import { cn } from "@/lib/utils";
 
 const LOGO_ALT = "OfficeKit HR - AI-Powered HRMS Software";
@@ -11,7 +17,9 @@ type NavBrandLogoProps = {
 export function NavBrandLogo({ className }: NavBrandLogoProps) {
   return (
     <img
-      src={SEO_ASSETS.logo}
+      src={SEO_ASSETS.logo137}
+      srcSet={NAV_LOGO_SRCSET}
+      sizes={NAV_LOGO_SIZES}
       alt={LOGO_ALT}
       width={NAV_LOGO_WIDTH}
       height={NAV_LOGO_HEIGHT}

@@ -11,10 +11,10 @@ function asyncCssPlugin(): Plugin {
       order: "post",
       handler(html) {
         return html.replace(
-          /<link rel="stylesheet" crossorigin href="(\/assets\/[^"]+\.css)">/g,
+          /<link rel="stylesheet"(?: crossorigin)? href="(\/assets\/[^"]+\.css)">/g,
           (_match, href) =>
-            `<link rel="preload" href="${href}" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'">` +
-            `<noscript><link rel="stylesheet" crossorigin href="${href}"></noscript>`
+            `<link rel="stylesheet" href="${href}" media="print" onload="this.media='all';this.onload=null">` +
+            `<noscript><link rel="stylesheet" href="${href}"></noscript>`
         );
       },
     },

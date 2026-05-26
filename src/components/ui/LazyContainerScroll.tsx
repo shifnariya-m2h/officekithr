@@ -48,7 +48,9 @@ export function LazyContainerScroll({
 
   useEffect(() => {
     if (reducedMotion) return;
-    // Next frame: keep static layout for LCP, then mount scroll animation.
+    const desktop = window.matchMedia("(min-width: 768px)");
+    if (!desktop.matches) return;
+    // Desktop only: keep static layout for LCP, then mount scroll animation.
     const id = requestAnimationFrame(() => setEnableMotion(true));
     return () => cancelAnimationFrame(id);
   }, [reducedMotion]);

@@ -1,7 +1,9 @@
 import { Button } from "../../../components/ui/button";
 import { Link } from "react-router-dom";
-import Lottie from "lottie-react";
-import mobileAnimation from "../../../../public/lottie/Anima Bot.json";
+import { LazyLottie } from "@/components/ui/LazyLottie";
+
+const loadAiPilotAnimation = () =>
+  import("../../../../public/lottie/Anima Bot.json");
 import { ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
@@ -115,17 +117,17 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-300/20 blur-3xl scale-110"></div>
 
               <div className="relative z-10 flex justify-center">
-                <Lottie
-                  animationData={mobileAnimation}
-                  loop={true}
+                <LazyLottie
+                  loadAnimation={loadAiPilotAnimation}
+                  loop
                   className="
-                    w-[260px] h-[360px]   /* base (small screens) */
+                    w-[260px] h-[360px]
                     sm:w-[340px] sm:h-[480px]
                     md:w-[420px] md:h-[600px]
                     lg:w-[500px] lg:h-[700px]
                     xl:w-[560px] xl:h-[780px]
                     mt-6 sm:mt-8 md:mt-10
-                    drop-shadow-2xl 
+                    drop-shadow-2xl
                     transform hover:scale-105 transition duration-500
                   "
                 />

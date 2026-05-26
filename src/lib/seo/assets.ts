@@ -4,6 +4,7 @@ export const SEO_ASSETS = {
   heroBg768: "/BG-768.webp",
   sectionBg: "/RecruitmentManagement2.jpg",
   logo: "/NavLogo.webp",
+  logo137: "/NavLogo-137.webp",
   ogImage: "/ImageThumbnail2.webp",
   favicon: "/favicon.svg",
   faviconIco: "/favicon.ico",
@@ -13,6 +14,9 @@ export const SEO_ASSETS = {
 /** Nav logo display size (2× asset: NavLogo.webp 274×82). */
 export const NAV_LOGO_WIDTH = 137;
 export const NAV_LOGO_HEIGHT = 41;
+
+export const NAV_LOGO_SRCSET = `${SEO_ASSETS.logo137} 137w, ${SEO_ASSETS.logo} 274w`;
+export const NAV_LOGO_SIZES = "(max-width: 767px) 137px, 137px";
 
 export const HERO_IMAGES = {
   mobile: {

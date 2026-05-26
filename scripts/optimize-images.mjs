@@ -10,8 +10,9 @@ import { fileURLToPath } from "url";
 const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public");
 const MIN_BYTES = 2_000;
 const QUALITY = 82;
-const LOGO_QUALITY = 72;
+const LOGO_QUALITY = 68;
 const PARTNER_LOGO_MAX_WIDTH = 160;
+const PARTNER_LOGO_RECOMPRESS_BYTES = 4_000;
 
 /** In-place max width (keeps aspect ratio). */
 const RESIZE_IN_PLACE = [
@@ -37,6 +38,7 @@ const VARIANTS = [
   { stem: "mobile-mockup", width: 768, quality: QUALITY },
   { stem: "dashboardok", width: 1024, quality: QUALITY },
   { stem: "BG", width: 768, quality: QUALITY },
+  { stem: "NavLogo", width: 137, quality: LOGO_QUALITY },
 ];
 
 function hasCwebp() {
@@ -128,7 +130,7 @@ for (const file of walk(PUBLIC, [], (n) => /\.webp$/i.test(n))) {
   const needsResize = w && w > target.width;
   const isPartnerLogo = /[/\\]company-logos[/\\]/.test(file);
   const needsRecompress =
-    isLogo && stat.size > (isPartnerLogo ? 6_000 : 12_000);
+    isLogo && stat.size > (isPartnerLogo ? PARTNER_LOGO_RECOMPRESS_BYTES : 8_000);
   if (!needsResize && !needsRecompress) continue;
   const tmp = `${file}.opt.tmp`;
   const outWidth = needsResize ? target.width : w;

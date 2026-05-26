@@ -39,6 +39,7 @@ const Index = () => {
         <LazySection
           loader={() => import("@/components/TrustedCompanies")}
           minHeight="14rem"
+          rootMargin="480px 0px"
         />
         <LazySection
           loader={() => import("@/components/WhyOfficeKit")}

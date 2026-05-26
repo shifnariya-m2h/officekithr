@@ -249,13 +249,16 @@ export const NavbarLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src="/NavLogo.webp"
+        src="/NavLogo-137.webp"
+        srcSet="/NavLogo-137.webp 137w, /NavLogo.webp 274w"
+        sizes="137px"
         alt="OfficeKit HR"
         width={137}
         height={41}
         className="h-8 w-auto object-contain"
         loading="eager"
         decoding="async"
+        fetchPriority="high"
       />
       <span className="font-medium text-black dark:text-white">OfficeKit HR</span>
     </a>
