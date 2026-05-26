@@ -1,3 +1,4 @@
+import { partnerLogoSources } from "@/lib/partner-logos";
 import { cn } from "@/lib/utils";
 
 /** Max rendered logo width (md breakpoint); assets are 2× in /public. */
@@ -20,9 +21,13 @@ export function PartnerLogo({
   className,
   loading = "lazy",
 }: PartnerLogoProps) {
+  const { src: responsiveSrc, srcSet, sizes } = partnerLogoSources(src);
+
   return (
     <img
-      src={src}
+      src={responsiveSrc}
+      srcSet={srcSet}
+      sizes={sizes}
       alt={label}
       width={PARTNER_LOGO_WIDTH}
       height={PARTNER_LOGO_HEIGHT}

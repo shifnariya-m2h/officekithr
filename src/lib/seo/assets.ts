@@ -2,6 +2,7 @@
 export const SEO_ASSETS = {
   heroBg: "/BG.webp",
   heroBg768: "/BG-768.webp",
+  heroBg480: "/BG-480.webp",
   sectionBg: "/RecruitmentManagement2.jpg",
   logo: "/NavLogo.webp",
   logo137: "/NavLogo-137.webp",
@@ -37,9 +38,9 @@ export const HERO_IMAGES = {
     alt: "OfficeKit HR dashboard overview on desktop",
   },
   heroBg: {
-    src: SEO_ASSETS.heroBg768,
-    srcSet: `${SEO_ASSETS.heroBg768} 768w, ${SEO_ASSETS.heroBg} 1280w`,
-    sizes: "100vw",
+    src: SEO_ASSETS.heroBg480,
+    srcSet: `${SEO_ASSETS.heroBg480} 480w, ${SEO_ASSETS.heroBg768} 768w, ${SEO_ASSETS.heroBg} 1280w`,
+    sizes: "(max-width: 480px) 100vw, (max-width: 768px) 100vw, 1280px",
     width: 1280,
     height: 1119,
   },
