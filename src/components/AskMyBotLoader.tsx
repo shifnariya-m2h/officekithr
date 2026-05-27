@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const WIDGET_SRC =
   "https://www.askmybot.ai/p/officekit-hr-qa84/widget.js";
 const SCRIPT_ID = "askmybot-widget";
-const IDLE_DELAY_MS = 8_000;
+const IDLE_DELAY_MS = 25_000;
 
 /**
  * Loads AskMyBot after idle or first user interaction so it does not compete
@@ -26,7 +26,7 @@ export function AskMyBotLoader() {
 
     const onInteraction = () => load();
 
-    const events = ["pointerdown", "keydown", "touchstart"] as const;
+    const events = ["pointerdown", "keydown", "touchstart", "scroll"] as const;
     for (const event of events) {
       window.addEventListener(event, onInteraction, {
         once: true,

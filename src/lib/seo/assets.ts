@@ -6,6 +6,7 @@ export const SEO_ASSETS = {
   sectionBg: "/RecruitmentManagement2.jpg",
   logo: "/NavLogo.webp",
   logo137: "/NavLogo-137.webp",
+  logo108: "/NavLogo-108.webp",
   ogImage: "/ImageThumbnail2.webp",
   favicon: "/favicon.svg",
   faviconIco: "/favicon.ico",
@@ -13,20 +14,20 @@ export const SEO_ASSETS = {
 } as const;
 
 /** Nav logo display size (2× asset: NavLogo.webp 274×82). */
-export const NAV_LOGO_WIDTH = 137;
-export const NAV_LOGO_HEIGHT = 41;
+export const NAV_LOGO_WIDTH = 108;
+export const NAV_LOGO_HEIGHT = 33;
 
-export const NAV_LOGO_SRCSET = `${SEO_ASSETS.logo137} 137w, ${SEO_ASSETS.logo} 274w`;
-export const NAV_LOGO_SIZES = "(max-width: 767px) 137px, 137px";
+export const NAV_LOGO_SRCSET = `${SEO_ASSETS.logo108} 108w, ${SEO_ASSETS.logo137} 137w, ${SEO_ASSETS.logo} 274w`;
+export const NAV_LOGO_SIZES = "(max-width: 767px) 108px, 108px";
 
 export const HERO_IMAGES = {
   mobile: {
-    src: "/mobile-mockup-480.webp",
+    src: "/mobile-mockup-240.webp",
     srcSet:
-      "/mobile-mockup-480.webp 480w, /mobile-mockup-768.webp 768w, /mobile-mockup.webp 750w",
-    sizes: "(max-width: 768px) 240px, 480px",
-    width: 480,
-    height: 960,
+      "/mobile-mockup-240.webp 240w, /mobile-mockup-480.webp 480w, /mobile-mockup-768.webp 768w, /mobile-mockup.webp 750w",
+    sizes: "(max-width: 768px) 240px, (max-width: 1024px) 320px, 360px",
+    width: 240,
+    height: 480,
     alt: "OfficeKit HR mobile app overview",
   },
   desktop: {

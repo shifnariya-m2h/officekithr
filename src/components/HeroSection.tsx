@@ -41,13 +41,7 @@ const HeroSection = () => {
   );
 
   const heroImages = (
-    <picture>
-      <source
-        media="(min-width: 768px)"
-        srcSet={HERO_IMAGES.desktop.srcSet}
-        sizes={HERO_IMAGES.desktop.sizes}
-        type="image/webp"
-      />
+    <>
       <OptimizedImage
         src={HERO_IMAGES.mobile.src}
         srcSet={HERO_IMAGES.mobile.srcSet}
@@ -55,13 +49,26 @@ const HeroSection = () => {
         alt={HERO_IMAGES.mobile.alt}
         width={HERO_IMAGES.mobile.width}
         height={HERO_IMAGES.mobile.height}
-        className="h-full w-full object-contain md:object-fill"
+        className="h-full w-full object-contain md:hidden"
         fetchPriority="high"
         loading="eager"
         decoding="async"
         draggable={false}
       />
-    </picture>
+      <OptimizedImage
+        src={HERO_IMAGES.desktop.src}
+        srcSet={HERO_IMAGES.desktop.srcSet}
+        sizes={HERO_IMAGES.desktop.sizes}
+        alt={HERO_IMAGES.desktop.alt}
+        width={HERO_IMAGES.desktop.width}
+        height={HERO_IMAGES.desktop.height}
+        className="hidden h-full w-full object-contain md:block"
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+        draggable={false}
+      />
+    </>
   );
 
   return (

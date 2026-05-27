@@ -17,7 +17,7 @@ type NavBrandLogoProps = {
 export function NavBrandLogo({ className }: NavBrandLogoProps) {
   return (
     <img
-      src={SEO_ASSETS.logo137}
+      src={SEO_ASSETS.logo108}
       srcSet={NAV_LOGO_SRCSET}
       sizes={NAV_LOGO_SIZES}
       alt={LOGO_ALT}
