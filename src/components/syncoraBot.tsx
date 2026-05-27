@@ -144,3 +144,8 @@
 //     isOpening = false;
 //   }
 // };
+
+/** Legacy Syncora widget — disabled; AskMyBot is loaded via AskMyBotLoader. */
+export async function loadSyncoraBot(): Promise<void> {
+  /* no-op */
+}

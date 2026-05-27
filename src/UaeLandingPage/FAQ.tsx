@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Calculator, CheckCircle2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m } from '@/lib/performance/motion';
 
 declare global {
   namespace JSX {
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white"></div>
 
         {/* Animated Gradient Orbs using Framer Motion */}
-        <motion.div
+        <m.div
           animate={{
             scale: [1, 1.05, 1],
             opacity: [0.4, 0.6, 0.4],

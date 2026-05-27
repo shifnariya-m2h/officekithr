@@ -28,18 +28,29 @@ const RESIZE_IN_PLACE = [
   { match: /TimePayroll-min\.webp$/i, width: 800 },
   { match: /Performance-selfservice-min\.webp$/i, width: 800 },
   { match: /hrb0\.webp$/i, width: 640 },
+  { match: /perfo-growth\.webp$/i, width: 640 },
+  { match: /operation-support\.webp$/i, width: 640 },
+  { match: /recruitment-onboarding\.webp$/i, width: 640 },
+  { match: /corehr\.webp$/i, width: 640 },
+  { match: /payroll-comp\.webp$/i, width: 640 },
   { match: /[/\\](haris-ceo|faizan-seo)\.webp$/i, width: 256 },
 ];
 
 /** Additional variants (stem-width.webp). */
 const VARIANTS = [
+  { stem: "mobile-mockup", width: 240, quality: QUALITY },
   { stem: "mobile-mockup", width: 480, quality: QUALITY },
   { stem: "mobile-mockup", width: 768, quality: QUALITY },
   { stem: "dashboardok", width: 1024, quality: QUALITY },
-  { stem: "BG", width: 768, quality: QUALITY },
   { stem: "BG", width: 480, quality: QUALITY },
+  { stem: "BG", width: 768, quality: QUALITY },
+  { stem: "BG", width: 1024, quality: QUALITY },
+  { stem: "NavLogo", width: 108, quality: LOGO_QUALITY },
   { stem: "NavLogo", width: 137, quality: LOGO_QUALITY },
 ];
+
+const AVIF_WIDTHS = [480, 768, 1024, 1280];
+const AVIF_STEMS = ["BG"];
 
 function hasCwebp() {
   try {
@@ -48,6 +59,22 @@ function hasCwebp() {
   } catch {
     return false;
   }
+}
+
+function hasAvifenc() {
+  try {
+    execSync("avifenc -version", { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function toAvif(input, output, { quality = 45 } = {}) {
+  execSync(
+    `avifenc --min 20 --max 32 -a end-usage=q -a cq-level=${quality} "${input}" "${output}"`,
+    { stdio: "pipe" }
+  );
 }
 
 function imageSize(file) {
@@ -268,6 +295,37 @@ if (oversized.length) {
   console.warn(
     `[optimize-images] Warning: ${oversized.length} logo(s) still > 8KB: ${oversized.join(", ")}`
   );
+}
+
+// Optional AVIF hero backgrounds (requires avifenc: brew install libavif)
+if (hasAvifenc()) {
+  for (const stem of AVIF_STEMS) {
+    for (const width of AVIF_WIDTHS) {
+      const webpSrc =
+        width === 1280
+          ? path.join(PUBLIC, `${stem}.webp`)
+          : path.join(PUBLIC, `${stem}-${width}.webp`);
+      if (!fs.existsSync(webpSrc)) continue;
+
+      const out = path.join(
+        PUBLIC,
+        width === 1280 ? `${stem}.avif` : `${stem}-${width}.avif`
+      );
+      const srcMtime = fs.statSync(webpSrc).mtimeMs;
+      if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= srcMtime) continue;
+      try {
+        toAvif(webpSrc, out);
+        changed++;
+        console.log(
+          `[optimize-images] avif ${path.basename(out)} (${(fs.statSync(out).size / 1024).toFixed(0)}K)`
+        );
+      } catch (e) {
+        console.warn(`[optimize-images] skip avif ${stem}-${width}:`, e.message);
+      }
+    }
+  }
+} else {
+  console.log("[optimize-images] avifenc not found — skip AVIF (brew install libavif)");
 }
 
 console.log(`[optimize-images] ${changed} file(s) updated.`);

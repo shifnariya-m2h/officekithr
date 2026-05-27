@@ -58,8 +58,8 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
           <link
             rel="preload"
             as="image"
-            href={SEO_ASSETS.heroBg}
-            fetchPriority="high"
+            href={SEO_ASSETS.heroBg480}
+            fetchpriority="high"
             type="image/webp"
           />
         )}

@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { imgFetchPriority } from "@/lib/img-props";
 import React, { useRef, useState } from "react";
 
 interface NavbarProps {
@@ -258,7 +259,7 @@ export const NavbarLogo = () => {
         className="h-8 w-auto object-contain"
         loading="eager"
         decoding="async"
-        fetchPriority="high"
+        {...imgFetchPriority("high")}
       />
       <span className="font-medium text-black dark:text-white">OfficeKit HR</span>
     </a>

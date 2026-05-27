@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { imgFetchPriority } from "@/lib/img-props";
 
 export type OptimizedImageProps = {
   src: string;
@@ -18,7 +19,6 @@ export type OptimizedImageProps = {
 
 /**
  * Responsive image with explicit dimensions to prevent CLS.
- * Use for LCP and content images with known aspect ratios.
  */
 export function OptimizedImage({
   src,
@@ -43,11 +43,11 @@ export function OptimizedImage({
       width={width}
       height={height}
       className={cn(className)}
-      fetchPriority={fetchPriority}
       loading={loading}
       decoding={decoding}
       draggable={draggable}
       aria-hidden={decorative ? true : undefined}
+      {...imgFetchPriority(fetchPriority)}
     />
   );
 }

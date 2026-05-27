@@ -1,39 +1,48 @@
 # Lighthouse / Core Web Vitals optimization
 
-## Checklist (production)
+Production targets: **Mobile ≥ 95**, **Desktop ≥ 98**, LCP &lt; 1.8s, TBT &lt; 150ms, CLS &lt; 0.05.
 
-- [ ] Run `npm run build` (runs `optimize-images` + Vite + optional prerender)
-- [ ] Verify LCP element: mobile mockup (≤767px) or dashboard (≥768px) with `fetchPriority="high"`
-- [ ] Confirm `index.html` preloads match hero assets
-- [ ] PageSpeed Mobile + Desktop ≥ 95 on production URL (not localhost)
-- [ ] CLS &lt; 0.1 — all images have `width` / `height`
-- [ ] TBT — motion/lottie/chat load after idle or interaction
-- [ ] Cloudflare: Brotli on, cache everything `/*.webp`, `/assets/*`
-- [ ] Deploy with source maps unless upload size matters (`STRIP_SOURCEMAPS=1`)
+## Architecture
 
-## Cloudflare
+| Layer | Implementation |
+|-------|----------------|
+| Motion | `LazyMotion` + `domAnimation` + `MotionConfig` — animations off on mobile (`data-perf-mode="mobile"`) |
+| Lottie | `LazyLottie` — IO viewport, no mobile autoplay |
+| Chat | `AskMyBotLoader` — interaction-only on mobile, idle on desktop |
+| Analytics | `CookieConsent` + `DeferredAnalytics` — idle / interaction gated |
+| Images | `OptimizedImage` + `src/lib/seo/assets.ts` — WebP + AVIF `<picture>` |
+| Code split | Route `React.lazy`, home `LazySection`, Vite `manualChunks` |
+| CSS | Async stylesheet plugin, Tailwind purge via `content` paths |
 
-1. **Speed → Optimization**: Brotli, Auto Minify (HTML/CSS/JS if not already minified by Vite).
-2. **Cache Rules**: `*.webp`, `/assets/*` → Edge TTL 1 year, Cache-Control immutable.
-3. **`index.html`**: bypass cache or short TTL (already in `public/_headers`).
-4. **Early Hints** (optional): link preload headers for LCP images on `/`.
+## Pre-deploy checklist
 
-## Before vs after (expected)
-
-| Metric | Before (typical) | After (target) |
-|--------|------------------|----------------|
-| LCP | 2.5–4s (large mockup, low priority) | &lt; 2.0s |
-| FCP | ~1.8s (blocking CSS) | &lt; 1.2s |
-| CLS | Logo/mockup ratio warnings | &lt; 0.05 |
-| TBT | motion + lottie on main thread | &lt; 200ms |
-| CSS transfer | ~20KB blocking | async + purged |
-| Partner logos | 20–50KB each | &lt; 6KB each |
+- [ ] `npm run build` (sitemap + `optimize-images` + Vite + prerender)
+- [ ] `brew install webp` and optionally `brew install libavif` for AVIF hero assets
+- [ ] Verify LCP: `/BG-*` + `mobile-mockup-240.webp` / `dashboardok-1024.webp` with `fetchPriority="high"`
+- [ ] PageSpeed on **production URL** (not localhost)
+- [ ] Cloudflare: Brotli, cache `/*.webp` `/*.avif` `/assets/*` 1y immutable
+- [ ] `index.html` short TTL or bypass cache
 
 ## Key files
 
-- `vite.config.ts` — async CSS, chunk split, hidden sourcemaps, motion dedupe
-- `index.html` — critical CSS, LCP preloads
-- `src/lib/seo/assets.ts` — canonical image URLs + srcsets
-- `src/components/ui/OptimizedImage.tsx` — responsive LCP/content images
-- `src/components/ui/PartnerLogo.tsx` — marquee logos
-- `scripts/optimize-images.mjs` — WebP resize/compress in CI/build
+- `vite.config.ts` — chunks, async CSS, es2020, no motion preload
+- `index.html` — critical CSS, LCP preloads, early `data-perf-mode`
+- `src/lib/performance/*` — mobile mode, third-party loader, `MotionProvider`
+- `src/components/ui/OptimizedImage.tsx` — responsive + AVIF
+- `src/lib/seo/assets.ts` — canonical URLs + srcsets
+- `scripts/optimize-images.mjs` — WebP variants + optional AVIF
+
+## Expected improvements
+
+| Metric | Before | Target |
+|--------|--------|--------|
+| LCP | 2.5–4s | &lt; 1.8s |
+| TBT | motion + lottie + chat | &lt; 150ms |
+| CLS | missing dimensions | &lt; 0.05 |
+| JS (initial) | large vendor | &lt; 180KB gzip (route-dependent) |
+
+## Notes
+
+- Scores on `npm run dev` are not representative — always test production build.
+- Prerender (`PRERENDER=1` default) improves FCP/LCP for crawlers and cold loads.
+- Remove duplicate `motion` npm package; alias `motion/react` → `framer-motion` in Vite.

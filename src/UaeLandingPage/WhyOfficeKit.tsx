@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { ShieldCheck, Banknote, FileCheck2, Settings2, Bot, Check } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "@/lib/performance/motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhyOfficeKit: React.FC = () => {
@@ -42,7 +42,7 @@ const WhyOfficeKit: React.FC = () => {
     <section className="py-24 bg-white overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={`flex flex-col lg:flex-row items-center gap-16 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -74,7 +74,7 @@ const WhyOfficeKit: React.FC = () => {
 
             <div className="space-y-5">
               {benefits.map((item, idx) => (
-                <motion.div
+                <m.div
                   key={idx}
                   initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -86,19 +86,19 @@ const WhyOfficeKit: React.FC = () => {
                     <item.icon size={20} className="text-blue-600" />
                   </div>
                   <p className={`text-gray-700 text-lg ${isRTL ? 'text-right' : ''}`}>{item.text}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="lg:w-1/2 w-full relative"
           >
-            <motion.div
+            <m.div
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
               className="relative rounded-2xl overflow-hidden shadow-lg border border-blue-100 bg-white p-8"
@@ -164,8 +164,8 @@ const WhyOfficeKit: React.FC = () => {
                   </p>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>

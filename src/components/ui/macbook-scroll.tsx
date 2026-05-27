@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { type MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { m, type MotionValue, useScroll, useTransform } from "@/lib/performance/motion";
 import { cn } from "@/lib/utils";
 import {
   IconBrightnessDown,
@@ -75,7 +75,7 @@ export const MacbookScroll = ({
       className="relative flex min-h-[70vh] shrink-0 scale-[0.6] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-[0.75] md:scale-[0.9] lg:scale-[1.1] xl:scale-[1.3] 2xl:scale-[1.5]"
     >
       {title && (
-        <motion.h2
+        <m.h2
           style={{
             translateY: textTransform,
             opacity: textOpacity,
@@ -83,7 +83,7 @@ export const MacbookScroll = ({
           className="mb-20 text-center text-3xl font-bold text-neutral-800 dark:text-white"
         >
           {title}
-        </motion.h2>
+        </m.h2>
       )}
       {/* Lid */}
       <Lid
@@ -161,7 +161,7 @@ export const Lid = ({
           </span>
         </div>
       </div>
-      <motion.div
+      <m.div
         style={{
           scaleX: scaleX,
           scaleY: scaleY,
@@ -208,7 +208,7 @@ export const Lid = ({
             className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
           />
         )}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

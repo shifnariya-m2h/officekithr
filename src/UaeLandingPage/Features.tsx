@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Users, CreditCard, UserPlus, Headphones, BarChart3, ChevronRight, Shield, FileCheck, Calendar, Clock } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "@/lib/performance/motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureItem {
@@ -133,7 +133,7 @@ const Features: React.FC = () => {
   return (
     <section id="features" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -149,13 +149,13 @@ const Features: React.FC = () => {
               "منصة HRMS الخاصة بنا على officekithr.com تتعامل مع كل شيء من التوظيف إلى كشوف المرتبات، مع الحفاظ على الامتثال الكامل لقانون العمل الإماراتي ونظام الأجور WPS ولوائح المناطق الحرة."
             )}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className={`flex flex-col lg:flex-row gap-8 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
           {/* Navigation Tabs */}
           <div className="lg:w-1/3 flex flex-col gap-2">
             {featureData.map((feature, index) => (
-              <motion.button
+              <m.button
                 key={index}
                 onClick={() => setActiveFeature(index)}
                 whileHover={{ x: isRTL ? -4 : 4 }}
@@ -184,14 +184,14 @@ const Features: React.FC = () => {
                   className={`ml-auto transition-all flex-shrink-0 ${activeFeature === index ? "translate-x-1 text-blue-600" : "opacity-0"} ${isRTL ? 'rotate-180' : ''}`}
                   size={16}
                 />
-              </motion.button>
+              </m.button>
             ))}
           </div>
 
           {/* Content Area */}
           <div className="lg:w-2/3 bg-white rounded-2xl shadow-md p-8 md:p-12 border border-blue-100 flex flex-col justify-center min-h-[400px] overflow-hidden">
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={activeFeature}
                 initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -210,7 +210,7 @@ const Features: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {getDetails(featureData[activeFeature].details, featureData[activeFeature].detailsAr).map((detail, idx) => (
-                    <motion.div
+                    <m.div
                       key={idx}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -219,10 +219,10 @@ const Features: React.FC = () => {
                     >
                       <div className="w-2 h-2 rounded-full bg-blue-600 flex-shrink-0"></div>
                       <span className="text-gray-700 font-medium text-sm">{detail}</span>
-                    </motion.div>
+                    </m.div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
         </div>

@@ -72,7 +72,13 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="relative rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0">
+    <section
+      className="relative rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0 bg-[#01004f]"
+      style={{
+        backgroundImage:
+          "linear-gradient(160deg, #0055ff 0%, #01004f 55%)",
+      }}
+    >
       <OptimizedImage
         src={HERO_IMAGES.heroBg.src}
         srcSet={HERO_IMAGES.heroBg.srcSet}

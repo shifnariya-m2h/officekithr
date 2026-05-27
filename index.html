@@ -27,6 +27,9 @@
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta name="theme-color" content="#0055ff" />
 
+  <script>
+    (function(){try{var m=matchMedia("(max-width:767px)").matches||matchMedia("(pointer:coarse)").matches;document.documentElement.dataset.perfMode=m?"mobile":"desktop"}catch(e){}})();
+  </script>
   <style>
     html{scroll-behavior:smooth}
     body{margin:0;background:#01004f;color:#fff;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -37,10 +40,11 @@
   </style>
   <link rel="preload" as="image" href="/BG-480.webp" fetchpriority="high" type="image/webp" media="(max-width: 480px)" />
   <link rel="preload" as="image" href="/BG-768.webp" fetchpriority="high" type="image/webp" media="(min-width: 481px) and (max-width: 767px)" />
-  <link rel="preload" as="image" href="/BG.webp" fetchpriority="high" type="image/webp" media="(min-width: 768px)" />
+  <link rel="preload" as="image" href="/BG-1024.webp" fetchpriority="high" type="image/webp" media="(min-width: 768px) and (max-width: 1023px)" />
+  <link rel="preload" as="image" href="/BG.webp" fetchpriority="high" type="image/webp" media="(min-width: 1024px)" />
   <link rel="preload" as="image" href="/mobile-mockup-240.webp" fetchpriority="high" type="image/webp" media="(max-width: 767px)" />
   <link rel="preload" as="image" href="/dashboardok-1024.webp" fetchpriority="high" type="image/webp" media="(min-width: 768px)" />
-  <link rel="preload" as="image" href="/NavLogo-108.webp" fetchpriority="high" type="image/webp" />
+  <link rel="preload" as="image" href="/NavLogo-108.webp" fetchpriority="high" type="image/webp" imagesizes="108px" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://api.officekithr.com" />
   <script>

@@ -240,12 +240,38 @@ const AppRoutes = () => {
 function DeferredAnalytics() {
   const [on, setOn] = useState(false);
   useEffect(() => {
+    const isMobile =
+      window.matchMedia("(max-width: 767px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches;
+    const timeout = isMobile ? 12_000 : 5_000;
+
     const run = () => setOn(true);
+
+    if (isMobile) {
+      const events = ["pointerdown", "keydown", "touchstart"] as const;
+      const onInteraction = () => {
+        for (const event of events) {
+          window.removeEventListener(event, onInteraction);
+        }
+        run();
+      };
+      for (const event of events) {
+        window.addEventListener(event, onInteraction, { once: true, passive: true });
+      }
+      const fallback = setTimeout(run, timeout);
+      return () => {
+        clearTimeout(fallback);
+        for (const event of events) {
+          window.removeEventListener(event, onInteraction);
+        }
+      };
+    }
+
     if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(run, { timeout: 5000 });
+      const id = window.requestIdleCallback(run, { timeout });
       return () => window.cancelIdleCallback(id);
     }
-    const t = setTimeout(run, 4000);
+    const t = setTimeout(run, timeout);
     return () => clearTimeout(t);
   }, []);
   return on ? <GoogleAdsWrapper /> : null;

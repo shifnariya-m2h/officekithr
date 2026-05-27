@@ -1,6 +1,6 @@
 import React from 'react';
 import { Landmark, FileSignature, Building2, Server } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { m, type Variants } from '@/lib/performance/motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Compliance: React.FC = () => {
@@ -70,7 +70,7 @@ const Compliance: React.FC = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[...Array(8)].map((_, i) => (
-          <motion.div
+          <m.div
             key={i}
             animate={{
               y: [0, -30, 0],
@@ -94,7 +94,7 @@ const Compliance: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -106,9 +106,9 @@ const Compliance: React.FC = () => {
           <p className="mt-4 text-slate-600 text-lg max-w-3xl mx-auto">
             {language === 'ar' ? 'OfficeKit HRMS على officekithr.com يضمن الامتثال التلقائي لجميع القوانين واللوائح الإماراتية.' : 'OfficeKit HRMS on officekithr.com ensures automatic compliance with all UAE laws and regulations.'}
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div 
+        <m.div 
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -116,7 +116,7 @@ const Compliance: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {complianceItems.map((item, index) => (
-            <motion.div 
+            <m.div 
               key={index}
               variants={item}
               whileHover={{ y: -5, scale: 1.02 }}
@@ -127,9 +127,9 @@ const Compliance: React.FC = () => {
               </div>
               <h3 className="font-bold text-slate-900 mb-2 text-lg">{item.title}</h3>
               <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

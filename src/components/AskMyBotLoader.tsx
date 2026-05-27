@@ -1,58 +1,41 @@
 import { useEffect } from "react";
+import { loadScriptOnce, scheduleAfterIdle } from "@/lib/performance/third-party";
+import { isMobileViewport } from "@/lib/performance/media";
 
 const WIDGET_SRC =
   "https://www.askmybot.ai/p/officekit-hr-qa84/widget.js";
 const SCRIPT_ID = "askmybot-widget";
-const IDLE_DELAY_MS = 25_000;
+const DESKTOP_IDLE_MS = 30_000;
+const MOBILE_IDLE_MS = 60_000;
 
 /**
- * Loads AskMyBot after idle or first user interaction so it does not compete
- * with LCP / main-thread work on mobile.
+ * Loads AskMyBot after idle (desktop) or first interaction (mobile) so it does not
+ * compete with LCP / main-thread work.
  */
 export function AskMyBotLoader() {
   useEffect(() => {
     if (document.getElementById(SCRIPT_ID)) return;
 
-    let loaded = false;
-    const load = () => {
-      if (loaded || document.getElementById(SCRIPT_ID)) return;
-      loaded = true;
-      const script = document.createElement("script");
-      script.id = SCRIPT_ID;
-      script.src = WIDGET_SRC;
-      script.defer = true;
-      document.body.appendChild(script);
-    };
+    const isMobile = isMobileViewport();
+    const timeout = isMobile ? MOBILE_IDLE_MS : DESKTOP_IDLE_MS;
 
-    const onInteraction = () => load();
-
-    const events = ["pointerdown", "keydown", "touchstart", "scroll"] as const;
-    for (const event of events) {
-      window.addEventListener(event, onInteraction, {
-        once: true,
-        passive: true,
-      });
-    }
-
-    let idleId: number | undefined;
-    if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(() => load(), {
-        timeout: IDLE_DELAY_MS,
-      });
-    } else {
-      idleId = window.setTimeout(load, IDLE_DELAY_MS) as unknown as number;
-    }
-
-    return () => {
-      for (const event of events) {
-        window.removeEventListener(event, onInteraction);
+    const cancel = scheduleAfterIdle(
+      () => {
+        void loadScriptOnce({
+          id: SCRIPT_ID,
+          src: WIDGET_SRC,
+          defer: true,
+        }).catch(() => {
+          /* non-critical */
+        });
+      },
+      {
+        timeout,
+        mobileInteractionOnly: isMobile,
       }
-      if ("cancelIdleCallback" in window && idleId !== undefined) {
-        window.cancelIdleCallback(idleId);
-      } else if (idleId !== undefined) {
-        window.clearTimeout(idleId);
-      }
-    };
+    );
+
+    return cancel;
   }, []);
 
   return null;

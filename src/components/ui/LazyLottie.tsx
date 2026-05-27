@@ -6,6 +6,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import { isMobileViewport, prefersReducedMotion } from "@/lib/performance/media";
 
 const LottiePlayer = lazy(() => import("lottie-react"));
 
@@ -18,6 +19,7 @@ type LazyLottieProps = {
 
 /**
  * Defers lottie-web until the animation enters (or nears) the viewport.
+ * Skips autoplay on mobile to protect TBT.
  */
 export function LazyLottie({
   loadAnimation,
@@ -26,22 +28,24 @@ export function LazyLottie({
   loop = true,
 }: LazyLottieProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [reducedMotion, setReducedMotion] = useState<boolean | null>(null);
+  const [skip, setSkip] = useState<boolean | null>(null);
   const [visible, setVisible] = useState(false);
   const [animationData, setAnimationData] = useState<Record<string, unknown> | null>(
     null
   );
-
   useEffect(() => {
+    const reduced = prefersReducedMotion();
+    const mobile = isMobileViewport();
+    setSkip(reduced || mobile);
+
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const onChange = () => setReducedMotion(mq.matches);
+    const onChange = () => setSkip(mq.matches || isMobileViewport());
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (skip) return;
     const el = ref.current;
     if (!el) return;
 
@@ -52,15 +56,15 @@ export function LazyLottie({
           observer.disconnect();
         }
       },
-      { rootMargin: "120px 0px", threshold: 0.05 }
+      { rootMargin: "80px 0px", threshold: 0.05 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reducedMotion]);
+  }, [skip]);
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible || skip) return;
     let cancelled = false;
     loadAnimation().then((mod) => {
       if (!cancelled) setAnimationData(mod.default);
@@ -68,9 +72,9 @@ export function LazyLottie({
     return () => {
       cancelled = true;
     };
-  }, [visible, loadAnimation]);
+  }, [visible, skip, loadAnimation]);
 
-  if (reducedMotion) {
+  if (skip) {
     return <div ref={ref} className={className} style={style} aria-hidden />;
   }
 
@@ -78,7 +82,11 @@ export function LazyLottie({
     <div ref={ref} className={className} style={style}>
       {visible && animationData ? (
         <Suspense fallback={null}>
-          <LottiePlayer animationData={animationData} loop={loop} className="h-full w-full" />
+          <LottiePlayer
+            animationData={animationData}
+            loop={loop}
+            className="h-full w-full"
+          />
         </Suspense>
       ) : null}
     </div>

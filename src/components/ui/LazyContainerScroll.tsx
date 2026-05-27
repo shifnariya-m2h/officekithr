@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
+import { isMobileViewport, prefersReducedMotion } from "@/lib/performance/media";
 
 const ContainerScroll = lazy(() =>
   import("@/components/ui/container-scroll-animation").then((m) => ({
@@ -40,14 +41,14 @@ export function LazyContainerScroll({
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const onChange = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
+    const sync = () => setReducedMotion(mq.matches || isMobileViewport());
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion || prefersReducedMotion() || isMobileViewport()) return;
     const desktop = window.matchMedia("(min-width: 768px)");
     if (!desktop.matches) return;
     // Desktop only: keep static layout for LCP, then mount scroll animation.

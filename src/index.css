@@ -69,6 +69,25 @@
   }
 }
 
+/* Mobile performance mode — set on <html data-perf-mode="mobile"> */
+html[data-perf-mode="mobile"] .animate-marquee,
+html[data-perf-mode="mobile"] .animate-marquee-reverse,
+html[data-perf-mode="mobile"] .animate-pricing-headset-float,
+html[data-perf-mode="mobile"] .animate-pricing-cta-glow {
+  animation: none !important;
+}
+
+html[data-perf-mode="mobile"] [class*="blur-"],
+html[data-perf-mode="mobile"] .backdrop-blur-sm,
+html[data-perf-mode="mobile"] .backdrop-blur-md {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html[data-perf-mode="mobile"] .animate-ping {
+  animation: none !important;
+}
+
 @layer base {
 
   @layer base {

@@ -31,25 +31,27 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      // Single animation runtime — avoids duplicate motion + framer-motion chunks.
       "motion/react": "framer-motion",
     },
     dedupe: ["react", "react-dom", "framer-motion"],
   },
   build: {
-    target: "es2018",
+    target: "es2020",
     cssCodeSplit: true,
     minify: "terser",
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
+        passes: 2,
       },
+      mangle: true,
     },
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return;
+
           if (
             id.includes("framer-motion") ||
             id.includes("motion/") ||
@@ -60,6 +62,8 @@ export default defineConfig({
           if (id.includes("gsap")) return "gsap-vendor";
           if (id.includes("lottie")) return "lottie-vendor";
           if (id.includes("axios")) return "http-vendor";
+          if (id.includes("@tanstack/react-query")) return "query-vendor";
+          if (id.includes("react-helmet")) return "helmet-vendor";
           if (
             id.includes("react-dom") ||
             id.includes("react-router") ||
@@ -78,23 +82,28 @@ export default defineConfig({
           ) {
             return "icons-vendor";
           }
+          if (id.includes("date-fns") || id.includes("zod")) {
+            return "utils-vendor";
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 600,
-    /** Hidden maps: debuggable in Lighthouse/Sentry without exposing //# sourceMappingURL */
+    chunkSizeWarningLimit: 500,
     sourcemap: "hidden",
     modulePreload: {
       polyfill: false,
       resolveDependencies: (_filename, deps) =>
         deps.filter(
           (dep) =>
-            !/lottie-vendor|motion-vendor|gsap-vendor|charts-vendor/.test(dep)
+            !/lottie-vendor|motion-vendor|gsap-vendor|charts-vendor|icons-vendor/.test(
+              dep
+            )
         ),
     },
     cssMinify: true,
   },
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom"],
+    exclude: ["lottie-react"],
   },
 });

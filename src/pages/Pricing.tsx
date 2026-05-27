@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "@/lib/performance/motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -104,7 +104,7 @@ const Pricing = () => {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h1
+            <m.h1
               className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6"
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -112,7 +112,7 @@ const Pricing = () => {
             >
               Invest Less, Achieve More <br /> with{" "}
               <span className="gradient-text">OfficeKit HR </span>
-            </motion.h1>
+            </m.h1>
           </div>
         </div>
       </section>
@@ -120,7 +120,7 @@ const Pricing = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Text */}
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -141,10 +141,10 @@ const Pricing = () => {
               company<br /> scaling operations, or a large enterprise needing a compliant
               solution,<br /> we have a plan tailored for you.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Sales expert CTA */}
-          <motion.div
+          <m.div
             className="flex w-full justify-center md:justify-end"
             initial="hidden"
             whileInView="visible"
@@ -155,7 +155,7 @@ const Pricing = () => {
             }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            <motion.div
+            <m.div
               className="relative w-full max-w-[560px] overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0055ff] via-[#0058ff] to-[#0046d9] p-6 shadow-[0_20px_50px_-12px_rgba(0,85,255,0.4)] md:p-8 animate-pricing-cta-glow"
               whileHover={reduceMotion ? undefined : { y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
@@ -170,7 +170,7 @@ const Pricing = () => {
               />
 
               <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:gap-6">
-                <motion.div
+                <m.div
                   className="flex-1 text-white"
                   initial={reduceMotion ? false : { opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -186,16 +186,16 @@ const Pricing = () => {
                     through the best-fit modules, and suggest the right pricing
                     plan for your business.
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   className="flex w-full shrink-0 flex-col items-center rounded-2xl bg-[#001a4d] px-5 pb-5 pt-4 md:w-[220px]"
                   initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.35 }}
                 >
-                  <motion.img
+                  <m.img
                     src={PRICING_HEADSET_IMAGE}
                     alt=""
                     className={`h-auto w-44 object-contain md:w-52 lg:w-56 ${reduceMotion ? "" : "animate-pricing-headset-float"}`}
@@ -206,7 +206,7 @@ const Pricing = () => {
                     whileHover={reduceMotion ? undefined : { scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 260, damping: 18 }}
                   />
-                  <motion.div
+                  <m.div
                     className="mt-3 w-full max-w-[200px]"
                     initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -221,11 +221,11 @@ const Pricing = () => {
                     >
                       <Link to="/contact">Contact Sales</Link>
                     </Button>
-                  </motion.div>
-                </motion.div>
+                  </m.div>
+                </m.div>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 

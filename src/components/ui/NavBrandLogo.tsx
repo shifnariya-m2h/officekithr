@@ -6,6 +6,7 @@ import {
   SEO_ASSETS,
 } from "@/lib/seo/assets";
 import { cn } from "@/lib/utils";
+import { imgFetchPriority } from "@/lib/img-props";
 
 const LOGO_ALT = "OfficeKit HR - AI-Powered HRMS Software";
 
@@ -29,7 +30,7 @@ export function NavBrandLogo({ className }: NavBrandLogoProps) {
       )}
       loading="eager"
       decoding="async"
-      fetchPriority="high"
+      {...imgFetchPriority("high")}
     />
   );
 }

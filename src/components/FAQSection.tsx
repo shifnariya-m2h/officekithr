@@ -4,13 +4,21 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { Badge } from "./ui/badge";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { HOME_PRODUCT_FAQS, HOME_SEO_FAQS } from "@/data/home-faqs";
+
+const FAQ_FALLBACK_IMAGE = "/Performance-selfservice-min.webp";
 
 const FAQSection = () => {
   const [selected, setSelected] = useState("product-0");
   const productFaqs = HOME_PRODUCT_FAQS;
+
+  const activeFaq = useMemo(() => {
+    const index = Number.parseInt(selected.replace("product-", ""), 10);
+    return productFaqs[Number.isNaN(index) ? 0 : index] ?? productFaqs[0];
+  }, [selected, productFaqs]);
 
   return (
     <section className="mb-mb-common bg-background" aria-labelledby="faq-heading">
@@ -56,6 +64,9 @@ const FAQSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <Accordion
               value={selected}
+              onValueChange={(value) => {
+                if (value) setSelected(value);
+              }}
               type="single"
               collapsible
               className="space-y-4"
@@ -67,9 +78,8 @@ const FAQSection = () => {
                   className="border border-border rounded-xl px-6 data-[state=open]:bg-muted/50 transition-colors"
                 >
                   <AccordionTrigger
-                    onMouseEnter={() => {
-                      setTimeout(() => setSelected(`product-${index}`), 50);
-                    }}
+                    onMouseEnter={() => setSelected(`product-${index}`)}
+                    onFocus={() => setSelected(`product-${index}`)}
                     className="text-left font-semibold text-black hover:text-black hover:no-underline transition-colors text-lg md:text-xl py-6"
                   >
                     {faq.question}
@@ -82,18 +92,15 @@ const FAQSection = () => {
             </Accordion>
 
             <div className="relative">
-              <div className="w-[84%] rounded-2xl h-auto bg-gradient-card shadow-medium flex items-center justify-center">
-                <img
-                  key={selected}
-                  className="rounded-2xl"
-                  src={
-                    productFaqs.find((_, i) => `product-${i}` === selected)
-                      ?.image || "/hrb0.webp"
-                  }
-                  alt="OfficeKit HR product feature illustration"
-                  loading="lazy"
+              <div className="w-full max-w-lg mx-auto lg:mx-0 rounded-2xl bg-gradient-card shadow-medium flex items-center justify-center p-2 min-h-[280px]">
+                <OptimizedImage
+                  key={activeFaq.image ?? activeFaq.question}
+                  src={activeFaq.image ?? FAQ_FALLBACK_IMAGE}
+                  alt={`${activeFaq.question} — OfficeKit HR`}
+                  className="rounded-2xl w-full h-auto object-contain"
                   width={640}
                   height={480}
+                  loading="lazy"
                   decoding="async"
                 />
               </div>

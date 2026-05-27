@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertTriangle, FileWarning, Calculator, Plane, HelpCircle, Clock } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "@/lib/performance/motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const PainPoints = () => {
@@ -31,7 +31,7 @@ const PainPoints = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -62,11 +62,11 @@ const PainPoints = () => {
               ? 'تخلص من الأخطاء اليدوية وتعقيدات الامتثال مع نظامنا الآلي المتكامل.'
               : 'Say goodbye to manual errors and compliance headaches. Our automated system handles the complexity for you.'}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((c, i) => (
-            <motion.div
+            <m.div
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -79,7 +79,7 @@ const PainPoints = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{c.title}</h3>
               <p className="text-gray-600 leading-relaxed">{c.desc}</p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
