@@ -11,6 +11,30 @@ import { BlogPost } from "@/types";
 import { extractExcerpt } from "@/utils/extractExcerpt";
 import { slugify } from "@/utils/slugify";
 
+const DEFAULT_BLOG_IMAGE =
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop";
+
+function normalizeApiPost(post: BlogPost): BlogPost {
+  const slug = post.slug || slugify(post.title || "untitled");
+  const createdAt =
+    post.createdAt.split("T")[0] ||
+    new Date().toISOString().split("T")[0];
+
+  return {
+    ...post,
+    slug,
+    excerpt:
+      post.excerpt ||
+      (post.content ? extractExcerpt(post.content) : "No preview available."),
+    author: post.author || "Admin",
+    createdAt,
+    updates: post.updates || "General",
+    readTime: post.readTime || "4 min read",
+    image: post.image || DEFAULT_BLOG_IMAGE,
+    link: `/blog/${slug}`,
+  };
+}
+
 const Blog = () => {
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,10 +58,10 @@ const Blog = () => {
   const fallbackPosts: BlogPost[] = [
     {
       _id: "1",
-      title: "The Future of Remote Work: HR Strategies for 2025 and Beyond",
+      title: "The Future of Remote Work: HR Strategies for 2026 and Beyond",
       excerpt: "Discover the latest trends and strategies for managing remote teams effectively in the evolving workplace landscape.",
       author: "Aiswarya K",
-      createdAt: "2025-08-15",
+      createdAt: "2026-05-27",
       updates: "HR Best Practices",
       readTime: "5 min read",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
@@ -48,7 +72,7 @@ const Blog = () => {
       title: "Why Invest in Enhanced Performance Management Tools?",
       excerpt: "Modern enterprises thrive by equipping their HR departments with technology that fosters employee satisfaction, improves talent retention, and accelerates organizational growth.",
       author: "Karthik",
-      createdAt: "2025-08-28",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "3 min read",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
@@ -59,7 +83,7 @@ const Blog = () => {
       title: "Why Modern Businesses Need Smarter Payroll Solutions",
       excerpt: "Efficient payroll management is crucial for modern enterprises to ensure timely and accurate employee compensation, maintain compliance with tax regulations, and support overall organizational financial health.",
       author: "Nihal",
-      createdAt: "2025-08-29",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "8 min read",
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
@@ -70,7 +94,7 @@ const Blog = () => {
       title: "Mobile App Updates: Why Businesses Should Prioritize Mobile HRMS Security?",
       excerpt: "Securing your mobile HRMS app is essential to protect sensitive employee data, achieve payroll compliance, and prevent costly data breaches.",
       author: "Karthik",
-      createdAt: "2025-08-03",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "4 min read",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
@@ -81,7 +105,7 @@ const Blog = () => {
       title: "Navigating the Hybrid Workplace: Strategies for HR and Managers",
       excerpt: "Discover smart HR strategies and powerful HRMS software to manage hybrid workplaces, streamline payroll and compliance, boost employee engagement.",
       author: "Arathi",
-      createdAt: "2025-08-16",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "4 min read",
       image: "https://media.istockphoto.com/id/641434530/photo/human-resources-management-app-concept-on-mobile-phone-screen.jpg?s=612x612&w=0&k=20&c=4647ZElnjvbVc8dJ0xXvU2Gb_dTtOpI1hXzcGF9oaQg=",
@@ -92,7 +116,7 @@ const Blog = () => {
       title: "Quality vs. Quantity: Why the Right Hire Saves More Than You Think",
       excerpt: "Recruitment is one of the most important jobs for HR. Choosing quality over quantity saves money, time, and builds long-term growth.",
       author: "Aiswarya K",
-      createdAt: "2025-08-18",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "3 min read",
       image: "https://media.istockphoto.com/id/2124660831/photo/human-resources-management-concept-headhunters-recruit-employees-using-candidate-resumes.jpg?s=612x612&w=0&k=20&c=e8gfkrHenE0WfD8QD9_Mxd-FfWEBs5-Bt2THMrWvYaM=",
@@ -103,7 +127,7 @@ const Blog = () => {
       title: "Why Businesses Need an HRMS in Today’s Competitive Landscape",
       excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore.",
       author: "Aiswarya K",
-      createdAt: "2025-08-25",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1346294817/photo/human-resource-hexagonal-touch-screen-concept.jpg?s=612x612&w=0&k=20&c=ojdwiev7bHuD_Z7gr7858fAKmN1YzigrUlRJiTV_WjQ=",
@@ -114,7 +138,7 @@ const Blog = () => {
       title: "Why Embrace AI-Powered Features in HRMS?",
       excerpt: "In today’s digital workplace, AI is no longer a future concept — it’s a strategic advantage. Forward-thinking organizations are enhancing their HRMS platforms with artificial intelligence.",
       author: "Karthik",
-      createdAt: "2025-10-13",
+      createdAt: "2026-05-27",
       updates: "AI Updates",
       readTime: "4 min read",
       image: "https://media.istockphoto.com/id/1693321583/photo/data-analyst-working-on-business-analytics-dashboard-with-charts-with-kpi-and-metrics.jpg?s=612x612&w=0&k=20&c=3swv6pL3k5w9KRX2UzPdX4vor442SI7Nbfsys9BIvgg=",
@@ -125,7 +149,7 @@ const Blog = () => {
       title: "Real World DEI: Actions That Drive Inclusion, Equity & Diversity",
       excerpt: "In recent years, many companies talk about Diversity, Equity, and Inclusion (DEI). DEI means action changing how things work, who is included, and how fair the system is for everyone.",
       author: "Aiswarya K",
-      createdAt: "2025-10-08",
+      createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1467509880/photo/hrm-or-human-resource-management-businessman-holding-magnifier-select-and-accept-to-manager.jpg?s=612x612&w=0&k=20&c=jHwUtais34k9MQ_lq703k1jkF5JXBc10imCBsrT4bHY=",
@@ -136,7 +160,7 @@ const Blog = () => {
       title: "Why a Human Resource Management System (HRMS) Like OfficeKit HR is Essential for Modern Businesses",
       excerpt: "The business world is rapidly changing faster than ever, and people managing is becoming more challenging. Old-style HR methods just don’t work anymore.",
       author: "Arathi",
-      createdAt: "2025-10-07",
+        createdAt: "2026-05-27",
       updates: "Product Updates",
       readTime: "5 min read",
       image: "https://media.istockphoto.com/id/1155674251/photo/hr-and-people-network-interface.jpg?s=612x612&w=0&k=20&c=WFkloP-aPgHs4DS3EoI5gUWaAGQI5lkWYDN0nMzy-Ds=",
@@ -149,22 +173,7 @@ const Blog = () => {
       try {
         const apiPosts = await getAllPosts();
 
-        const normalizedApiPosts = (apiPosts || []).map((post: any) => {
-          // Generate slug from title if not provided
-          const slug = post.slug || slugify(post.title || 'untitled');
-          return {
-            _id: post._id,
-            title: post.title,
-            excerpt: post.excerpt || (post.content ? extractExcerpt(post.content) : "No preview available."),
-            author: post.author || "Admin",
-            createdAt: post.createdAt?.split("T")[0] || new Date().toISOString().split("T")[0],
-            updates: post.updates || "General",
-            readTime: post.readTime || "4 min read",
-            image: post.image || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
-            link: `/blog/${slug}`,
-            slug: slug
-          } satisfies BlogPost;
-        });
+        const normalizedApiPosts = (apiPosts || []).map(normalizeApiPost);
 
         // Merge: API first, then fallback (deduped)
         const combined = [

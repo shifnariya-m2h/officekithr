@@ -42,9 +42,9 @@ export function CookieConsent() {
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-desc"
-      className="fixed bottom-0 left-0 right-0 z-[200] p-4 md:p-6"
+      className="fixed bottom-0 left-0 right-0 z-[200] p-4 md:p-6 max-sm:pb-[max(1rem,env(safe-area-inset-bottom))]"
     >
-      <div className="mx-auto max-w-4xl rounded-2xl border border-border bg-background shadow-lg p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+      <div className="mx-auto max-w-4xl rounded-2xl border border-border bg-background shadow-lg p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 max-sm:max-h-[58dvh] max-sm:overflow-y-auto">
         <div className="flex-1">
           <p id="cookie-consent-title" className="font-semibold text-foreground">
             Cookie preferences

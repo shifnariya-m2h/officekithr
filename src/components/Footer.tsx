@@ -359,7 +359,7 @@ const Footer = () => {
         <div className="container mx-auto px-2 py-2">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-300 text-sm">
-              © 2025 OfficeKit inc. All rights reserved.
+              © 2026 OfficeKit inc. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link

@@ -31,9 +31,6 @@ function CookiePolicy() {
           <li>
             <strong>Marketing:</strong> Google Ads conversion tracking (only after consent).
           </li>
-          <li>
-            <strong>Support chat:</strong> AskMyBot widget (bottom-right corner).
-          </li>
         </ul>
 
         <h2 className="text-2xl font-semibold mt-10 mb-4">Your choices</h2>

@@ -311,7 +311,7 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
     ],
     faqs: [
       {
-        question: "What are the Kerala Professional Tax slabs for 2025–2026?",
+        question: "What are the Kerala Professional Tax slabs for 2026–2027?",
         answer:
           "Kerala PT slabs vary by gross salary—employers in urban areas (Thiruvananthapuram, Kochi, Kozhikode corporations) have different rates than rural areas. OfficeKit applies the correct slab based on employee location setup.",
       },

@@ -145,7 +145,7 @@
 //   }
 // };
 
-/** Legacy Syncora widget — disabled; AskMyBot is loaded via AskMyBotLoader. */
+/** Legacy Syncora chat widget — disabled (no-op stub for existing imports). */
 export async function loadSyncoraBot(): Promise<void> {
   /* no-op */
 }

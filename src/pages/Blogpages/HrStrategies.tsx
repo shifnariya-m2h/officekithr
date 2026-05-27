@@ -35,7 +35,7 @@ export default function RemoteWorkHrBlog() {
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-muted-foreground mb-8">
                 Remote and hybrid work are no longer temporary arrangements — they are a core
-                operating model for 2025. HR teams must redesign policies, tools, and manager
+                operating model for 2026. HR teams must redesign policies, tools, and manager
                 practices so distributed teams stay productive, compliant, and engaged.
               </p>
 
@@ -86,7 +86,7 @@ export default function RemoteWorkHrBlog() {
 
               <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Conclusion</h2>
               <p className="text-muted-foreground mb-6">
-                Winning remote work in 2025 is a blend of policy clarity, manager habits, and the
+                Winning remote work in 2026 is a blend of policy clarity, manager habits, and the
                 right HR technology. OfficeKit HR helps teams unify recruitment, attendance,
                 payroll, and employee self-service — whether your workforce is in-office, remote,
                 or hybrid.

@@ -120,6 +120,11 @@ const STATIC_PATHS = [
   "/compare/bayzat-alternative",
   "/compare/zenhr-alternative",
   "/compare/gulfhr-alternative",
+  "/industries/hrms-for-retail",
+  "/industries/hrms-for-hospitality",
+  "/industries/hrms-for-education",
+  "/industries/hrms-for-logistics",
+  "/industries/hrms-for-bfsi",
 ];
 
 const PRIORITY = {
@@ -177,6 +182,11 @@ const PRIORITY = {
   "/longtail/best-hrms-for-startups-india": "0.82",
   "/longtail/employee-management-software-india": "0.82",
   "/longtail/payroll-software-gcc": "0.82",
+  "/industries/hrms-for-retail": "0.82",
+  "/industries/hrms-for-hospitality": "0.82",
+  "/industries/hrms-for-education": "0.82",
+  "/industries/hrms-for-logistics": "0.82",
+  "/industries/hrms-for-bfsi": "0.82",
 };
 
 function slugify(title) {

@@ -4,6 +4,7 @@ import { GEO_LANDINGS_NEW } from "@/data/geo-landings-new";
 import { COMPARISONS_NEW } from "@/data/comparisons-new";
 import { PAYROLL_COMPLIANCE } from "@/data/payroll-compliance";
 import { LONGTAIL_PAGES } from "@/data/longtail-keywords";
+import { INDUSTRY_PAGES } from "@/data/industry-verticals";
 import { SITE } from "./site-config";
 
 export type RouteSeoConfig = {
@@ -261,6 +262,12 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
   })),
   // Long-tail keyword pages
   ...Object.values(LONGTAIL_PAGES).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  // Industry vertical pages
+  ...Object.values(INDUSTRY_PAGES).map((p) => ({
     path: p.path,
     title: p.title,
     description: p.metaDescription,

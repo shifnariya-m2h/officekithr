@@ -16,7 +16,7 @@ import BlogActions from "@/components/BlogActions";
 export default function BlogDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { blogManifest } = useSeoContext();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
   const manifestEntry = slug ? blogManifest[slug] : undefined;
 

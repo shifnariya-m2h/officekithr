@@ -10,7 +10,7 @@ function PrivacyPolicy() {
       {/* ✅ Main content area grows to fill space */}
       <main className="flex-grow container mx-auto px-6 py-40 text-gray-800 leading-relaxed">
         <h1 className="text-5xl font-bold mb-6 ">Privacy Policy</h1>
-        <p className="text-sm text-gray-500 mb-10">Effective Date: 20 Aug 2025</p>
+        <p className="text-sm text-gray-500 mb-10">Effective Date: 27 May 2026</p>
 
         <p className="mb-6">
           Welcome to <strong>OfficeKit</strong>! We’re glad you’re here. OfficeKit

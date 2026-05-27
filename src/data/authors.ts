@@ -13,7 +13,7 @@ export const AUTHORS: Record<string, AuthorConfig> = {
     title: "HR Content Specialist",
     bio: "Aiswarya writes about HR best practices, recruitment strategies, and workforce management for OfficeKit HR. She covers trends shaping the future of HR in India and the GCC.",
     articles: [
-      { title: "Remote Work HR Strategies 2025", path: "/resources/blogs/hrblogs" },
+      { title: "Remote Work HR Strategies 2026", path: "/resources/blogs/hrblogs" },
       { title: "Quality vs Quantity in Hiring", path: "/resources/blogs/quality-vs-quantity-hiring" },
       { title: "Why Businesses Need an HRMS", path: "/resources/blogs/whyhrms" },
       { title: "Choosing an HRMS System", path: "/resources/blogs/hrmssystem" },

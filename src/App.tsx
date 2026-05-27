@@ -10,7 +10,6 @@ import { BackToTopButton } from "@/components/BackToTopButton";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
 import { SeoProvider } from "@/seo/SeoContext";
 import { SeoHead } from "@/seo/SeoHead";
-import { AskMyBotLoader } from "@/components/AskMyBotLoader";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
 import { LegacyRedirect } from "@/components/LegacyRedirect";
@@ -67,6 +66,7 @@ const ComplianceHub = lazy(() => import("./pages/compliance/ComplianceHub"));
 const CompliancePage = lazy(() => import("./pages/compliance/CompliancePage"));
 const LongtailHub = lazy(() => import("./pages/longtail/LongtailHub"));
 const LongtailPage = lazy(() => import("./pages/longtail/LongtailPage"));
+const IndustryPage = lazy(() => import("./pages/industries/IndustryPage"));
 const HRPopup = lazy(() =>
   import("./components/HRPopup").then((m) => ({ default: m.HRPopup }))
 );
@@ -107,8 +107,8 @@ const AppRoutes = () => {
     >
       <SkipLink />
       <SeoHead />
-      <CookieConsent />
-      <AskMyBotLoader />
+      {/* Cookie banner can visually block the HR popup form on small screens. */}
+      {!isPopupOpen && <CookieConsent />}
       <DeferredAnalytics />
       {isPopupOpen && (
         <Suspense fallback={null}>
@@ -229,6 +229,9 @@ const AppRoutes = () => {
           {/* Long-tail keyword pages */}
           <Route path="/resources/guides" element={<LongtailHub />} />
           <Route path="/longtail/:slug" element={<LongtailPage />} />
+
+          {/* Industry vertical pages */}
+          <Route path="/industries/:slug" element={<IndustryPage />} />
 
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />

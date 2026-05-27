@@ -22,7 +22,7 @@ export const PAYROLL_COMPLIANCE: Record<string, ComplianceConfig> = {
     path: "/compliance/india-payroll-compliance",
     title: "India Payroll Compliance Guide | PF, ESI, PT, TDS — OfficeKit HR",
     metaDescription:
-      "Complete guide to India payroll compliance for 2025–2026: PF, ESI, professional tax, TDS, gratuity, and bonus under Indian labour laws. Stay compliant with OfficeKit HR.",
+      "Complete guide to India payroll compliance for 2026–2027: PF, ESI, professional tax, TDS, gratuity, and bonus under Indian labour laws. Stay compliant with OfficeKit HR.",
     country: "India",
     countryCode: "IN",
     h1: "India Payroll Compliance Guide",
@@ -76,7 +76,7 @@ export const PAYROLL_COMPLIANCE: Record<string, ComplianceConfig> = {
     ],
     faqs: [
       {
-        question: "What is the PF contribution rate for 2025–2026?",
+        question: "What is the PF contribution rate for 2026–2027?",
         answer:
           "The standard PF rate is 12% each from employee and employer on basic + DA. The employer's share includes 8.33% towards EPS (pension), 3.67% EPF, 0.5% EDLI, and 0.5% EPF admin charges.",
       },

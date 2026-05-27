@@ -100,6 +100,35 @@ html.nav-scroll-lock {
   overscroll-behavior: none;
 }
 
+/* Default scrollbar theme */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #0055ff #eaf2ff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #ffffff 0%, #eaf2ff 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7fb3ff 0%, #0055ff 100%);
+  border-radius: 9999px;
+  border: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5a9aff 0%, #0046d5 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: #eaf2ff;
+}
+
 html[data-perf-mode="mobile"] .section-fade-in {
   content-visibility: auto;
   contain-intrinsic-size: auto 12rem;

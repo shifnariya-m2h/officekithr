@@ -10,7 +10,7 @@ function TermsOfService() {
       {/* ✅ Main content area grows to fill space */}
       <main className="flex-grow container mx-auto px-6 py-40 text-gray-800 leading-relaxed">
         <h1 className="text-5xl font-bold mb-6">Terms of Service</h1>
-        <p className="text-sm text-gray-500 mb-10">Last Updated: 20 Aug 2025</p>
+        <p className="text-sm text-gray-500 mb-10">Last Updated: 27 May 2026</p>
 
         <p className="mb-6">
           Welcome to <strong>OfficeKit</strong>! These Terms of Service (“Terms”)

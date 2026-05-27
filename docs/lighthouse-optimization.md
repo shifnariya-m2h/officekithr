@@ -8,7 +8,6 @@ Production targets: **Mobile ≥ 95**, **Desktop ≥ 98**, LCP &lt; 1.8s, TBT &l
 |-------|----------------|
 | Motion | `LazyMotion` + `domAnimation` + `MotionConfig` — animations off on mobile (`data-perf-mode="mobile"`) |
 | Lottie | `LazyLottie` — IO viewport, no mobile autoplay |
-| Chat | `AskMyBotLoader` — interaction-only on mobile, idle on desktop |
 | Analytics | `CookieConsent` + `DeferredAnalytics` — idle / interaction gated |
 | Images | `OptimizedImage` + `src/lib/seo/assets.ts` — WebP + AVIF `<picture>` |
 | Code split | Route `React.lazy`, home `LazySection`, Vite `manualChunks` |
