@@ -1,5 +1,5 @@
 # OfficeKit HR — LLM-readable site summary
-> Last updated: 2026-05-26
+> Last updated: 2026-05-27
 
 ## What is OfficeKit HR?
 
@@ -118,6 +118,13 @@ OfficeKit HR is an AI-powered HRMS (Human Resource Management System) for recrui
 - Best HRMS Startups India: /longtail/best-hrms-for-startups-india
 - Employee Management India: /longtail/employee-management-software-india
 - Payroll Software GCC: /longtail/payroll-software-gcc
+
+### Industry Vertical Pages
+- Retail HRMS: /industries/hrms-for-retail
+- Hospitality HRMS: /industries/hrms-for-hospitality
+- Education HRMS: /industries/hrms-for-education
+- Logistics HRMS: /industries/hrms-for-logistics
+- BFSI HRMS: /industries/hrms-for-bfsi
 
 ## Pricing Model
 
