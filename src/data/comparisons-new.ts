@@ -389,6 +389,427 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       { label: "Pricing", href: "/pricing" },
     ],
   },
+  "darwinbox-alternative": {
+    slug: "darwinbox-alternative",
+    path: "/compare/darwinbox-alternative",
+    title: "Darwinbox Alternative for GCC & India HRMS | OfficeKit HR",
+    metaDescription:
+      "Comparing Darwinbox vs OfficeKit HR? See how OfficeKit matches up on India payroll, GCC compliance, AI automation, and mid-market pricing for growing enterprises.",
+    competitorName: "Darwinbox",
+    h1: "OfficeKit HR as a Darwinbox alternative for mid-market",
+    intro:
+      "Darwinbox serves large enterprises in Asia-Pacific with comprehensive HR features. However, mid-market companies often find Darwinbox's pricing and complexity misaligned for their size. OfficeKit HR offers a streamlined alternative with native GCC payroll, AI automation, and per-user pricing that scales from 50 to 1,000+ employees.",
+    directAnswer:
+      "OfficeKit HR is a Darwinbox alternative for mid-market companies that need India statutory payroll plus native GCC compliance (UAE WPS, KSA GOSI, Kuwait PIFSS), AI Pilot automation, Face-Kit attendance, and per-user pricing—without the enterprise complexity and cost of Darwinbox's full-suite platform.",
+    definition: {
+      term: "Darwinbox alternative",
+      meaning:
+        "An HRMS platform considered when Darwinbox's enterprise pricing, implementation complexity, or GCC payroll depth do not align with a mid-market company's needs and budget.",
+    },
+    rows: [
+      {
+        aspect: "Target market",
+        officekit: "Mid-market, 50–1,000+ employees",
+        competitor: "Large enterprises, 500+ employees",
+      },
+      {
+        aspect: "India statutory payroll",
+        officekit: "Built-in PF, ESI, PT, TDS with challan-ready reports",
+        competitor: "Yes, via Darwinbox payroll module",
+      },
+      {
+        aspect: "UAE WPS payroll",
+        officekit: "Native WPS/SIF workflows built into the platform",
+        competitor: "Available but may require configuration",
+      },
+      {
+        aspect: "GCC multi-country",
+        officekit: "6 GCC countries (UAE, KSA, KW, QA, OM, BH) natively",
+        competitor: "GCC presence via regional offices",
+      },
+      {
+        aspect: "AI automation",
+        officekit: "AI Pilot + Face-Kit biometric attendance",
+        competitor: "Darwinbox AI and automation suite",
+      },
+      {
+        aspect: "Pricing model",
+        officekit: "Transparent per-user per-month pricing",
+        competitor: "Enterprise custom pricing, typically higher per-user",
+      },
+      {
+        aspect: "Implementation",
+        officekit: "Agile rollout in weeks, guided onboarding",
+        competitor: "Enterprise-grade, 3–6 month implementations",
+      },
+    ],
+    whenOfficeKit: [
+      "You are a mid-market company with 50–500 employees and need enterprise features without enterprise pricing",
+      "You operate across India and GCC and want a single HRMS for both regions",
+      "UAE WPS or KSA GOSI compliance is essential for your payroll operations",
+      "You want AI-assisted HR workflows without long implementation cycles",
+      "Modern mobile-first employee experience matters for your distributed workforce",
+    ],
+    faqs: [
+      {
+        question: "Is OfficeKit HR a good Darwinbox alternative for mid-market companies?",
+        answer:
+          "Yes. OfficeKit HR provides many of the same enterprise-grade features—multi-country payroll, AI automation, mobile ESS—at a mid-market price point with faster implementation. It is particularly strong for companies that need both India and GCC compliance.",
+      },
+      {
+        question: "How does OfficeKit pricing compare to Darwinbox?",
+        answer:
+          "OfficeKit uses transparent per-user per-month tiers. Darwinbox typically uses enterprise custom pricing with higher per-user costs. Contact OfficeKit sales for a detailed comparison based on your headcount and module requirements.",
+      },
+      {
+        question: "Can OfficeKit handle the same compliance features as Darwinbox?",
+        answer:
+          "OfficeKit covers India statutory payroll (PF, ESI, PT, TDS) and 6 GCC countries (UAE WPS, KSA GOSI, Kuwait PIFSS, Qatar WPS, Oman PASI, Bahrain SIO). For most mid-market compliance needs, OfficeKit matches Darwinbox's depth while adding GCC payroll natively.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+  "bamboohr-alternative": {
+    slug: "bamboohr-alternative",
+    path: "/compare/bamboohr-alternative",
+    title: "BambooHR Alternative for India & GCC HRMS | OfficeKit HR",
+    metaDescription:
+      "Looking for a BambooHR alternative for India and GCC? Compare OfficeKit HR vs BambooHR on statutory payroll, WPS compliance, local support, and AI HR features for international teams.",
+    competitorName: "BambooHR",
+    h1: "OfficeKit HR as a BambooHR alternative for India & GCC",
+    intro:
+      "BambooHR is a popular global HR platform, but teams operating in India and the GCC often hit limitations with statutory payroll, WPS compliance, and local regulatory support. OfficeKit HR provides the intuitive HR experience BambooHR is known for, plus deep India and GCC payroll compliance built in.",
+    directAnswer:
+      "OfficeKit HR is a BambooHR alternative for companies operating in India and the GCC that need statutory payroll (PF, ESI, PT, TDS), UAE WPS compliance, Arabic/English employee self-service, and local HR compliance—combining BambooHR's ease of use with the regional payroll depth BambooHR lacks through its partner integrations.",
+    definition: {
+      term: "BambooHR alternative (India/GCC)",
+      meaning:
+        "An HRMS evaluated when BambooHR's global platform lacks native statutory payroll for India, WPS compliance for the UAE, or localized support for GCC regulatory requirements.",
+    },
+    rows: [
+      {
+        aspect: "Primary regions",
+        officekit: "India + GCC (UAE, KSA, KW, QA, OM, BH) natively",
+        competitor: "Global HR platform; India/GCC via partners",
+      },
+      {
+        aspect: "India statutory payroll",
+        officekit: "Native PF, ESI, PT, TDS with challan-ready outputs",
+        competitor: "Requires third-party payroll integration (e.g., Trinet, Papaya Global)",
+      },
+      {
+        aspect: "UAE WPS payroll",
+        officekit: "Built-in WPS/SIF file generation",
+        competitor: "Not available natively; requires payroll partner",
+      },
+      {
+        aspect: "GCC compliance",
+        officekit: "6-country payroll, GOSI, PIFSS, SIO, PASI support",
+        competitor: "Limited regional compliance depth",
+      },
+      {
+        aspect: "Arabic ESS",
+        officekit: "Full Arabic/English employee self-service",
+        competitor: "Limited language support",
+      },
+      {
+        aspect: "Time to payroll",
+        officekit: "Integrated HR + payroll in one system",
+        competitor: "HR in BambooHR, payroll via separate vendor = more steps",
+      },
+      {
+        aspect: "Local support",
+        officekit: "India and UAE-based support teams in your timezone",
+        competitor: "Global support, limited regional offices",
+      },
+    ],
+    whenOfficeKit: [
+      "You love BambooHR's UX but need built-in India or GCC statutory payroll",
+      "You operate in both India and GCC and want one HRMS for all entities",
+      "UAE WPS payroll compliance is essential and you don't want a separate payroll provider",
+      "You need Arabic/English bilingual HR portals for your Gulf employees",
+      "Local support and implementation assistance in India/UAE matters to your team",
+    ],
+    faqs: [
+      {
+        question: "Is OfficeKit HR a good BambooHR alternative for Indian companies?",
+        answer:
+          "Yes. While BambooHR excels at core HR and global usability, it requires third-party payroll providers for India statutory compliance. OfficeKit HR combines the same ease of use with native Indian payroll (PF, ESI, PT, TDS)—no integrations needed.",
+      },
+      {
+        question: "Does OfficeKit support the same features as BambooHR?",
+        answer:
+          "OfficeKit covers core HR, attendance, leave, ESS, and performance management—similar to BambooHR—plus adds native payroll, WPS compliance, AI automation, and face recognition attendance that BambooHR does not offer in the region.",
+      },
+      {
+        question: "Can I migrate from BambooHR to OfficeKit?",
+        answer:
+          "Yes. OfficeKit onboarding teams provide data migration templates for employee records, attendance history, and payroll data. Migration scope depends on your current BambooHR module usage.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Book a demo", href: "/contact" },
+    ],
+  },
+  "bayzat-alternative": {
+    slug: "bayzat-alternative",
+    path: "/compare/bayzat-alternative",
+    title: "Bayzat Alternative for UAE & GCC HR | OfficeKit HR",
+    metaDescription:
+      "Comparing Bayzat vs OfficeKit HR? See how OfficeKit differentiates on India + GCC multi-country payroll, AI HR automation, and per-user pricing for region-wide operations.",
+    competitorName: "Bayzat",
+    h1: "OfficeKit HR as a Bayzat alternative for multi-country operations",
+    intro:
+      "Bayzat is a well-known UAE-born HR and insurance platform serving the GCC. However, companies that operate across both India and the GCC often find Bayzat's India payroll coverage limited. OfficeKit HR provides the same strong UAE payroll and WPS compliance, plus native India statutory payroll and 5 additional GCC countries from one platform.",
+    directAnswer:
+      "OfficeKit HR is a Bayzat alternative for companies that need HR and payroll across both India and the GCC. While Bayzat excels in UAE payroll and insurance, OfficeKit adds native India payroll (PF, ESI, PT, TDS), 5 additional GCC countries (KSA, Kuwait, Qatar, Oman, Bahrain), AI Pilot automation, and Face-Kit attendance—all on a single per-user platform.",
+    definition: {
+      term: "Bayzat alternative",
+      meaning:
+        "An HRMS platform considered when Bayzat's UAE-centric focus, limited India statutory payroll, or lack of multi-country GCC payroll does not match a company's India-GCC operational footprint.",
+    },
+    rows: [
+      {
+        aspect: "Primary regions",
+        officekit: "India + 6 GCC countries natively",
+        competitor: "UAE-focused; limited India payroll",
+      },
+      {
+        aspect: "UAE WPS payroll",
+        officekit: "Built-in WPS/SIF workflows",
+        competitor: "Yes, strong UAE payroll",
+      },
+      {
+        aspect: "India statutory payroll",
+        officekit: "Native PF, ESI, PT, TDS",
+        competitor: "Not available natively",
+      },
+      {
+        aspect: "Insurance & benefits",
+        officekit: "HRMS platform (insurance via partners)",
+        competitor: "Integrated insurance marketplace",
+      },
+      {
+        aspect: "AI automation",
+        officekit: "AI Pilot + Face-Kit attendance",
+        competitor: "Basic automation features",
+      },
+      {
+        aspect: "GCC multi-country",
+        officekit: "6 countries (UAE, KSA, KW, QA, OM, BH)",
+        competitor: "Primarily UAE, limited GCC multi-country depth",
+      },
+      {
+        aspect: "Deployment",
+        officekit: "Cloud, on-premise, hybrid",
+        competitor: "Cloud SaaS",
+      },
+    ],
+    whenOfficeKit: [
+      "You operate in both India and GCC and need one HRMS for all entities",
+      "India statutory payroll is a requirement for your operations",
+      "You need HRMS across 3+ GCC countries, not just UAE",
+      "AI-assisted HR workflows and face-recognition attendance matter to your team",
+      "You want flexible deployment options (cloud, on-premise, hybrid)",
+    ],
+    faqs: [
+      {
+        question: "Is OfficeKit a good Bayzat alternative for India-UAE companies?",
+        answer:
+          "Yes. Bayzat is strong for UAE-only HR and insurance, but companies with India operations need a second payroll system. OfficeKit handles both India and UAE payroll natively in one platform.",
+      },
+      {
+        question: "Does OfficeKit offer insurance like Bayzat?",
+        answer:
+          "OfficeKit focuses on HRMS and payroll. While insurance is not a core module, we partner with regional insurance providers for employee benefits. Contact sales for your specific requirements.",
+      },
+      {
+        question: "Can OfficeKit handle UAE WPS as well as Bayzat?",
+        answer:
+          "Yes. OfficeKit includes WPS-compliant payroll with SIF file generation, gratuity calculation, and MOHRE-aligned reporting—matching Bayzat's UAE payroll capabilities while adding India and GCC multi-country support.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+    ],
+  },
+  "zenhr-alternative": {
+    slug: "zenhr-alternative",
+    path: "/compare/zenhr-alternative",
+    title: "ZenHR Alternative for GCC HRMS | OfficeKit HR",
+    metaDescription:
+      "Comparing ZenHR vs OfficeKit HR? See how OfficeKit adds India payroll, AI automation, and broader GCC multi-country support for growing businesses.",
+    competitorName: "ZenHR",
+    h1: "OfficeKit HR as a ZenHR alternative for cross-region HR",
+    intro:
+      "ZenHR serves the Middle East HR market with a focus on core HR, payroll, and time tracking. However, companies expanding beyond the Middle East into India—or needing AI-powered automation—often require more than ZenHR offers. OfficeKit HR provides the GCC payroll ZenHR is known for, plus native India support and AI-assisted workflows.",
+    directAnswer:
+      "OfficeKit HR is a ZenHR alternative for companies that need HR and payroll across both the GCC and India. OfficeKit combines ZenHR-like GCC payroll depth (UAE WPS, KSA GOSI, Kuwait PIFSS) with native India statutory payroll, AI Pilot automation, Face-Kit attendance, and bilingual Arabic/English ESS in a single per-user platform.",
+    definition: {
+      term: "ZenHR alternative",
+      meaning:
+        "An HRMS considered when ZenHR's GCC focus, limited India payroll, or lack of AI-assisted workflows does not meet a company's cross-region HR and payroll requirements.",
+    },
+    rows: [
+      {
+        aspect: "Primary regions",
+        officekit: "India + 6 GCC countries natively",
+        competitor: "GCC-focused (primarily Jordan-based market)",
+      },
+      {
+        aspect: "India statutory payroll",
+        officekit: "Native PF, ESI, PT, TDS",
+        competitor: "Not available",
+      },
+      {
+        aspect: "UAE WPS payroll",
+        officekit: "Built-in WPS/SIF generation",
+        competitor: "Available",
+      },
+      {
+        aspect: "KSA GOSI payroll",
+        officekit: "Native GOSI calculations and reports",
+        competitor: "Available",
+      },
+      {
+        aspect: "AI automation",
+        officekit: "AI Pilot + Face-Kit attendance",
+        competitor: "Limited automation features",
+      },
+      {
+        aspect: "Mobile ESS",
+        officekit: "iOS/Android bilingual (English/Arabic)",
+        competitor: "Mobile app available",
+      },
+      {
+        aspect: "Deployment flexibility",
+        officekit: "Cloud, on-premise, hybrid",
+        competitor: "Cloud SaaS",
+      },
+    ],
+    whenOfficeKit: [
+      "You need HRMS coverage for both GCC and India from one platform",
+      "India statutory payroll is a requirement for your operations",
+      "AI-assisted HR workflows and face recognition attendance are on your evaluation criteria",
+      "You want bilingual Arabic/English employee self-service for Gulf staff",
+      "Flexible deployment (cloud, on-premise, hybrid) is important for your business",
+    ],
+    faqs: [
+      {
+        question: "Is OfficeKit a good ZenHR alternative for India-GCC companies?",
+        answer:
+          "Yes. ZenHR serves the Middle East well, but companies with India operations need a separate solution for statutory payroll. OfficeKit covers both regions natively in one HRMS.",
+      },
+      {
+        question: "Does OfficeKit support the same GCC compliance as ZenHR?",
+        answer:
+          "Yes. OfficeKit covers UAE WPS, KSA GOSI, Kuwait PIFSS, Qatar WPS, Oman PASI, and Bahrain SIO—matching and in many cases exceeding ZenHR's GCC country coverage.",
+      },
+      {
+        question: "Can OfficeKit handle Arabic-language HR portals?",
+        answer:
+          "Yes. OfficeKit's employee self-service and payslips are available in both Arabic and English, matching the bilingual requirements of Gulf-based workforces.",
+      },
+    ],
+    relatedLinks: [
+      { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+    ],
+  },
+  "gulfhr-alternative": {
+    slug: "gulfhr-alternative",
+    path: "/compare/gulfhr-alternative",
+    title: "GulfHR Alternative for GCC & India HRMS | OfficeKit HR",
+    metaDescription:
+      "Comparing GulfHR vs OfficeKit HR? See how OfficeKit offers stronger India payroll, AI HR automation, and modern mobile employee experience alongside GCC compliance.",
+    competitorName: "GulfHR",
+    h1: "OfficeKit HR as a GulfHR alternative with AI & mobile",
+    intro:
+      "GulfHR has served the Middle East HR market with payroll and workforce management for years. However, companies seeking a modern interface, AI-powered automation, or combined India + GCC payroll capabilities often find GulfHR's platform limited in these areas. OfficeKit HR delivers the GCC compliance GulfHR is known for, plus modern UX, AI features, and native India support.",
+    directAnswer:
+      "OfficeKit HR is a GulfHR alternative for companies that need modern HRMS features alongside GCC compliance. OfficeKit combines GulfHR-like GCC payroll depth (UAE WPS, KSA GOSI, Kuwait PIFSS) with native India statutory payroll, AI Pilot workflow automation, Face-Kit biometric attendance, modern mobile-first UX, and bilingual Arabic/English ESS in a single platform.",
+    definition: {
+      term: "GulfHR alternative",
+      meaning:
+        "A modern HRMS evaluated when GulfHR's legacy interface, limited India payroll capabilities, or lack of AI-assisted workflows do not meet a company's evolving HR technology requirements.",
+    },
+    rows: [
+      {
+        aspect: "Platform modernity",
+        officekit: "Modern UI/UX with mobile-first design",
+        competitor: "Legacy enterprise interface",
+      },
+      {
+        aspect: "Primary regions",
+        officekit: "India + 6 GCC countries natively",
+        competitor: "GCC-focused; limited India payroll",
+      },
+      {
+        aspect: "India statutory payroll",
+        officekit: "Native PF, ESI, PT, TDS",
+        competitor: "Not available natively",
+      },
+      {
+        aspect: "UAE WPS payroll",
+        officekit: "Built-in WPS/SIF generation",
+        competitor: "Available",
+      },
+      {
+        aspect: "AI automation",
+        officekit: "AI Pilot + Face-Kit attendance",
+        competitor: "Limited automation",
+      },
+      {
+        aspect: "Mobile ESS",
+        officekit: "iOS/Android bilingual (English/Arabic)",
+        competitor: "Basic mobile access",
+      },
+      {
+        aspect: "Deployment",
+        officekit: "Cloud, on-premise, hybrid",
+        competitor: "On-premise and cloud options",
+      },
+    ],
+    whenOfficeKit: [
+      "You find GulfHR's interface dated and want a modern employee experience",
+      "You need both India and GCC payroll from a single platform",
+      "AI-assisted HR workflows and face-recognition attendance are key requirements",
+      "Mobile-first employee experience is important for workforce adoption",
+      "You want a vendor that serves both India and GCC with local support",
+    ],
+    faqs: [
+      {
+        question: "Is OfficeKit a good GulfHR alternative for modern HR teams?",
+        answer:
+          "Yes. OfficeKit provides the GCC payroll and compliance GulfHR is known for, with a modern UI, AI automation, and native India payroll that GulfHR does not offer natively.",
+      },
+      {
+        question: "Does OfficeKit support the same GCC compliance as GulfHR?",
+        answer:
+          "Yes. OfficeKit covers UAE WPS, KSA GOSI, Kuwait PIFSS, Qatar WPS, Oman PASI, and Bahrain SIO—comparable to GulfHR's GCC depth while adding India payroll.",
+      },
+      {
+        question: "Can OfficeKit handle on-premise deployment like GulfHR?",
+        answer:
+          "Yes. OfficeKit supports cloud, on-premise, and hybrid deployment models depending on your security, compliance, and IT infrastructure requirements.",
+      },
+    ],
+    relatedLinks: [
+      { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Book a demo", href: "/contact" },
+    ],
+  },
 };
 
 export const COMPARISON_NEW_SLUGS = Object.keys(COMPARISONS_NEW);

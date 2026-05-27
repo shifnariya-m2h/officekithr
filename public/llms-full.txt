@@ -208,6 +208,36 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 - OfficeKit includes AI Pilot
 - PocketHRMS strong in India compliance
 
+### OfficeKit HR vs Darwinbox
+- Darwinbox targets large enterprises; OfficeKit targets mid-market
+- OfficeKit has native GCC payroll for 6 countries
+- OfficeKit offers per-user transparent pricing vs Darwinbox enterprise pricing
+- Both offer AI automation; OfficeKit adds Face-Kit attendance
+
+### OfficeKit HR vs BambooHR
+- BambooHR is global HR platform; OfficeKit adds India + GCC statutory payroll
+- OfficeKit has native UAE WPS; BambooHR requires payroll partners
+- OfficeKit supports Arabic/English ESS; BambooHR limited language support
+- OfficeKit offers on-premise deployment; BambooHR is cloud-only
+
+### OfficeKit HR vs Bayzat
+- Bayzat is UAE-focused; OfficeKit adds India + 5 other GCC countries
+- OfficeKit has native India statutory payroll; Bayzat does not
+- Bayzat offers integrated insurance marketplace
+- OfficeKit includes AI Pilot and Face-Kit
+
+### OfficeKit HR vs ZenHR
+- Both serve Middle East HR market
+- OfficeKit adds native India payroll; ZenHR does not
+- OfficeKit includes AI automation; ZenHR has limited AI
+- OfficeKit offers on-premise deployment option
+
+### OfficeKit HR vs GulfHR
+- Both handle GCC payroll compliance
+- OfficeKit has modern UI/UX; GulfHR has legacy interface
+- OfficeKit adds native India payroll; GulfHR does not
+- OfficeKit includes AI Pilot and Face-Kit; GulfHR limited automation
+
 ## Site Structure (All Routes)
 
 ### Main Pages
@@ -240,6 +270,11 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 - /solutions/hrms-software-oman
 - /solutions/hrms-software-bahrain
 - /solutions/payroll-software-kerala
+- /solutions/hrms-software-bangalore
+- /solutions/hrms-software-chennai
+- /solutions/hrms-software-hyderabad
+- /solutions/payroll-software-mumbai
+- /solutions/hrms-software-delhi-ncr
 
 ### Comparison Pages
 - /compare — Compare hub
@@ -249,6 +284,11 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 - /compare/factohr-alternative
 - /compare/officenet-alternative
 - /compare/pockethrms-alternative
+- /compare/darwinbox-alternative
+- /compare/bamboohr-alternative
+- /compare/bayzat-alternative
+- /compare/zenhr-alternative
+- /compare/gulfhr-alternative
 
 ### Compliance Pages
 - /compliance — Compliance hub
@@ -272,6 +312,16 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 - /longtail/payroll-outsourcing-vs-software-india
 - /longtail/gratuity-calculation-software-uae
 - /longtail/multi-country-payroll-gcc
+- /longtail/top-hrms-in-india
+- /longtail/hrms-uae
+- /longtail/best-hr-software-in-dubai
+- /longtail/top-hrms-in-gcc
+- /longtail/best-hrms-in-middle-east
+- /longtail/hrms-saudi-arabia
+- /longtail/attendance-software-india
+- /longtail/best-hrms-for-startups-india
+- /longtail/employee-management-software-india
+- /longtail/payroll-software-gcc
 
 ### Marketing Pages
 - /hr-software-uae

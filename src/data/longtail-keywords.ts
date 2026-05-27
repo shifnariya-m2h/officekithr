@@ -366,6 +366,368 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
     ],
   },
+  "top-hrms-in-india": {
+    slug: "top-hrms-in-india",
+    path: "/longtail/top-hrms-in-india",
+    title: "Top HRMS in India 2026 | Best HR Software — OfficeKit HR",
+    metaDescription:
+      "Find the top HRMS in India for 2026. Compare leading HR software for payroll, attendance, recruitment, and compliance. OfficeKit HR for growing businesses.",
+    h1: "Top HRMS in India 2026",
+    subtitle:
+      "Leading HR and payroll platforms for Indian businesses—from startups to enterprises.",
+    directAnswer:
+      "The top HRMS in India for 2026 include OfficeKit HR, Keka, greytHR, Zoho People, and Darwinbox. OfficeKit HR differentiates with native GCC payroll support (UAE WPS, KSA GOSI), AI Pilot automation, Face-Kit biometric attendance, and per-user pricing—making it a strong choice for companies operating in both India and the Middle East.",
+    clusters: [
+      "OfficeKit HR: Best for India + GCC multi-country payroll and AI automation",
+      "Keka: Strong India payroll and HRMS for mid-market companies",
+      "greytHR: Established India payroll and HR compliance platform",
+      "Zoho People: Part of Zoho ecosystem with broad app integrations",
+      "Darwinbox: Enterprise-grade HRMS for large organizations",
+    ],
+    faqs: [
+      {
+        question: "What is the best HRMS software in India for 2026?",
+        answer:
+          "The best HRMS depends on your company size and needs. For mid-market companies needing India payroll plus GCC expansion, OfficeKit HR offers native multi-country compliance. For India-only mid-market, Keka and greytHR are strong choices. For enterprises, Darwinbox is popular among large Indian corporates.",
+      },
+      {
+        question: "Which HRMS is best for Indian startups?",
+        answer:
+          "Startups benefit from affordable per-user pricing and modular features. OfficeKit HR, Zoho People, and greytHR all offer startup-friendly plans. OfficeKit additionally supports GCC expansion when startups grow into Middle East markets.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "OfficeKit vs Keka", href: "/officekit-vs-keka" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+  "hrms-uae": {
+    slug: "hrms-uae",
+    path: "/longtail/hrms-uae",
+    title: "HRMS UAE | Best HR Software Dubai, Abu Dhabi — OfficeKit HR",
+    metaDescription:
+      "HRMS in UAE for Dubai and Abu Dhabi: WPS payroll, Arabic ESS, attendance tracking, and GCC compliance. Compare the best HRMS platforms for UAE businesses.",
+    h1: "HRMS Software in the UAE",
+    subtitle:
+      "HR, payroll, and compliance platforms for UAE businesses—mainland and free zone.",
+    directAnswer:
+      "OfficeKit HR is an HRMS in the UAE that provides WPS-compliant payroll, SIF file generation, core HR, attendance tracking, Arabic/English employee self-service, and multi-entity support for mainland and free zone companies—all from a single cloud platform serving UAE, India, and 5 other GCC countries.",
+    clusters: [
+      "WPS-compliant payroll with automated SIF file generation for UAE entities",
+      "Arabic and English bilingual employee self-service portal and mobile app",
+      "Multi-entity support for mainland, free zone (DIFC, ADGM, etc.) companies",
+      "End-of-service gratuity calculation and accrual tracking",
+      "Multi-country GCC payroll for companies operating across UAE, KSA, Kuwait",
+    ],
+    faqs: [
+      {
+        question: "What is the best HRMS in the UAE for small businesses?",
+        answer:
+          "Small businesses in the UAE benefit from OfficeKit HR's per-user pricing, WPS-ready payroll, and Arabic/English ESS. It covers both mainland and free zone requirements without needing separate payroll tools.",
+      },
+      {
+        question: "Does HRMS software in the UAE support WPS?",
+        answer:
+          "Yes. OfficeKit HR generates WPS-compliant SIF files for UAE companies, validates employee IBANs and salary components, and helps reduce salary file rejection rates.",
+      },
+      {
+        question: "Can HRMS UAE platforms handle free zone payroll?",
+        answer:
+          "Yes. OfficeKit HR supports both mainland and free zone entities (DIFC, ADGM, DMCC, etc.) with configurable policies, pay schedules, and compliance rules per establishment.",
+      },
+    ],
+    relatedLinks: [
+      { label: "HR software UAE", href: "/hr-software-uae" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
+    ],
+  },
+  "best-hr-software-in-dubai": {
+    slug: "best-hr-software-in-dubai",
+    path: "/longtail/best-hr-software-in-dubai",
+    title: "Best HR Software in Dubai | WPS & GCC HRMS — OfficeKit HR",
+    metaDescription:
+      "Find the best HR software in Dubai for 2026. Compare WPS-ready payroll, Arabic ESS, attendance, and compliance tools for Dubai mainland and free zone companies.",
+    h1: "Best HR Software in Dubai",
+    subtitle:
+      "Top-rated HR and payroll platforms used by Dubai-based companies.",
+    directAnswer:
+      "The best HR software in Dubai includes OfficeKit HR, Bayzat, ZenHR, and GulfHR. OfficeKit HR differentiates with combined India + GCC payroll support—ideal for Dubai companies with operations across both regions—plus AI Pilot automation, Face-Kit attendance, and Arabic/English ESS in one platform.",
+    clusters: [
+      "OfficeKit HR: Best for Dubai companies with India + GCC multi-country operations",
+      "Bayzat: UAE-born platform with strong payroll and integrated insurance",
+      "ZenHR: Middle East-focused HRMS with core HR and payroll",
+      "GulfHR: Established GCC payroll and workforce management platform",
+    ],
+    faqs: [
+      {
+        question: "What is the best HR software for Dubai free zone companies?",
+        answer:
+          "Dubai free zone companies (DIFC, DMCC, ADGM, etc.) need HR software that handles multi-entity payroll, WPS compliance, and bilingual ESS. OfficeKit HR covers all these requirements with per-user pricing.",
+      },
+      {
+        question: "Which HR software is best for Dubai startups?",
+        answer:
+          "Dubai startups typically need affordable HR software with WPS payroll, attendance tracking, and employee self-service. OfficeKit HR and Bayzat are popular choices, with OfficeKit additionally supporting India operations.",
+      },
+    ],
+    relatedLinks: [
+      { label: "HR software Dubai", href: "/hr-software-dubai" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Book a demo", href: "/contact" },
+    ],
+  },
+  "top-hrms-in-gcc": {
+    slug: "top-hrms-in-gcc",
+    path: "/longtail/top-hrms-in-gcc",
+    title: "Top HRMS in GCC | Best HR Software UAE, KSA, Kuwait — OfficeKit HR",
+    metaDescription:
+      "Compare the top HRMS in the GCC region for 2026. Best HR software for UAE, Saudi Arabia, Kuwait, Qatar, Oman, and Bahrain with native WPS, GOSI, and PIFSS compliance.",
+    h1: "Top HRMS in the GCC",
+    subtitle:
+      "Leading HR and payroll platforms for multi-country GCC operations.",
+    directAnswer:
+      "The top HRMS in the GCC include OfficeKit HR, Bayzat, ZenHR, and GulfHR. OfficeKit HR differentiates with native compliance across 6 GCC countries (UAE WPS, KSA GOSI, Kuwait PIFSS, Qatar WPS, Oman PASI, Bahrain SIO) plus India statutory payroll—making it ideal for companies operating across both regions with AI Pilot automation and bilingual ESS.",
+    clusters: [
+      "OfficeKit HR: 6-country native GCC payroll + India statutory in one platform",
+      "Bayzat: UAE-born HR and insurance platform with strong local presence",
+      "ZenHR: Middle East HRMS with core HR, payroll, and time tracking",
+      "GulfHR: Established GCC workforce management and payroll provider",
+    ],
+    faqs: [
+      {
+        question: "What is the best HRMS for multi-country GCC operations?",
+        answer:
+          "For companies operating across 3+ GCC countries, OfficeKit HR offers native payroll compliance for all 6 GCC markets from a single platform. Bayzat is excellent for UAE-focused companies, while ZenHR and GulfHR serve specific GCC markets.",
+      },
+      {
+        question: "Does HRMS software in the GCC support India payroll too?",
+        answer:
+          "OfficeKit HR is the only GCC HRMS that also natively supports India statutory payroll (PF, ESI, PT, TDS)—ideal for companies with operations across both regions.",
+      },
+    ],
+    relatedLinks: [
+      { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
+    ],
+  },
+  "best-hrms-in-middle-east": {
+    slug: "best-hrms-in-middle-east",
+    path: "/longtail/best-hrms-in-middle-east",
+    title: "Best HRMS in the Middle East | HR Software UAE, KSA, Qatar — OfficeKit HR",
+    metaDescription:
+      "Find the best HRMS in the Middle East for 2026. Compare leading HR software for UAE, Saudi Arabia, Qatar, Kuwait, and Oman with multi-country payroll and compliance.",
+    h1: "Best HRMS in the Middle East",
+    subtitle:
+      "Top-rated HR and payroll platforms for Middle East businesses.",
+    directAnswer:
+      "The best HRMS in the Middle East include OfficeKit HR, Bayzat, ZenHR, and GulfHR. OfficeKit HR is the leading choice for companies that need multi-country payroll across the GCC plus India support—covering UAE WPS, KSA GOSI, Kuwait PIFSS, Qatar WPS, Oman PASI, and Bahrain SIO natively, with AI Pilot automation and bilingual Arabic/English ESS.",
+    clusters: [
+      "OfficeKit HR: 6 GCC countries + India payroll with AI automation",
+      "Bayzat: UAE HR and insurance platform with strong WPS payroll",
+      "ZenHR: Middle East HRMS for core HR and payroll management",
+      "GulfHR: GCC workforce management and payroll solutions",
+    ],
+    faqs: [
+      {
+        question: "What is the best HRMS in the Middle East for multi-country companies?",
+        answer:
+          "For companies operating across 3+ Middle East countries, OfficeKit HR provides the broadest native compliance coverage. Bayzat is best for UAE-only, and ZenHR/GulfHR serve specific sub-regions within the Middle East.",
+      },
+      {
+        question: "Does the best HRMS in the Middle East support India operations too?",
+        answer:
+          "OfficeKit HR is unique in providing native support for both the Middle East (6 GCC countries) and India statutory payroll—ideal for companies with cross-region operations.",
+      },
+    ],
+    relatedLinks: [
+      { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+    ],
+  },
+  "hrms-saudi-arabia": {
+    slug: "hrms-saudi-arabia",
+    path: "/longtail/hrms-saudi-arabia",
+    title: "HRMS Saudi Arabia | HR Software GOSI, Qiwa — OfficeKit HR",
+    metaDescription:
+      "HRMS in Saudi Arabia: GOSI-compliant payroll, Qiwa integration, attendance tracking, and end-of-service benefits for KSA employers. OfficeKit HR for Saudi businesses.",
+    h1: "HRMS Software in Saudi Arabia",
+    subtitle:
+      "HR and payroll platforms for Saudi employers with GOSI and labour law compliance.",
+    directAnswer:
+      "OfficeKit HR is an HRMS in Saudi Arabia that provides GOSI-compliant payroll (9% employer, 9% employee contributions), Qiwa-ready workforce data, attendance tracking, end-of-service benefits calculation, and bilingual Arabic/English employee self-service—alongside support for 5 other GCC countries and India from a single platform.",
+    clusters: [
+      "GOSI contribution calculations and monthly remittance reports",
+      "Qiwa-compliant employee contract and workforce management",
+      "End-of-service benefits calculation per Saudi Labour Law",
+      "ZATCA-aligned payroll record-keeping for audit readiness",
+      "Multi-country GCC support for companies operating beyond KSA",
+    ],
+    faqs: [
+      {
+        question: "What is the best HRMS in Saudi Arabia for private sector companies?",
+        answer:
+          "The best HRMS in KSA depends on your company size and if you operate outside Saudi Arabia. OfficeKit HR is strong for companies needing GOSI compliance plus multi-country GCC/India support. For KSA-only operations, local providers may also be viable options.",
+      },
+      {
+        question: "Does HRMS in Saudi Arabia support GOSI calculations?",
+        answer:
+          "Yes. OfficeKit HR automatically calculates employer (9%) and employee (9%) GOSI contributions for Saudi nationals, and employer (2%) contributions for expatriates, with monthly remittance reports.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
+      { label: "KSA payroll compliance", href: "/compliance/ksa-payroll-compliance" },
+      { label: "HR software Riyadh", href: "/hr-software-riyadh" },
+    ],
+  },
+  "attendance-software-india": {
+    slug: "attendance-software-india",
+    path: "/longtail/attendance-software-india",
+    title: "Attendance Software India | Biometric & Mobile — OfficeKit HR",
+    metaDescription:
+      "Attendance software for India: biometric integration, mobile GPS check-in, Face-Kit face recognition, shift management, and payroll-linked time tracking. OfficeKit HR.",
+    h1: "Attendance Software for India",
+    subtitle:
+      "Track employee attendance with biometric devices, face recognition, or mobile—linked to Indian payroll and compliance.",
+    directAnswer:
+      "OfficeKit HR is attendance software for India that supports biometric device integration (ZKTeco and others), Face-Kit contactless face recognition, mobile GPS geo-check-in, and web check-in—all automatically linked to attendance reports, leave management, and Indian statutory payroll (PF, ESI, PT, TDS) for accurate pay days.",
+    clusters: [
+      "Biometric device integration for factory and office attendance",
+      "Face-Kit AI face recognition for contactless high-volume check-in",
+      "Mobile GPS geo-fencing for field sales and remote employees",
+      "Shift scheduling, overtime rules, and grace period policies",
+      "Automatic attendance-to-payroll sync for accurate salary processing",
+    ],
+    faqs: [
+      {
+        question: "What is the best attendance software in India for SMEs?",
+        answer:
+          "Indian SMEs benefit from attendance software that integrates with payroll. OfficeKit HR combines biometric/Face-Kit attendance with statutory payroll (PF, ESI, PT, TDS) so attendance data flows directly into salary calculations.",
+      },
+      {
+        question: "Can attendance software in India work without biometric devices?",
+        answer:
+          "Yes. OfficeKit HR supports mobile GPS check-in and web-based check-in for companies without biometric hardware. Face-Kit also works using standard smartphone or tablet cameras.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Attendance feature", href: "/features/attendance-and-leave" },
+      { label: "Face-Kit feature", href: "/features/face-kit" },
+    ],
+  },
+  "best-hrms-for-startups-india": {
+    slug: "best-hrms-for-startups-india",
+    path: "/longtail/best-hrms-for-startups-india",
+    title: "Best HRMS for Startups in India | Affordable HR — OfficeKit HR",
+    metaDescription:
+      "Find the best HRMS for startups in India. Compare affordable HR software with payroll, attendance, and recruitment for early-stage and VC-funded startups.",
+    h1: "Best HRMS for Startups in India",
+    subtitle:
+      "Affordable, scalable HR software for Indian startups from seed to Series B.",
+    directAnswer:
+      "The best HRMS for startups in India includes OfficeKit HR, Zoho People, and greytHR. OfficeKit HR offers modular per-user pricing starting from small teams, statutory payroll (PF, ESI, PT, TDS), attendance tracking, recruitment ATS, and GCC expansion support—making it ideal for startups that plan to scale into Middle East markets.",
+    clusters: [
+      "OfficeKit HR: Per-user pricing, modular features, GCC expansion path",
+      "Zoho People: Part of Zoho ecosystem, affordable for small teams",
+      "greytHR: Established India payroll for growing startups",
+      "Keka: Modern UX with strong India compliance features",
+    ],
+    faqs: [
+      {
+        question: "What is the best HRMS for a 20-person startup in India?",
+        answer:
+          "For a 20-person startup, OfficeKit HR offers modular plans starting with core HR and payroll, adding attendance, recruitment, or performance as you grow. Per-user pricing keeps costs predictable.",
+      },
+      {
+        question: "Do Indian startups need an HRMS from day one?",
+        answer:
+          "Even at 5–10 employees, an HRMS saves time on payroll calculations and compliance. OfficeKit HR's startup-friendly pricing makes it affordable from the early stages.",
+      },
+    ],
+    relatedLinks: [
+      { label: "HRMS for startups", href: "/longtail/hrms-for-startups-india" },
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+  "employee-management-software-india": {
+    slug: "employee-management-software-india",
+    path: "/longtail/employee-management-software-india",
+    title: "Employee Management Software India | HRMS — OfficeKit HR",
+    metaDescription:
+      "Employee management software for India: centralize employee records, documents, attendance, payroll, and performance in one HRMS platform. OfficeKit HR.",
+    h1: "Employee Management Software for India",
+    subtitle:
+      "Centralize employee records, HR workflows, and compliance in one platform.",
+    directAnswer:
+      "OfficeKit HR is employee management software for India that centralizes employee records, documents, org charts, and lifecycle management—combined with statutory payroll (PF, ESI, PT, TDS), attendance tracking, leave management, performance appraisals, recruitment ATS, and employee self-service in a single cloud platform.",
+    clusters: [
+      "Centralized employee database with document management and expiry alerts",
+      "Organizational charts, hierarchy, and role-based access control",
+      "Lifecycle management: onboarding, transfers, promotions, exits",
+      "Integrated statutory payroll with attendance-linked processing",
+      "Employee self-service for leave, payslips, and profile updates",
+    ],
+    faqs: [
+      {
+        question: "What is the best employee management software for Indian businesses?",
+        answer:
+          "Indian businesses benefit from employee management software that combines HR records with statutory payroll and compliance. OfficeKit HR provides end-to-end employee lifecycle management plus integrated payroll, attendance, and performance tools.",
+      },
+      {
+        question: "Does employee management software in India include payroll?",
+        answer:
+          "Yes. OfficeKit HR combines employee management with full Indian statutory payroll (PF, ESI, PT, TDS, Form 16), eliminating the need for separate HR and payroll systems.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Employee management feature", href: "/features/employee-management" },
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+  },
+  "payroll-software-gcc": {
+    slug: "payroll-software-gcc",
+    path: "/longtail/payroll-software-gcc",
+    title: "Payroll Software GCC | UAE, KSA, Kuwait, Qatar — OfficeKit HR",
+    metaDescription:
+      "Payroll software for the GCC: process payroll across UAE, Saudi Arabia, Kuwait, Qatar, Oman, and Bahrain with country-specific compliance. OfficeKit HR for multi-country payroll.",
+    h1: "Payroll Software for the GCC",
+    subtitle:
+      "Multi-country payroll processing with local compliance for all 6 GCC markets.",
+    directAnswer:
+      "OfficeKit HR is payroll software for the GCC that processes salaries across UAE (WPS/SIF), Saudi Arabia (GOSI), Kuwait (PIFSS), Qatar (WPS), Oman (PASI), and Bahrain (SIO)—each with country-specific statutory deductions, compliance rules, leave policies, and audit reporting, all managed from a single HRMS instance with consolidated group reporting and multi-currency support.",
+    clusters: [
+      "UAE payroll with WPS-compliant SIF file generation and gratuity calculation",
+      "Saudi Arabia payroll with GOSI contributions and ZATCA-aligned reports",
+      "Kuwait payroll with PIFSS social insurance and end-of-service indemnity",
+      "Qatar payroll with WPS compliance and end-of-service gratuity",
+      "Oman payroll with PASI contributions and Labour Law compliance",
+      "Bahrain payroll with SIO contributions and LMRA compliance",
+    ],
+    faqs: [
+      {
+        question: "What is the best payroll software for multi-country GCC operations?",
+        answer:
+          "For companies operating across multiple GCC countries, OfficeKit HR provides native payroll compliance for UAE, Saudi Arabia, Kuwait, Qatar, Oman, and Bahrain from a single platform—with country-specific rules, currencies, and reporting.",
+      },
+      {
+        question: "Can one payroll software handle all GCC countries?",
+        answer:
+          "Yes. OfficeKit HR supports all 6 GCC countries from a single instance. Each country has its own payroll rules, statutory deductions, and reporting—while group-level consolidated reports give you a unified view.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Multi-country payroll GCC", href: "/longtail/multi-country-payroll-gcc" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
+    ],
+  },
 };
 
 export const LONGTAIL_SLUGS = Object.keys(LONGTAIL_PAGES);

@@ -176,6 +176,36 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
       "AI-powered HR software for UAE, Kuwait, Saudi Arabia, and Qatar — automation with payroll compliance.",
   },
   {
+    path: "/solutions/hrms-software-bangalore",
+    title: "HRMS Software Bangalore | Karnataka Payroll — OfficeKit HR",
+    description:
+      "HRMS for Bangalore and Karnataka: India statutory payroll, biometric attendance, recruitment, and GCC expansion. OfficeKit HR.",
+  },
+  {
+    path: "/solutions/hrms-software-chennai",
+    title: "HRMS Software Chennai | Tamil Nadu Payroll — OfficeKit HR",
+    description:
+      "HRMS for Chennai and Tamil Nadu: statutory payroll with TN PT, attendance, and recruitment for manufacturing and IT companies. OfficeKit HR.",
+  },
+  {
+    path: "/solutions/hrms-software-hyderabad",
+    title: "HRMS Software Hyderabad | Telangana Payroll — OfficeKit HR",
+    description:
+      "HRMS for Hyderabad and Telangana: statutory payroll, attendance, recruitment, and GCC expansion for pharma and IT companies. OfficeKit HR.",
+  },
+  {
+    path: "/solutions/payroll-software-mumbai",
+    title: "Payroll Software Mumbai | Maharashtra PT — OfficeKit HR",
+    description:
+      "Payroll software for Mumbai and Maharashtra: Maharashtra PT, PF/ESI, Shops & Establishments, and GCC support for BFSI firms. OfficeKit HR.",
+  },
+  {
+    path: "/solutions/hrms-software-delhi-ncr",
+    title: "HRMS Software Delhi NCR | Multi-State Payroll — OfficeKit HR",
+    description:
+      "HRMS for Delhi NCR: multi-state payroll for Delhi, Gurgaon, Noida with attendance, recruitment, and GCC expansion. OfficeKit HR.",
+  },
+  {
     path: "/compare",
     title: "Compare HRMS Software | OfficeKit HR",
     description:

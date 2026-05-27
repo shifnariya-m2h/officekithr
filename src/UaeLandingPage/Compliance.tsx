@@ -18,7 +18,7 @@ const Compliance: React.FC = () => {
 
   const item: Variants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: 'spring' as any, stiffness: 50 } }
+    show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 50 } }
   };
 
   const complianceItems = language === 'ar' ? [

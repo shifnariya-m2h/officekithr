@@ -17,7 +17,7 @@ function StaticHeroLayout({
   children,
 }: LazyContainerScrollProps) {
   return (
-    <div className="flex min-h-[70vh] items-center justify-center relative p-2 md:min-h-0 md:h-[80rem] md:p-20">
+    <div className="relative flex min-h-[70vh] items-center justify-center px-2 pb-4 pt-24 sm:pt-28 md:min-h-0 md:h-[80rem] md:p-20">
       <div className="py-6 md:py-40 w-full relative max-w-5xl mx-auto">
         <div className="text-center">{titleComponent}</div>
         <div className="max-w-5xl -mt-6 md:-mt-12 mx-auto h-[18rem] sm:h-[22rem] md:h-[40rem] w-full rounded-[30px] overflow-hidden">

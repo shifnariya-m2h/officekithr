@@ -240,6 +240,11 @@ export const GEO_LANDING_REGIONS = {
   india: [
     "best-hrms-software-india",
     "payroll-software-kerala",
+    "hrms-software-bangalore",
+    "hrms-software-chennai",
+    "hrms-software-hyderabad",
+    "payroll-software-mumbai",
+    "hrms-software-delhi-ncr",
   ] as const,
   uae: ["payroll-software-uae", "wps-compliance-software"] as const,
   gcc: [

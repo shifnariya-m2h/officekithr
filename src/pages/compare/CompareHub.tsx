@@ -5,6 +5,7 @@ import { PageShell } from "@/seo/PageShell";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { COMPARISONS } from "@/data/comparisons";
+import { COMPARISONS_NEW } from "@/data/comparisons-new";
 
 const CompareHub = () => (
   <PageShell
@@ -32,7 +33,7 @@ const CompareHub = () => (
         />
 
         <ul className="mt-12 space-y-4 list-none p-0">
-          {Object.values(COMPARISONS).map((page) => (
+          {Object.values({ ...COMPARISONS, ...COMPARISONS_NEW }).map((page) => (
             <li key={page.path}>
               <Link
                 to={page.path}

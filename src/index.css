@@ -70,8 +70,6 @@
 }
 
 /* Mobile performance mode — set on <html data-perf-mode="mobile"> */
-html[data-perf-mode="mobile"] .animate-marquee,
-html[data-perf-mode="mobile"] .animate-marquee-reverse,
 html[data-perf-mode="mobile"] .animate-pricing-headset-float,
 html[data-perf-mode="mobile"] .animate-pricing-cta-glow {
   animation: none !important;

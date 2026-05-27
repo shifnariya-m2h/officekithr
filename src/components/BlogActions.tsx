@@ -49,7 +49,7 @@ const BlogActions = ({
 
   useEffect(() => {
     const items = readBookmarks();
-    setIsSaved(items.some((item: any) => item?.url === currentUrl));
+    setIsSaved(items.some((item: Record<string, unknown>) => item?.url === currentUrl));
   }, [currentUrl]);
 
   const handleShare = async () => {
@@ -83,10 +83,10 @@ const BlogActions = ({
   const handleSave = () => {
     if (!currentUrl) return;
     const items = readBookmarks();
-    const existing = items.some((item: any) => item?.url === currentUrl);
+    const existing = items.some((item: Record<string, unknown>) => item?.url === currentUrl);
 
     if (existing) {
-      const updated = items.filter((item: any) => item?.url !== currentUrl);
+      const updated = items.filter((item: Record<string, unknown>) => item?.url !== currentUrl);
       writeBookmarks(updated);
       setIsSaved(false);
       toast({ title: "Removed from bookmarks" });

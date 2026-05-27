@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { COMPARISONS } from "@/data/comparisons";
+import { COMPARISONS_NEW } from "@/data/comparisons-new";
 import { GeoFaqSection } from "@/components/geo/GeoFaqSection";
 import { RelatedLinks } from "@/components/geo/RelatedLinks";
 import { AiContentBlock } from "@/components/geo/AiContentBlock";
@@ -16,7 +17,9 @@ import NotFound from "@/pages/NotFound";
 
 const ComparisonPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const page = slug ? COMPARISONS[slug] : undefined;
+  const page = slug
+    ? (COMPARISONS[slug] ?? COMPARISONS_NEW[slug])
+    : undefined;
 
   if (!page) return <NotFound />;
 

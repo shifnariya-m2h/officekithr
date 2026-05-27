@@ -1,6 +1,6 @@
-type Props = {}
+type Props = Record<string, never>
 
-function Bookademo({}: Props) {
+function Bookademo(_props: Props) {
   return (
     <div>Bookademo</div>
   )

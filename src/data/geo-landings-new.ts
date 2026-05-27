@@ -332,6 +332,276 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
   },
+  "hrms-software-bangalore": {
+    slug: "hrms-software-bangalore",
+    path: "/solutions/hrms-software-bangalore",
+    title: "HRMS Software Bangalore | Payroll & HR for Karnataka — OfficeKit HR",
+    metaDescription:
+      "HRMS software for Bangalore and Karnataka businesses: India statutory payroll (PF, ESI, PT), attendance, recruitment, and employee self-service for tech startups, enterprises, and GCC operations.",
+    h1: "HRMS software for Bangalore",
+    subtitle:
+      "HR, payroll, and compliance for Karnataka businesses with multi-country expansion support.",
+    directAnswer:
+      "OfficeKit HR is HRMS software for Bangalore that handles India statutory payroll (PF, ESI, Karnataka Professional Tax, TDS), biometric and mobile attendance, recruitment ATS, and employee self-service—plus native GCC payroll for companies expanding to UAE, KSA, and other Gulf markets from their Bangalore headquarters.",
+    definition: {
+      term: "HRMS (Bangalore)",
+      meaning:
+        "Human Resource Management Systems configured for Karnataka state compliance—Karnataka Professional Tax, PF, ESI—and used by Bangalore-based tech, BPO, and manufacturing companies.",
+    },
+    facts: [
+      {
+        heading: "Bangalore HR and payroll requirements",
+        body: "Bangalore employers must comply with Karnataka Professional Tax (slabs up to ₹200/month), PF contributions, ESI for eligible employees, and the Karnataka Shops & Establishments Act. Many Bangalore tech companies also operate GCC entities requiring multi-country payroll.",
+      },
+      {
+        heading: "OfficeKit HR for Bangalore companies",
+        body: "OfficeKit links employee records, attendance, and leave to Karnataka-compliant payroll, handles state-specific PT slabs, and provides a seamless expansion path to UAE, Saudi Arabia, and other GCC markets for Bangalore-headquartered companies.",
+      },
+    ],
+    capabilities: [
+      "Karnataka Professional Tax calculation",
+      "India statutory payroll (PF, ESI, TDS)",
+      "Attendance with biometric and mobile check-in",
+      "Recruitment and applicant tracking",
+      "Employee self-service and mobile app",
+      "Multi-country GCC expansion support",
+      "AI Pilot HR workflow automation",
+    ],
+    faqs: [
+      {
+        question: "What are the Karnataka Professional Tax rates for Bangalore?",
+        answer:
+          "Karnataka PT is slab-based up to ₹200/month depending on gross salary. OfficeKit applies the correct slab automatically based on employee salary and location setup.",
+      },
+      {
+        question: "Can OfficeKit help Bangalore companies with UAE expansion?",
+        answer:
+          "Yes. Many Bangalore-based tech companies use OfficeKit for both India and GCC entities, managing payroll, attendance, and compliance across regions from one platform.",
+      },
+      {
+        question: "What industries does OfficeKit serve in Bangalore?",
+        answer:
+          "OfficeKit serves Bangalore's tech startups, BPOs, manufacturing, and financial services companies with modular HRMS features that scale from 10 to 1,000+ employees.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "HR software Kochi", href: "/hr-software-kochi" },
+    ],
+  },
+  "hrms-software-chennai": {
+    slug: "hrms-software-chennai",
+    path: "/solutions/hrms-software-chennai",
+    title: "HRMS Software Chennai | Tamil Nadu Payroll & HR — OfficeKit HR",
+    metaDescription:
+      "HRMS software for Chennai and Tamil Nadu: statutory payroll with Tamil Nadu PT, PF/ESI, attendance, and recruitment for manufacturing, IT, and BPO companies.",
+    h1: "HRMS software for Chennai",
+    subtitle:
+      "Comprehensive HR and payroll for Tamil Nadu businesses with multi-country growth options.",
+    directAnswer:
+      "OfficeKit HR is HRMS software for Chennai that manages India statutory payroll (PF, ESI, Tamil Nadu Professional Tax, TDS), attendance with biometric and mobile options, recruitment, performance management, and employee self-service—with GCC payroll support for companies expanding operations from Chennai.",
+    definition: {
+      term: "HRMS (Chennai)",
+      meaning:
+        "Human Resource Management Systems configured for Tamil Nadu compliance—Tamil Nadu Professional Tax, PF, ESI—for Chennai's manufacturing, IT, and BPO sectors.",
+    },
+    facts: [
+      {
+        heading: "Chennai payroll and compliance requirements",
+        body: "Tamil Nadu employers deduct PT at slab rates up to ₹179/month, comply with PF and ESI requirements, and follow the Tamil Nadu Shops & Establishments Act. Manufacturing units in Chennai also face specific overtime and compliance rules.",
+      },
+      {
+        heading: "OfficeKit HR for Chennai operations",
+        body: "OfficeKit provides Tamil Nadu-compliant payroll with auto-calculated PT slabs, attendance integration, and a unified platform for Chennai companies managing both India and GCC entities.",
+      },
+    ],
+    capabilities: [
+      "Tamil Nadu Professional Tax calculation",
+      "India statutory payroll (PF, ESI, TDS)",
+      "Biometric and mobile attendance",
+      "Shift management for manufacturing",
+      "Recruitment and onboarding ATS",
+      "Employee self-service portal",
+      "Multi-country GCC payroll support",
+    ],
+    faqs: [
+      {
+        question: "What are the Tamil Nadu Professional Tax rates for Chennai?",
+        answer:
+          "Tamil Nadu PT is slab-based up to ₹179/month. The amount depends on gross salary and is deducted monthly. OfficeKit configures the correct slab per employee automatically.",
+      },
+      {
+        question: "Does OfficeKit support manufacturing companies in Chennai?",
+        answer:
+          "Yes. OfficeKit offers shift management, overtime calculations, biometric attendance integration, and factory-compliant payroll for Chennai's manufacturing sector.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "HR software Kochi", href: "/hr-software-kochi" },
+    ],
+  },
+  "hrms-software-hyderabad": {
+    slug: "hrms-software-hyderabad",
+    path: "/solutions/hrms-software-hyderabad",
+    title: "HRMS Software Hyderabad | Telangana Payroll — OfficeKit HR",
+    metaDescription:
+      "HRMS software for Hyderabad and Telangana: statutory payroll, attendance, recruitment, and employee self-service with GCC expansion path for pharma and IT companies.",
+    h1: "HRMS software for Hyderabad",
+    subtitle:
+      "End-to-end HRMS for Telangana businesses with multi-country compliance capabilities.",
+    directAnswer:
+      "OfficeKit HR is HRMS software for Hyderabad that manages India statutory payroll (PF, ESI, Telangana Professional Tax, TDS), biometric attendance, recruitment, performance management, and employee self-service—with native GCC payroll for Hyderabad-based pharmaceutical, IT, and BPO companies expanding to the Middle East.",
+    definition: {
+      term: "HRMS (Hyderabad)",
+      meaning:
+        "Human Resource Management Systems configured for Telangana state compliance, used by Hyderabad's pharmaceutical hubs, IT corridors (HITEC City), and BPO centers.",
+    },
+    facts: [
+      {
+        heading: "Hyderabad HR requirements",
+        body: "Telangana employers must deduct PT at state-specified slabs (up to ₹200/month), comply with PF/ESI, and follow Telangana Shops & Establishments rules. Hyderabad's pharma and IT companies frequently manage GCC subsidiaries requiring multi-country payroll.",
+      },
+      {
+        heading: "OfficeKit HR for Hyderabad businesses",
+        body: "OfficeKit provides Telangana-compliant payroll, attendance, and HR workflows, plus native support for UAE WPS, KSA GOSI, and other GCC payroll requirements—ideal for Hyderabad companies with Middle East operations.",
+      },
+    ],
+    capabilities: [
+      "Telangana Professional Tax calculation",
+      "India statutory payroll (PF, ESI, TDS)",
+      "Biometric and mobile attendance",
+      "Recruitment ATS and onboarding",
+      "Performance management and OKRs",
+      "Employee self-service portal",
+      "Multi-country GCC payroll support",
+    ],
+    faqs: [
+      {
+        question: "What are the Professional Tax rates in Telangana?",
+        answer:
+          "Telangana PT has slab-based rates up to ₹200/month depending on gross monthly salary. OfficeKit calculates the correct deduction per employee automatically.",
+      },
+      {
+        question: "Can Hyderabad pharma companies use OfficeKit for GCC payroll?",
+        answer:
+          "Yes. OfficeKit serves several Hyderabad-based pharma companies that operate manufacturing or sales entities in the UAE, Saudi Arabia, and other GCC markets.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
+    ],
+  },
+  "payroll-software-mumbai": {
+    slug: "payroll-software-mumbai",
+    path: "/solutions/payroll-software-mumbai",
+    title: "Payroll Software Mumbai | Maharashtra PT & Compliance — OfficeKit HR",
+    metaDescription:
+      "Payroll software for Mumbai and Maharashtra: Maharashtra Professional Tax, PF/ESI, Shops & Establishments, and HRMS for BFSI, IT, and manufacturing companies.",
+    h1: "Payroll software for Mumbai",
+    subtitle:
+      "Statutory payroll for Maharashtra with local compliance and HRMS integration.",
+    directAnswer:
+      "OfficeKit HR is payroll software for Mumbai that handles Maharashtra-specific Professional Tax slabs (up to ₹300/month, the highest in India), Shops & Establishments Act compliance, PF, ESI, and TDS—plus GCC payroll for Mumbai-based companies with Middle East operations—all in one cloud platform.",
+    definition: {
+      term: "Mumbai payroll software",
+      meaning:
+        "Payroll systems configured for Maharashtra state statutory requirements—Maharashtra Professional Tax, Shops & Establishments compliance—for Mumbai's BFSI, IT, and entertainment sectors.",
+    },
+    facts: [
+      {
+        heading: "Mumbai-specific payroll requirements",
+        body: "Maharashtra has the highest Professional Tax slab in India (up to ₹300/month for high earners) and businesses must register under the Maharashtra Shops & Establishments Act. Mumbai's BFSI and IT sectors also face unique overtime and compliance requirements.",
+      },
+      {
+        heading: "OfficeKit HR for Mumbai businesses",
+        body: "OfficeKit supports Maharashtra payroll with configurable PT slabs (including the top ₹300 bracket), S&E Act compliance tracking, and full India statutory payroll—plus GCC expansion support for Mumbai-headquartered companies.",
+      },
+    ],
+    capabilities: [
+      "Maharashtra Professional Tax calculation",
+      "India statutory payroll (PF, ESI, TDS)",
+      "Shops & Establishments compliance tracking",
+      "Attendance and leave-linked payroll",
+      "BFSI and IT-specific overtime rules",
+      "Employee self-service and payslips",
+      "GCC expansion support",
+    ],
+    faqs: [
+      {
+        question: "What are the Maharashtra Professional Tax rates for Mumbai?",
+        answer:
+          "Maharashtra PT has slab-based rates from ₹0 to ₹300/month depending on gross salary. The maximum ₹300/month applies to employees earning above ₹10,000/month. OfficeKit applies the correct slab automatically.",
+      },
+      {
+        question: "Does OfficeKit support BFSI companies in Mumbai?",
+        answer:
+          "Yes. OfficeKit serves BFSI companies with comprehensive compliance features, shift management for branch staff, and secure employee data management suitable for regulated industries.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software Kerala", href: "/solutions/payroll-software-kerala" },
+      { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
+    ],
+  },
+  "hrms-software-delhi-ncr": {
+    slug: "hrms-software-delhi-ncr",
+    path: "/solutions/hrms-software-delhi-ncr",
+    title: "HRMS Software Delhi NCR | Payroll & HR for NCR — OfficeKit HR",
+    metaDescription:
+      "HRMS software for Delhi NCR: statutory payroll, attendance, recruitment, and employee self-service for Gurgaon, Noida, and Delhi businesses with GCC expansion.",
+    h1: "HRMS software for Delhi NCR",
+    subtitle:
+      "HR and payroll for Delhi, Gurgaon, and Noida with multi-state compliance and GCC support.",
+    directAnswer:
+      "OfficeKit HR is HRMS software for Delhi NCR that handles India statutory payroll (PF, ESI, Delhi PT, TDS), multi-state compliance for companies with offices across NCR states, biometric and mobile attendance, recruitment ATS, and employee self-service—plus GCC payroll for Delhi-headquartered companies expanding to the Middle East.",
+    definition: {
+      term: "HRMS (Delhi NCR)",
+      meaning:
+        "Human Resource Management Systems configured for Delhi NCR's multi-state compliance environment—Delhi, Haryana (Gurgaon), and Uttar Pradesh (Noida)—each with different PT rates and Shops & Establishments rules.",
+    },
+    facts: [
+      {
+        heading: "Delhi NCR multi-state compliance challenge",
+        body: "Companies with offices across Delhi, Gurgaon (Haryana), and Noida (UP) face multiple PT rates, S&E registration requirements, and state-specific labour law compliance. A unified HRMS simplifies cross-state payroll and compliance tracking.",
+      },
+      {
+        heading: "OfficeKit HR for Delhi NCR businesses",
+        body: "OfficeKit handles multi-state payroll for Delhi NCR with auto-configured PT rates per location, centralized HR records for distributed teams, and GCC expansion support for companies with Middle East operations.",
+      },
+    ],
+    capabilities: [
+      "Multi-state professional tax (Delhi, Haryana, UP)",
+      "India statutory payroll (PF, ESI, TDS)",
+      "Biometric and mobile attendance",
+      "Recruitment and onboarding ATS",
+      "Multi-location HR management",
+      "Employee self-service and mobile app",
+      "GCC payroll expansion support",
+    ],
+    faqs: [
+      {
+        question: "How does OfficeKit handle different PT rates across Delhi NCR states?",
+        answer:
+          "OfficeKit automatically applies the correct Professional Tax rate based on employee work location—Delhi (up to ₹125/month), Haryana (up to ₹183.33/month), or UP (up to ₹300/month).",
+      },
+      {
+        question: "Can OfficeKit manage employees across multiple NCR locations?",
+        answer:
+          "Yes. OfficeKit supports multi-location org structures with location-specific policies, compliance rules, and reporting while maintaining centralized HR records.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "HR software Kochi", href: "/hr-software-kochi" },
+    ],
+  },
 };
 
 export const GEO_LANDING_NEW_SLUGS = Object.keys(GEO_LANDINGS_NEW);
