@@ -63,7 +63,9 @@ export default defineConfig({
           if (id.includes("lottie")) return "lottie-vendor";
           if (id.includes("axios")) return "http-vendor";
           if (id.includes("@tanstack/react-query")) return "query-vendor";
-          if (id.includes("react-helmet")) return "helmet-vendor";
+          // Keep react-helmet-async in react-vendor — a separate chunk causes a
+          // circular import TDZ crash ("Cannot access 'i' before initialization").
+          if (id.includes("react-helmet")) return "react-vendor";
           if (
             id.includes("react-dom") ||
             id.includes("react-router") ||
