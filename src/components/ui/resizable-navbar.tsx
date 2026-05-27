@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { imgFetchPriority } from "@/lib/img-props";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -133,9 +133,9 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <div
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-0.5rem)] flex-col items-center justify-between bg-white px-2 sm:px-3 md:px-4 lg:hidden transition-all duration-300 ease-out",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-0.5rem)] flex-col items-center justify-between bg-white px-2 sm:px-3 md:px-4 lg:hidden transition-[width,padding,box-shadow] duration-200 ease-out",
         visible
-          ? "w-[90%] rounded bg-white/95 py-3 shadow-lg backdrop-blur-md dark:bg-neutral-950/95"
+          ? "w-[90%] rounded bg-white py-3 shadow-lg dark:bg-neutral-950"
           : "w-full rounded-[2rem] py-4",
         className
       )}
@@ -167,29 +167,40 @@ export const MobileNavMenu = ({
   isOpen,
   onClose,
 }: MobileNavMenuProps) => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setHasMounted(true);
+  }, [isOpen]);
+
   return (
     <>
+      {isOpen ? (
+        <div
+          role="presentation"
+          data-mobile-nav-overlay
+          onClick={onClose}
+          className="fixed inset-0 z-[45] bg-black/40 opacity-100 lg:hidden touch-none"
+        />
+      ) : null}
       <div
-        role="presentation"
-        aria-hidden={!isOpen}
-        onClick={onClose}
+        data-mobile-nav-panel
+        data-state={isOpen ? "open" : "closed"}
         className={cn(
-          "fixed inset-0 z-[45] bg-black/40 transition-opacity duration-300 lg:hidden",
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        )}
-      />
-      <div
-        className={cn(
-          "fixed right-0 top-0 z-[50] flex h-screen w-[280px] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-[320px] lg:hidden",
-          isOpen ? "translate-x-0" : "translate-x-full pointer-events-none",
+          "fixed right-0 top-0 z-[50] flex h-dvh w-[min(280px,88vw)] flex-col bg-white shadow-2xl transition-transform duration-200 ease-out will-change-transform sm:w-[min(320px,88vw)] lg:hidden",
+          isOpen
+            ? "translate-x-0 pointer-events-auto"
+            : "translate-x-full pointer-events-none",
           className
         )}
         onClick={(e) => e.stopPropagation()}
         aria-hidden={!isOpen}
       >
-        <div className="flex h-full flex-col items-start justify-start gap-0 overflow-y-auto px-4 py-6">
-          {children}
-        </div>
+        {hasMounted ? (
+          <div className="flex h-full flex-col overflow-y-auto overscroll-contain px-4 py-6 [-webkit-overflow-scrolling:touch]">
+            {children}
+          </div>
+        ) : null}
       </div>
     </>
   );
@@ -209,7 +220,7 @@ export const MobileNavToggle = ({
         e.stopPropagation();
         onClick();
       }}
-      className="relative z-50 rounded-lg p-2.5 min-w-11 min-h-11 transition-colors duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 dark:hover:bg-neutral-800"
+      className="relative z-[60] rounded-lg p-2.5 min-w-11 min-h-11 transition-colors duration-150 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 dark:hover:bg-neutral-800 touch-manipulation"
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
     >
@@ -222,19 +233,19 @@ export const MobileNavToggle = ({
       >
         <span
           className={cn(
-            "block h-0.5 w-full origin-center bg-black transition-all duration-300 dark:bg-white",
+            "block h-0.5 w-full origin-center bg-black transition-transform duration-150 dark:bg-white",
             isOpen && "translate-y-[9px] rotate-45"
           )}
         />
         <span
           className={cn(
-            "block h-0.5 w-full bg-black transition-opacity duration-200 dark:bg-white",
+            "block h-0.5 w-full bg-black transition-opacity duration-150 dark:bg-white",
             isOpen && "opacity-0"
           )}
         />
         <span
           className={cn(
-            "block h-0.5 w-full origin-center bg-black transition-all duration-300 dark:bg-white",
+            "block h-0.5 w-full origin-center bg-black transition-transform duration-150 dark:bg-white",
             isOpen && "-translate-y-[9px] -rotate-45"
           )}
         />

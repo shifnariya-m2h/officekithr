@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { LazyContainerScroll } from "@/components/ui/LazyContainerScroll";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { HERO_IMAGES } from "@/lib/seo/assets";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const HeroSection = () => {
+  const isDesktopHero = useMediaQuery("(min-width: 768px)", false);
   const titleBlock = (
     <div className="text-center w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-30 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
       <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 tracking-tight px-2">
@@ -40,35 +42,34 @@ const HeroSection = () => {
     </div>
   );
 
-  const heroImages = (
-    <>
-      <OptimizedImage
-        src={HERO_IMAGES.mobile.src}
-        srcSet={HERO_IMAGES.mobile.srcSet}
-        sizes={HERO_IMAGES.mobile.sizes}
-        alt={HERO_IMAGES.mobile.alt}
-        width={HERO_IMAGES.mobile.width}
-        height={HERO_IMAGES.mobile.height}
-        className="h-full w-full object-contain md:hidden"
-        fetchPriority="high"
-        loading="eager"
-        decoding="async"
-        draggable={false}
-      />
-      <OptimizedImage
-        src={HERO_IMAGES.desktop.src}
-        srcSet={HERO_IMAGES.desktop.srcSet}
-        sizes={HERO_IMAGES.desktop.sizes}
-        alt={HERO_IMAGES.desktop.alt}
-        width={HERO_IMAGES.desktop.width}
-        height={HERO_IMAGES.desktop.height}
-        className="hidden h-full w-full object-contain md:block"
-        fetchPriority="high"
-        loading="eager"
-        decoding="async"
-        draggable={false}
-      />
-    </>
+  const heroImages = isDesktopHero ? (
+    <OptimizedImage
+      src={HERO_IMAGES.desktop.src}
+      srcSet={HERO_IMAGES.desktop.srcSet}
+      sizes={HERO_IMAGES.desktop.sizes}
+      alt={HERO_IMAGES.desktop.alt}
+      width={HERO_IMAGES.desktop.width}
+      height={HERO_IMAGES.desktop.height}
+      className="h-full w-full object-contain"
+      fetchPriority="high"
+      loading="eager"
+      decoding="async"
+      draggable={false}
+    />
+  ) : (
+    <OptimizedImage
+      src={HERO_IMAGES.mobile.src}
+      srcSet={HERO_IMAGES.mobile.srcSet}
+      sizes={HERO_IMAGES.mobile.sizes}
+      alt={HERO_IMAGES.mobile.alt}
+      width={HERO_IMAGES.mobile.width}
+      height={HERO_IMAGES.mobile.height}
+      className="h-full w-full object-contain"
+      fetchPriority="high"
+      loading="eager"
+      decoding="async"
+      draggable={false}
+    />
   );
 
   return (

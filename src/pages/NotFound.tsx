@@ -23,8 +23,35 @@ const NotFound = () => {
             <code className="text-sm bg-muted px-2 py-1 rounded">
               {location.pathname}
             </code>
-            . It may have moved or the link is incorrect.
+            . Try one of these regional pages:
           </p>
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <Link to="/">
+              <Button variant="outline" size="sm">
+                India (home)
+              </Button>
+            </Link>
+            <Link to="/ae">
+              <Button variant="outline" size="sm">
+                UAE
+              </Button>
+            </Link>
+            <Link to="/solutions">
+              <Button variant="outline" size="sm">
+                All regions
+              </Button>
+            </Link>
+            <Link to="/hrms-software-india">
+              <Button variant="outline" size="sm">
+                HRMS India
+              </Button>
+            </Link>
+            <Link to="/hr-software-uae">
+              <Button variant="outline" size="sm">
+                HR UAE
+              </Button>
+            </Link>
+          </div>
           <Link to="/">
             <Button>Return to Home</Button>
           </Link>

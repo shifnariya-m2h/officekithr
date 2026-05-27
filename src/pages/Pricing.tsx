@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const PRICING_HEADSET_IMAGE = "/pricing-headset.png";
+const PRICING_HEADSET_IMAGE = "/pricing-headset.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -197,7 +197,7 @@ const Pricing = () => {
                 >
                   <m.img
                     src={PRICING_HEADSET_IMAGE}
-                    alt=""
+                    alt="Sales expert ready to help"
                     className={`h-auto w-44 object-contain md:w-52 lg:w-56 ${reduceMotion ? "" : "animate-pricing-headset-float"}`}
                     width={224}
                     height={212}

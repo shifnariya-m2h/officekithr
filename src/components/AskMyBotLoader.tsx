@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { loadScriptOnce, scheduleAfterIdle } from "@/lib/performance/third-party";
 import { isMobileViewport } from "@/lib/performance/media";
 
@@ -13,11 +14,18 @@ const MOBILE_IDLE_MS = 60_000;
  * compete with LCP / main-thread work.
  */
 export function AskMyBotLoader() {
+  const { pathname } = useLocation();
+  const isUaeLanding = pathname === "/ae" || pathname.startsWith("/ae/");
+
   useEffect(() => {
     if (document.getElementById(SCRIPT_ID)) return;
 
     const isMobile = isMobileViewport();
-    const timeout = isMobile ? MOBILE_IDLE_MS : DESKTOP_IDLE_MS;
+    const timeout = isUaeLanding
+      ? 90_000
+      : isMobile
+        ? MOBILE_IDLE_MS
+        : DESKTOP_IDLE_MS;
 
     const cancel = scheduleAfterIdle(
       () => {
@@ -36,7 +44,7 @@ export function AskMyBotLoader() {
     );
 
     return cancel;
-  }, []);
+  }, [isUaeLanding]);
 
   return null;
 }

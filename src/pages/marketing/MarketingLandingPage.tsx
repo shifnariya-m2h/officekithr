@@ -1,4 +1,5 @@
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import NotFound from "@/pages/NotFound";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
@@ -25,7 +26,7 @@ const MarketingLandingPage = () => {
   const slug = pathname.replace(/^\//, "").split("/")[0];
   const page = slug ? getMarketingPage(slug) : undefined;
 
-  if (!page) return <Navigate to="/404" replace />;
+  if (!page) return <NotFound />;
 
   const url = canonicalUrl(page.path);
   const schemaNodes = page.comparison

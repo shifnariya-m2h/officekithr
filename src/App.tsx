@@ -230,6 +230,7 @@ const AppRoutes = () => {
           <Route path="/resources/guides" element={<LongtailHub />} />
           <Route path="/longtail/:slug" element={<LongtailPage />} />
 
+          <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -88,6 +88,25 @@ html[data-perf-mode="mobile"] .animate-ping {
   animation: none !important;
 }
 
+/* Fast mobile nav drawer — no slide lag on low-end phones */
+html[data-perf-mode="mobile"] [data-mobile-nav-panel] {
+  transition: none !important;
+}
+
+html[data-perf-mode="mobile"] [data-mobile-nav-overlay] {
+  transition: opacity 120ms ease-out;
+}
+
+html.nav-scroll-lock {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html[data-perf-mode="mobile"] .section-fade-in {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 12rem;
+}
+
 @layer base {
 
   @layer base {

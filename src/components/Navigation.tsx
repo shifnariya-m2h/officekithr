@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, ChevronDown, Menu, X, Users,
+  ArrowRight, ChevronDown, Users,
   Calendar,
   BarChart3,
   IdCard,
@@ -31,8 +31,15 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
+import { useIsDesktopNav } from "@/hooks/useMediaQuery";
+import { useMobileNavLock } from "@/hooks/useMobileNavLock";
+
+const MobileNavigationPanel = lazy(
+  () => import("@/components/MobileNavigationPanel")
+);
 
 const Navigation = () => {
+  const isDesktopNav = useIsDesktopNav();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [featuresOpen, setFeaturesOpen] = useState(false);
@@ -40,38 +47,16 @@ const Navigation = () => {
   const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Close mobile menu when clicking outside and prevent body scroll
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element;
-      if (isMobileMenuOpen && !target.closest('[data-mobile-menu]') && !target.closest('[data-hamburger]')) {
-        setIsMobileMenuOpen(false);
-        setOpenDropdown(null);
-      }
-    };
+  const closeMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+  }, []);
 
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-        setOpenDropdown(null);
-      }
-    };
+  useMobileNavLock(isMobileMenuOpen, closeMenu);
 
-    if (isMobileMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
-      document.addEventListener('keydown', handleEscape);
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
+  const toggleMobileDropdown = useCallback((key: "features" | "resources") => {
+    setOpenDropdown((prev) => (prev === key ? null : key));
+  }, []);
 
   // Navigation Links Data
   const featuresLinks = [
@@ -100,12 +85,6 @@ const Navigation = () => {
       "https://wa.me/917994154069?text=" + encodeURIComponent("Hi OfficeKit HR"),
       "_blank"
     );
-  };
-
-  // Close Menu Handler
-  const closeMenu = () => {
-    setIsMobileMenuOpen(false);
-    setOpenDropdown(null);
   };
 
   // Hover handlers for Features dropdown
@@ -171,7 +150,8 @@ const Navigation = () => {
 
   return (
     <Navbar className="!fixed !top-0 left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8">
-      {/* Desktop Navigation */}
+      {/* Desktop Navigation — not mounted on mobile (saves Radix + heavy DOM) */}
+      {isDesktopNav ? (
       <NavBody>
         <NavbarLogo />
         
@@ -341,8 +321,10 @@ const Navigation = () => {
           </Link>
         </div>
       </NavBody>
+      ) : null}
 
       {/* Mobile Navigation */}
+      {!isDesktopNav ? (
       <MobileNav>
         <MobileNavHeader>
           <NavbarLogo />
@@ -359,166 +341,28 @@ const Navigation = () => {
             <div data-hamburger>
               <MobileNavToggle
                 isOpen={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
                 aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={isMobileMenuOpen}
               />
             </div>
           </div>
         </MobileNavHeader>
-        <MobileNavMenu
-          isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
-        >
-          <div data-mobile-menu className="w-full flex flex-col h-full">
-            {/* Close Button at Top */}
-            <div className="flex justify-end mb-4">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200"
-                aria-label="Close menu"
-              >
-                <X className="h-6 w-6 text-gray-700" />
-              </button>
-            </div>
-            <div className="space-y-1 w-full">
-              <button
-                type="button"
-                className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenDropdown(openDropdown === 'features' ? null : 'features');
-                }}
-                aria-expanded={openDropdown === 'features'}
-                aria-label="Features menu"
-                aria-haspopup="true"
-              >
-                <span>Features</span>
-                <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
-                  openDropdown === 'features' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
-                }`} aria-hidden="true" />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === 'features' ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
-                }`}
-              >
-                <div className="space-y-1 pl-4 pt-2">
-                  {featuresLinks.map((link, index) => (
-                    <Link
-                      key={link.href}
-                      to={link.href}
-                      className="flex items-start gap-3 w-full px-3 py-2.5 rounded-md text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-[#0055ff] group transform hover:translate-x-1"
-                      style={{
-                        animationDelay: openDropdown === 'features' ? `${index * 30}ms` : '0ms'
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        closeMenu();
-                      }}
-                    >
-                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-medium text-sm transition-colors duration-200">{link.name}</h3>
-                        <p className="text-xs text-gray-600 group-hover:text-gray-800 transition-colors duration-200">{link.description}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-1 w-full mt-2">
-                <button
-                  type="button"
-                  className="w-full flex items-center justify-between py-2.5 px-4 text-left font-medium text-sm text-gray-800 hover:text-[#0055ff] transition-colors duration-200 rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setOpenDropdown(openDropdown === 'resources' ? null : 'resources');
-                  }}
-                  aria-expanded={openDropdown === 'resources'}
-                  aria-label="Resources menu"
-                  aria-haspopup="true"
-                >
-                  <span>Resources</span>
-                  <ChevronDown className={`h-4 w-4 transition-all duration-300 ease-in-out flex-shrink-0 text-gray-600 ${
-                    openDropdown === 'resources' ? 'rotate-180 text-[#0055ff]' : 'rotate-0'
-                  }`} aria-hidden="true" />
-                </button>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openDropdown === 'resources' ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="space-y-1 pl-4 pt-2">
-                    {resourcesLinks.map((link, index) => (
-                      <Link
-                        key={link.href}
-                        to={link.href}
-                        className="flex items-start gap-3 w-full px-3 py-2.5 rounded-md text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-[#0055ff] group transform hover:translate-x-1"
-                        style={{
-                          animationDelay: openDropdown === 'resources' ? `${index * 30}ms` : '0ms'
-                        }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          closeMenu();
-                        }}
-                      >
-                        <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-[#0055ff] flex-shrink-0 mt-0.5 transition-colors duration-200" />
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-medium text-sm transition-colors duration-200">{link.name}</h3>
-                          <p className="text-xs text-gray-600 group-hover:text-gray-800 transition-colors duration-200">{link.description}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <Link
-                to="/about-us"
-                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 mt-2 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeMenu();
-                }}
-                aria-label="About OfficeKit HR"
-              >
-                About us
-              </Link>
-
-              <Link
-                to="/pricing"
-                className="block py-2.5 px-4 text-sm font-medium text-gray-800 hover:text-[#0055ff] transition-colors rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeMenu();
-                }}
-                aria-label="View pricing plans"
-              >
-                Pricing
-              </Link>
-
-              <Link 
-                to="/contact" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeMenu();
-                }}
-                className="block mt-4"
-                aria-label="Contact OfficeKit HR"
-              >
-                <Button className="bg-[#0055ff] hover:bg-[#0044cc] text-white rounded-xl w-full h-[44px] text-sm font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2">
-                  Contact Us
-                </Button>
-              </Link>
-          </div>
+        <MobileNavMenu isOpen={isMobileMenuOpen} onClose={closeMenu}>
+          {isMobileMenuOpen ? (
+            <Suspense fallback={<div className="p-4 text-sm text-gray-500">Loading…</div>}>
+              <MobileNavigationPanel
+                featuresLinks={featuresLinks}
+                resourcesLinks={resourcesLinks}
+                openDropdown={openDropdown}
+                onToggleDropdown={toggleMobileDropdown}
+                onClose={closeMenu}
+              />
+            </Suspense>
+          ) : null}
         </MobileNavMenu>
       </MobileNav>
+      ) : null}
     </Navbar>
   );
 };

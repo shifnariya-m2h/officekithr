@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ChevronDown, Menu, X, Users,
@@ -32,9 +32,12 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
+import { useIsDesktopNav } from "@/hooks/useMediaQuery";
+import { useMobileNavLock } from "@/hooks/useMobileNavLock";
 
 const Navigation = () => {
   const { language, setLanguage, t, isRTL } = useLanguage();
+  const isDesktopNav = useIsDesktopNav();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [featuresOpen, setFeaturesOpen] = useState(false);
@@ -42,38 +45,12 @@ const Navigation = () => {
   const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Close mobile menu when clicking outside and prevent body scroll
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element;
-      if (isMobileMenuOpen && !target.closest('[data-mobile-menu]') && !target.closest('[data-hamburger]')) {
-        setIsMobileMenuOpen(false);
-        setOpenDropdown(null);
-      }
-    };
+  const closeMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+  }, []);
 
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-        setOpenDropdown(null);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
-      document.addEventListener('keydown', handleEscape);
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
+  useMobileNavLock(isMobileMenuOpen, closeMenu);
 
   // Navigation Links Data with English and Arabic
   const featuresLinks = [
@@ -160,13 +137,41 @@ const Navigation = () => {
   ];
 
   const resourcesLinks = [
-    { 
-      name: language === 'ar' ? 'المدونات' : 'Blogs', 
-      nameEn: 'Blogs',
-      nameAr: 'المدونات',
-      href: "/resources/blogs", 
-      icon: BookOpen, 
-      description: language === 'ar' ? 'أحدث الرؤى والتحديثات.' : 'Latest insights and updates.' 
+    {
+      name: language === "ar" ? "المدونات" : "Blogs",
+      nameEn: "Blogs",
+      nameAr: "المدونات",
+      href: "/resources/blogs",
+      icon: BookOpen,
+      description:
+        language === "ar" ? "أحدث الرؤى والتحديثات." : "Latest insights and updates.",
+    },
+    {
+      name: language === "ar" ? "برنامج الموارد البشرية الإمارات" : "HR Software UAE",
+      nameEn: "HR Software UAE",
+      nameAr: "برنامج الموارد البشرية الإمارات",
+      href: "/hr-software-uae",
+      icon: Globe,
+      description:
+        language === "ar" ? "كشوف رواتب WPS والامتثال." : "WPS payroll & GCC HR.",
+    },
+    {
+      name: language === "ar" ? "نظام HRMS الهند" : "HRMS India",
+      nameEn: "HRMS India",
+      nameAr: "نظام HRMS الهند",
+      href: "/hrms-software-india",
+      icon: Coins,
+      description:
+        language === "ar" ? "رواتب قانونية في الهند." : "Statutory payroll & HRMS.",
+    },
+    {
+      name: language === "ar" ? "حلول إقليمية" : "All regions",
+      nameEn: "All regions",
+      nameAr: "حلول إقليمية",
+      href: "/solutions",
+      icon: BookOpen,
+      description:
+        language === "ar" ? "الهند والإمارات ودول الخليج." : "India, UAE & GCC guides.",
     },
   ];
 
@@ -176,12 +181,6 @@ const Navigation = () => {
       "https://wa.me/971528155771?text=" + encodeURIComponent(language === 'ar' ? 'مرحباً OfficeKit HR' : 'Hi OfficeKit HR'),
       "_blank"
     );
-  };
-
-  // Close Menu Handler
-  const closeMenu = () => {
-    setIsMobileMenuOpen(false);
-    setOpenDropdown(null);
   };
 
   // Handle Language Change
@@ -251,7 +250,7 @@ const Navigation = () => {
 
   return (
     <Navbar className={`!fixed !top-0 left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'font-arabic' : ''}`}>
-      {/* Desktop Navigation */}
+      {isDesktopNav ? (
       <NavBody>
         <NavbarLogo />
         
@@ -462,8 +461,9 @@ const Navigation = () => {
           </Link>
         </div>
       </NavBody>
+      ) : null}
 
-      {/* Mobile Navigation */}
+      {!isDesktopNav ? (
       <MobileNav>
         <MobileNavHeader>
           <NavbarLogo />
@@ -487,10 +487,7 @@ const Navigation = () => {
             </div>
           </div>
         </MobileNavHeader>
-        <MobileNavMenu
-          isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
-        >
+        <MobileNavMenu isOpen={isMobileMenuOpen} onClose={closeMenu}>
           <div data-mobile-menu className={`w-full flex flex-col h-full ${isRTL ? 'text-right' : 'text-left'}`}>
             {/* Close Button at Top */}
             <div className={`flex ${isRTL ? 'justify-start' : 'justify-end'} mb-4`}>
@@ -662,6 +659,7 @@ const Navigation = () => {
           </div>
         </MobileNavMenu>
       </MobileNav>
+      ) : null}
     </Navbar>
   );
 };

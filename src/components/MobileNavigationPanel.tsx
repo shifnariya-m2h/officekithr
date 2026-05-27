@@ -1,0 +1,139 @@
+import { memo } from "react";
+import { Link } from "react-router-dom";
+import { ChevronDown, X, type LucideIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export type MobileNavLink = {
+  name: string;
+  href: string;
+  icon: LucideIcon;
+  description: string;
+};
+
+type MobileNavigationPanelProps = {
+  featuresLinks: MobileNavLink[];
+  resourcesLinks: MobileNavLink[];
+  openDropdown: string | null;
+  onToggleDropdown: (key: "features" | "resources") => void;
+  onClose: () => void;
+};
+
+/**
+ * Mobile drawer links — mounted only after first open to keep initial bundle light.
+ */
+function MobileNavigationPanel({
+  featuresLinks,
+  resourcesLinks,
+  openDropdown,
+  onToggleDropdown,
+  onClose,
+}: MobileNavigationPanelProps) {
+  return (
+    <div data-mobile-menu className="flex h-full w-full flex-col">
+      <div className="mb-4 flex justify-end">
+        <button
+          type="button"
+          onClick={onClose}
+          className="rounded-lg p-2 hover:bg-blue-50"
+          aria-label="Close menu"
+        >
+          <X className="h-6 w-6 text-gray-700" />
+        </button>
+      </div>
+
+      <div className="w-full space-y-1">
+        <button
+          type="button"
+          className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-800 hover:bg-blue-50 hover:text-[#0055ff]"
+          onClick={() => onToggleDropdown("features")}
+          aria-expanded={openDropdown === "features"}
+        >
+          <span>Features</span>
+          <ChevronDown
+            className={`h-4 w-4 shrink-0 text-gray-600 ${
+              openDropdown === "features" ? "rotate-180 text-[#0055ff]" : ""
+            }`}
+            aria-hidden
+          />
+        </button>
+        {openDropdown === "features" && (
+          <div className="space-y-1 pl-4 pt-2">
+            {featuresLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="group flex w-full items-start gap-3 rounded-md px-3 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-[#0055ff]"
+                onClick={onClose}
+              >
+                <link.icon className="mt-0.5 h-4 w-4 shrink-0 text-[#0055ff]" />
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm font-medium">{link.name}</h3>
+                  <p className="text-xs text-gray-600">{link.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="mt-2 w-full space-y-1">
+        <button
+          type="button"
+          className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-800 hover:bg-blue-50 hover:text-[#0055ff]"
+          onClick={() => onToggleDropdown("resources")}
+          aria-expanded={openDropdown === "resources"}
+        >
+          <span>Resources</span>
+          <ChevronDown
+            className={`h-4 w-4 shrink-0 text-gray-600 ${
+              openDropdown === "resources" ? "rotate-180 text-[#0055ff]" : ""
+            }`}
+            aria-hidden
+          />
+        </button>
+        {openDropdown === "resources" && (
+          <div className="space-y-1 pl-4 pt-2">
+            {resourcesLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="group flex w-full items-start gap-3 rounded-md px-3 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-[#0055ff]"
+                onClick={onClose}
+              >
+                <link.icon className="mt-0.5 h-4 w-4 shrink-0 text-[#0055ff]" />
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm font-medium">{link.name}</h3>
+                  <p className="text-xs text-gray-600">{link.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <Link
+        to="/about-us"
+        className="mt-2 block rounded-lg px-4 py-2.5 text-sm font-medium text-gray-800 hover:bg-blue-50 hover:text-[#0055ff]"
+        onClick={onClose}
+      >
+        About us
+      </Link>
+
+      <Link
+        to="/pricing"
+        className="block rounded-lg px-4 py-2.5 text-sm font-medium text-gray-800 hover:bg-blue-50 hover:text-[#0055ff]"
+        onClick={onClose}
+      >
+        Pricing
+      </Link>
+
+      <Link to="/contact" onClick={onClose} className="mt-4 block">
+        <Button className="h-11 w-full rounded-xl bg-[#0055ff] text-sm font-medium text-white hover:bg-[#0044cc]">
+          Contact Us
+        </Button>
+      </Link>
+    </div>
+  );
+}
+
+export default memo(MobileNavigationPanel);

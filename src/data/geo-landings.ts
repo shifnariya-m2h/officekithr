@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/seo/schema";
+import { GEO_LANDINGS_NEW } from "@/data/geo-landings-new";
 
 export type GeoLandingConfig = {
   path: string;
@@ -122,7 +123,7 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "WPS compliance software", href: "/wps-compliance-software" },
+      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
       { label: "UAE landing (AR)", href: "/ae" },
       { label: "Payroll feature", href: "/features/payroll-and-compliance" },
     ],
@@ -173,7 +174,7 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
   },
@@ -229,6 +230,24 @@ export const GEO_LANDINGS: Record<string, GeoLandingConfig> = {
       { label: "HRMS India", href: "/hrms-software-india" },
     ],
   },
+  ...GEO_LANDINGS_NEW,
 };
 
 export const GEO_LANDING_SLUGS = Object.keys(GEO_LANDINGS);
+
+/** Grouped for /solutions hub — India, UAE, GCC & other regions. */
+export const GEO_LANDING_REGIONS = {
+  india: [
+    "best-hrms-software-india",
+    "payroll-software-kerala",
+  ] as const,
+  uae: ["payroll-software-uae", "wps-compliance-software"] as const,
+  gcc: [
+    "ai-hr-software-gcc",
+    "payroll-software-ksa",
+    "hrms-software-kuwait",
+    "payroll-software-qatar",
+    "hrms-software-oman",
+    "hrms-software-bahrain",
+  ] as const,
+} as const;
