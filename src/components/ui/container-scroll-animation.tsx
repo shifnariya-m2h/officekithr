@@ -55,7 +55,9 @@ export const ContainerScroll = ({
   );
 };
 
-export const Header = ({ translate, titleComponent }: any) => {
+type HeaderProps = { translate: number; titleComponent: React.ReactNode };
+
+export const Header = ({ translate, titleComponent }: HeaderProps) => {
   return (
     <m.div
       style={{
