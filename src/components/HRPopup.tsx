@@ -30,6 +30,7 @@ export const HRPopup: React.FC<HRPopupProps> = ({ onClose }) => {
     "idle"
   );
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -39,6 +40,21 @@ export const HRPopup: React.FC<HRPopupProps> = ({ onClose }) => {
   }, [onClose]);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateViewport = (event?: MediaQueryListEvent) => {
+      const mobile = event ? event.matches : mediaQuery.matches;
+      setIsMobile(mobile);
+      if (mobile) onClose();
+    };
+
+    updateViewport();
+    mediaQuery.addEventListener("change", updateViewport);
+    return () => mediaQuery.removeEventListener("change", updateViewport);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     const t = requestAnimationFrame(() => setVisible(true));
     closeBtnRef.current?.focus();
     const prevOverflow = document.body.style.overflow;
@@ -56,7 +72,9 @@ export const HRPopup: React.FC<HRPopupProps> = ({ onClose }) => {
       document.documentElement.classList.remove("hr-popup-open");
       window.removeEventListener("keydown", onKey);
     };
-  }, [handleClose]);
+  }, [handleClose, isMobile]);
+
+  if (isMobile) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
