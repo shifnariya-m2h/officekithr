@@ -311,10 +311,31 @@ function DeferredSupportChat() {
   return null;
 }
 
+function DeferredUiEnhancements() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const cancel = scheduleAfterIdle(
+      () => setEnabled(true),
+      { timeout: 8_000, mobileInteractionOnly: true }
+    );
+    return cancel;
+  }, []);
+
+  if (!enabled) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <TooltipProvider>
+        <Toaster />
+      </TooltipProvider>
+    </Suspense>
+  );
+}
+
 const App = () => (
-  <Suspense fallback={null}>
-    <TooltipProvider>
-      <Toaster />
+  <>
+    <DeferredUiEnhancements />
     <BrowserRouter
       future={{
         v7_startTransition: true,
@@ -325,8 +346,7 @@ const App = () => (
         <AppRoutes />
       </SeoProvider>
     </BrowserRouter>
-    </TooltipProvider>
-  </Suspense>
+  </>
 );
 
 export default App;

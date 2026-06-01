@@ -58,9 +58,9 @@ const HeroSection = () => {
     />
   ) : (
     <OptimizedImage
-      src={HERO_IMAGES.mobile.src}
-      srcSet={HERO_IMAGES.mobile.srcSet}
-      sizes={HERO_IMAGES.mobile.sizes}
+      src="/mobile-mockup-240.webp"
+      srcSet="/mobile-mockup-240.webp 240w, /mobile-mockup-320.webp 320w"
+      sizes="240px"
       alt={HERO_IMAGES.mobile.alt}
       width={HERO_IMAGES.mobile.width}
       height={HERO_IMAGES.mobile.height}
