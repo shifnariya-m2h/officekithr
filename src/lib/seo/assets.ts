@@ -25,16 +25,17 @@ export const HERO_IMAGES = {
   mobile: {
     src: "/mobile-mockup-240.webp",
     srcSet:
-      "/mobile-mockup-240.webp 240w, /mobile-mockup-480.webp 480w, /mobile-mockup-768.webp 768w",
-    sizes: "(max-width: 480px) 240px, (max-width: 768px) 320px, 360px",
+      "/mobile-mockup-240.webp 240w, /mobile-mockup-320.webp 320w, /mobile-mockup-480.webp 480w, /mobile-mockup-768.webp 768w",
+    sizes: "(max-width: 480px) 240px, (max-width: 768px) 252px, 320px",
     width: 240,
     height: 480,
     alt: "OfficeKit HR mobile app overview",
   },
   desktop: {
-    src: "/dashboardok-1024.webp",
-    srcSet: "/dashboardok-1024.webp 1024w, /dashboardok.webp 1440w",
-    sizes: "(min-width: 1280px) 1024px, (min-width: 1024px) 90vw, 100vw",
+    src: "/dashboardok-768.webp",
+    srcSet:
+      "/dashboardok-768.webp 768w, /dashboardok-1024.webp 1024w, /dashboardok.webp 1440w",
+    sizes: "(min-width: 1280px) 700px, (min-width: 1024px) 72vw, 92vw",
     width: 1024,
     height: 697,
     alt: "OfficeKit HR dashboard overview on desktop",

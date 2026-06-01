@@ -39,8 +39,10 @@ const RESIZE_IN_PLACE = [
 /** Additional variants (stem-width.webp). */
 const VARIANTS = [
   { stem: "mobile-mockup", width: 240, quality: QUALITY },
+  { stem: "mobile-mockup", width: 320, quality: QUALITY },
   { stem: "mobile-mockup", width: 480, quality: QUALITY },
   { stem: "mobile-mockup", width: 768, quality: QUALITY },
+  { stem: "dashboardok", width: 768, quality: QUALITY },
   { stem: "dashboardok", width: 1024, quality: QUALITY },
   { stem: "BG", width: 480, quality: QUALITY },
   { stem: "BG", width: 768, quality: QUALITY },

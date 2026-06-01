@@ -14,6 +14,10 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
 import { LegacyRedirect } from "@/components/LegacyRedirect";
 import { MARKETING_PAGES } from "@/data/marketing-pages";
+import {
+  loadScriptOnce,
+  scheduleAfterIdle,
+} from "@/lib/performance/third-party";
 
 const Toaster = lazy(() =>
   import("@/components/ui/toaster").then((m) => ({ default: m.Toaster }))
@@ -110,6 +114,7 @@ const AppRoutes = () => {
       {/* Cookie banner can visually block the HR popup form on small screens. */}
       {!isPopupOpen && <CookieConsent />}
       <DeferredAnalytics />
+      <DeferredSupportChat />
       {isPopupOpen && (
         <Suspense fallback={null}>
           <HRPopup onClose={() => setIsPopupOpen(false)} />
@@ -279,6 +284,31 @@ function DeferredAnalytics() {
     return () => clearTimeout(t);
   }, []);
   return on ? <GoogleAdsWrapper /> : null;
+}
+
+function DeferredSupportChat() {
+  useEffect(() => {
+    const cancel = scheduleAfterIdle(
+      () => {
+        void loadScriptOnce({
+          id: "askmybot-widget",
+          src: "https://www.askmybot.ai/p/officekit-hr-qa84/widget.js",
+          defer: true,
+          async: true,
+        }).catch(() => {
+          // Keep UX stable if the third-party endpoint is unavailable.
+        });
+      },
+      {
+        timeout: 12_000,
+        mobileInteractionOnly: true,
+      }
+    );
+
+    return cancel;
+  }, []);
+
+  return null;
 }
 
 const App = () => (
