@@ -1,7 +1,7 @@
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 const WhatsAppButton = () => {
-  const phone = "917994470903";
+  const phone = "918137932991";
   const message = "Hi";
 
   const openWhatsApp = () => {

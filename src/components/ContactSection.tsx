@@ -249,7 +249,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
                   <div>
                     <h4 className="font-semibold">Call Us</h4>
                     <p>
-                      <a href="tel:+ 91 8137932991">+ 91 8137932991</a>
+                      <a href="tel:+918137932991">+ 91 8137932991</a>
                     </p>
                     <p className="text-sm text-muted-foreground">
                       Mon-Fri, 9 AM - 6 PM IST

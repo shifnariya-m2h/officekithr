@@ -318,7 +318,7 @@ const Footer = () => {
                 <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
                 <span className="text-sm">
                   <a
-                    href="tel:+917994154069"
+                    href="tel:+918137932991"
                     className="hover:text-white transition-colors"
                   >
                     + 91 8137932991

@@ -82,7 +82,7 @@ const Navigation = () => {
   // WhatsApp Handler
   const handleWhatsAppClick = () => {
     window.open(
-      "https://wa.me/917994154069?text=" + encodeURIComponent("Hi OfficeKit HR"),
+      "https://wa.me/918137932991?text=" + encodeURIComponent("Hi OfficeKit HR"),
       "_blank"
     );
   };

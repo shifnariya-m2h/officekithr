@@ -10,7 +10,7 @@ export const SITE = {
   defaultLanguage: "en",
   twitter: "@officekit",
   email: "hello@officekithr.com",
-  phone: "+91-7994154069",
+  phone: "+91-8137932991",
   logo: `${env.siteUrl}/NavLogo.webp`,
   ogImage: `${env.siteUrl}/ImageThumbnail2.webp`,
   areasServed: ["IN", "AE", "KW", "SA", "QA", "OM", "BH"],
