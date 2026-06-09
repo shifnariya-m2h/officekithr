@@ -7,6 +7,7 @@ import { SITE } from "./site-config";
 import { buildGraph, webPageSchema } from "./schema";
 import { resolveSeoConfig } from "./resolve-seo";
 import { SEO_ASSETS } from "@/lib/seo/assets";
+import { isUaePath } from "@/lib/utils";
 
 function absoluteImage(url: string): string {
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
@@ -43,10 +44,16 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
     webPageSchema({ url: canonical, name: title, description }),
   ]);
 
+  const isUae = isUaePath(pathname);
+  const primaryLocale = isUae ? "ar_AE" : "en_US";
+  const alternateLocale = isUae ? "en_US" : "ar_AE";
+  const primaryLang = isUae ? "ar" : "en";
+  const imageAlt = `${SITE.name} — ${title}`;
+
   return (
     <>
       <Helmet prioritizeSeoTags>
-        <html lang={pathname.startsWith("/ae") ? "ar" : "en"} />
+        <html lang={primaryLang} />
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="robots" content={robotsContent} />
@@ -54,15 +61,9 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <link rel="icon" href={SEO_ASSETS.favicon} type="image/svg+xml" />
         <link rel="icon" href={SEO_ASSETS.faviconIco} sizes="32x32" />
         <link rel="apple-touch-icon" href={SEO_ASSETS.appleTouchIcon} sizes="180x180" />
-        {pathname === "/" && (
-          <link
-            rel="preload"
-            as="image"
-            href={SEO_ASSETS.heroBg480}
-            fetchpriority="high"
-            type="image/webp"
-          />
-        )}
+        {/* Hero image preloads are emitted in index.html so they kick in
+            before React mounts — duplicating them here would only fire after
+            first paint and wouldn't help LCP. */}
 
         {langs?.map(({ lang, path }) => (
           <link
@@ -79,13 +80,20 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <meta property="og:url" content={canonical} />
         <meta property="og:site_name" content={SITE.name} />
         <meta property="og:image" content={image} />
-        <meta property="og:locale" content={pathname.startsWith("/ae") ? "ar_AE" : "en_US"} />
+        <meta property="og:image:secure_url" content={image} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={imageAlt} />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:locale" content={primaryLocale} />
+        <meta property="og:locale:alternate" content={alternateLocale} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={SITE.twitter} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <meta name="twitter:image:alt" content={imageAlt} />
 
         <meta name="application-name" content={SITE.name} />
         <meta name="author" content={SITE.name} />
@@ -95,7 +103,7 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <meta name="ICBM" content="11.2588, 75.7804" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full site content" />
-        <meta name="language" content={pathname.startsWith("/ae") ? "ar" : "en"} />
+        <meta name="language" content={primaryLang} />
         <meta name="classification" content="Human Resource Management Software" />
 
         <script type="application/ld+json">{schemaJson}</script>

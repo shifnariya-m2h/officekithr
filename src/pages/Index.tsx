@@ -1,6 +1,5 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { HomeFaqSchema } from "@/components/HomeFaqSchema";
 import { LazySection } from "@/components/LazySection";

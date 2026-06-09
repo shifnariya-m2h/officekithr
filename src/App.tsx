@@ -19,6 +19,10 @@ import {
   loadScriptOnce,
   scheduleAfterIdle,
 } from "@/lib/performance/third-party";
+import { isUaePath } from "@/lib/utils";
+// Homepage is the LCP target — keep it in the main bundle so the hero image
+// renders without waiting on a Suspense round-trip for a lazy chunk.
+import Index from "./pages/Index";
 
 const Toaster = lazy(() =>
   import("@/components/ui/toaster").then((m) => ({ default: m.Toaster }))
@@ -27,7 +31,6 @@ const TooltipProvider = lazy(() =>
   import("@/components/ui/tooltip").then((m) => ({ default: m.TooltipProvider }))
 );
 
-const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Pricing = lazy(() => import("./pages/Pricing"));
@@ -90,9 +93,7 @@ function PageLoader() {
 
 const AppRoutes = () => {
   const location = useLocation();
-  const isUaeRoute =
-    location.pathname.includes("/ae") ||
-    location.pathname.startsWith("/uae");
+  const isUaeRoute = isUaePath(location.pathname);
   const isHome = location.pathname === "/";
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openHrPopup = useCallback(() => setIsPopupOpen(true), []);

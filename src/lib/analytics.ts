@@ -1,4 +1,5 @@
 import { env } from "@/lib/env";
+import { initEngagementSignals } from "@/lib/engagement";
 
 declare global {
   interface Window {
@@ -25,6 +26,13 @@ function injectGtagScript(): void {
   };
   window.gtag("js", new Date());
 
+  // Wire engagement signals as soon as the gtag stub exists — events queue into
+  // dataLayer and are flushed when gtag.js finishes loading. This guarantees
+  // we capture scroll/time/active-user signals even during the GA script load
+  // window, which is critical for getting sessions past GA4's 10s engagement
+  // threshold.
+  initEngagementSignals();
+
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${env.gaMeasurementId}`;
@@ -45,7 +53,7 @@ export function loadAnalytics(): void {
 
   const run = () => injectGtagScript();
 
-  if ("requestIdleCallback" in window) {
+  if (typeof window.requestIdleCallback === "function") {
     window.requestIdleCallback(run, { timeout: 4000 });
   } else {
     window.setTimeout(run, 2500);
