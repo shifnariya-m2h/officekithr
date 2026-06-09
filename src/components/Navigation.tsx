@@ -1,6 +1,7 @@
 "use client";
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import {
   ArrowRight, ChevronDown, Users,
   Calendar,
@@ -170,8 +171,7 @@ const Navigation = () => {
             >
               <DropdownMenuTrigger asChild>
                 <button 
-                  className="nav-menu-trigger flex items-center space-x-1 px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap dark:text-neutral-300 dark:hover:bg-neutral-800"
-                  onBlur={(e) => e.currentTarget.blur()}
+                  className="nav-menu-trigger gap-1 px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap"
                   aria-label="Features menu"
                   aria-expanded={featuresOpen}
                   aria-haspopup="true"
@@ -233,8 +233,7 @@ const Navigation = () => {
             >
               <DropdownMenuTrigger asChild>
                 <button 
-                  className="nav-menu-trigger flex items-center space-x-1 px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap dark:text-neutral-300 dark:hover:bg-neutral-800"
-                  onBlur={(e) => e.currentTarget.blur()}
+                  className="nav-menu-trigger gap-1 px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap"
                   aria-label="Resources menu"
                   aria-expanded={resourcesOpen}
                   aria-haspopup="true"
@@ -283,21 +282,31 @@ const Navigation = () => {
             </div>
           </DropdownMenu>
 
-          <Link 
-            to="/about-us" 
-            className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
+          <NavLink
+            to="/about-us"
+            className={({ isActive }) =>
+              cn(
+                "nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto",
+                isActive && "nav-link--active"
+              )
+            }
             aria-label="About OfficeKit HR"
           >
             About us
-          </Link>
+          </NavLink>
 
-          <Link 
-            to="/pricing" 
-            className="nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2"
+          <NavLink
+            to="/pricing"
+            className={({ isActive }) =>
+              cn(
+                "nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto",
+                isActive && "nav-link--active"
+              )
+            }
             aria-label="View pricing plans"
           >
             Pricing
-          </Link>
+          </NavLink>
         </div>
 
         {/* Desktop CTA Buttons */}

@@ -298,17 +298,29 @@ html[data-perf-mode="mobile"] .section-fade-in {
     @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-full font-semibold transition-all duration-300;
   }
 
-  /* Plain nav links — underline on hover */
+  /* Nav text links — pill hover, keyboard-only focus ring (no click outline) */
   .nav-link {
-    @apply relative transition-colors duration-300 hover:text-primary after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+    @apply relative inline-flex items-center rounded-full border-0 bg-transparent cursor-pointer
+      text-neutral-600 hover:text-[#0055ff] hover:bg-gray-100
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055ff] focus-visible:ring-offset-1
+      active:bg-gray-100 active:text-[#0055ff]
+      dark:text-neutral-300 dark:hover:bg-neutral-800 dark:active:bg-neutral-800
+      transition-colors duration-200;
   }
 
-  /* Dropdown triggers — no underline pseudo (avoids line under pill buttons) */
+  .nav-link--active {
+    @apply text-[#0055ff] bg-gray-100 dark:bg-neutral-800;
+  }
+
+  /* Dropdown triggers — match nav-link interaction */
   .nav-menu-trigger {
-    @apply relative transition-colors duration-300 rounded-full border-0 bg-transparent cursor-pointer
+    @apply relative inline-flex items-center rounded-full border-0 bg-transparent cursor-pointer
       text-neutral-600 hover:text-[#0055ff] hover:bg-gray-100
-      focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2
-      data-[state=open]:text-[#0055ff] data-[state=open]:bg-gray-100;
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055ff] focus-visible:ring-offset-1
+      active:bg-gray-100 active:text-[#0055ff]
+      data-[state=open]:text-[#0055ff] data-[state=open]:bg-gray-100
+      dark:text-neutral-300 dark:hover:bg-neutral-800 dark:active:bg-neutral-800
+      transition-colors duration-200;
   }
 
   /* Section Animations */

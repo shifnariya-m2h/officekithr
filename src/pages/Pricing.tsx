@@ -1,234 +1,274 @@
-import { useEffect, useState } from "react";
-import { m } from "@/lib/performance/motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ArrowRight, Check, Phone } from "lucide-react";
+import { CANONICAL } from "@/seo/canonical-paths";
 
 const PRICING_HEADSET_IMAGE = "/pricing-headset.webp";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-};
+const PLANS = [
+  {
+    name: "Silver",
+    tier: "silver" as const,
+    description: "Core HR for small teams getting started",
+    highlights: [
+      "Core HR & employee records",
+      "Attendance & leave",
+      "Payroll",
+      "Employee self-service",
+      "Mobile app",
+    ],
+    popular: false,
+  },
+  {
+    name: "Gold",
+    tier: "gold" as const,
+    description: "HR for small and medium teams scaling operations",
+    highlights: [
+      "All features in Silver",
+      "Multi-company",
+      "Claims & reimbursements",
+      "Performance management",
+    ],
+    popular: true,
+  },
+  {
+    name: "Platinum",
+    tier: "platinum" as const,
+    description: "HR for organizations with complete automations",
+    highlights: [
+      "All features in Gold",
+      "Travel management",
+      "Training management",
+      "Grievance management",
+    ],
+    popular: false,
+  },
+] as const;
+
+const TIER_STYLES = {
+  silver: {
+    border: "border-slate-300",
+    badge: "bg-slate-100 text-slate-700",
+    accent: "text-slate-600",
+    button: "bg-slate-800 hover:bg-slate-900",
+  },
+  gold: {
+    border: "border-amber-400 shadow-lg shadow-amber-500/10",
+    badge: "bg-amber-100 text-amber-800",
+    accent: "text-amber-700",
+    button: "bg-[#0055ff] hover:bg-[#0044cc]",
+  },
+  platinum: {
+    border: "border-violet-300",
+    badge: "bg-violet-100 text-violet-800",
+    accent: "text-violet-700",
+    button: "bg-violet-700 hover:bg-violet-800",
+  },
+} as const;
+
+const MODULES = [
+  "Recruitment & onboarding",
+  "Attendance & Face-Kit",
+  "Payroll (India & GCC)",
+  "Performance & OKRs",
+  "Employee self-service",
+  "AI Pilot automation",
+] as const;
 
 const Pricing = () => {
-  const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    setReduceMotion(
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    );
-  }, []);
-  const plans = [
-    {
-      name: "Starter",
-      price: "₹299",
-      period: "per user/month",
-      description: "Perfect for small teams getting started with HR automation",
-      maxUsers: "Up to 25 employees",
-      popular: false,
-      features: [
-        "Core HR Management",
-        "Attendance & Leave Tracking",
-        "Employee Self-Service Portal",
-        "Basic Reporting",
-        "Email Support",
-        "Mobile App Access"
-      ],
-      notIncluded: [
-        "Payroll Processing",
-        "Performance Management",
-        "Advanced Analytics",
-        "API Access",
-        "Priority Support"
-      ]
-    },
-    {
-      name: "Growth",
-      price: "₹599",
-      period: "per user/month",
-      description: "Comprehensive HR solution for growing businesses",
-      maxUsers: "25-100 employees",
-      popular: true,
-      features: [
-        "Everything in Starter",
-        "Payroll Processing & Compliance",
-        "Performance Management",
-        "Advanced Reporting & Analytics",
-        "Document Management",
-        "API Integration",
-        "Phone & Chat Support",
-        "Custom Workflows"
-      ],
-      notIncluded: [
-        "Dedicated Account Manager",
-        "Custom Integrations",
-        "Advanced Security Features"
-      ]
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "pricing",
-      description: "Advanced HR platform for large organizations",
-      maxUsers: "100+ employees",
-      popular: false,
-      features: [
-        "Everything in Growth",
-        "Advanced Security & Compliance",
-        "Custom Integrations",
-        "Dedicated Account Manager",
-        "Priority Support (24/7)",
-        "Advanced Analytics & BI",
-        "Multi-location Support",
-        "SSO Integration",
-        "Custom Training",
-        "SLA Guarantee"
-      ],
-      notIncluded: []
-    }
-  ];
   return (
-    <div className="min-h-screen bg-background"
-
-    >
+    <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-44 pb-20 bg-gradient-subtle bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/RecruitmentManagement2.jpg')",
-        }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <m.h1
-              className="text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6"
-              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+      {/* Hero */}
+      <section className="pt-36 pb-16 md:pt-44 md:pb-20 bg-gradient-subtle">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <Badge className="mb-4 bg-white font-normal py-2 text-[#3f5ffc] border border-[#ededed] hover:bg-transparent">
+            Pricing
+          </Badge>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-5">
+            Flexible HRMS pricing for{" "}
+            <span className="gradient-text">India &amp; GCC</span>
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            Modular per-user plans — pay only for the HR, payroll, and compliance
+            modules you need. Get a tailored quote for your team size and region.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full bg-[#0055ff] hover:bg-[#0044cc] h-12 px-8"
             >
-              Invest Less, Achieve More <br /> with{" "}
-              <span className="gradient-text">OfficeKit HR </span>
-            </m.h1>
+              <Link to="/contact">
+                Book a free demo
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="rounded-full h-12 px-8"
+            >
+              <a href="tel:+918137932991">
+                <Phone className="mr-2 h-4 w-4" />
+                +91-8137932991
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Text */}
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-          >
-            <Badge className=" bg-white font-normal py-2  text-[#3f5ffc] mb-4 border border-[#ededed] hover:bg-transparent"  >
-              Pricing
-            </Badge>
-            <h2 className="text-[44px] font-semibold  mb-6">Flexible & Scalable <span className="gradient-text" >Pricing</span></h2>
-            <p className="text-[16px] text-muted-foreground mb-8 ">
-              At OfficeKit HR, we understand that no two organizations are alike.
-              That’s <br /> why our pricing is designed to be flexible and scalable—so you
-              only pay for <br /> what you need, when you need it.
-              <br />
-              <br />
-              Whether you’re a startup setting up HR for the first time, a growing
-              company<br /> scaling operations, or a large enterprise needing a compliant
-              solution,<br /> we have a plan tailored for you.
+      {/* Plans */}
+      <section className="py-16 md:py-20 border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-semibold text-foreground mb-3">
+              Plans that scale with you
+            </h2>
+            <p className="text-muted-foreground">
+              Every plan is modular. Contact us for a quote based on headcount,
+              countries, and enabled modules.
             </p>
-          </m.div>
+          </div>
 
-          {/* Sales expert CTA */}
-          <m.div
-            className="flex w-full justify-center md:justify-end"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={{
-              hidden: { opacity: 0, x: 32, scale: 0.97 },
-              visible: { opacity: 1, x: 0, scale: 1 },
-            }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          >
-            <m.div
-              className="relative w-full max-w-[560px] overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0055ff] via-[#0058ff] to-[#0046d9] p-6 shadow-[0_20px_50px_-12px_rgba(0,85,255,0.4)] md:p-8 animate-pricing-cta-glow"
-              whileHover={reduceMotion ? undefined : { y: -4 }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            >
-              <div
-                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-cyan-300/20 blur-2xl"
-                aria-hidden
-              />
-
-              <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:gap-6">
-                <m.div
-                  className="flex-1 text-white"
-                  initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.2 }}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {PLANS.map((plan) => {
+              const style = TIER_STYLES[plan.tier];
+              return (
+                <article
+                  key={plan.name}
+                  className={`relative flex flex-col rounded-2xl border-2 bg-card p-6 lg:p-8 ${style.border}`}
                 >
-                  <h3 className="text-2xl font-bold leading-tight tracking-tight md:text-[28px]">
-                    Talk to our Sales Expert
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-white/90 md:text-[15px]">
-                    Connect with our specialists who understand real HR
-                    challenges. We&apos;ll listen to your needs, guide you
-                    through the best-fit modules, and suggest the right pricing
-                    plan for your business.
-                  </p>
-                </m.div>
-
-                <m.div
-                  className="flex w-full shrink-0 flex-col items-center rounded-2xl bg-[#001a4d] px-5 pb-5 pt-4 md:w-[220px]"
-                  initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.35 }}
-                >
-                  <m.img
-                    src={PRICING_HEADSET_IMAGE}
-                    alt="Sales expert ready to help"
-                    className={`h-auto w-44 object-contain md:w-52 lg:w-56 ${reduceMotion ? "" : "animate-pricing-headset-float"}`}
-                    width={224}
-                    height={212}
-                    loading="lazy"
-                    decoding="async"
-                    whileHover={reduceMotion ? undefined : { scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 18 }}
-                  />
-                  <m.div
-                    className="mt-3 w-full max-w-[200px]"
-                    initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.5 }}
-                    whileHover={reduceMotion ? undefined : { scale: 1.04 }}
-                    whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+                  {plan.popular && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#0055ff] px-4 py-1 text-xs font-semibold text-white">
+                      Most popular
+                    </span>
+                  )}
+                  <span
+                    className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${style.badge}`}
                   >
-                    <Button
-                      asChild
-                      className="h-11 w-full rounded-full bg-white px-6 text-[15px] font-semibold text-[#0055ff] shadow-md transition-colors hover:bg-white/95 hover:text-[#0044cc]"
-                    >
-                      <Link to="/contact">Contact Sales</Link>
-                    </Button>
-                  </m.div>
-                </m.div>
-              </div>
-            </m.div>
-          </m.div>
+                    {plan.name}
+                  </span>
+                  <p className="text-sm text-muted-foreground mt-4 mb-6 min-h-[2.5rem]">
+                    {plan.description}
+                  </p>
+                  <p className="text-2xl font-semibold text-foreground mb-6">
+                    Custom quote
+                    <span className="block text-sm font-normal text-muted-foreground mt-1">
+                      Per user / month · modular
+                    </span>
+                  </p>
+                  <ul className="space-y-3 flex-1 mb-8">
+                    {plan.highlights.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2 text-sm text-foreground"
+                      >
+                        <Check
+                          className={`h-4 w-4 shrink-0 mt-0.5 ${style.accent}`}
+                          aria-hidden
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    asChild
+                    className={`w-full rounded-full h-11 text-white ${style.button}`}
+                  >
+                    <Link to="/contact">Book a demo</Link>
+                  </Button>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
 
+      {/* Modular modules */}
+      <section className="py-16 bg-muted/30 border-t border-border">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
+            Pay only for what you use
+          </h2>
+          <p className="text-muted-foreground mb-10">
+            Enable modules as you grow — from attendance-only to full India + GCC
+            payroll on one platform.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3 text-left max-w-xl mx-auto mb-10">
+            {MODULES.map((mod) => (
+              <li
+                key={mod}
+                className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm"
+              >
+                <Check className="h-4 w-4 shrink-0 text-[#0055ff]" aria-hidden />
+                {mod}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Button asChild variant="outline" className="rounded-full">
+              <Link to={CANONICAL.hrmsIndia}>HRMS India</Link>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full">
+              <Link to={CANONICAL.payrollUae}>Payroll UAE</Link>
+            </Button>
+            <Button asChild className="rounded-full bg-[#0055ff] hover:bg-[#0044cc]">
+              <Link to="/contact">Contact sales</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Sales CTA */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0055ff] via-[#0058ff] to-[#0046d9] p-8 md:p-10 shadow-[0_20px_50px_-12px_rgba(0,85,255,0.35)]">
+            <div className="flex flex-col md:flex-row md:items-center gap-8">
+              <div className="flex-1 text-white">
+                <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                  Need a tailored quote?
+                </h2>
+                <p className="mt-3 text-white/90 text-sm md:text-base leading-relaxed">
+                  Tell us your headcount, countries, and modules. Our team will
+                  share pricing for India, UAE, KSA, Kuwait, and multi-entity
+                  setups.
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <Button
+                    asChild
+                    className="rounded-full bg-white text-[#0055ff] hover:bg-white/95 h-11"
+                  >
+                    <Link to="/contact">Book a demo</Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="rounded-full border-white/40 bg-transparent text-white hover:bg-white/10 h-11"
+                  >
+                    <a href="mailto:hello@officekithr.com">hello@officekithr.com</a>
+                  </Button>
+                </div>
+              </div>
+              <img
+                src={PRICING_HEADSET_IMAGE}
+                alt=""
+                width={200}
+                height={190}
+                className="hidden md:block w-44 lg:w-52 shrink-0 object-contain"
+                loading="lazy"
+                decoding="async"
+                aria-hidden
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

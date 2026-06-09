@@ -220,7 +220,7 @@ export const MobileNavToggle = ({
         e.stopPropagation();
         onClick();
       }}
-      className="relative z-[60] rounded-lg p-2.5 min-w-11 min-h-11 transition-colors duration-150 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2 dark:hover:bg-neutral-800 touch-manipulation"
+      className="relative z-[60] rounded-lg p-2.5 min-w-11 min-h-11 transition-colors duration-150 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055ff] focus-visible:ring-offset-1 dark:hover:bg-neutral-800 touch-manipulation"
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
     >

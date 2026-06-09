@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import {
   ArrowRight, ChevronDown, Menu, X, Users,
   Calendar,
@@ -423,21 +424,31 @@ const Navigation = () => {
             </div>
           </DropdownMenu>
 
-          <Link 
-            to="/about-us" 
-            className={`nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2`}
+          <NavLink
+            to="/about-us"
+            className={({ isActive }) =>
+              cn(
+                "nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto",
+                isActive && "nav-link--active"
+              )
+            }
             aria-label={language === 'ar' ? 'من نحن' : 'About OfficeKit HR'}
           >
             {t('nav.about')}
-          </Link>
+          </NavLink>
 
-          <Link 
-            to="/pricing" 
-            className={`nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:text-[#0055ff] transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0055ff] focus:ring-offset-2`}
+          <NavLink
+            to="/pricing"
+            className={({ isActive }) =>
+              cn(
+                "nav-link px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap pointer-events-auto",
+                isActive && "nav-link--active"
+              )
+            }
             aria-label={language === 'ar' ? 'عرض خطط الأسعار' : 'View pricing plans'}
           >
             {t('nav.pricing')}
-          </Link>
+          </NavLink>
         </div>
 
         {/* Desktop CTA Buttons */}

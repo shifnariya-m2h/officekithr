@@ -11,7 +11,7 @@ export type PageGeoConfig = {
 export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
   "/pricing": {
     summary:
-      "OfficeKit HR offers Starter, Growth, and Enterprise plans with modular HRMS features for India and GCC teams.",
+      "OfficeKit HR offers modular Silver, Gold, and Platinum plans for India and GCC teams — per-user pricing with core HR, payroll, attendance, and advanced automation modules. Book a demo for a tailored quote.",
     faqs: [
       {
         question: "Can I customize OfficeKit HR to fit my company's needs?",
