@@ -153,24 +153,6 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
       "Guides for best HRMS in India, UAE payroll, WPS compliance, and AI HR software across the GCC.",
   },
   {
-    path: "/solutions/best-hrms-software-india",
-    title: "Best HRMS Software in India | OfficeKit HR",
-    description:
-      "OfficeKit HR: Indian payroll (PF/ESI/PT), attendance, recruitment, ESS, and AI automation in one HRMS.",
-  },
-  {
-    path: "/solutions/payroll-software-uae",
-    title: "Payroll Software UAE | OfficeKit HR",
-    description:
-      "UAE payroll with WPS support, attendance integration, and GCC compliance on OfficeKit HR.",
-  },
-  {
-    path: "/solutions/wps-compliance-software",
-    title: "WPS Compliance Software UAE | OfficeKit HR",
-    description:
-      "UAE Wages Protection System (WPS) compliance software integrated with OfficeKit payroll.",
-  },
-  {
     path: "/solutions/ai-hr-software-gcc",
     title: "AI HR Software for GCC | OfficeKit HR",
     description:
@@ -211,12 +193,6 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
     title: "Compare HRMS Software | OfficeKit HR",
     description:
       "Factual HRMS comparison guides including OfficeKit HR vs greytHR for India and GCC buyers.",
-  },
-  {
-    path: "/compare/greythr-alternative",
-    title: "greytHR Alternative | OfficeKit HR",
-    description:
-      "Compare OfficeKit HR vs greytHR: GCC payroll, WPS, AI automation, mobile ESS, and pricing.",
   },
   {
     path: "/ae",

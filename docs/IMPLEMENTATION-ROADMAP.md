@@ -10,7 +10,13 @@ Prioritized by: SEO impact → Security → Performance → Traffic growth → C
 |-----|--------|
 | Per-route meta via `react-helmet-async` | ✅ |
 | Canonical unified to `www.officekithr.com` | ✅ |
-| Removed fake AggregateRating schema | ✅ |
+| Removed fake AggregateRating schema | ✅ (re-verified in schema.ts) |
+| Duplicate canonical / index.html meta stripped | ✅ |
+| URL consolidation + _redirects + sitemap | ✅ |
+| LocalBusiness schema (Calicut + Dubai) | ✅ |
+| Prerender SEO head deduplication | ✅ |
+| Homepage H1 keyword optimization | ✅ |
+| Deferred Syncora tracking (off render path) | ✅ |
 | Dynamic sitemap (55 URLs incl. API blogs) | ✅ |
 | Broken blog category links → `?category=` | ✅ |
 | API key removed from client → `/api/leads.php` | ✅ |

@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/seo/schema";
+import { CANONICAL } from "@/seo/canonical-paths";
 
 export type PageGeoConfig = {
   faqs: FaqItem[];
@@ -32,10 +33,15 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
         answer:
           "Yes. Book a free demo at /contact to see payroll, attendance, and compliance workflows for your region.",
       },
+      {
+        question: "Does OfficeKit HR pricing include UAE WPS payroll?",
+        answer:
+          "Yes. UAE WPS payroll workflows are included in OfficeKit HR payroll modules without third-party WPS add-ons.",
+      },
     ],
     relatedLinks: [
-      { label: "HRMS for India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "HRMS for India", href: CANONICAL.hrmsIndia },
+      { label: "Payroll software UAE", href: CANONICAL.payrollUae },
     ],
   },
   "/features/payroll-and-compliance": {
@@ -59,8 +65,8 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "WPS compliance software", href: CANONICAL.wpsUae },
+      { label: "Payroll software UAE", href: CANONICAL.payrollUae },
     ],
   },
   "/features/recruitment-management": {
@@ -79,7 +85,7 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: CANONICAL.hrmsIndia },
     ],
   },
   "/features/attendance-and-leave": {
@@ -169,8 +175,8 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "WPS compliance", href: "/solutions/wps-compliance-software" },
+      { label: "Payroll software UAE", href: CANONICAL.payrollUae },
+      { label: "WPS compliance", href: CANONICAL.wpsUae },
     ],
   },
 };

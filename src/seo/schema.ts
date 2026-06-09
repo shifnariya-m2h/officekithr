@@ -96,14 +96,6 @@ export function softwareApplicationSchema() {
         price: "Contact sales",
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.7",
-      ratingCount: "186",
-      bestRating: "5",
-      worstRating: "1",
-      itemReviewed: { "@id": `${SITE.url}/#software` },
-    },
     screenshot: {
       "@type": "ImageObject",
       url: `${SITE.url}/dashboardok.webp`,
@@ -114,21 +106,51 @@ export function softwareApplicationSchema() {
     softwareVersion: "3.0",
     storageRequirements: "Cloud-based, no local storage required",
     releaseNotes: `${SITE.url}/resources/blogs/mobileappupdates`,
-    review: {
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "4.7",
-        bestRating: "5",
-      },
-      author: {
-        "@type": "Person",
-        name: "OfficeKit HR Users",
-      },
-      reviewBody:
-        "OfficeKit HR streamlines payroll, attendance, and compliance across India and GCC — trusted by 1,000+ businesses.",
-    },
   };
+}
+
+export function localBusinessSchema() {
+  return [
+    {
+      "@type": "LocalBusiness",
+      "@id": `${SITE.url}/#office-calicut`,
+      name: "OfficeKit HR — Calicut",
+      parentOrganization: { "@id": `${SITE.url}/#organization` },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Calicut",
+        addressRegion: "Kerala",
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 11.2588,
+        longitude: 75.7804,
+      },
+      areaServed: { "@type": "Country", name: "India" },
+      telephone: SITE.phone,
+      email: SITE.email,
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${SITE.url}/#office-dubai`,
+      name: "OfficeKit HR — Dubai",
+      parentOrganization: { "@id": `${SITE.url}/#organization` },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Dubai",
+        addressRegion: "Dubai",
+        addressCountry: "AE",
+      },
+      areaServed: [
+        { "@type": "Country", name: "United Arab Emirates" },
+        { "@type": "Country", name: "Saudi Arabia" },
+        { "@type": "Country", name: "Kuwait" },
+      ],
+      telephone: SITE.phone,
+      email: SITE.email,
+    },
+  ];
 }
 
 export function productSchema(input: {
@@ -247,6 +269,7 @@ export function buildGraph(nodes: Record<string, unknown>[]): string {
       organizationSchema(),
       websiteSchema(),
       softwareApplicationSchema(),
+      ...localBusinessSchema(),
       ...nodes.filter(Boolean),
     ],
   });

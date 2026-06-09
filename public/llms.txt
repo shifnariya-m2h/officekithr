@@ -40,9 +40,9 @@ OfficeKit HR is an AI-powered HRMS (Human Resource Management System) for recrui
 ## Key Pages
 
 ### Solutions (GEO-targeted)
-- Best HRMS Software India: /solutions/best-hrms-software-india
-- Payroll Software UAE: /solutions/payroll-software-uae
-- WPS Compliance Software: /solutions/wps-compliance-software
+- Best HRMS Software India: /hrms-software-india
+- Payroll Software UAE: /payroll-software-uae
+- WPS Compliance Software: /wps-compliance-software
 - AI HR Software GCC: /solutions/ai-hr-software-gcc
 - Payroll Software KSA: /solutions/payroll-software-ksa
 - HRMS Software Kuwait: /solutions/hrms-software-kuwait
@@ -57,7 +57,7 @@ OfficeKit HR is an AI-powered HRMS (Human Resource Management System) for recrui
 - HRMS Software Delhi NCR: /solutions/hrms-software-delhi-ncr
 
 ### Comparisons
-- vs greytHR: /compare/greythr-alternative
+- vs greytHR: /officekit-vs-greythr
 - vs Keka: /compare/keka-alternative
 - vs Zoho People: /compare/zoho-people-alternative
 - vs factoHR: /compare/factohr-alternative

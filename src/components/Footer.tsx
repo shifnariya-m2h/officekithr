@@ -22,14 +22,15 @@ import {
 import { useState } from "react";
 import { PreFooterGeo } from "@/components/geo/PreFooterGeo";
 import { SITE } from "@/seo/site-config";
+import { CANONICAL } from "@/seo/canonical-paths";
 
 const solutionsLinks = [
-  { name: "HRMS software India", href: "/solutions/best-hrms-software-india" },
-  { name: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+  { name: "HRMS software India", href: CANONICAL.hrmsIndia },
+  { name: "Payroll software UAE", href: CANONICAL.payrollUae },
   { name: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
-  { name: "WPS compliance", href: "/solutions/wps-compliance-software" },
+  { name: "WPS compliance", href: CANONICAL.wpsUae },
   { name: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
-  { name: "greytHR alternative", href: "/compare/greythr-alternative" },
+  { name: "greytHR alternative", href: CANONICAL.greythrCompare },
   { name: "Keka alternative", href: "/compare/keka-alternative" },
   { name: "Payroll compliance", href: "/compliance" },
 ];

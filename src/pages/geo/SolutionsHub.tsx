@@ -4,7 +4,12 @@ import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
-import { GEO_LANDINGS, GEO_LANDING_REGIONS } from "@/data/geo-landings";
+import {
+  GEO_HUB_PRIMARY_LINKS,
+  GEO_LANDINGS,
+  GEO_LANDING_REGIONS,
+} from "@/data/geo-landings";
+import { MARKETING_PAGES } from "@/data/marketing-pages";
 
 const REGION_META = {
   india: {
@@ -21,6 +26,55 @@ const REGION_META = {
       "Saudi Arabia, Kuwait, Qatar, Oman, Bahrain, and AI HR for multi-country groups.",
   },
 } as const;
+
+function PrimaryHubLinks({
+  regionKey,
+}: {
+  regionKey: "india" | "uae";
+}) {
+  if (regionKey === "india") {
+    const page = MARKETING_PAGES["hrms-software-india"];
+    if (!page) return null;
+    return (
+      <ul className="space-y-3 list-none p-0 mb-4">
+        <li>
+          <Link
+            to={GEO_HUB_PRIMARY_LINKS.india.path}
+            className="block rounded-xl border border-primary/30 bg-primary/5 p-5 hover:bg-primary/10 transition-colors"
+          >
+            <h3 className="text-lg font-semibold text-foreground mb-1">
+              {page.h1}
+            </h3>
+            <p className="text-muted-foreground text-sm">{page.subtitle}</p>
+          </Link>
+        </li>
+      </ul>
+    );
+  }
+
+  return (
+    <ul className="space-y-3 list-none p-0 mb-4">
+      {GEO_HUB_PRIMARY_LINKS.uae.map(({ path }) => {
+        const slug = path.replace(/^\//, "");
+        const page = MARKETING_PAGES[slug];
+        if (!page) return null;
+        return (
+          <li key={path}>
+            <Link
+              to={path}
+              className="block rounded-xl border border-primary/30 bg-primary/5 p-5 hover:bg-primary/10 transition-colors"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-1">
+                {page.h1}
+              </h3>
+              <p className="text-muted-foreground text-sm">{page.subtitle}</p>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 function RegionBlock({
   regionKey,
@@ -41,6 +95,9 @@ function RegionBlock({
         </h2>
         <p className="text-sm text-muted-foreground mt-1">{meta.description}</p>
       </div>
+      {(regionKey === "india" || regionKey === "uae") && (
+        <PrimaryHubLinks regionKey={regionKey} />
+      )}
       <ul className="space-y-3 list-none p-0">
         {slugs.map((slug) => {
           const page = GEO_LANDINGS[slug];

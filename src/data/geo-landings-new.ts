@@ -328,7 +328,7 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
     ],
     relatedLinks: [
       { label: "HR software Kochi", href: "/hr-software-kochi" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
   },
@@ -385,8 +385,8 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "HR software Kochi", href: "/hr-software-kochi" },
     ],
   },
@@ -438,8 +438,8 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "HR software Kochi", href: "/hr-software-kochi" },
     ],
   },
@@ -491,8 +491,8 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
     ],
   },
@@ -544,7 +544,7 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Payroll software Kerala", href: "/solutions/payroll-software-kerala" },
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
@@ -597,8 +597,8 @@ export const GEO_LANDINGS_NEW: Record<string, GeoLandingConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "HR software Kochi", href: "/hr-software-kochi" },
     ],
   },

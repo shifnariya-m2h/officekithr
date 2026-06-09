@@ -26,7 +26,7 @@ export type ComparisonConfig = {
 export const COMPARISONS: Record<string, ComparisonConfig> = {
   "greythr-alternative": {
     slug: "greythr-alternative",
-    path: "/compare/greythr-alternative",
+    path: "/officekit-vs-greythr",
     title: "greytHR Alternative | OfficeKit HR",
     metaDescription:
       "Looking for a greytHR alternative? Compare OfficeKit HR vs greytHR on payroll, GCC compliance, AI automation, mobile ESS, and implementation for India and UAE.",
@@ -92,7 +92,7 @@ export const COMPARISONS: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Book a demo", href: "/contact" },
       { label: "Pricing", href: "/pricing" },
     ],

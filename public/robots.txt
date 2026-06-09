@@ -1,5 +1,6 @@
-# Robots.txt — generated 2026-06-01
+# Robots.txt — generated 2026-06-09
 # https://www.officekithr.com/llms.txt — LLM-readable site summary
+# Cloudflare: disable "Managed robots.txt" so these rules are not overridden.
 
 User-agent: *
 Allow: /

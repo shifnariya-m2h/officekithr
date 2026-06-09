@@ -78,7 +78,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS software India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS software India", href: "/hrms-software-india" },
       { label: "HRMS for hospitality", href: "/industries/hrms-for-hospitality" },
       { label: "Attendance & leave feature", href: "/features/attendance-and-leave" },
     ],
@@ -145,7 +145,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "HRMS for retail", href: "/industries/hrms-for-retail" },
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
@@ -213,7 +213,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS software India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS software India", href: "/hrms-software-india" },
       { label: "Employee management feature", href: "/features/employee-management" },
     ],
   },
@@ -348,7 +348,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryConfig> = {
     ],
     relatedLinks: [
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
-      { label: "Best HRMS software India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS software India", href: "/hrms-software-india" },
       { label: "HRMS for logistics", href: "/industries/hrms-for-logistics" },
     ],
   },

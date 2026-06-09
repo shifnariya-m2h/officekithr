@@ -14,7 +14,7 @@ export const HOME_SEO_FAQS: HomeFaq[] = [
   {
     question: "Which countries does OfficeKit HR support?",
     answer:
-      "OfficeKit HR supports businesses in India, UAE, Kuwait, Saudi Arabia, and Qatar with localized payroll and compliance workflows.",
+      "OfficeKit HR supports businesses in India, UAE, Kuwait, Saudi Arabia, Qatar, Oman, and Bahrain with localized payroll and compliance workflows.",
   },
   {
     question: "Does OfficeKit HR include a mobile app?",
@@ -24,12 +24,12 @@ export const HOME_SEO_FAQS: HomeFaq[] = [
   {
     question: "Is OfficeKit HR suitable as payroll software in the UAE?",
     answer:
-      "Yes. OfficeKit supports UAE payroll with WPS-aligned workflows. See /solutions/payroll-software-uae and /solutions/wps-compliance-software.",
+      "Yes. OfficeKit supports UAE payroll with WPS-aligned workflows. See /payroll-software-uae and /wps-compliance-software.",
   },
   {
     question: "How does OfficeKit compare to greytHR?",
     answer:
-      "OfficeKit HR is often evaluated as a greytHR alternative for teams needing GCC payroll, WPS, and AI automation. See /compare/greythr-alternative.",
+      "OfficeKit HR is often evaluated as a greytHR alternative for teams needing GCC payroll, WPS, and AI automation. See /officekit-vs-greythr.",
   },
 ];
 

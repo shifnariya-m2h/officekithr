@@ -2,11 +2,15 @@
 http://officekithr.com/* https://www.officekithr.com/:splat 301!
 https://officekithr.com/* https://www.officekithr.com/:splat 301!
 
+# Trailing slash → canonical (no slash)
+/*/ /:splat 301!
+
 /uae /ae 301!
 /features/employe-managment /features/employee-management 301!
 /resources/blogs/newperfomenceblog /resources/blogs/performance-management-tools 301!
 /resources/blogs/qualityvsquatity /resources/blogs/quality-vs-quantity-hiring 301!
 
+# Consolidated canonical URLs (duplicate content prevention)
 /solutions/payroll-software-uae /payroll-software-uae 301!
 /solutions/wps-compliance-software /wps-compliance-software 301!
 /solutions/best-hrms-software-india /hrms-software-india 301!

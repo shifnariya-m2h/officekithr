@@ -44,8 +44,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software India", href: "/hrms-software-india" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -79,8 +79,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "WPS compliance software", href: "/wps-compliance-software" },
       { label: "HR software Dubai", href: "/hr-software-dubai" },
     ],
   },
@@ -116,7 +116,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     relatedLinks: [
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
       { label: "AI Pilot feature", href: "/features/ai-pilot" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
     ],
   },
   "employee-self-service-portal-india": {
@@ -151,7 +151,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     relatedLinks: [
       { label: "Self-service portal feature", href: "/features/self-service-portal" },
       { label: "Mobile app feature", href: "/features/mobile-app" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
     ],
   },
   "wps-payroll-software-dubai": {
@@ -184,8 +184,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "WPS compliance software", href: "/wps-compliance-software" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "HR software Dubai", href: "/hr-software-dubai" },
     ],
   },
@@ -219,9 +219,9 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Payroll software India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software India", href: "/hrms-software-india" },
     ],
   },
   "biometric-attendance-system-uae": {
@@ -255,8 +255,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "Attendance software UAE", href: "/attendance-software-uae" },
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "WPS compliance software", href: "/wps-compliance-software" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
     ],
   },
   "payroll-outsourcing-vs-software-india": {
@@ -289,8 +289,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software India", href: "/solutions/best-hrms-software-india" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software India", href: "/hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -324,9 +324,9 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "HR software UAE", href: "/solutions/best-hrms-software-india" },
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "HR software UAE", href: "/hrms-software-india" },
+      { label: "WPS compliance software", href: "/wps-compliance-software" },
     ],
   },
   "multi-country-payroll-gcc": {
@@ -361,7 +361,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
     ],
@@ -397,7 +397,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "OfficeKit vs Keka", href: "/officekit-vs-keka" },
       { label: "Pricing", href: "/pricing" },
     ],
@@ -439,8 +439,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "HR software UAE", href: "/hr-software-uae" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "WPS compliance software", href: "/wps-compliance-software" },
     ],
   },
   "best-hr-software-in-dubai": {
@@ -474,7 +474,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "HR software Dubai", href: "/hr-software-dubai" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Book a demo", href: "/contact" },
     ],
   },
@@ -509,7 +509,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
     ],
   },
@@ -544,8 +544,8 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
     ],
   },
   "hrms-saudi-arabia": {
@@ -615,7 +615,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Attendance feature", href: "/features/attendance-and-leave" },
       { label: "Face-Kit feature", href: "/features/face-kit" },
     ],
@@ -651,7 +651,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "HRMS for startups", href: "/longtail/hrms-for-startups-india" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -687,7 +687,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "Employee management feature", href: "/features/employee-management" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -724,7 +724,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
     ],
     relatedLinks: [
       { label: "Multi-country payroll GCC", href: "/longtail/multi-country-payroll-gcc" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
     ],
   },

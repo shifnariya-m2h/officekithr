@@ -56,12 +56,12 @@ export const AUTHORITY_CLUSTERS: Record<string, AuthorityClusterConfig> = {
       },
       {
         title: "Best Payroll Software India",
-        path: "/solutions/best-hrms-software-india",
+        path: "/hrms-software-india",
         description: "India payroll software for SMEs with PF, ESI, PT, and TDS.",
       },
       {
         title: "Payroll Software UAE",
-        path: "/solutions/payroll-software-uae",
+        path: "/payroll-software-uae",
         description: "UAE WPS-ready payroll and HRMS integration.",
       },
       {
@@ -193,7 +193,7 @@ export const AUTHORITY_CLUSTERS: Record<string, AuthorityClusterConfig> = {
       },
       {
         title: "Best HRMS India",
-        path: "/solutions/best-hrms-software-india",
+        path: "/hrms-software-india",
         description: "End-to-end HRMS with recruitment ATS and performance management modules.",
       },
     ],
@@ -207,7 +207,7 @@ export const AUTHORITY_CLUSTERS: Record<string, AuthorityClusterConfig> = {
     pillarPages: [
       {
         title: "Payroll Software UAE",
-        path: "/solutions/payroll-software-uae",
+        path: "/payroll-software-uae",
         description: "UAE payroll with WPS, multi-currency, and employee self-service.",
       },
       {
@@ -237,7 +237,7 @@ export const AUTHORITY_CLUSTERS: Record<string, AuthorityClusterConfig> = {
       },
       {
         title: "WPS Compliance Software",
-        path: "/solutions/wps-compliance-software",
+        path: "/wps-compliance-software",
         description: "UAE WPS salary file generation and MOHRE-aligned compliance workflows.",
       },
       {
@@ -271,7 +271,7 @@ export const AUTHORITY_CLUSTERS: Record<string, AuthorityClusterConfig> = {
     pillarPages: [
       {
         title: "Best HRMS Software India",
-        path: "/solutions/best-hrms-software-india",
+        path: "/hrms-software-india",
         description: "India HRMS with recruitment, payroll, attendance, and ESS modules.",
       },
       {
@@ -311,7 +311,7 @@ export const AUTHORITY_CLUSTERS: Record<string, AuthorityClusterConfig> = {
       },
       {
         title: "Best Payroll Software India",
-        path: "/solutions/best-hrms-software-india",
+        path: "/hrms-software-india",
         description: "Statutory payroll automation for Indian finance and HR teams.",
       },
       {

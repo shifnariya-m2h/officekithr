@@ -260,9 +260,9 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 
 ### GEO Solutions Pages
 - /solutions — Solutions hub
-- /solutions/best-hrms-software-india
-- /solutions/payroll-software-uae
-- /solutions/wps-compliance-software
+- /hrms-software-india
+- /payroll-software-uae
+- /wps-compliance-software
 - /solutions/ai-hr-software-gcc
 - /solutions/payroll-software-ksa
 - /solutions/hrms-software-kuwait
@@ -278,7 +278,7 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 
 ### Comparison Pages
 - /compare — Compare hub
-- /compare/greythr-alternative
+- /officekit-vs-greythr
 - /compare/keka-alternative
 - /compare/zoho-people-alternative
 - /compare/factohr-alternative

@@ -75,8 +75,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -148,7 +148,7 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
       { label: "Book a demo", href: "/contact" },
     ],
@@ -221,8 +221,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Book a demo", href: "/contact" },
     ],
   },
@@ -294,8 +294,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -383,9 +383,9 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -468,8 +468,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
       { label: "Pricing", href: "/pricing" },
     ],
@@ -553,8 +553,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Book a demo", href: "/contact" },
     ],
   },
@@ -637,8 +637,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
     ],
   },
@@ -722,8 +722,8 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
     ],
     relatedLinks: [
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
     ],
   },
   "gulfhr-alternative": {
@@ -806,7 +806,7 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
     ],
     relatedLinks: [
       { label: "AI HR software GCC", href: "/solutions/ai-hr-software-gcc" },
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Book a demo", href: "/contact" },
     ],
   },

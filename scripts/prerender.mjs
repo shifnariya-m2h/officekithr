@@ -38,7 +38,31 @@ function writeHtml(route, html) {
 }
 
 function normalizeHtml(html) {
-  return html.replace(/http:\/\/127\.0\.0\.1:\d+/g, SITE);
+  return dedupeSeoHead(html.replace(/http:\/\/127\.0\.0\.1:\d+/g, SITE));
+}
+
+/** Strip static index.html SEO tags — keep only react-helmet-async (data-rh) output. */
+function dedupeSeoHead(html) {
+  let out = html;
+  const strip = (pattern) => {
+    out = out.replace(pattern, "");
+  };
+
+  strip(/<link rel="canonical" href="[^"]*"(?![^>]*\bdata-rh)[^>]*>\s*/gi);
+  strip(/<meta name="description" content="[^"]*"(?![^>]*\bdata-rh)[^>]*>\s*/gi);
+  strip(/<meta name="robots" content="[^"]*"(?![^>]*\bdata-rh)[^>]*>\s*/gi);
+  strip(/<meta property="og:[^"]*" content="[^"]*"(?![^>]*\bdata-rh)[^>]*>\s*/gi);
+  strip(/<meta name="twitter:[^"]*" content="[^"]*"(?![^>]*\bdata-rh)[^>]*>\s*/gi);
+
+  const titles = [...out.matchAll(/<title[^>]*>([^<]*)<\/title>/gi)];
+  if (titles.length > 1) {
+    const keep = titles.find((m) => m[0].includes("data-rh")) ?? titles[titles.length - 1];
+    for (const m of titles) {
+      if (m[0] !== keep[0]) strip(m[0]);
+    }
+  }
+
+  return out;
 }
 
 async function waitForRoute(page, route) {

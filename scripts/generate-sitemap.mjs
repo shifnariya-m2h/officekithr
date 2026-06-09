@@ -41,9 +41,6 @@ const STATIC_PATHS = [
   "/cookie-policy",
   "/ae",
   "/solutions",
-  "/solutions/best-hrms-software-india",
-  "/solutions/payroll-software-uae",
-  "/solutions/wps-compliance-software",
   "/solutions/ai-hr-software-gcc",
   "/solutions/payroll-software-ksa",
   "/solutions/hrms-software-kuwait",
@@ -52,7 +49,6 @@ const STATIC_PATHS = [
   "/solutions/hrms-software-bahrain",
   "/solutions/payroll-software-kerala",
   "/compare",
-  "/compare/greythr-alternative",
   "/compare/keka-alternative",
   "/compare/zoho-people-alternative",
   "/compare/factohr-alternative",
@@ -131,9 +127,9 @@ const PRIORITY = {
   "/": "1.0",
   "/pricing": "0.9",
   "/ae": "0.85",
-  "/solutions/best-hrms-software-india": "0.88",
-  "/solutions/payroll-software-uae": "0.88",
-  "/solutions/wps-compliance-software": "0.87",
+  "/hrms-software-india": "0.88",
+  "/payroll-software-uae": "0.88",
+  "/wps-compliance-software": "0.87",
   "/solutions/ai-hr-software-gcc": "0.87",
   "/solutions/payroll-software-ksa": "0.86",
   "/solutions/hrms-software-kuwait": "0.86",
@@ -154,11 +150,8 @@ const PRIORITY = {
   "/compare/factohr-alternative": "0.82",
   "/compare/officenet-alternative": "0.80",
   "/compare/pockethrms-alternative": "0.80",
-  "/compare/greythr-alternative": "0.86",
+  "/officekit-vs-greythr": "0.86",
   "/hr-software-uae": "0.88",
-  "/payroll-software-uae": "0.88",
-  "/hrms-software-india": "0.88",
-  "/wps-compliance-software": "0.87",
   "/officekit-vs-keka": "0.82",
   "/officekit-vs-greythr": "0.82",
   "/resources/blogs": "0.8",
@@ -280,6 +273,7 @@ ${urls}
 
 const robots = `# Robots.txt — generated ${today}
 # https://www.officekithr.com/llms.txt — LLM-readable site summary
+# Cloudflare: disable "Managed robots.txt" so these rules are not overridden.
 
 User-agent: *
 Allow: /

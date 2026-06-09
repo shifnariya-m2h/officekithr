@@ -11,13 +11,12 @@ const HeroSection = () => {
   const titleBlock = (
     <div className="text-center w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-30 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
       <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 tracking-tight px-2">
-        AI Powered HR Built for the{" "}
-        <span className="text-white font-bold">Future</span>
+        AI-Powered HRMS for{" "}
+        <span className="text-white font-bold">India, UAE &amp; GCC Payroll</span>
       </h1>
       <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg lg:text-xl text-white mb-4 sm:mb-6 md:mb-8 lg:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
-        Your journey matters. Our tailored software streamlines operations,
-        supports your team, and fuels growth. Together, let&apos;s build a brighter
-        tomorrow.
+        Recruitment, attendance, statutory payroll, and WPS compliance on one
+        platform — built for mid-market teams scaling across India and the Gulf.
       </p>
       <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center px-2">
         <Button

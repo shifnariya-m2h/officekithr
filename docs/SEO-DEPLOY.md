@@ -36,6 +36,12 @@ This generates:
 
 `.htaccess` serves prerendered files first; unknown URLs return **404** (not soft 200).
 
+## Cloudflare
+
+1. **Disable “Managed robots.txt”** (or align with `public/robots.txt`) so AI crawlers (`GPTBot`, `PerplexityBot`, `Google-Extended`) are not blocked by conflicting rules.
+2. **`public/_redirects`** handles www, trailing-slash removal, and canonical URL consolidation.
+3. Production SEO build: `PRERENDER=1 npm run build` then deploy `dist/`.
+
 ## Architecture
 
 - **One `SeoHead`** in `App.tsx` — no duplicate meta tags

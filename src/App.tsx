@@ -13,6 +13,7 @@ import { SeoHead } from "@/seo/SeoHead";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
 import { LegacyRedirect } from "@/components/LegacyRedirect";
+import { LEGACY_REDIRECTS } from "@/seo/canonical-paths";
 import { MARKETING_PAGES } from "@/data/marketing-pages";
 import {
   loadScriptOnce,
@@ -114,6 +115,7 @@ const AppRoutes = () => {
       {/* Cookie banner can visually block the HR popup form on small screens. */}
       {!isPopupOpen && <CookieConsent />}
       <DeferredAnalytics />
+      <DeferredSyncoraTrack />
       <DeferredSupportChat />
       {isPopupOpen && (
         <Suspense fallback={null}>
@@ -218,6 +220,14 @@ const AppRoutes = () => {
             />
           ))}
 
+          {Object.entries(LEGACY_REDIRECTS).map(([from, to]) => (
+            <Route
+              key={from}
+              path={from}
+              element={<LegacyRedirect to={to} />}
+            />
+          ))}
+
           <Route path="/solutions" element={<SolutionsHub />} />
           <Route path="/solutions/:slug" element={<GeoLandingPage />} />
           <Route path="/compare" element={<CompareHub />} />
@@ -305,6 +315,24 @@ function DeferredSupportChat() {
       }
     );
 
+    return cancel;
+  }, []);
+
+  return null;
+}
+
+function DeferredSyncoraTrack() {
+  useEffect(() => {
+    const cancel = scheduleAfterIdle(
+      () => {
+        void loadScriptOnce({
+          id: "syncora-track",
+          src: "https://app.syncoraai.com/api/widget/track/PUB_2d854a99-8f50-4e7f-886f-d39a21019e18",
+          defer: true,
+        }).catch(() => {});
+      },
+      { timeout: 10_000, mobileInteractionOnly: true }
+    );
     return cancel;
   }, []);
 

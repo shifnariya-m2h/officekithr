@@ -97,7 +97,7 @@ export const PAYROLL_COMPLIANCE: Record<string, ComplianceConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Best HRMS India", href: "/solutions/best-hrms-software-india" },
+      { label: "Best HRMS India", href: "/hrms-software-india" },
       { label: "Payroll software Kerala", href: "/solutions/payroll-software-kerala" },
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
@@ -166,9 +166,9 @@ export const PAYROLL_COMPLIANCE: Record<string, ComplianceConfig> = {
       },
     ],
     relatedLinks: [
-      { label: "Payroll software UAE", href: "/solutions/payroll-software-uae" },
-      { label: "WPS compliance software", href: "/solutions/wps-compliance-software" },
-      { label: "HR software UAE", href: "/solutions/best-hrms-software-india" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "WPS compliance software", href: "/wps-compliance-software" },
+      { label: "HR software UAE", href: "/hrms-software-india" },
     ],
   },
   "ksa-payroll-compliance": {
