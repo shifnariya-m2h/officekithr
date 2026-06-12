@@ -8,7 +8,7 @@ import { INDUSTRY_PAGES } from "@/data/industry-verticals";
 import { KNOWLEDGE_PAGES } from "@/data/knowledge-pages";
 import { TOOL_PAGES } from "@/data/tools-config";
 import { GUIDE_PAGES } from "@/data/guide-pages";
-import { ARTICLE_POSTS } from "@/data/article-posts";
+import { ARTICLE_POSTS, getPublishedArticles } from "@/data/article-posts";
 import { SITE } from "./site-config";
 
 export type RouteSeoConfig = {
@@ -293,7 +293,7 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
     title: p.title,
     description: p.metaDescription,
   })),
-  ...Object.values(ARTICLE_POSTS).map((p) => ({
+  ...getPublishedArticles().map((p) => ({
     path: p.path,
     title: p.title,
     description: p.metaDescription,

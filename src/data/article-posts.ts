@@ -10,11 +10,21 @@ export type ArticlePost = {
   category: string;
   readTime: string;
   directAnswer: string;
+  intro?: string;
   sections: { heading: string; body: string }[];
+  faqs?: { question: string; answer: string }[];
+  /** When true: noindex, excluded from blog hub and sitemap until published. */
+  draft?: boolean;
+  primaryKeyword?: string;
+  secondaryKeywords?: string;
 };
 
 function article(input: Omit<ArticlePost, "path">): ArticlePost {
   return { ...input, path: `/resources/blogs/${input.slug}` };
+}
+
+export function getPublishedArticles(): ArticlePost[] {
+  return Object.values(ARTICLE_POSTS).filter((p) => !p.draft);
 }
 
 export const ARTICLE_POSTS: Record<string, ArticlePost> = {
@@ -345,6 +355,69 @@ export const ARTICLE_POSTS: Record<string, ArticlePost> = {
     readTime: "7 min read",
     directAnswer: "Reconcile WPS, verify gratuity accruals, audit leave balances before new year.",
     sections: [{ heading: "UAE", body: "WPS reconciliation and gratuity provision report." }],
+  }),
+  "hr-software-for-india-and-uae": article({
+    slug: "hr-software-for-india-and-uae",
+    title: "HR Software for India and UAE: Why One System Beats Two | OfficeKit HR",
+    metaDescription:
+      "Running payroll in both India and the UAE? Most HR software handles one country well and the other badly. Here's what a true dual-country HRMS must do — and what it should cost.",
+    headline: "HR software for India and UAE: why one system beats two",
+    author: "Karthik",
+    datePublished: "2026-06-13",
+    category: "HR Best Practices",
+    readTime: "12 min read",
+    draft: true,
+    primaryKeyword: "HR software for India and UAE",
+    secondaryKeywords:
+      "HRMS India and GCC, WPS compliant payroll software, PF ESI payroll software, dual country payroll India UAE",
+    directAnswer:
+      "A genuine dual-country HRMS must run Indian statutory payroll (PF, ESI, PT, TDS) and UAE WPS from one employee database, with published per-employee pricing in both regions — not two tools bridged by spreadsheets.",
+    intro:
+      "If your company runs teams in both India and the Gulf, your HR stack probably looks like this: one tool for India that understands PF and ESI, another for the UAE that handles WPS, and a spreadsheet in the middle holding the whole thing together.\n\nNobody designed it that way. It happened one hire at a time. Then one month the Dubai payroll run and the Kochi payroll run landed in the same week, finance asked for a combined headcount cost report, and someone spent three days building it by hand.\n\nThis post is for the HR head or finance leader at a 250–400 person company who is done with that week. It covers what a genuine dual-country HRMS has to do, why the well-known vendors don't solve it, and what you should expect to pay.",
+    sections: [
+      {
+        heading: 'What does "HR software for India and UAE" actually need to do?',
+        body:
+          "A real dual-country system has to clear four bars at once. Most products clear one or two.\n\nIndian statutory compliance, natively. Provident Fund, ESI, Professional Tax, LWF, and TDS are not features you bolt on. They have to be built into the payroll engine, updated when the rules change, and reflected in every payslip and filing without manual correction. India consolidated 29 labour laws into new Labour Codes effective late 2025, which means the compliance bar moved again — your vendor's update speed is now part of the product.\n\nWPS and GCC labour law, natively. In the UAE, salaries flow through the Wage Protection System, and leave, gratuity, and end-of-service calculations follow UAE labour law. A system that treats the Gulf as an afterthought forces your team back into spreadsheets exactly where the regulatory risk is highest.\n\nOne employee database, one report. The point of consolidation is that \"what does our workforce cost this month, across both countries, in one currency view\" becomes a thirty-second question instead of a three-day project.\n\nOne price logic. If your vendor prices India per employee and the Gulf as a custom quote, you can't forecast software cost as you grow. Per-employee-per-month pricing in both regions is the only structure that scales predictably with hiring.",
+      },
+      {
+        heading: "Why the big names don't solve this",
+        body:
+          "The popular options each fail a different bar — and you can verify this from their own sites and their own customers' reviews.\n\nKeka is a polished product with strong brand presence in India, and it's priced accordingly: a base platform fee plus a published rate of roughly ₹89–99 per employee per month at the entry tier. But its center of gravity is India. If your Gulf entity is more than a rounding error, you're back to a second system. See our Keka alternative comparison for a feature-by-feature view.\n\ngreytHR has genuine Indian compliance depth and decades of history, and it does sell in the Middle East. But its own customer reviews across G2 and Capterra tell a consistent story: an India-first build, a dated interface in places, and support that's hard to escalate when something breaks mid-payroll. Cross-country operations are exactly where those gaps cost the most.\n\nGCC-focused tools handle WPS competently but typically publish no pricing, carry thin track records with companies above a couple hundred employees, and have no real answer for Indian statutory filings.\n\nThe pattern: India-first tools treat the Gulf as an export market, and Gulf-first tools treat India the same way. The 300-person company operating seriously in both is nobody's core customer — which is why it's ours.",
+      },
+      {
+        heading: "What should dual-country HR software cost?",
+        body:
+          "Expect per-employee-per-month pricing in both currencies, published openly. Our own pricing runs ₹60–125 PEPM in India and AED 6–12 PEPM in the Gulf depending on tier — full hire-to-retire scope, both compliance regimes included, no platform fee underneath.\n\nFor a 300-person company split across both countries, that's a software bill you can calculate on the back of a napkin before you ever talk to sales. Compare that with assembling a quote from a base fee plus slabs, or waiting on a \"contact us\" form, and the difference in respect for your time is the point.",
+      },
+      {
+        heading: "How fast can you switch?",
+        body:
+          "This is the question vendors avoid, so here's a direct answer: for organizations between 200 and 400 employees, our standard implementation is two weeks. Data migration, both countries' payroll configuration, parallel run, go-live. Fourteen days, not a quarter.\n\n▸▸ PROOF SLOT — REQUIRED BEFORE PUBLISHING: one named customer, headcount, go-live duration, one-sentence quote. This paragraph is the article's spine; without it the claim is unverified. Currently no quote on file.\n\nIf your renewal with an incumbent is more than a month away, you have time to switch before it.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can one HRMS handle both PF/ESI in India and WPS in the UAE?",
+        answer:
+          "Yes, but only if both compliance engines are native to the product rather than added through partners or workarounds. Ask the vendor to demo an India payslip and a UAE WPS file generated from the same employee database in the same session.",
+      },
+      {
+        question: "What size company needs a dual-country HRMS?",
+        answer:
+          "The pain typically becomes structural between 150 and 400 employees — large enough that two parallel systems create real reconciliation work and compliance exposure, but well below the size where enterprise platforms like SAP or Workday make financial sense.",
+      },
+      {
+        question: "How long does HRMS implementation take for a 300-employee company?",
+        answer:
+          "Industry rollouts commonly run one to three months. Our standard for 200–400 employee organizations is two weeks, including dual-country payroll configuration and a parallel run.",
+      },
+      {
+        question: "What does HR software cost per employee in India and the UAE?",
+        answer:
+          "Published per-employee rates in this segment range from roughly ₹60 to ₹125 PEPM in India and AED 6 to 12 in the Gulf, depending on tier. Be cautious with vendors whose pricing requires a sales call to discover — the number is rarely lower for the suspense.",
+      },
+    ],
   }),
 };
 

@@ -1,5 +1,5 @@
 import { BlogPost } from "@/types";
-import { ARTICLE_POSTS } from "@/data/article-posts";
+import { getPublishedArticles } from "@/data/article-posts";
 import { blogImageForSlug } from "@/data/blog-images";
 
 /** Map article categories to blog hub filter labels. */
@@ -141,7 +141,7 @@ const LEGACY_BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-const seoArticles: BlogPost[] = Object.values(ARTICLE_POSTS).map((article) => ({
+const seoArticles: BlogPost[] = getPublishedArticles().map((article) => ({
   _id: `seo-${article.slug}`,
   title: article.headline,
   excerpt: article.metaDescription,
