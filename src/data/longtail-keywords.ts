@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/seo/schema";
+import { LONGTAIL_EXPANSION } from "./longtail-expansion";
 
 export type LongtailConfig = {
   slug: string;
@@ -728,6 +729,7 @@ export const LONGTAIL_PAGES: Record<string, LongtailConfig> = {
       { label: "Payroll software KSA", href: "/solutions/payroll-software-ksa" },
     ],
   },
+  ...LONGTAIL_EXPANSION,
 };
 
 export const LONGTAIL_SLUGS = Object.keys(LONGTAIL_PAGES);

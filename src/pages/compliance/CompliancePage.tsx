@@ -8,7 +8,7 @@ import { RelatedLinks } from "@/components/geo/RelatedLinks";
 import { AiContentBlock } from "@/components/geo/AiContentBlock";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
-import { breadcrumbSchema } from "@/seo/schema";
+import { breadcrumbSchema, howToSchema } from "@/seo/schema";
 import { CheckCircle } from "lucide-react";
 import NotFound from "@/pages/NotFound";
 
@@ -17,6 +17,15 @@ const CompliancePage = () => {
   const page = slug ? PAYROLL_COMPLIANCE[slug] : undefined;
 
   if (!page) return <NotFound />;
+
+  const howTo = howToSchema({
+    name: `${page.country} payroll compliance steps`,
+    description: page.directAnswer,
+    steps: page.complianceSteps.map((step, i) => ({
+      name: `Step ${i + 1}`,
+      text: step,
+    })),
+  });
 
   return (
     <PageShell
@@ -30,6 +39,7 @@ const CompliancePage = () => {
           { name: "Compliance", path: "/compliance" },
           { name: page.country, path: page.path },
         ]),
+        howTo,
       ]}
     >
       <div className="min-h-screen bg-background">

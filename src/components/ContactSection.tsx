@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone, MapPin } from "lucide-react";
@@ -25,7 +24,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
     email: "",
     phone: "",
     companyName: "",
-    message: "",
+    companySize: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -48,7 +47,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
       email: formData.email,
       phone: formData.phone,
       companyName: formData.companyName,
-      jobTitle: formData.message,
+      jobTitle: `Company size: ${formData.companySize}`,
       source: buildUtmSource("contact"),
     });
 
@@ -66,7 +65,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
         email: "",
         phone: "",
         companyName: "",
-        message: "",
+        companySize: "",
       });
     } else {
       const errorText = await res.text();
@@ -186,18 +185,28 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
                     </div>
                   </div>
 
-                  {/* Message */}
+                  {/* Company size */}
                   <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Your Message"
-                      rows={5}
-                      className="mt-2"
-                    />
+                    <Label htmlFor="companySize">
+                      Company size <span className="required-asterisk">*</span>
+                    </Label>
+                    <select
+                      id="companySize"
+                      name="companySize"
+                      required
+                      value={formData.companySize}
+                      onChange={(e) =>
+                        setFormData({ ...formData, companySize: e.target.value })
+                      }
+                      className="mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    >
+                      <option value="">Select employee count</option>
+                      <option value="1-50">1–50 employees</option>
+                      <option value="51-200">51–200 employees</option>
+                      <option value="201-500">201–500 employees</option>
+                      <option value="501-1000">501–1,000 employees</option>
+                      <option value="1000+">1,000+ employees</option>
+                    </select>
                   </div>
 
                   <Button

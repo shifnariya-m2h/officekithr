@@ -5,6 +5,10 @@ import { COMPARISONS_NEW } from "@/data/comparisons-new";
 import { PAYROLL_COMPLIANCE } from "@/data/payroll-compliance";
 import { LONGTAIL_PAGES } from "@/data/longtail-keywords";
 import { INDUSTRY_PAGES } from "@/data/industry-verticals";
+import { KNOWLEDGE_PAGES } from "@/data/knowledge-pages";
+import { TOOL_PAGES } from "@/data/tools-config";
+import { GUIDE_PAGES } from "@/data/guide-pages";
+import { ARTICLE_POSTS } from "@/data/article-posts";
 import { SITE } from "./site-config";
 
 export type RouteSeoConfig = {
@@ -247,6 +251,53 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
     path: p.path,
     title: p.title,
     description: p.metaDescription,
+  })),
+  // Knowledge entity pages
+  ...Object.values(KNOWLEDGE_PAGES).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  // Interactive tools
+  ...Object.values(TOOL_PAGES).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  {
+    path: "/tools",
+    title: "Free HR & Payroll Tools | OfficeKit HR",
+    description:
+      "PF/ESI calculator, UAE gratuity calculator, HRMS ROI calculator, and WPS file checker for India and GCC HR teams.",
+  },
+  {
+    path: "/knowledge",
+    title: "HR & Payroll Knowledge Base | OfficeKit HR",
+    description:
+      "Authoritative entity pages on OfficeKit HR, India+GCC payroll, and UAE WPS compliance for search and AI engines.",
+  },
+  {
+    path: "/customers",
+    title: "Customer Success Stories | OfficeKit HR",
+    description:
+      "Case studies from Lulu International Exchange, Thai Group, Midac Electronics and 500+ companies using OfficeKit HR.",
+  },
+  {
+    path: "/guides",
+    title: "HR & Payroll Guides | OfficeKit HR",
+    description:
+      "Buyer guides, migration playbooks, and compliance checklists for India and GCC HR teams.",
+  },
+  ...Object.values(GUIDE_PAGES).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+  })),
+  ...Object.values(ARTICLE_POSTS).map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.metaDescription,
+    type: "article" as const,
   })),
   // Compliance hub
   {

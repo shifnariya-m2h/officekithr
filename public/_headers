@@ -38,3 +38,9 @@
 
 /robots.txt
   Cache-Control: public, max-age=86400
+
+/ai-index.txt
+  Cache-Control: public, max-age=86400
+
+/llms.txt
+  Cache-Control: public, max-age=86400

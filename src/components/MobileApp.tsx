@@ -20,7 +20,7 @@ function MobileApp() {
   );
 
   return (
-    <section className="pt-12 sm:pt-16 lg:pt-p-tursioury pb-20 sm:pb-24 lg:pb-mb-common bg-[#01004f] min-h-screen lg:h-[1140px]">
+    <section className="pt-12 sm:pt-16 lg:pt-p-tursioury pb-20 sm:pb-24 lg:pb-mb-common bg-[#01004f] lg:min-h-[1140px] [content-visibility:auto] [contain-intrinsic-size:1px_900px]">
       <div className="max-w-7xl relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-20 lg:mb-32">
           <Badge className="bg-transparent font-normal py-2 text-white mb-4 border-2 border-[#f1f1f1] hover:bg-transparent">

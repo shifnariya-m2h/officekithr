@@ -1,6 +1,7 @@
 # Cloudflare Pages / Netlify redirects
 http://officekithr.com/* https://www.officekithr.com/:splat 301!
 https://officekithr.com/* https://www.officekithr.com/:splat 301!
+http://www.officekithr.com/* https://www.officekithr.com/:splat 301!
 
 # Trailing slash → canonical (no slash)
 /*/ /:splat 301!

@@ -2,7 +2,8 @@ import { ReactNode, useMemo } from "react";
 import { PageJsonLd } from "@/components/PageJsonLd";
 import { usePageSeo } from "./SeoContext";
 import type { FaqItem } from "./schema";
-import { faqPageSchema } from "./schema";
+import { faqPageSchema, speakableSchema } from "./schema";
+import { absoluteUrl } from "./site-config";
 
 type PageShellProps = {
   children: ReactNode;
@@ -31,7 +32,18 @@ export function PageShell({
   usePageSeo(seoConfig);
 
   const faqNode = faqs?.length ? faqPageSchema(faqs) : null;
-  const pageNodes = [...schemaNodes, ...(faqNode ? [faqNode] : [])];
+  const speakableNode =
+    faqs?.length && path
+      ? speakableSchema({
+          url: absoluteUrl(path),
+          cssSelectors: ["#page-faq-heading", ".geo-faq-answer", ".direct-answer"],
+        })
+      : null;
+  const pageNodes = [
+    ...schemaNodes,
+    ...(faqNode ? [faqNode] : []),
+    ...(speakableNode ? [speakableNode] : []),
+  ];
 
   return (
     <>

@@ -1,82 +1,84 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LazyContainerScroll } from "@/components/ui/LazyContainerScroll";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { HERO_IMAGES } from "@/lib/seo/assets";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+
+const TRUST_PILLS = [
+  "500+ companies",
+  "From ₹99/user/month",
+  "WPS & GOSI native",
+] as const;
 
 const HeroSection = () => {
-  const isDesktopHero = useMediaQuery("(min-width: 768px)", false);
   const titleBlock = (
-    <div className="text-center w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-30 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-      <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 tracking-tight px-2">
+    <div className="text-center w-full max-w-3xl lg:max-w-4xl mx-auto px-4 sm:px-6 relative z-30">
+      <h1 className="text-[1.75rem] leading-[1.15] min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold text-white tracking-tight mb-5 md:mb-7">
         AI-Powered HRMS for{" "}
-        <span className="text-white font-bold">India, UAE &amp; GCC Payroll</span>
+        <span className="text-white">India, UAE &amp; GCC Payroll</span>
       </h1>
-      <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg lg:text-xl text-white mb-4 sm:mb-6 md:mb-8 lg:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
+
+      <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-6 md:mb-8">
         Recruitment, attendance, statutory payroll, and WPS compliance on one
         platform — built for mid-market teams scaling across India and the Gulf.
       </p>
-      <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center px-2">
+
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 md:mb-10">
+        {TRUST_PILLS.map((pill) => (
+          <span
+            key={pill}
+            className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] sm:text-xs text-white/90 backdrop-blur-sm"
+          >
+            {pill}
+          </span>
+        ))}
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto">
         <Button
           asChild
-          className="bg-white !rounded-lg text-[#0055ff] hover:bg-white/90 h-11 sm:h-11 md:h-11 px-5 sm:px-6 md:px-8 group font-semibold w-full sm:w-auto max-w-xs sm:max-w-none text-xs sm:text-sm md:text-base"
+          className="bg-white !rounded-xl text-[#0055ff] hover:bg-white/90 h-11 sm:h-12 px-6 sm:px-8 group font-semibold w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-black/10"
         >
           <Link to="/contact">
             Schedule Demo
-            <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </Button>
+        <Button
+          asChild
+          variant="outline"
+          className="text-white border-white/50 hover:border-white bg-white/5 hover:bg-white/10 !rounded-xl h-11 sm:h-12 px-6 sm:px-8 transition-all duration-300 group text-sm sm:text-base font-medium w-full sm:w-auto"
+        >
+          <Link to="/pricing">
+            See Pricing
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </Button>
+      </div>
+
+      <div className="mt-5 md:mt-6">
         <Link
           to="https://www.youtube.com/watch?v=Tposa0O5s_k"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center text-white border border-transparent hover:border-white bg-transparent hover:bg-white/10 !rounded-lg px-5 sm:px-6 md:px-8 h-[40px] sm:h-[42px] md:h-[44px] transition-all duration-300 group text-xs sm:text-sm md:text-base font-medium w-full sm:w-auto max-w-xs sm:max-w-none"
+          className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors group"
         >
-          <span>Watch Overview</span>
-          <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-1" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/10 group-hover:bg-white/15">
+            <Play className="h-3.5 w-3.5 fill-white text-white ml-0.5" />
+          </span>
+          Watch product overview
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
     </div>
   );
 
-  const heroImages = isDesktopHero ? (
-    <OptimizedImage
-      src={HERO_IMAGES.desktop.src}
-      srcSet={HERO_IMAGES.desktop.srcSet}
-      sizes={HERO_IMAGES.desktop.sizes}
-      alt={HERO_IMAGES.desktop.alt}
-      width={HERO_IMAGES.desktop.width}
-      height={HERO_IMAGES.desktop.height}
-      className="h-full w-full object-contain"
-      fetchPriority="high"
-      loading="eager"
-      decoding="async"
-      draggable={false}
-    />
-  ) : (
-    <OptimizedImage
-      src="/mobile-mockup-240.webp"
-      srcSet="/mobile-mockup-240.webp 240w, /mobile-mockup-320.webp 320w"
-      sizes="240px"
-      alt={HERO_IMAGES.mobile.alt}
-      width={HERO_IMAGES.mobile.width}
-      height={HERO_IMAGES.mobile.height}
-      className="h-full w-full object-contain"
-      fetchPriority="high"
-      loading="eager"
-      decoding="async"
-      draggable={false}
-    />
-  );
-
   return (
     <section
-      className="relative rounded-b-3xl overflow-hidden min-h-screen flex flex-col pb-0 bg-[#01004f]"
+      className="relative rounded-b-3xl overflow-hidden flex flex-col bg-[#01004f] pb-10 sm:pb-14 md:pb-20"
       style={{
-        backgroundImage:
-          "linear-gradient(160deg, #0055ff 0%, #01004f 55%)",
+        backgroundImage: "linear-gradient(160deg, #0055ff 0%, #01004f 55%)",
       }}
     >
       <OptimizedImage
@@ -86,15 +88,34 @@ const HeroSection = () => {
         alt=""
         width={HERO_IMAGES.heroBg.width}
         height={HERO_IMAGES.heroBg.height}
-        className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+        className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none opacity-90"
         fetchPriority="high"
         loading="eager"
         decoding="async"
         decorative
       />
-      <div className="relative z-10 flex flex-col flex-1">
+      <div className="relative z-10 flex flex-col">
         <LazyContainerScroll titleComponent={titleBlock}>
-          {heroImages}
+          <picture className="block h-full w-full">
+            <source
+              media="(min-width: 768px)"
+              srcSet={HERO_IMAGES.desktop.srcSet}
+              sizes={HERO_IMAGES.desktop.sizes}
+            />
+            <img
+              src={HERO_IMAGES.mobile.src}
+              srcSet={HERO_IMAGES.mobile.srcSet}
+              sizes={HERO_IMAGES.mobile.sizes}
+              alt={HERO_IMAGES.mobile.alt}
+              width={HERO_IMAGES.mobile.width}
+              height={HERO_IMAGES.mobile.height}
+              className="h-full w-full object-contain object-bottom"
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              draggable={false}
+            />
+          </picture>
         </LazyContainerScroll>
       </div>
     </section>

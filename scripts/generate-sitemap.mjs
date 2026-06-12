@@ -6,6 +6,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { loadViteEnv } from "./load-env.mjs";
+import { EXTRA_SEO_PATHS } from "./seo-extra-paths.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -121,6 +122,28 @@ const STATIC_PATHS = [
   "/industries/hrms-for-education",
   "/industries/hrms-for-logistics",
   "/industries/hrms-for-bfsi",
+  "/customers",
+  "/tools",
+  "/tools/pf-esi-calculator",
+  "/tools/gratuity-calculator-uae",
+  "/tools/hrms-roi-calculator",
+  "/tools/wps-file-checker",
+  "/knowledge",
+  "/knowledge/officekit-hr",
+  "/knowledge/india-gcc-payroll",
+  "/knowledge/wps-compliance",
+  "/solutions/hrms-software-pune",
+  "/solutions/hrms-software-ahmedabad",
+  "/solutions/payroll-software-abu-dhabi",
+  "/solutions/payroll-software-jeddah",
+  "/compare/hrone-alternative",
+  "/compare/razorpayx-payroll-alternative",
+  "/compare/horilla-alternative",
+  "/compare/sumhr-alternative",
+  "/industries/hrms-for-manufacturing",
+  "/industries/hrms-for-it-services",
+  "/industries/hrms-for-healthcare",
+  "/industries/hrms-for-real-estate",
 ];
 
 const PRIORITY = {
@@ -180,6 +203,28 @@ const PRIORITY = {
   "/industries/hrms-for-education": "0.82",
   "/industries/hrms-for-logistics": "0.82",
   "/industries/hrms-for-bfsi": "0.82",
+  "/customers": "0.85",
+  "/tools": "0.84",
+  "/tools/pf-esi-calculator": "0.83",
+  "/tools/gratuity-calculator-uae": "0.83",
+  "/tools/hrms-roi-calculator": "0.84",
+  "/tools/wps-file-checker": "0.83",
+  "/knowledge": "0.82",
+  "/knowledge/officekit-hr": "0.88",
+  "/knowledge/india-gcc-payroll": "0.86",
+  "/knowledge/wps-compliance": "0.86",
+  "/solutions/hrms-software-pune": "0.84",
+  "/solutions/hrms-software-ahmedabad": "0.84",
+  "/solutions/payroll-software-abu-dhabi": "0.85",
+  "/solutions/payroll-software-jeddah": "0.85",
+  "/compare/hrone-alternative": "0.80",
+  "/compare/razorpayx-payroll-alternative": "0.80",
+  "/compare/horilla-alternative": "0.78",
+  "/compare/sumhr-alternative": "0.78",
+  "/industries/hrms-for-manufacturing": "0.82",
+  "/industries/hrms-for-it-services": "0.82",
+  "/industries/hrms-for-healthcare": "0.82",
+  "/industries/hrms-for-real-estate": "0.80",
 };
 
 function slugify(title) {
@@ -242,7 +287,7 @@ function urlEntry(path, priority = "0.7", changefreq = "monthly") {
 }
 
 const { paths: dynamicPaths, manifest } = await fetchDynamicBlogs();
-const allPaths = [...new Set([...STATIC_PATHS, ...dynamicPaths])];
+const allPaths = [...new Set([...STATIC_PATHS, ...EXTRA_SEO_PATHS, ...dynamicPaths])];
 
 /**
  * Prerender route list (separate from sitemap URL count).
@@ -272,16 +317,11 @@ ${urls}
 `;
 
 const robots = `# Robots.txt — generated ${today}
+# IMPORTANT: Disable Cloudflare "Managed robots.txt" in dashboard — it blocks AI crawlers.
 # https://www.officekithr.com/llms.txt — LLM-readable site summary
-# Cloudflare: disable "Managed robots.txt" so these rules are not overridden.
+# https://www.officekithr.com/ai-index.txt — AI citation priority URLs
 
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-
-# AI search & answer engine crawlers (content allowed for retrieval/citation)
+# AI crawlers — explicit allow (must appear before any Disallow for same agent)
 User-agent: GPTBot
 Allow: /
 
@@ -289,6 +329,9 @@ User-agent: ChatGPT-User
 Allow: /
 
 User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: anthropic-ai
@@ -312,11 +355,70 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
 Sitemap: ${SITE}/sitemap.xml
+`;
+
+const aiIndex = `# OfficeKit HR — AI Index
+# Priority URLs for AI search citation and retrieval
+# Last updated: ${today}
+# Full summary: ${SITE}/llms.txt
+# Full content: ${SITE}/llms-full.txt
+
+## Entity
+${SITE}/knowledge/officekit-hr
+
+## Solutions
+${SITE}/hrms-software-india
+${SITE}/payroll-software-uae
+${SITE}/wps-compliance-software
+${SITE}/solutions/ai-hr-software-gcc
+${SITE}/knowledge/india-gcc-payroll
+${SITE}/knowledge/wps-compliance
+
+## Comparisons
+${SITE}/compare/keka-alternative
+${SITE}/compare/zoho-people-alternative
+${SITE}/officekit-vs-greythr
+${SITE}/compare/darwinbox-alternative
+${SITE}/compare/bayzat-alternative
+
+## Tools
+${SITE}/tools/pf-esi-calculator
+${SITE}/tools/gratuity-calculator-uae
+${SITE}/tools/hrms-roi-calculator
+${SITE}/tools/wps-file-checker
+
+## Compliance
+${SITE}/compliance/india-payroll-compliance
+${SITE}/compliance/uae-payroll-compliance
+${SITE}/compliance/ksa-payroll-compliance
+
+## Guides
+${SITE}/guides
+${SITE}/guides/hrms-buyer-guide-india-2026
+${SITE}/guides/migrate-from-greythr
+${SITE}/guides/wps-compliance-checklist-uae
+
+## Blog (SEO articles)
+${SITE}/resources/blogs/wps-compliance-guide-2026
+${SITE}/resources/blogs/choose-hrms-india-gcc
+${SITE}/resources/blogs/pf-esi-guide-indian-employers
+
+## Conversion
+${SITE}/pricing
+${SITE}/customers
+${SITE}/contact
 `;
 
 writeFileSync(join(PUBLIC, "sitemap.xml"), sitemap, "utf8");
 writeFileSync(join(PUBLIC, "robots.txt"), robots, "utf8");
+writeFileSync(join(PUBLIC, "ai-index.txt"), aiIndex, "utf8");
 writeFileSync(
   join(PUBLIC, "blog-seo-manifest.json"),
   JSON.stringify(manifest, null, 2),

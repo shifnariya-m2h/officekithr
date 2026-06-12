@@ -10,7 +10,6 @@ import { BackToTopButton } from "@/components/BackToTopButton";
 import GoogleAdsWrapper from "./GoogleAdsWrapper";
 import { SeoProvider } from "@/seo/SeoContext";
 import { SeoHead } from "@/seo/SeoHead";
-import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
 import { LegacyRedirect } from "@/components/LegacyRedirect";
 import { LEGACY_REDIRECTS } from "@/seo/canonical-paths";
@@ -75,8 +74,22 @@ const CompliancePage = lazy(() => import("./pages/compliance/CompliancePage"));
 const LongtailHub = lazy(() => import("./pages/longtail/LongtailHub"));
 const LongtailPage = lazy(() => import("./pages/longtail/LongtailPage"));
 const IndustryPage = lazy(() => import("./pages/industries/IndustryPage"));
+const Customers = lazy(() => import("./pages/Customers"));
+const ToolsHub = lazy(() => import("./pages/tools/ToolsHub"));
+const ToolPage = lazy(() => import("./pages/tools/ToolPage"));
+const KnowledgeIndex = lazy(() => import("./pages/knowledge/KnowledgePage"));
+const KnowledgeSlugPage = lazy(() => import("./pages/knowledge/KnowledgeHub"));
+const GuidesHub = lazy(() => import("./pages/guides/GuidesHub"));
+const GuidePage = lazy(() => import("./pages/guides/GuidePage"));
+const ArticlePostPage = lazy(() => import("./pages/articles/ArticlePostPage"));
 const HRPopup = lazy(() =>
   import("./components/HRPopup").then((m) => ({ default: m.HRPopup }))
+);
+const StickyDemoCta = lazy(() =>
+  import("@/components/StickyDemoCta").then((m) => ({ default: m.StickyDemoCta }))
+);
+const CookieConsent = lazy(() =>
+  import("@/components/CookieConsent").then((m) => ({ default: m.CookieConsent }))
 );
 
 function PageLoader() {
@@ -113,8 +126,7 @@ const AppRoutes = () => {
     >
       <SkipLink />
       <SeoHead />
-      {/* Cookie banner can visually block the HR popup form on small screens. */}
-      {!isPopupOpen && <CookieConsent />}
+      <DeferredChrome isPopupOpen={isPopupOpen} />
       <DeferredAnalytics />
       <DeferredSyncoraTrack />
       <DeferredSupportChat />
@@ -249,6 +261,15 @@ const AppRoutes = () => {
           {/* Industry vertical pages */}
           <Route path="/industries/:slug" element={<IndustryPage />} />
 
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/tools" element={<ToolsHub />} />
+          <Route path="/tools/:slug" element={<ToolPage />} />
+          <Route path="/knowledge" element={<KnowledgeIndex />} />
+          <Route path="/knowledge/:slug" element={<KnowledgeSlugPage />} />
+          <Route path="/guides" element={<GuidesHub />} />
+          <Route path="/guides/:slug" element={<GuidePage />} />
+          <Route path="/resources/blogs/:slug" element={<ArticlePostPage />} />
+
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -256,6 +277,45 @@ const AppRoutes = () => {
     </LanguageProvider>
   );
 };
+
+function DeferredChrome({ isPopupOpen }: { isPopupOpen: boolean }) {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const mount = () => {
+      if (!cancelled) setReady(true);
+    };
+    const timeoutId = window.setTimeout(mount, 2500);
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(mount, { timeout: 2500 });
+      return () => {
+        cancelled = true;
+        window.clearTimeout(timeoutId);
+        window.cancelIdleCallback(idleId);
+      };
+    }
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  if (!ready) return null;
+
+  return (
+    <>
+      {!isPopupOpen && (
+        <Suspense fallback={null}>
+          <CookieConsent />
+        </Suspense>
+      )}
+      <Suspense fallback={null}>
+        <StickyDemoCta />
+      </Suspense>
+    </>
+  );
+}
 
 function DeferredAnalytics() {
   const [on, setOn] = useState(false);

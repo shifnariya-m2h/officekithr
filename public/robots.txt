@@ -1,14 +1,9 @@
-# Robots.txt — generated 2026-06-09
+# Robots.txt — generated 2026-06-12
+# IMPORTANT: Disable Cloudflare "Managed robots.txt" in dashboard — it blocks AI crawlers.
 # https://www.officekithr.com/llms.txt — LLM-readable site summary
-# Cloudflare: disable "Managed robots.txt" so these rules are not overridden.
+# https://www.officekithr.com/ai-index.txt — AI citation priority URLs
 
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-
-# AI search & answer engine crawlers (content allowed for retrieval/citation)
+# AI crawlers — explicit allow (must appear before any Disallow for same agent)
 User-agent: GPTBot
 Allow: /
 
@@ -16,6 +11,9 @@ User-agent: ChatGPT-User
 Allow: /
 
 User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: anthropic-ai
@@ -38,5 +36,11 @@ Allow: /
 
 User-agent: CCBot
 Allow: /
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
 
 Sitemap: https://www.officekithr.com/sitemap.xml

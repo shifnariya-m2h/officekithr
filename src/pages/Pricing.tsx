@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import { CANONICAL } from "@/seo/canonical-paths";
+import { TrustBadges } from "@/components/TrustBadges";
+
+import { SITE_PRICING, formatIndiaPrice, formatGccPrice } from "@/data/site-pricing";
 
 const PRICING_HEADSET_IMAGE = "/pricing-headset.webp";
 
@@ -12,7 +15,9 @@ const PLANS = [
   {
     name: "Silver",
     tier: "silver" as const,
-    description: "Core HR for small teams getting started",
+    description: SITE_PRICING.plans[0].description,
+    indiaFrom: SITE_PRICING.plans[0].indiaFrom,
+    gccFrom: SITE_PRICING.plans[0].gccFrom,
     highlights: [
       "Core HR & employee records",
       "Attendance & leave",
@@ -25,7 +30,9 @@ const PLANS = [
   {
     name: "Gold",
     tier: "gold" as const,
-    description: "HR for small and medium teams scaling operations",
+    description: SITE_PRICING.plans[1].description,
+    indiaFrom: SITE_PRICING.plans[1].indiaFrom,
+    gccFrom: SITE_PRICING.plans[1].gccFrom,
     highlights: [
       "All features in Silver",
       "Multi-company",
@@ -37,7 +44,9 @@ const PLANS = [
   {
     name: "Platinum",
     tier: "platinum" as const,
-    description: "HR for organizations with complete automations",
+    description: SITE_PRICING.plans[2].description,
+    indiaFrom: SITE_PRICING.plans[2].indiaFrom,
+    gccFrom: SITE_PRICING.plans[2].gccFrom,
     highlights: [
       "All features in Gold",
       "Travel management",
@@ -94,8 +103,8 @@ const Pricing = () => {
             <span className="gradient-text">India &amp; GCC</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Modular per-user plans — pay only for the HR, payroll, and compliance
-            modules you need. Get a tailored quote for your team size and region.
+            Modular per-user plans from {formatIndiaPrice(99)}/user/month (India)
+            and {formatGccPrice(15)}/user/month (GCC). Pay only for the modules you need.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
@@ -123,6 +132,10 @@ const Pricing = () => {
         </div>
       </section>
 
+      <div className="pb-8">
+        <TrustBadges />
+      </div>
+
       {/* Plans */}
       <section className="py-16 md:py-20 border-t border-border">
         <div className="container mx-auto px-4">
@@ -131,8 +144,7 @@ const Pricing = () => {
               Plans that scale with you
             </h2>
             <p className="text-muted-foreground">
-              Every plan is modular. Contact us for a quote based on headcount,
-              countries, and enabled modules.
+              Transparent starting prices. Volume discounts for 200+ employees.
             </p>
           </div>
 
@@ -157,11 +169,12 @@ const Pricing = () => {
                   <p className="text-sm text-muted-foreground mt-4 mb-6 min-h-[2.5rem]">
                     {plan.description}
                   </p>
-                  <p className="text-2xl font-semibold text-foreground mb-6">
-                    Custom quote
-                    <span className="block text-sm font-normal text-muted-foreground mt-1">
-                      Per user / month · modular
-                    </span>
+                  <p className="text-2xl font-semibold text-foreground mb-1">
+                    {formatIndiaPrice(plan.indiaFrom)}
+                    <span className="text-base font-normal text-muted-foreground">/user/mo</span>
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    India · from {formatGccPrice(plan.gccFrom)}/user/mo in GCC
                   </p>
                   <ul className="space-y-3 flex-1 mb-8">
                     {plan.highlights.map((item) => (

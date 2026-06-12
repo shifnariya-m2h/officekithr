@@ -66,6 +66,20 @@ function dedupeSeoHead(html) {
 }
 
 async function waitForRoute(page, route) {
+  if (route === "/") {
+    await page.waitForSelector("#trusted-companies-heading", { timeout: 20000 });
+    await page.waitForSelector("#faq-heading", { timeout: 20000 });
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(1200);
+    return;
+  }
+
+  if (route === "/ae") {
+    await page.waitForSelector("main, h1, [data-uae-content]", { timeout: 15000 }).catch(() => {});
+    await new Promise((r) => setTimeout(r, 400));
+    return;
+  }
+
   if (route.startsWith("/blog/")) {
     await Promise.race([
       page.waitForSelector("article h1", { timeout: 15000 }),

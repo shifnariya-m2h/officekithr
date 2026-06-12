@@ -42,7 +42,7 @@ export function GeoFaqSection({
               <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+              <AccordionContent className="geo-faq-answer text-muted-foreground pb-5 leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

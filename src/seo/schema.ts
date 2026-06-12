@@ -47,6 +47,13 @@ export function organizationSchema() {
       "Employee self-service",
     ],
     sameAs: [...SITE.sameAs],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "47",
+      bestRating: "5",
+      worstRating: "1",
+    },
   };
 }
 
@@ -89,11 +96,13 @@ export function softwareApplicationSchema() {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       url: `${SITE.url}/pricing`,
-      description: "Flexible per-user pricing; contact sales for enterprise quotes.",
+      description: "Modular per-user pricing from ₹99/user/month (India) and AED 15/user/month (GCC).",
       priceSpecification: {
         "@type": "PriceSpecification",
         priceCurrency: "INR",
-        price: "Contact sales",
+        minPrice: "99",
+        price: "99",
+        unitText: "per user per month",
       },
     },
     screenshot: {
@@ -242,6 +251,113 @@ export function breadcrumbSchema(
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+export function reviewSchema(input: {
+  aggregateRating: {
+    ratingValue: string;
+    reviewCount: string;
+    bestRating: string;
+    worstRating: string;
+  };
+  reviews: {
+    author: string;
+    reviewBody: string;
+    ratingValue: string;
+    publisher?: string;
+  }[];
+}) {
+  return {
+    "@type": "Product",
+    name: SITE.name,
+    description:
+      "AI-powered HRMS for recruitment, attendance, payroll, and compliance across India and the GCC.",
+    brand: { "@type": "Brand", name: SITE.name },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ...input.aggregateRating,
+    },
+    review: input.reviews.map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.author },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: r.ratingValue,
+        bestRating: input.aggregateRating.bestRating,
+      },
+      reviewBody: r.reviewBody,
+      ...(r.publisher
+        ? { publisher: { "@type": "Organization", name: r.publisher } }
+        : {}),
+    })),
+  };
+}
+
+export function videoObjectSchema(input: {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  contentUrl: string;
+  embedUrl: string;
+  duration?: string;
+}) {
+  return {
+    "@type": "VideoObject",
+    name: input.name,
+    description: input.description,
+    thumbnailUrl: input.thumbnailUrl,
+    uploadDate: input.uploadDate,
+    duration: input.duration ?? "PT3M",
+    contentUrl: input.contentUrl,
+    embedUrl: input.embedUrl,
+    publisher: { "@id": `${SITE.url}/#organization` },
+  };
+}
+
+export function howToSchema(input: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}) {
+  return {
+    "@type": "HowTo",
+    name: input.name,
+    description: input.description,
+    step: input.steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  };
+}
+
+export function itemListSchema(input: {
+  name: string;
+  items: { name: string; url: string }[];
+}) {
+  return {
+    "@type": "ItemList",
+    name: input.name,
+    itemListElement: input.items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url.startsWith("http") ? item.url : absoluteUrl(item.url),
+    })),
+  };
+}
+
+export function speakableSchema(input: { url: string; cssSelectors: string[] }) {
+  return {
+    "@type": "WebPage",
+    url: input.url,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: input.cssSelectors,
+    },
   };
 }
 

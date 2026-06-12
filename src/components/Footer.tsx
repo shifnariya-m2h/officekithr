@@ -51,8 +51,10 @@ const Footer = () => {
 
   const resourcesLinks = [
     { name: "Blog", href: "/resources/blogs" },
-    // { name: "Use Cases", href: "/resources/use-cases" },
-    // { name: "Community", href: "/resources/community" },
+    { name: "HR Guides", href: "/resources/guides" },
+    { name: "Knowledge Base", href: "/knowledge" },
+    { name: "Free Tools", href: "/tools" },
+    { name: "Customers", href: "/customers" },
   ];
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {

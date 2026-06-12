@@ -8,7 +8,7 @@ import { RelatedLinks } from "@/components/geo/RelatedLinks";
 import { AiContentBlock } from "@/components/geo/AiContentBlock";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
-import { breadcrumbSchema } from "@/seo/schema";
+import { breadcrumbSchema, itemListSchema } from "@/seo/schema";
 import { Check } from "lucide-react";
 import NotFound from "@/pages/NotFound";
 
@@ -30,6 +30,13 @@ const LongtailPage = () => {
           { name: "Resources", path: "/resources/blogs" },
           { name: page.h1, path: page.path },
         ]),
+        itemListSchema({
+          name: page.h1,
+          items: page.clusters.map((c, i) => ({
+            name: c.slice(0, 80),
+            url: `${page.path}#cluster-${i}`,
+          })),
+        }),
       ]}
     >
       <div className="min-h-screen bg-background">

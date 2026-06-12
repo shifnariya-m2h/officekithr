@@ -48,7 +48,7 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
   const primaryLocale = isUae ? "ar_AE" : "en_US";
   const alternateLocale = isUae ? "en_US" : "ar_AE";
   const primaryLang = isUae ? "ar" : "en";
-  const imageAlt = `${SITE.name} — ${title}`;
+  const imageAlt = title.includes(SITE.name) ? title : `${SITE.name} — ${title}`;
 
   return (
     <>
@@ -103,6 +103,7 @@ export function SeoHead({ jsonLdNodes = [] }: SeoHeadProps) {
         <meta name="ICBM" content="11.2588, 75.7804" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full site content" />
+        <link rel="alternate" type="text/plain" href="/ai-index.txt" title="AI citation index" />
         <meta name="language" content={primaryLang} />
         <meta name="classification" content="Human Resource Management Software" />
 

@@ -1,9 +1,21 @@
+import { lazy, Suspense, useEffect } from "react";
+import { HomePageSchema } from "@/components/HomePageSchema";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import { useEffect } from "react";
-import { HomeFaqSchema } from "@/components/HomeFaqSchema";
-import { LazySection } from "@/components/LazySection";
+import TrustedCompanies from "@/components/TrustedCompanies";
+import WhyOfficeKit from "@/components/WhyOfficeKit";
+import FeaturesSection from "@/components/FeaturesSection";
+import FAQSection from "@/components/FAQSection";
+import { DeferredMount } from "@/components/DeferredMount";
 import { HR_POPUP_SENTINEL_ID } from "@/hooks/useHrPopupTrigger";
+
+const TrustBadges = lazy(() =>
+  import("@/components/TrustBadges").then((m) => ({ default: m.TrustBadges }))
+);
+const MobileApp = lazy(() => import("@/components/MobileApp"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   useEffect(() => {
@@ -26,7 +38,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <HomeFaqSchema />
+      <HomePageSchema />
       <Navigation />
       <main id="main-content">
         <HeroSection />
@@ -35,37 +47,43 @@ const Index = () => {
           className="h-px w-full shrink-0 pointer-events-none"
           aria-hidden
         />
-        <LazySection
-          loader={() => import("@/components/TrustedCompanies")}
-          minHeight="14rem"
-          rootMargin="480px 0px"
-        />
-        <LazySection
-          loader={() => import("@/components/WhyOfficeKit")}
-          minHeight="20rem"
-        />
-        <LazySection
-          loader={() => import("@/components/FeaturesSection")}
-          minHeight="24rem"
-        />
-        <LazySection
-          loader={() => import("@/components/FAQSection")}
-          minHeight="20rem"
-        />
-        <LazySection
-          loader={() => import("@/components/MobileApp")}
-          minHeight="28rem"
-        />
-        <LazySection
-          loader={() => import("@/components/TestimonialsSection")}
-          minHeight="16rem"
-        />
-        <LazySection
-          loader={() => import("@/components/ContactSection")}
-          minHeight="20rem"
-        />
+        <TrustedCompanies />
+        <WhyOfficeKit />
+        <FeaturesSection />
+        <FAQSection />
+
+        <DeferredMount minHeight="120px">
+          <Suspense fallback={null}>
+            <div className="py-8">
+              <TrustBadges />
+            </div>
+          </Suspense>
+        </DeferredMount>
+
+        <DeferredMount minHeight="320px">
+          <Suspense fallback={null}>
+            <MobileApp />
+          </Suspense>
+        </DeferredMount>
+
+        <DeferredMount minHeight="280px">
+          <Suspense fallback={null}>
+            <TestimonialsSection />
+          </Suspense>
+        </DeferredMount>
+
+        <DeferredMount minHeight="360px">
+          <Suspense fallback={null}>
+            <ContactSection />
+          </Suspense>
+        </DeferredMount>
       </main>
-      <LazySection loader={() => import("@/components/Footer")} minHeight="12rem" />
+
+      <DeferredMount minHeight="200px">
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      </DeferredMount>
     </div>
   );
 };

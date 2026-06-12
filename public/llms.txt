@@ -1,5 +1,6 @@
 # OfficeKit HR — LLM-readable site summary
-> Last updated: 2026-05-27
+> Last updated: 2026-06-13
+> AI index: https://www.officekithr.com/ai-index.txt
 
 ## What is OfficeKit HR?
 
@@ -128,7 +129,7 @@ OfficeKit HR is an AI-powered HRMS (Human Resource Management System) for recrui
 
 ## Pricing Model
 
-Per-user per-month pricing with Starter, Growth, and Enterprise tiers. Modular features — pay only for what you use. Contact sales for enterprise quotes.
+Modular per-user pricing: Silver from ₹99/user/month (India) / AED 15 (GCC), Gold from ₹149/AED 22, Platinum from ₹199/AED 30. Volume discounts for 200+ employees. See /pricing and /tools/hrms-roi-calculator.
 
 ## Deployment
 
