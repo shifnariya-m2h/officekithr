@@ -47,7 +47,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
       email: formData.email,
       phone: formData.phone,
       companyName: formData.companyName,
-      jobTitle: `Company size: ${formData.companySize}`,
+      message__c: `Company size: ${formData.companySize}`,
       source: buildUtmSource("contact"),
     });
 

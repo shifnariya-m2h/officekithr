@@ -86,7 +86,6 @@ export const HRPopup: React.FC<HRPopupProps> = ({ onClose }) => {
         email: formData.email,
         phone: formData.phone,
         companyName: "",
-        jobTitle: "",
         source: POPUP_LEAD_SOURCE,
       });
 

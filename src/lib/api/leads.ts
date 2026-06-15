@@ -4,9 +4,10 @@ export interface SyncoraLeadPayload {
   name: string;
   email: string;
   companyName: string;
-  jobTitle: string;
   phone: string;
   source: string;
+  /** Optional Salesforce message field */
+  message__c?: string;
 }
 
 /** HR popup — fixed source label (no UTM). */
@@ -42,10 +43,14 @@ export async function submitLead(
     name: payload.name.trim(),
     email: payload.email.trim(),
     companyName: payload.companyName.trim(),
-    jobTitle: payload.jobTitle.trim(),
     phone: payload.phone.trim(),
     source: payload.source.trim(),
   };
+
+  const message = payload.message__c?.trim();
+  if (message) {
+    body.message__c = message;
+  }
 
   return fetch(env.syncoraLeadsUrl, {
     method: "POST",
