@@ -2,7 +2,7 @@
  * Post-build prerender: static HTML per route for crawlers + 404.html.
  */
 import { chromium } from "playwright";
-import { writeFileSync, mkdirSync, readFileSync, existsSync } from "fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync, copyFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { loadViteEnv } from "./load-env.mjs";
@@ -11,22 +11,32 @@ import { startStaticServer } from "./static-server.mjs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DIST = join(ROOT, "dist");
+const SPA_FALLBACK = join(DIST, "__spa_fallback.html");
 const PORT = Number(process.env.PRERENDER_PORT || 4173);
 const CONCURRENCY = Math.max(
   1,
-  Math.min(12, Number(process.env.PRERENDER_CONCURRENCY || 6))
+  Math.min(8, Number(process.env.PRERENDER_CONCURRENCY || 4))
 );
 const SITE = loadViteEnv(ROOT, "VITE_SITE_URL", "https://www.officekithr.com").replace(
   /\/$/,
   ""
 );
 
+const HOME_TITLE = "OfficeKit HR | AI-Powered HRMS for India, UAE & GCC";
+const HOME_H1_SNIPPET = "AI-Powered HRMS for";
+
 const routesFile = join(ROOT, "scripts", "prerender-routes.json");
 if (!existsSync(routesFile)) {
   console.error("[prerender] Missing prerender-routes.json — run generate-sitemap first.");
   process.exit(1);
 }
-const ROUTES = JSON.parse(readFileSync(routesFile, "utf8"));
+
+/** Homepage last so other routes never fall back to prerendered homepage HTML. */
+function sortRoutes(routes) {
+  const rest = routes.filter((r) => r !== "/");
+  return [...rest, "/"];
+}
+const ROUTES = sortRoutes(JSON.parse(readFileSync(routesFile, "utf8")));
 
 function writeHtml(route, html) {
   const outDir =
@@ -66,54 +76,83 @@ function dedupeSeoHead(html) {
 }
 
 async function waitForRoute(page, route) {
+  await page.waitForLoadState("domcontentloaded", { timeout: 45000 });
+
   if (route === "/") {
-    await page.waitForSelector("#trusted-companies-heading", { timeout: 20000 });
-    await page.waitForSelector("#faq-heading", { timeout: 20000 });
+    await page.waitForSelector("#trusted-companies-heading", { timeout: 30000 });
+    await page.waitForSelector("#faq-heading", { timeout: 30000 });
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(1200);
     return;
   }
 
   if (route === "/ae") {
-    await page.waitForSelector("main, h1, [data-uae-content]", { timeout: 15000 }).catch(() => {});
-    await new Promise((r) => setTimeout(r, 400));
+    await page.waitForSelector("h1", { timeout: 30000 });
+    await page.waitForTimeout(600);
     return;
   }
 
   if (route.startsWith("/blog/")) {
-    await Promise.race([
-      page.waitForSelector("article h1", { timeout: 15000 }),
-      page.waitForFunction(
-        () => {
-          const meta = document.querySelector('meta[name="description"]');
-          const title = document.title || "";
-          return (
-            (meta?.getAttribute("content")?.length ?? 0) > 20 &&
-            !title.startsWith("Loading")
-          );
-        },
-        { timeout: 8000 }
-      ),
-    ]).catch(() => {});
+    await page.waitForSelector("article h1, main h1", { timeout: 30000 });
     return;
   }
 
-  await page
-    .waitForFunction(
-      () => {
-        const title = document.title || "";
-        return title.length > 3 && !title.startsWith("Loading");
-      },
-      { timeout: 8000 }
-    )
-    .catch(() => {});
+  // Lazy chunks + Suspense: wait for visible H1 and meaningful body text.
+  await page.waitForSelector("h1", { timeout: 35000 });
+  await page.waitForFunction(
+    () => {
+      const root = document.getElementById("root");
+      const h1 = document.querySelector("h1");
+      const text = root?.innerText?.trim() ?? "";
+      return (
+        h1 &&
+        h1.innerText.trim().length > 8 &&
+        text.length > 250 &&
+        !text.startsWith("Loading")
+      );
+    },
+    { timeout: 35000 }
+  );
+
+  // Reject accidental homepage capture on inner routes.
+  const pathname = new URL(page.url()).pathname.replace(/\/$/, "") || "/";
+  if (pathname === route.replace(/\/$/, "") || pathname === route) {
+    const captured = await page.evaluate((homeH1) => {
+      const h1 = document.querySelector("h1")?.innerText ?? "";
+      const title = document.title ?? "";
+      return {
+        isHomeH1: h1.includes(homeH1) && h1.includes("GCC Payroll"),
+        isHomeTitle: title.includes("AI-Powered HRMS for India, UAE"),
+      };
+    }, HOME_H1_SNIPPET);
+
+    if (captured.isHomeH1 && captured.isHomeTitle && route !== "/") {
+      await page.waitForTimeout(2500);
+      const retry = await page.evaluate((homeH1) => {
+        const h1 = document.querySelector("h1")?.innerText ?? "";
+        return h1.includes(homeH1) && h1.includes("GCC Payroll");
+      }, HOME_H1_SNIPPET);
+      if (retry) {
+        throw new Error(
+          `${route}: captured homepage body — lazy route did not render (check Suspense/chunk load)`
+        );
+      }
+    }
+  }
 }
 
 async function renderRoute(page, route) {
   const url = `http://127.0.0.1:${PORT}${route}`;
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+  await page.goto(url, { waitUntil: "commit", timeout: 60000 });
   await waitForRoute(page, route);
-  writeHtml(route, normalizeHtml(await page.content()));
+  const html = normalizeHtml(await page.content());
+
+  const hasH1 = /<h1[\s>]/i.test(html);
+  if (route !== "/404" && !hasH1) {
+    throw new Error(`${route}: prerendered HTML missing <h1>`);
+  }
+
+  writeHtml(route, html);
 }
 
 async function runPool(browser, routes) {
@@ -144,9 +183,14 @@ async function main() {
     process.exit(1);
   }
 
+  // Vite shell before any route overwrites dist/index.html — used as SPA fallback during prerender.
+  copyFileSync(join(DIST, "index.html"), SPA_FALLBACK);
+
   console.log(`[prerender] ${ROUTES.length} routes, concurrency ${CONCURRENCY}`);
 
-  const httpServer = await startStaticServer(DIST, PORT);
+  const httpServer = await startStaticServer(DIST, PORT, {
+    fallbackFile: SPA_FALLBACK,
+  });
   const browser = await chromium.launch({ headless: true });
 
   try {
@@ -155,7 +199,7 @@ async function main() {
     const page = await browser.newPage();
     await page.goto(`http://127.0.0.1:${PORT}/this-route-does-not-exist-ok-seo-404`, {
       waitUntil: "domcontentloaded",
-      timeout: 20000,
+      timeout: 30000,
     });
     writeFileSync(
       join(DIST, "404.html"),
@@ -163,6 +207,14 @@ async function main() {
       "utf8"
     );
     await page.close();
+
+    try {
+      const { execSync } = await import("child_process");
+      execSync("node scripts/verify-prerender.mjs", { stdio: "inherit", cwd: ROOT });
+    } catch {
+      process.exit(1);
+    }
+
     console.log(`[prerender] Done — ${ROUTES.length} routes + 404.html`);
   } finally {
     await browser.close();
@@ -170,10 +222,11 @@ async function main() {
   }
 }
 
+const forceExitMs = Number(process.env.PRERENDER_FORCE_EXIT_MS || 45 * 60 * 1000);
 const forceExit = setTimeout(() => {
-  console.warn("[prerender] Force exit after timeout");
-  process.exit(0);
-}, 8000);
+  console.error("[prerender] Timed out — increase PRERENDER_FORCE_EXIT_MS if needed");
+  process.exit(1);
+}, forceExitMs);
 forceExit.unref();
 
 main()

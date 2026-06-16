@@ -17,7 +17,7 @@ export const GUIDE_PAGES = {
       },
       {
         heading: "Pricing models",
-        body: "Prefer per-user modular pricing (OfficeKit from ₹99/user/month) over bundled tiers that force unused modules. Calculate 3-year TCO including implementation and support.",
+        body: "Prefer per-user modular pricing over bundled tiers that force unused modules. Calculate 3-year TCO including implementation and support.",
       },
       {
         heading: "Compliance checklist",

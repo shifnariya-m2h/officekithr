@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from "react";
+import { ReactNode, useMemo, useEffect } from "react";
 import { PageJsonLd } from "@/components/PageJsonLd";
 import { usePageSeo } from "./SeoContext";
 import type { FaqItem } from "./schema";
@@ -30,6 +30,10 @@ export function PageShell({
     [title, description, path, ogImage, noindex, type]
   );
   usePageSeo(seoConfig);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-prerender-ready", "true");
+  }, []);
 
   const faqNode = faqs?.length ? faqPageSchema(faqs) : null;
   const speakableNode =

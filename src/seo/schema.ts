@@ -47,13 +47,6 @@ export function organizationSchema() {
       "Employee self-service",
     ],
     sameAs: [...SITE.sameAs],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "47",
-      bestRating: "5",
-      worstRating: "1",
-    },
   };
 }
 
@@ -96,8 +89,8 @@ export function softwareApplicationSchema() {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       url: `${SITE.url}/pricing`,
-      description: "Modular per-user pricing from ₹99/user/month (India) and AED 15/user/month (GCC).",
-      priceSpecification: {
+      description: "Modular per-user pricing.",
+      priceSpecification: { 
         "@type": "PriceSpecification",
         priceCurrency: "INR",
         minPrice: "99",

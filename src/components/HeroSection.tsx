@@ -7,7 +7,7 @@ import { HERO_IMAGES } from "@/lib/seo/assets";
 
 const TRUST_PILLS = [
   "500+ companies",
-  "From ₹99/user/month",
+  // "From ₹99/user/month",
   "WPS & GOSI native",
 ] as const;
 
@@ -106,7 +106,7 @@ const HeroSection = () => {
               src={HERO_IMAGES.mobile.src}
               srcSet={HERO_IMAGES.mobile.srcSet}
               sizes={HERO_IMAGES.mobile.sizes}
-              alt={HERO_IMAGES.mobile.alt}
+              alt={HERO_IMAGES.desktop.alt}
               width={HERO_IMAGES.mobile.width}
               height={HERO_IMAGES.mobile.height}
               className="h-full w-full object-contain object-bottom"

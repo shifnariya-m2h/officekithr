@@ -316,7 +316,9 @@ ${urls}
 </urlset>
 `;
 
-const robots = `# Robots.txt — generated ${today}
+const robots = `# IMPORTANT: In Cloudflare Dashboard → Scrape Shield → disable "Managed robots.txt"
+# (Managed rules prepend Disallow for GPTBot/ClaudeBot and block AI indexing.)
+# Robots.txt — generated ${today}
 # IMPORTANT: Disable Cloudflare "Managed robots.txt" in dashboard — it blocks AI crawlers.
 # https://www.officekithr.com/llms.txt — LLM-readable site summary
 # https://www.officekithr.com/ai-index.txt — AI citation priority URLs

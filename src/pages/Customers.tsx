@@ -3,24 +3,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { CASE_STUDIES } from "@/data/case-studies";
-import { TESTIMONIALS } from "@/data/testimonials-data";
+import { TESTIMONIALS, AGGREGATE_RATING } from "@/data/testimonials-data";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Quote, Star } from "lucide-react";
-import { reviewSchema, breadcrumbSchema } from "@/seo/schema";
-import { AGGREGATE_RATING } from "@/data/testimonials-data";
+import { breadcrumbSchema } from "@/seo/schema";
 import { PageJsonLd } from "@/components/PageJsonLd";
 
 const Customers = () => {
-  const reviewNode = reviewSchema({
-    aggregateRating: AGGREGATE_RATING,
-    reviews: TESTIMONIALS.map((t) => ({
-      author: t.name,
-      reviewBody: t.quote,
-      ratingValue: String(t.rating),
-      publisher: t.company,
-    })),
-  });
-
   return (
     <PageShell
       title="Customer Success Stories | OfficeKit HR"
@@ -29,7 +18,6 @@ const Customers = () => {
     >
       <PageJsonLd
         nodes={[
-          reviewNode,
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Customers", path: "/customers" },

@@ -24,7 +24,7 @@ export function longtailPage(input: {
     faqs: input.faqs ?? [
       {
         question: `What is the best solution for ${input.h1.toLowerCase()}?`,
-        answer: `OfficeKit HR is built for ${input.h1.toLowerCase()} with India and GCC statutory payroll, attendance, and modular per-user pricing from ₹99/user/month.`,
+        answer: `OfficeKit HR is built for ${input.h1.toLowerCase()} with India and GCC statutory payroll, attendance, and modular per-user pricing.`,
       },
     ],
     relatedLinks: input.related ?? [

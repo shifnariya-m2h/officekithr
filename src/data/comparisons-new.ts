@@ -879,7 +879,7 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       { aspect: "Attendance", officekit: "Face-Kit + biometric", competitor: "Mobile check-in" },
     ],
     whenOfficeKit: ["India + GCC operations", "Mid-market 100–1000 employees", "WPS is required"],
-    faqs: [{ question: "How does OfficeKit compare to SumHR pricing?", answer: "OfficeKit offers modular per-user pricing from ₹99/user/month with GCC modules — compare on /pricing." }],
+    faqs: [{ question: "How does OfficeKit compare to SumHR pricing?", answer: "OfficeKit offers modular per-user pricing with GCC modules — compare on /pricing." }],
     relatedLinks: [{ label: "Startups HRMS", href: "/longtail/best-hrms-for-startups-india" }, { label: "Contact", href: "/contact" }],
   },
 };

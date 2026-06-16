@@ -12,6 +12,7 @@
     "build:spa": "node scripts/generate-sitemap.mjs && vite build",
     "build:dev": "vite build --mode development",
     "seo:sitemap": "node scripts/generate-sitemap.mjs",
+    "seo:verify": "node scripts/verify-prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test:syncora-lead": "node scripts/test-syncora-lead.mjs"

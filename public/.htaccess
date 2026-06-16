@@ -2,13 +2,18 @@
 Options -MultiViews
 RewriteEngine On
 
+# Apex + www → canonical https://www.officekithr.com
+RewriteCond %{HTTP_HOST} ^officekithr\.com$ [NC]
+RewriteRule ^(.*)$ https://www.officekithr.com/$1 [L,R=301]
+
 # Force HTTPS Redirect
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Force WWW
+# Force WWW (non-apex hosts without www)
 RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} !^officekithr\.com$ [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Trailing slash → canonical (no slash)

@@ -2,14 +2,12 @@ import { Helmet } from "react-helmet-async";
 import { SITE } from "@/seo/site-config";
 import {
   faqPageSchema,
-  reviewSchema,
   videoObjectSchema,
   speakableSchema,
 } from "@/seo/schema";
 import { HOME_ALL_FAQS, homeFaqToSchemaAnswer } from "@/data/home-faqs";
-import { TESTIMONIALS, AGGREGATE_RATING } from "@/data/testimonials-data";
 
-/** Homepage JSON-LD: FAQ + Review + VideoObject for rich results & AI citation. */
+/** Homepage JSON-LD: FAQ + VideoObject for rich results & AI citation. */
 export function HomePageSchema() {
   const faq = faqPageSchema(
     HOME_ALL_FAQS.map((item) => ({
@@ -17,15 +15,6 @@ export function HomePageSchema() {
       answer: homeFaqToSchemaAnswer(item),
     }))
   );
-  const review = reviewSchema({
-    aggregateRating: AGGREGATE_RATING,
-    reviews: TESTIMONIALS.slice(0, 3).map((t) => ({
-      author: t.name,
-      reviewBody: t.quote,
-      ratingValue: String(t.rating),
-      publisher: t.company,
-    })),
-  });
   const video = videoObjectSchema({
     name: "OfficeKit HR Platform Overview",
     description:
@@ -41,7 +30,7 @@ export function HomePageSchema() {
     cssSelectors: ["#faq-heading", ".home-faq-answer", ".direct-answer"],
   });
 
-  const graph = [faq, review, video, speakable].filter(Boolean);
+  const graph = [faq, video, speakable].filter(Boolean);
 
   return (
     <Helmet>

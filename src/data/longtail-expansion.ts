@@ -12,7 +12,7 @@ export const LONGTAIL_EXPANSION = {
     directAnswer:
       "OfficeKit HR starts at ₹99/user/month (Silver) with modular India statutory payroll (PF, ESI, PT, TDS), compared to Keka bundles from ~₹9,999/month for 100 employees and greytHR per-employee tiers — OfficeKit includes GCC payroll modules when you expand to UAE or KSA.",
     clusters: [
-      "OfficeKit Silver from ₹99/user/month with core HR + payroll",
+      "OfficeKit Silver with core HR + payroll",
       "Keka published tiers from ₹9,999/month (up to 100 employees)",
       "greytHR India SMB pricing with payroll add-ons",
       "Zoho People + Zoho Payroll separate subscriptions",
@@ -65,7 +65,7 @@ export const LONGTAIL_EXPANSION = {
       "AI Pilot for reminders, workflows, and recruitment screening",
       "Face-Kit AI face recognition attendance",
       "India statutory payroll automation",
-      "Modular pricing from ₹99/user/month",
+      "Modular pricing",
     ],
     related: [
       { label: "AI Pilot feature", href: "/features/ai-pilot" },

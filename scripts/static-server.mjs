@@ -21,8 +21,14 @@ const MIME = {
   ".xml": "application/xml",
 };
 
-export function startStaticServer(distDir, port) {
+/**
+ * @param {string} distDir
+ * @param {number} port
+ * @param {{ fallbackFile?: string }} [options] — fallback HTML for SPA routes (use vite shell, not prerendered homepage)
+ */
+export function startStaticServer(distDir, port, options = {}) {
   const dist = distDir;
+  const fallbackFile = options.fallbackFile ?? join(dist, "index.html");
 
   const server = http.createServer((req, res) => {
     try {
@@ -36,7 +42,7 @@ export function startStaticServer(distDir, port) {
       } else if (!extname(pathname) && existsSync(join(filePath, "index.html"))) {
         filePath = join(filePath, "index.html");
       } else if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
-        filePath = join(dist, "index.html");
+        filePath = fallbackFile;
       }
 
       if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
