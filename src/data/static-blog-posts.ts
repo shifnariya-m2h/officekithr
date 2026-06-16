@@ -140,8 +140,7 @@ export const STATIC_BLOG_POSTS: Record<string, StaticBlogMeta> = {
     headline: "Real World DEI: Actions That Drive Inclusion, Equity & Diversity",
     author: "Arathi",
     datePublished: "2026-05-27",
-    image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375c902?w=1200&h=630&fit=crop",
+    image: "/recruitment-onboarding.webp",
     readTime: "5 min read",
     category: "Leadership & Culture",
   },

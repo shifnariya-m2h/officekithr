@@ -22,12 +22,12 @@ export const BLOG_CARD_IMAGES = [
   "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1521737711862-eabf3f7f0080?w=600&h=400&fit=crop",
+  "/chatbot.webp",
   "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1531489875313-7f35a480b7a6?w=600&h=400&fit=crop",
+  "/ImageThumbnail2.webp",
   "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop",
@@ -35,8 +35,11 @@ export const BLOG_CARD_IMAGES = [
   "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&h=400&fit=crop",
   "https://images.unsplash.com/photo-1552581234-26160f608093?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1556760542-74043602f414?w=600&h=400&fit=crop",
+  "/Frame.webp",
 ] as const;
+
+/** Fallback when a card image fails to load. */
+export const BLOG_CARD_IMAGE_FALLBACK = "/dashboardok.webp";
 
 /** Stable image per slug — same card always gets the same thumbnail. */
 export function blogImageForSlug(slug: string): string {

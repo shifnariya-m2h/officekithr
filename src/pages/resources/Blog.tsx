@@ -7,6 +7,7 @@ import { Calendar, User, ArrowRight, Tag } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { BLOG_CATEGORIES, BLOG_LISTING_POSTS } from "@/data/blog-listing";
+import { BLOG_CARD_IMAGE_FALLBACK } from "@/data/blog-images";
 import { formatBlogDate } from "@/utils/formatBlogDate";
 
 const Blog = () => {
@@ -103,6 +104,10 @@ const Blog = () => {
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                         loading="eager"
                         decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = BLOG_CARD_IMAGE_FALLBACK;
+                        }}
                       />
                       <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                         <span className="bg-primary text-primary-foreground px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium">
@@ -172,6 +177,10 @@ const Blog = () => {
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                           loading="lazy"
                           decoding="async"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = BLOG_CARD_IMAGE_FALLBACK;
+                          }}
                         />
                       </div>
                       <CardContent className="p-4 sm:p-5 flex flex-col flex-grow">
