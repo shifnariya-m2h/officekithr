@@ -3,30 +3,35 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Lock, Shield, Link as LinkIcon } from "lucide-react";
 import { FeatureCard } from "./ui/FeatureCard";
 import { Link } from "react-router-dom";
+import { StaggerReveal, StaggerItem } from "@/components/motion/StaggerReveal";
+import { CtaHoverLift } from "@/components/motion/CtaHoverLift";
 
-
-export default () => {
+export default function WhyOfficeKit() {
   const features = [
     {
       icon: <CheckCircle className="w-5 h-5 text-[#2463eb]" />,
       title: "Unified HR Platform",
-      description: "Centralizes all HR functions—recruitment, onboarding, payroll, attendance, leave, feedback, and more—in one seamless solution."
+      description:
+        "Centralizes all HR functions—recruitment, onboarding, payroll, attendance, leave, feedback, and more—in one seamless solution.",
     },
     {
       icon: <Lock className="w-5 h-5 text-[#2463eb]" />,
       title: "Robust Security & Compliance",
-      description: "Enterprise-grade protection for your HR data, with built-in compliance for local and multi-country payroll to ensure regulations are met and risks are minimized."
+      description:
+        "Enterprise-grade protection for your HR data, with built-in compliance for local and multi-country payroll to ensure regulations are met and risks are minimized.",
     },
     {
       icon: <Shield className="w-5 h-5 text-[#2463eb]" />,
       title: "Enhanced Engagement",
-      description: "Tools for mood tracking, surveys, and a social platform keep employees connected and engaged."
+      description:
+        "Tools for mood tracking, surveys, and a social platform keep employees connected and engaged.",
     },
     {
       icon: <LinkIcon className="w-5 h-5 text-[#2463eb]" />,
       title: "Fast and Easy Implementation",
-      description: "Quick onboarding means you can get up and running with minimal downtime."
-    }
+      description:
+        "Quick onboarding means you can get up and running with minimal downtime.",
+    },
   ];
 
   return (
@@ -34,53 +39,60 @@ export default () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="!bg-[#f4f7fa] rounded-3xl p-8 lg:p-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
             <div className="space-y-8">
-              <div className=" ">
+              <div>
                 <Badge className="bg-white font-normal py-2 text-[#1d4ed8] mb-4 border border-[#ededed] hover:bg-transparent">
                   Better Starts here
                 </Badge>
-                <div className="">
-                  <h2 className="text-4xl lg:text-5xl font-semibold text-hr-text-primary leading-tight mb-6">
-                    Why <span className="gradient-text" >OfficeKit</span> <br />
-                    Stands out?
-                  </h2>
-                  <p className="text-hr-text-secondary text-lg leading-relaxed">
-                    OfficeKit HR stands out by offering a fully integrated, all-in-one platform that automates
-                    the entire employee lifecycle, making HR effortless and efficient.
-                  </p>
-                </div>
+                <h2 className="text-4xl lg:text-5xl font-semibold text-hr-text-primary leading-tight mb-6">
+                  Why <span className="gradient-text">OfficeKit</span> <br />
+                  Stands out?
+                </h2>
+                <p className="text-hr-text-secondary text-lg leading-relaxed">
+                  OfficeKit HR stands out by offering a fully integrated,
+                  all-in-one platform that automates the entire employee
+                  lifecycle, making HR effortless and efficient.
+                </p>
               </div>
 
-
-              <Button
-                asChild
-                variant="outline"
-                className="btn-cta gradient-text font-normal min-h-11"
-              >
-                <Link to="/about-us">Learn more about OfficeKit HR</Link>
-              </Button>
-
-
-
-
+              <CtaHoverLift className="inline-block">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="btn-cta gradient-text font-normal min-h-11"
+                >
+                  <Link to="/about-us">Learn more about OfficeKit HR</Link>
+                </Button>
+              </CtaHoverLift>
             </div>
 
-            {/* Right Content - Feature Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-6">
-                <FeatureCard {...features[0]} />
-                <FeatureCard {...features[1]} />
+                <StaggerItem>
+                  <FeatureCard {...features[0]} />
+                </StaggerItem>
+                <StaggerItem>
+                  <FeatureCard {...features[1]} />
+                </StaggerItem>
               </div>
               <div className="space-y-8 sm:mt-9">
-                <FeatureCard {...features[2]} className="h-45 flex flex-col justify-center" />
-                <FeatureCard {...features[3]} className="h-45 flex flex-col justify-center" />
+                <StaggerItem>
+                  <FeatureCard
+                    {...features[2]}
+                    className="h-45 flex flex-col justify-center"
+                  />
+                </StaggerItem>
+                <StaggerItem>
+                  <FeatureCard
+                    {...features[3]}
+                    className="h-45 flex flex-col justify-center"
+                  />
+                </StaggerItem>
               </div>
-
-            </div>
+            </StaggerReveal>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}

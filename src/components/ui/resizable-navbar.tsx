@@ -67,8 +67,8 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     <div
       className={cn(
         isFixed ? "fixed inset-x-0 top-0 z-40 w-full" : "sticky inset-x-0 top-20 z-40 w-full",
-        "transition-[padding] duration-300 ease-in-out",
-        visible ? "py-4" : "py-6",
+        /* Fixed padding — shrink via child transform to avoid CLS */
+        "py-6",
         className
       )}
     >
@@ -88,9 +88,11 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <div
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white lg:flex dark:bg-white overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-2 sm:py-2.5 md:py-3 lg:py-3.5 xl:py-4 transition-shadow duration-300 ease-in-out",
-        visible &&
-          "bg-white/95 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05)] backdrop-blur-md dark:bg-neutral-950/95",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white lg:flex dark:bg-white overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-2 sm:py-2.5 md:py-3 lg:py-3.5 xl:py-4",
+        "transition-[transform,box-shadow,opacity] duration-300 ease-out will-change-transform origin-top",
+        visible
+          ? "scale-[0.97] bg-white shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05)] dark:bg-neutral-950"
+          : "scale-100",
         className
       )}
       data-visible={visible}
@@ -133,10 +135,11 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <div
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-0.5rem)] flex-col items-center justify-between bg-white px-2 sm:px-3 md:px-4 lg:hidden transition-[width,padding,box-shadow] duration-200 ease-out",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-0.5rem)] flex-col items-center justify-between bg-white px-2 sm:px-3 md:px-4 lg:hidden py-4",
+        "transition-[transform,box-shadow] duration-300 ease-out will-change-transform origin-top",
         visible
-          ? "w-[90%] rounded bg-white py-3 shadow-lg dark:bg-neutral-950"
-          : "w-full rounded-[2rem] py-4",
+          ? "scale-[0.97] rounded-2xl shadow-lg dark:bg-neutral-950"
+          : "scale-100 rounded-[2rem]",
         className
       )}
     >

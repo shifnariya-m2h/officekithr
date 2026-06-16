@@ -1,14 +1,15 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { HomePageSchema } from "@/components/HomePageSchema";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import TrustedCompanies from "@/components/TrustedCompanies";
-import WhyOfficeKit from "@/components/WhyOfficeKit";
-import FeaturesSection from "@/components/FeaturesSection";
-import FAQSection from "@/components/FAQSection";
 import { DeferredMount } from "@/components/DeferredMount";
 import { HR_POPUP_SENTINEL_ID } from "@/hooks/useHrPopupTrigger";
+import { LazyMotionBoundary } from "@/components/motion/LazyMotionBoundary";
 
+const WhyOfficeKit = lazy(() => import("@/components/WhyOfficeKit"));
+const FeaturesSection = lazy(() => import("@/components/FeaturesSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
 const TrustBadges = lazy(() =>
   import("@/components/TrustBadges").then((m) => ({ default: m.TrustBadges }))
 );
@@ -18,29 +19,12 @@ const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
-    );
-
-    const elements = document.querySelectorAll(".section-fade-in");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       <HomePageSchema />
       <Navigation />
       <main id="main-content">
+        {/* LCP-critical — no motion bundle */}
         <HeroSection />
         <div
           id={HR_POPUP_SENTINEL_ID}
@@ -48,9 +32,19 @@ const Index = () => {
           aria-hidden
         />
         <TrustedCompanies />
-        <WhyOfficeKit />
-        <FeaturesSection />
-        <FAQSection />
+
+        {/* Below-fold — lazy motion + lazy sections */}
+        <LazyMotionBoundary>
+          <Suspense fallback={null}>
+            <WhyOfficeKit />
+          </Suspense>
+          <Suspense fallback={null}>
+            <FeaturesSection />
+          </Suspense>
+          <Suspense fallback={null}>
+            <FAQSection />
+          </Suspense>
+        </LazyMotionBoundary>
 
         <DeferredMount minHeight="120px">
           <Suspense fallback={null}>
@@ -67,9 +61,11 @@ const Index = () => {
         </DeferredMount>
 
         <DeferredMount minHeight="280px">
-          <Suspense fallback={null}>
-            <TestimonialsSection />
-          </Suspense>
+          <LazyMotionBoundary>
+            <Suspense fallback={null}>
+              <TestimonialsSection />
+            </Suspense>
+          </LazyMotionBoundary>
         </DeferredMount>
 
         <DeferredMount minHeight="360px">

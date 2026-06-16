@@ -332,9 +332,9 @@ html[data-perf-mode="mobile"] .section-fade-in {
     @apply opacity-100 translate-y-0;
   }
 
-  /* Card Hover Effects */
+  /* Card Hover Effects — transform only, no scale (avoids CLS) */
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+    @apply transition-[transform,box-shadow,opacity,border-color] duration-300 hover:shadow-medium hover:-translate-y-1;
   }
 
   /* Gradient Text */
@@ -342,9 +342,58 @@ html[data-perf-mode="mobile"] .section-fade-in {
     @apply bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent;
   }
 
-  /* Feature Card Animation */
+  /* Feature Card Animation — transform only */
   .feature-card {
-    @apply bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-medium hover:border-primary/20 hover:-translate-y-2;
+    @apply bg-card border border-border rounded-2xl p-8 transition-[transform,box-shadow,border-color] duration-300 hover:shadow-medium hover:border-primary/20 hover:-translate-y-1;
+  }
+
+  /* Testimonial marquee — GPU transform loop */
+  .marquee-root {
+    @apply w-full;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll var(--marquee-duration, 55s) linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-track-static {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  html[data-perf-mode="mobile"] .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 
   /* Logo Carousel */

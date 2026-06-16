@@ -1,13 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { SITE } from "@/seo/site-config";
 import {
+  breadcrumbSchema,
   faqPageSchema,
+  productSchema,
   videoObjectSchema,
   speakableSchema,
 } from "@/seo/schema";
 import { HOME_ALL_FAQS, homeFaqToSchemaAnswer } from "@/data/home-faqs";
 
-/** Homepage JSON-LD: FAQ + VideoObject for rich results & AI citation. */
+/** Homepage JSON-LD: FAQ, Product, Breadcrumb, VideoObject, Speakable. */
 export function HomePageSchema() {
   const faq = faqPageSchema(
     HOME_ALL_FAQS.map((item) => ({
@@ -15,6 +17,16 @@ export function HomePageSchema() {
       answer: homeFaqToSchemaAnswer(item),
     }))
   );
+
+  const product = productSchema({
+    name: SITE.name,
+    description:
+      "AI-powered HRMS for recruitment, attendance, statutory payroll, and WPS compliance across India and the GCC.",
+    url: SITE.url,
+  });
+
+  const breadcrumb = breadcrumbSchema([{ name: "Home", path: "/" }]);
+
   const video = videoObjectSchema({
     name: "OfficeKit HR Platform Overview",
     description:
@@ -27,10 +39,10 @@ export function HomePageSchema() {
 
   const speakable = speakableSchema({
     url: SITE.url,
-    cssSelectors: ["#faq-heading", ".home-faq-answer", ".direct-answer"],
+    cssSelectors: ["#faq-heading", ".home-faq-answer", ".direct-answer", "h1"],
   });
 
-  const graph = [faq, video, speakable].filter(Boolean);
+  const graph = [faq, product, breadcrumb, video, speakable].filter(Boolean);
 
   return (
     <Helmet>
