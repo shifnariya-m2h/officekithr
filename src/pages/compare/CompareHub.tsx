@@ -7,7 +7,12 @@ import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { COMPARISONS } from "@/data/comparisons";
 import { COMPARISONS_NEW } from "@/data/comparisons-new";
 
-const CompareHub = () => (
+const CompareHub = () => {
+  const allPages = Object.values({ ...COMPARISONS, ...COMPARISONS_NEW });
+  const vsPages = allPages.filter((p) => p.path.startsWith("/officekit-vs-"));
+  const altPages = allPages.filter((p) => !p.path.startsWith("/officekit-vs-"));
+
+  return (
   <PageShell
     title="Compare HRMS Software | OfficeKit HR"
     description="Compare OfficeKit HR with other HRMS vendors. Factual alternative guides for India and GCC buyers."
@@ -33,15 +38,41 @@ const CompareHub = () => (
         />
 
         <ul className="mt-12 space-y-4 list-none p-0">
-          {Object.values({ ...COMPARISONS, ...COMPARISONS_NEW }).map((page) => (
+          <li>
+            <h2 className="text-lg font-semibold text-foreground mb-4">
+              OfficeKit HR vs competitors
+            </h2>
+          </li>
+          {vsPages.map((page) => (
             <li key={page.path}>
               <Link
                 to={page.path}
                 className="block rounded-xl border border-border p-6 hover:bg-muted/50 transition-colors bg-card"
               >
-                <h2 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
                   {page.h1}
-                </h2>
+                </h3>
+                <p className="text-muted-foreground">{page.intro.slice(0, 160)}…</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-12 space-y-4 list-none p-0">
+          <li>
+            <h2 className="text-lg font-semibold text-foreground mb-4">
+              Alternative guides
+            </h2>
+          </li>
+          {altPages.map((page) => (
+            <li key={page.path}>
+              <Link
+                to={page.path}
+                className="block rounded-xl border border-border p-6 hover:bg-muted/50 transition-colors bg-card"
+              >
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  {page.h1}
+                </h3>
                 <p className="text-muted-foreground">{page.intro.slice(0, 160)}…</p>
               </Link>
             </li>
@@ -51,6 +82,7 @@ const CompareHub = () => (
       <Footer />
     </div>
   </PageShell>
-);
+  );
+};
 
 export default CompareHub;

@@ -27,6 +27,7 @@ export type MarketingPageConfig = {
   comparison?: {
     competitorName: string;
     rows: ComparisonRow[];
+    whenCompetitor?: string[];
   };
   priority?: "geo" | "compare" | "industry" | "programmatic";
 };
@@ -420,6 +421,10 @@ export const MARKETING_PAGES: Record<string, MarketingPageConfig> = {
         { feature: "AI HR automation", officekit: "AI Pilot", competitor: "Keka AI features" },
         { feature: "Construction shifts", officekit: "Strong", competitor: "Moderate" },
       ],
+      whenCompetitor: [
+        "India-only operations with no GCC entities — Keka's India brand and UX are mature",
+        "You want Keka's integrated expense, hiring, and helpdesk modules",
+      ],
     },
     faqs: [
       {
@@ -460,6 +465,10 @@ export const MARKETING_PAGES: Record<string, MarketingPageConfig> = {
         { feature: "Mobile ESS", officekit: "iOS & Android", competitor: "Yes" },
         { feature: "Implementation speed", officekit: "Agile rollout", competitor: "Established process" },
       ],
+      whenCompetitor: [
+        "India-only payroll with no GCC expansion — greytHR's India depth and partner network are established",
+        "You are already on greytHR and migration cost outweighs GCC payroll needs",
+      ],
     },
     faqs: [
       {
@@ -475,6 +484,140 @@ export const MARKETING_PAGES: Record<string, MarketingPageConfig> = {
     breadcrumb: [
       { name: "Home", path: "/" },
       { name: "OfficeKit vs greytHR", path: "/officekit-vs-greythr" },
+    ],
+    priority: "compare",
+  },
+  "officekit-vs-zoho-people": {
+    slug: "officekit-vs-zoho-people",
+    path: "/officekit-vs-zoho-people",
+    title: "OfficeKit HR vs Zoho People | HRMS Comparison 2026",
+    metaDescription:
+      "Compare OfficeKit HR vs Zoho People: India payroll, UAE WPS, GCC compliance, AI automation, and bundled pricing for HR teams.",
+    h1: "OfficeKit HR vs Zoho People",
+    subtitle: "Unified India + GCC HRMS vs Zoho's modular HR ecosystem.",
+    directAnswer:
+      "OfficeKit HR vs Zoho People: Zoho People handles core HR globally but GCC payroll and India statutory compliance often require Zoho Payroll and integrations. OfficeKit HR bundles India PF/ESI/PT/TDS and UAE WPS, KSA GOSI, and Kuwait PIFSS in one HRMS with AI Pilot and Arabic ESS.",
+    highlights: [
+      "India + GCC payroll in one platform",
+      "Native UAE WPS workflows",
+      "AI Pilot automation",
+      "Transparent per-user pricing",
+    ],
+    features: [
+      {
+        title: "Bundled payroll",
+        description:
+          "OfficeKit includes India and GCC payroll without separate Zoho Payroll subscriptions.",
+      },
+      {
+        title: "GCC depth",
+        description:
+          "Built-in WPS, GOSI, and PIFSS for employers operating across the Gulf.",
+      },
+    ],
+    comparison: {
+      competitorName: "Zoho People",
+      rows: [
+        { feature: "India statutory payroll", officekit: "Built-in", competitor: "Via Zoho Payroll" },
+        { feature: "UAE WPS", officekit: "Native", competitor: "Integration required" },
+        { feature: "GCC multi-country", officekit: "6 countries", competitor: "Limited GCC depth" },
+        { feature: "AI automation", officekit: "AI Pilot + Face-Kit", competitor: "Zoho Blue / workflows" },
+        { feature: "Arabic ESS", officekit: "Yes", competitor: "Partial" },
+        { feature: "Pricing model", officekit: "Per-user tiers on /pricing", competitor: "HR + Payroll separate" },
+      ],
+      whenCompetitor: [
+        "You are invested in the Zoho ecosystem (CRM, Books, Projects) and want native integrations",
+        "Global HR beyond India/GCC matters more than bundled GCC payroll",
+      ],
+    },
+    faqs: [
+      {
+        question: "Is OfficeKit HR a good Zoho People alternative?",
+        answer:
+          "Yes, when you need India and GCC payroll on one platform with WPS compliance and bilingual employee apps — without managing multiple Zoho products.",
+      },
+      {
+        question: "Can data migrate from Zoho People to OfficeKit?",
+        answer:
+          "Yes. OfficeKit onboarding imports employee, attendance, and payroll masters via migration templates.",
+      },
+    ],
+    relatedLinks: [
+      { label: "vs Keka", href: "/officekit-vs-keka" },
+      { label: "vs greytHR", href: "/officekit-vs-greythr" },
+      { label: "HRMS India", href: "/hrms-software-india" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "OfficeKit vs Zoho People", path: "/officekit-vs-zoho-people" },
+    ],
+    priority: "compare",
+  },
+  "officekit-vs-darwinbox": {
+    slug: "officekit-vs-darwinbox",
+    path: "/officekit-vs-darwinbox",
+    title: "OfficeKit HR vs Darwinbox | HRMS Comparison 2026",
+    metaDescription:
+      "Compare OfficeKit HR vs Darwinbox for mid-market teams: India payroll, GCC compliance, AI automation, implementation speed, and per-user pricing.",
+    h1: "OfficeKit HR vs Darwinbox",
+    subtitle: "Mid-market HRMS with GCC payroll vs enterprise-scale Darwinbox.",
+    directAnswer:
+      "OfficeKit HR vs Darwinbox: Darwinbox targets large enterprises with comprehensive HR suites and custom pricing. OfficeKit HR fits mid-market companies (50–1,000+ employees) needing India statutory payroll, native UAE WPS and KSA GOSI, AI Pilot automation, and faster rollout at transparent per-user pricing.",
+    highlights: [
+      "Mid-market pricing",
+      "Native GCC payroll",
+      "Weeks-not-months rollout",
+      "AI Pilot + Face-Kit",
+    ],
+    features: [
+      {
+        title: "Implementation",
+        description:
+          "Agile guided onboarding in weeks vs typical 3–6 month enterprise rollouts.",
+      },
+      {
+        title: "GCC compliance",
+        description:
+          "WPS, GOSI, PIFSS, PASI, and SIO built in for multi-country Gulf operations.",
+      },
+    ],
+    comparison: {
+      competitorName: "Darwinbox",
+      rows: [
+        { feature: "Target market", officekit: "Mid-market 50–1,000+", competitor: "Enterprise 500+" },
+        { feature: "India payroll", officekit: "Yes", competitor: "Yes" },
+        { feature: "UAE WPS", officekit: "Native", competitor: "Configurable" },
+        { feature: "AI automation", officekit: "AI Pilot", competitor: "Darwinbox AI suite" },
+        { feature: "Pricing", officekit: "Published per-user tiers", competitor: "Enterprise custom" },
+        { feature: "Implementation", officekit: "Weeks", competitor: "3–6 months typical" },
+      ],
+      whenCompetitor: [
+        "Large enterprise (1,000+ employees) needing Darwinbox's full HCM suite and APAC scale",
+        "Budget for enterprise custom pricing and long implementation programs",
+      ],
+    },
+    faqs: [
+      {
+        question: "Is OfficeKit a Darwinbox alternative for mid-market?",
+        answer:
+          "Yes. OfficeKit delivers enterprise-grade payroll and HR automation at mid-market pricing with faster implementation — especially for India + GCC operations.",
+      },
+      {
+        question: "How does OfficeKit pricing compare to Darwinbox?",
+        answer:
+          "OfficeKit publishes per-user tiers on /pricing. Darwinbox uses custom enterprise quotes. Contact sales for a headcount-based comparison.",
+      },
+    ],
+    relatedLinks: [
+      { label: "vs Keka", href: "/officekit-vs-keka" },
+      { label: "HRMS India", href: "/hrms-software-india" },
+      { label: "AI HR GCC", href: "/solutions/ai-hr-software-gcc" },
+      { label: "Pricing", href: "/pricing" },
+    ],
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "OfficeKit vs Darwinbox", path: "/officekit-vs-darwinbox" },
     ],
     priority: "compare",
   },

@@ -4,7 +4,7 @@ import type { ComparisonConfig } from "./comparisons";
 export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
   "zoho-people-alternative": {
     slug: "zoho-people-alternative",
-    path: "/compare/zoho-people-alternative",
+    path: "/officekit-vs-zoho-people",
     title: "Zoho People Alternative | OfficeKit HR",
     metaDescription:
       "Looking for a Zoho People alternative? Compare OfficeKit HR vs Zoho People on GCC payroll, WPS compliance, AI automation, and India statutory payroll.",
@@ -56,6 +56,11 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       "UAE WPS compliance is a priority for your payroll team",
       "You want AI-assisted HR workflows without managing multiple Zoho ecosystem apps",
       "You need Arabic/English employee experiences for Gulf-based staff",
+    ],
+    whenCompetitor: [
+      "You are already deep in the Zoho ecosystem (CRM, Books, Projects) and want tight native integrations",
+      "You need global HR coverage beyond India and GCC with Zoho's international footprint",
+      "Your GCC payroll needs are minimal and a lightweight HR-only tool suffices",
     ],
     faqs: [
       {
@@ -301,7 +306,7 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
   },
   "keka-alternative": {
     slug: "keka-alternative",
-    path: "/compare/keka-alternative",
+    path: "/officekit-vs-keka",
     title: "Keka Alternative for GCC Companies | OfficeKit HR",
     metaDescription:
       "Comparing Keka vs OfficeKit HR? See how OfficeKit matches Keka on India payroll and adds native UAE WPS, KSA GOSI, Kuwait PIFSS, AI automation, and Arabic ESS for GCC operations.",
@@ -360,6 +365,11 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       "AI-assisted HR workflows and face-recognition attendance are on your shortlist criteria",
       "You prefer a single vendor for both regions rather than managing separate India and GCC providers",
     ],
+    whenCompetitor: [
+      "You are India-only with no GCC expansion plans — Keka's brand and India mid-market depth are strong",
+      "You want Keka's polished UX and established India customer community",
+      "Your team values Keka's native expense, hiring, and helpdesk modules over bundled GCC payroll",
+    ],
     faqs: [
       {
         question: "Is OfficeKit HR a direct replacement for Keka?",
@@ -391,7 +401,7 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
   },
   "darwinbox-alternative": {
     slug: "darwinbox-alternative",
-    path: "/compare/darwinbox-alternative",
+    path: "/officekit-vs-darwinbox",
     title: "Darwinbox Alternative for GCC & India HRMS | OfficeKit HR",
     metaDescription:
       "Comparing Darwinbox vs OfficeKit HR? See how OfficeKit matches up on India payroll, GCC compliance, AI automation, and mid-market pricing for growing enterprises.",
@@ -449,6 +459,11 @@ export const COMPARISONS_NEW: Record<string, ComparisonConfig> = {
       "UAE WPS or KSA GOSI compliance is essential for your payroll operations",
       "You want AI-assisted HR workflows without long implementation cycles",
       "Modern mobile-first employee experience matters for your distributed workforce",
+    ],
+    whenCompetitor: [
+      "You are a large enterprise (1,000+ employees) needing Darwinbox's full HCM suite and regional support scale",
+      "You need extensive country coverage across Asia-Pacific beyond India and GCC",
+      "You have budget for enterprise custom pricing and a 3–6 month implementation program",
     ],
     faqs: [
       {

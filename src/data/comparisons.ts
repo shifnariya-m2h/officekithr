@@ -19,6 +19,8 @@ export type ComparisonConfig = {
   definition?: { term: string; meaning: string };
   rows: ComparisonRow[];
   whenOfficeKit: string[];
+  /** Honest framing — where the competitor is stronger (credibility for LLM citation). */
+  whenCompetitor?: string[];
   faqs: FaqItem[];
   relatedLinks: { label: string; href: string }[];
 };
@@ -73,6 +75,11 @@ export const COMPARISONS: Record<string, ComparisonConfig> = {
       "UAE WPS compliance is a priority for payroll",
       "You want AI-assisted HR workflows and face recognition attendance",
       "You need Arabic/English experiences for UAE staff",
+    ],
+    whenCompetitor: [
+      "You are India-only with no GCC entities and want a mature, widely adopted India payroll brand",
+      "Your team already runs greytHR and migration cost outweighs GCC payroll needs",
+      "You need greytHR's established partner network for India statutory support",
     ],
     faqs: [
       {

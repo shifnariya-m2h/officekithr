@@ -7,6 +7,7 @@ import { COMPARISONS_NEW } from "@/data/comparisons-new";
 import { GeoFaqSection } from "@/components/geo/GeoFaqSection";
 import { RelatedLinks } from "@/components/geo/RelatedLinks";
 import { AiContentBlock } from "@/components/geo/AiContentBlock";
+import { ComparisonTable, normalizeComparisonRows } from "@/components/seo/ComparisonTable";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { comparisonWebPageSchema, breadcrumbSchema } from "@/seo/schema";
@@ -76,34 +77,10 @@ const ComparisonPage = () => {
           <h2 id="compare-table" className="text-2xl font-semibold mb-6">
             Feature comparison
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-border">
-            <table className="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr className="bg-muted/50">
-                  <th scope="col" className="p-4 font-semibold text-foreground">
-                    Aspect
-                  </th>
-                  <th scope="col" className="p-4 font-semibold text-foreground">
-                    OfficeKit HR
-                  </th>
-                  <th scope="col" className="p-4 font-semibold text-foreground">
-                    {page.competitorName}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {page.rows.map((row) => (
-                  <tr key={row.aspect} className="border-t border-border">
-                    <th scope="row" className="p-4 font-medium text-foreground align-top">
-                      {row.aspect}
-                    </th>
-                    <td className="p-4 text-muted-foreground align-top">{row.officekit}</td>
-                    <td className="p-4 text-muted-foreground align-top">{row.competitor}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ComparisonTable
+            competitorName={page.competitorName}
+            rows={normalizeComparisonRows(page.rows)}
+          />
         </section>
 
         <section className="py-12 bg-muted/20">
@@ -115,6 +92,17 @@ const ComparisonPage = () => {
                 ))}
               </ul>
             </AiContentBlock>
+            {page.whenCompetitor && page.whenCompetitor.length > 0 && (
+              <div className="mt-8">
+                <AiContentBlock heading={`When ${page.competitorName} may be a better fit`}>
+                  <ul className="list-disc pl-5 space-y-2 mt-2">
+                    {page.whenCompetitor.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </AiContentBlock>
+              </div>
+            )}
           </div>
         </section>
 

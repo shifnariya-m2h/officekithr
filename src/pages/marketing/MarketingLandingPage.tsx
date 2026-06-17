@@ -20,6 +20,7 @@ import {
 import { Check, ArrowRight } from "lucide-react";
 import { productSchema, comparisonWebPageSchema } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/site-config";
+import { ComparisonTable, normalizeComparisonRows } from "@/components/seo/ComparisonTable";
 
 const MarketingLandingPage = () => {
   const { pathname } = useLocation();
@@ -136,28 +137,27 @@ const MarketingLandingPage = () => {
           )}
 
           {page.comparison && (
-            <section className="mb-12 overflow-x-auto" aria-labelledby="compare-heading">
+            <section className="mb-12" aria-labelledby="compare-heading">
               <h2 id="compare-heading" className="text-2xl font-semibold mb-6">
                 OfficeKit HR vs {page.comparison.competitorName}
               </h2>
-              <table className="w-full min-w-[480px] border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="py-3 pr-4 font-semibold">Feature</th>
-                    <th className="py-3 pr-4 font-semibold">OfficeKit HR</th>
-                    <th className="py-3 font-semibold">{page.comparison.competitorName}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {page.comparison.rows.map((row) => (
-                    <tr key={row.feature} className="border-b border-border/60">
-                      <td className="py-3 pr-4">{row.feature}</td>
-                      <td className="py-3 pr-4 text-primary font-medium">{row.officekit}</td>
-                      <td className="py-3 text-muted-foreground">{row.competitor}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <ComparisonTable
+                competitorName={page.comparison.competitorName}
+                rows={normalizeComparisonRows(page.comparison.rows)}
+                labelHeader="Feature"
+              />
+              {page.comparison.whenCompetitor && page.comparison.whenCompetitor.length > 0 && (
+                <div className="mt-8 rounded-xl border border-border bg-muted/30 p-6">
+                  <h3 className="text-lg font-semibold mb-3">
+                    When {page.comparison.competitorName} may be a better fit
+                  </h3>
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                    {page.comparison.whenCompetitor.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </section>
           )}
 
