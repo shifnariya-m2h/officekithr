@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   Target,
@@ -14,6 +15,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { loadSyncoraBot } from "@/components/syncoraBot";
+
+const PAGE_PATH = "/features/performance-appraisal";
 
 const PerformanceAppraisal = () => {
   const features = [
@@ -59,6 +62,11 @@ const PerformanceAppraisal = () => {
   ];
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Performance Appraisal — OfficeKit HR"
+      breadcrumbLabel="Performance Appraisal"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -174,6 +182,7 @@ const PerformanceAppraisal = () => {
       </section>
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 

@@ -16,10 +16,10 @@ https://www.officekithr.com/knowledge/india-gcc-payroll
 https://www.officekithr.com/knowledge/wps-compliance
 
 ## Comparisons
-https://www.officekithr.com/compare/keka-alternative
-https://www.officekithr.com/compare/zoho-people-alternative
+https://www.officekithr.com/officekit-vs-keka
+https://www.officekithr.com/officekit-vs-zoho-people
 https://www.officekithr.com/officekit-vs-greythr
-https://www.officekithr.com/compare/darwinbox-alternative
+https://www.officekithr.com/officekit-vs-darwinbox
 https://www.officekithr.com/compare/bayzat-alternative
 
 ## Tools
@@ -29,6 +29,7 @@ https://www.officekithr.com/tools/hrms-roi-calculator
 https://www.officekithr.com/tools/wps-file-checker
 
 ## Compliance
+https://www.officekithr.com/gcc-compliance
 https://www.officekithr.com/compliance/india-payroll-compliance
 https://www.officekithr.com/compliance/uae-payroll-compliance
 https://www.officekithr.com/compliance/ksa-payroll-compliance
@@ -48,4 +49,5 @@ https://www.officekithr.com/resources/blogs/pf-esi-guide-indian-employers
 https://www.officekithr.com/pricing
 https://www.officekithr.com/faq
 https://www.officekithr.com/customers
+https://www.officekithr.com/reviews
 https://www.officekithr.com/contact

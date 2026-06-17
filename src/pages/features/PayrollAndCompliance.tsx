@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   Calculator,
@@ -13,7 +14,9 @@ import {
   Play
 } from "lucide-react";
 import { Link } from "react-router-dom";
- 
+
+const PAGE_PATH = "/features/payroll-and-compliance";
+
 const PayrollAndCompliance = () => {
   const features = [
     {
@@ -58,6 +61,11 @@ const PayrollAndCompliance = () => {
   ];
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Payroll & Compliance — OfficeKit HR"
+      breadcrumbLabel="Payroll & Compliance"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -174,6 +182,7 @@ const PayrollAndCompliance = () => {
 
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 

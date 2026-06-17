@@ -51,12 +51,11 @@ const STATIC_PATHS = [
   "/solutions/hrms-software-bahrain",
   "/solutions/payroll-software-kerala",
   "/compare",
-  "/compare/keka-alternative",
-  "/compare/zoho-people-alternative",
   "/compare/factohr-alternative",
   "/compare/officenet-alternative",
   "/compare/pockethrms-alternative",
   "/compliance",
+  "/gcc-compliance",
   "/compliance/india-payroll-compliance",
   "/compliance/uae-payroll-compliance",
   "/compliance/ksa-payroll-compliance",
@@ -72,6 +71,8 @@ const STATIC_PATHS = [
   "/best-hrms-for-construction",
   "/officekit-vs-keka",
   "/officekit-vs-greythr",
+  "/officekit-vs-zoho-people",
+  "/officekit-vs-darwinbox",
   "/hr-software-dubai",
   "/hr-software-riyadh",
   "/hr-software-kochi",
@@ -113,7 +114,6 @@ const STATIC_PATHS = [
   "/solutions/hrms-software-hyderabad",
   "/solutions/payroll-software-mumbai",
   "/solutions/hrms-software-delhi-ncr",
-  "/compare/darwinbox-alternative",
   "/compare/bamboohr-alternative",
   "/compare/bayzat-alternative",
   "/compare/zenhr-alternative",
@@ -124,6 +124,7 @@ const STATIC_PATHS = [
   "/industries/hrms-for-logistics",
   "/industries/hrms-for-bfsi",
   "/customers",
+  "/reviews",
   "/tools",
   "/tools/pf-esi-calculator",
   "/tools/gratuity-calculator-uae",
@@ -170,22 +171,21 @@ const PRIORITY = {
   "/compliance/qatar-payroll-compliance": "0.84",
   "/compliance/oman-payroll-compliance": "0.83",
   "/compliance/bahrain-payroll-compliance": "0.83",
-  "/compare/keka-alternative": "0.82",
-  "/compare/zoho-people-alternative": "0.82",
+  "/gcc-compliance": "0.88",
   "/compare/factohr-alternative": "0.82",
   "/compare/officenet-alternative": "0.80",
   "/compare/pockethrms-alternative": "0.80",
   "/officekit-vs-greythr": "0.86",
+  "/officekit-vs-keka": "0.86",
+  "/officekit-vs-zoho-people": "0.84",
+  "/officekit-vs-darwinbox": "0.82",
   "/hr-software-uae": "0.88",
-  "/officekit-vs-keka": "0.82",
-  "/officekit-vs-greythr": "0.82",
   "/resources/blogs": "0.8",
   "/solutions/hrms-software-bangalore": "0.84",
   "/solutions/hrms-software-chennai": "0.84",
   "/solutions/hrms-software-hyderabad": "0.84",
   "/solutions/payroll-software-mumbai": "0.84",
   "/solutions/hrms-software-delhi-ncr": "0.84",
-  "/compare/darwinbox-alternative": "0.80",
   "/compare/bamboohr-alternative": "0.80",
   "/compare/bayzat-alternative": "0.80",
   "/compare/zenhr-alternative": "0.78",
@@ -386,10 +386,10 @@ ${SITE}/knowledge/india-gcc-payroll
 ${SITE}/knowledge/wps-compliance
 
 ## Comparisons
-${SITE}/compare/keka-alternative
-${SITE}/compare/zoho-people-alternative
+${SITE}/officekit-vs-keka
+${SITE}/officekit-vs-zoho-people
 ${SITE}/officekit-vs-greythr
-${SITE}/compare/darwinbox-alternative
+${SITE}/officekit-vs-darwinbox
 ${SITE}/compare/bayzat-alternative
 
 ## Tools
@@ -399,6 +399,7 @@ ${SITE}/tools/hrms-roi-calculator
 ${SITE}/tools/wps-file-checker
 
 ## Compliance
+${SITE}/gcc-compliance
 ${SITE}/compliance/india-payroll-compliance
 ${SITE}/compliance/uae-payroll-compliance
 ${SITE}/compliance/ksa-payroll-compliance
@@ -418,6 +419,7 @@ ${SITE}/resources/blogs/pf-esi-guide-indian-employers
 ${SITE}/pricing
 ${SITE}/faq
 ${SITE}/customers
+${SITE}/reviews
 ${SITE}/contact
 `;
 

@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   Users,
@@ -20,6 +21,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 // import { loadSyncoraBot } from "../../components/syncoraBot";
+
+const PAGE_PATH = "/features/employee-management";
 
 const RecruitmentManagement = () => {
   const features = [
@@ -58,6 +61,11 @@ const RecruitmentManagement = () => {
 
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Employee Management — OfficeKit HR"
+      breadcrumbLabel="Employee Management"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
@@ -177,6 +185,7 @@ const RecruitmentManagement = () => {
 
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 

@@ -32,6 +32,15 @@ const ComplianceHub = () => (
           }}
         />
 
+        <p className="mt-6 text-center">
+          <Link
+            to="/gcc-compliance"
+            className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+          >
+            GCC payroll compliance hub <ArrowRight className="ml-1 h-3 w-3" />
+          </Link>
+        </p>
+
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {Object.values(PAYROLL_COMPLIANCE).map((page) => (
             <Link

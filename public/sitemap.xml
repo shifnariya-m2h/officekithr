@@ -193,18 +193,6 @@
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.officekithr.com/compare/keka-alternative</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://www.officekithr.com/compare/zoho-people-alternative</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
     <loc>https://www.officekithr.com/compare/factohr-alternative</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -227,6 +215,12 @@
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://www.officekithr.com/gcc-compliance</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
   </url>
   <url>
     <loc>https://www.officekithr.com/compliance/india-payroll-compliance</loc>
@@ -310,10 +304,22 @@
     <loc>https://www.officekithr.com/officekit-vs-keka</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
+    <priority>0.86</priority>
   </url>
   <url>
     <loc>https://www.officekithr.com/officekit-vs-greythr</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://www.officekithr.com/officekit-vs-zoho-people</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.84</priority>
+  </url>
+  <url>
+    <loc>https://www.officekithr.com/officekit-vs-darwinbox</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
@@ -565,12 +571,6 @@
     <priority>0.84</priority>
   </url>
   <url>
-    <loc>https://www.officekithr.com/compare/darwinbox-alternative</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://www.officekithr.com/compare/bamboohr-alternative</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -629,6 +629,12 @@
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.officekithr.com/reviews</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.officekithr.com/tools</loc>

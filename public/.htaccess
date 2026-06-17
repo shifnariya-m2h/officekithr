@@ -34,6 +34,9 @@ RewriteRule ^solutions/payroll-software-uae/?$ /payroll-software-uae [L,R=301]
 RewriteRule ^solutions/wps-compliance-software/?$ /wps-compliance-software [L,R=301]
 RewriteRule ^solutions/best-hrms-software-india/?$ /hrms-software-india [L,R=301]
 RewriteRule ^compare/greythr-alternative/?$ /officekit-vs-greythr [L,R=301]
+RewriteRule ^compare/keka-alternative/?$ /officekit-vs-keka [L,R=301]
+RewriteRule ^compare/zoho-people-alternative/?$ /officekit-vs-zoho-people [L,R=301]
+RewriteRule ^compare/darwinbox-alternative/?$ /officekit-vs-darwinbox [L,R=301]
 
 # Unknown URLs → real 404 (prerendered 404.html). Valid prerendered paths are served as files/dirs first.
 RewriteCond %{REQUEST_FILENAME} !-f

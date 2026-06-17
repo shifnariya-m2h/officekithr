@@ -283,6 +283,12 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
       "Case studies from Lulu International Exchange, Thai Group, Midac Electronics and 500+ companies using OfficeKit HR.",
   },
   {
+    path: "/reviews",
+    title: "OfficeKit HR Reviews & Customer Testimonials",
+    description:
+      "Read verified customer testimonials from HR leaders using OfficeKit HR for India and GCC payroll, attendance, and compliance.",
+  },
+  {
     path: "/guides",
     title: "HR & Payroll Guides | OfficeKit HR",
     description:
@@ -305,6 +311,12 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
     title: "Payroll Compliance Guide | India, UAE, KSA, GCC — OfficeKit HR",
     description:
       "Country-specific payroll compliance guides for India, UAE, Saudi Arabia, Kuwait, Qatar, Oman, and Bahrain. OfficeKit HR.",
+  },
+  {
+    path: "/gcc-compliance",
+    title: "GCC Payroll Compliance Hub | WPS, GOSI, PIFSS — OfficeKit HR",
+    description:
+      "GCC payroll compliance hub covering UAE WPS, Saudi GOSI, Kuwait PIFSS, Qatar WPS, Oman PASI, and Bahrain SIO with OfficeKit HR.",
   },
   // Longtail hub
   {

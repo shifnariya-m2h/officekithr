@@ -79,6 +79,7 @@ const Navigation = () => {
     { name: "HR Software UAE", href: "/hr-software-uae", icon: Lightbulb, description: "WPS payroll & GCC HR." },
     { name: "HRMS India", href: "/hrms-software-india", icon: Lightbulb, description: "Statutory payroll & HRMS." },
     { name: "Compare vendors", href: "/compare", icon: Lightbulb, description: "OfficeKit vs Keka, greytHR." },
+    { name: "GCC compliance", href: "/gcc-compliance", icon: Lightbulb, description: "WPS, GOSI, PIFSS guides." },
     { name: "FAQs", href: "/faq", icon: HelpCircle, description: "Common questions about OfficeKit HR." },
   ];
 

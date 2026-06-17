@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   UserMinus,
@@ -14,6 +15,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { loadSyncoraBot } from "@/components/syncoraBot";
+
+const PAGE_PATH = "/features/exit-management";
 
 const ExitManagement = () => {
   const features = [
@@ -59,6 +62,11 @@ const ExitManagement = () => {
   ];
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Exit Management — OfficeKit HR"
+      breadcrumbLabel="Exit Management"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -172,6 +180,7 @@ Streamline resignations, clearances, and settlements with automated workflows. T
       </section>
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 

@@ -6,14 +6,14 @@
 npm run build
 ```
 
-**Cloudflare / Netlify / GitHub CI:** `npm run build` **skips Playwright prerender** (fast ~2–3 min). Sitemap + `blog-seo-manifest.json` still generate. Set env `PRERENDER=1` only when you need static HTML files in `dist/`.
+**Cloudflare / Netlify / GitHub CI:** `npm run build` **runs Playwright prerender by default**. Set `PRERENDER=0` for fast Vite-only builds (~2–3 min).
 
-**Local full SEO build:** `PRERENDER=1 npm run build` (installs Chromium via `ensure-playwright.mjs`).
+**Fast local build (no prerender):** `PRERENDER=0 npm run build` or `npm run build:spa`.
 
 | Command / env | Effect |
 |---------------|--------|
-| `npm run build` on CI | Sitemap + Vite only — **no hang, no Playwright** |
-| `PRERENDER=1` | Full prerender (local or CI) |
+| `npm run build` | Sitemap + Vite + **prerender** (default) |
+| `PRERENDER=0` | Vite-only — skip Playwright (fast CI/dev) |
 | `PRERENDER_BLOGS=0` | Static routes only when prerender runs |
 | `npm run build:spa` | No sitemap script chain issues — sitemap + vite only |
 
@@ -49,7 +49,7 @@ This site is a **Vite static SPA** with prerendered HTML — **not** Next.js. Do
 
 `wrangler.jsonc` points at `./dist` (static assets). Optional one-shot: `npm run deploy:cloudflare`.
 
-Set env `PRERENDER=1` on the build if you want full Playwright prerender in CI (slower; default on CI is Vite-only).
+Set env `PRERENDER=0` on the build only if you need a fast Vite-only deploy (not recommended for production SEO).
 
 ### Cloudflare Pages (alternative)
 
@@ -63,7 +63,7 @@ Set env `PRERENDER=1` on the build if you want full Playwright prerender in CI (
 
 1. **Disable “Managed robots.txt”** (or align with `public/robots.txt`) so AI crawlers (`GPTBot`, `PerplexityBot`, `Google-Extended`) are not blocked by conflicting rules.
 2. **`public/_redirects`** handles www, trailing-slash removal, and canonical URL consolidation.
-3. Production SEO build locally: `PRERENDER=1 npm run build` then deploy `dist/`.
+3. Production SEO build is the default: `npm run build` then deploy `dist/`. Use `PRERENDER=0` only for quick smoke deploys.
 
 ## Architecture
 

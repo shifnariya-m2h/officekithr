@@ -33,6 +33,7 @@ const solutionsLinks = [
   { name: "greytHR alternative", href: CANONICAL.greythrCompare },
   { name: "Keka alternative", href: "/compare/keka-alternative" },
   { name: "Payroll compliance", href: "/compliance" },
+  { name: "GCC compliance hub", href: "/gcc-compliance" },
 ];
 
 const Footer = () => {
@@ -56,6 +57,7 @@ const Footer = () => {
     { name: "Knowledge Base", href: "/knowledge" },
     { name: "Free Tools", href: "/tools" },
     { name: "Customers", href: "/customers" },
+  { name: "Reviews", href: "/reviews" },
   ];
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {

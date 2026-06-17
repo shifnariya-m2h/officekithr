@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   User,
@@ -18,6 +19,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { loadSyncoraBot } from "@/components/syncoraBot";
+
+const PAGE_PATH = "/features/self-service-portal";
 
 const SelfServicePortal = () => {
   const features = [
@@ -67,6 +70,11 @@ const SelfServicePortal = () => {
   ];
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Employee Self-Service — OfficeKit HR"
+      breadcrumbLabel="Employee Self-Service"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -189,6 +197,7 @@ const SelfServicePortal = () => {
       </section>
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 

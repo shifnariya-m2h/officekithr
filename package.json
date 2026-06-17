@@ -8,15 +8,15 @@
     "build": "node scripts/run-build.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "prune:public": "node scripts/prune-public-assets.mjs",
-    "build:fast": "node scripts/build-fast.mjs",
-    "build:spa": "node scripts/generate-sitemap.mjs && vite build",
+    "build:fast": "PRERENDER=0 node scripts/build-fast.mjs",
+    "build:spa": "PRERENDER=0 node scripts/generate-sitemap.mjs && vite build",
     "build:dev": "vite build --mode development",
     "seo:sitemap": "node scripts/generate-sitemap.mjs",
     "seo:verify": "node scripts/verify-prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test:syncora-lead": "node scripts/test-syncora-lead.mjs",
-    "deploy:cloudflare": "npm run build && wrangler deploy"
+    "deploy:cloudflare": "PRERENDER=1 npm run build && wrangler deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

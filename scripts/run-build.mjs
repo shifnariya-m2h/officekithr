@@ -1,23 +1,14 @@
 /**
- * Production build entry — skips Playwright prerender on CI unless PRERENDER=1.
- * Local builds prerender by default (set PRERENDER=0 to skip).
+ * Production build entry — prerenders static HTML by default.
+ * Set PRERENDER=0 for fast Vite-only builds.
  */
 import { execSync } from "child_process";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const isCi = Boolean(
-  process.env.CI ||
-    process.env.CF_PAGES ||
-    process.env.NETLIFY ||
-    process.env.VERCEL ||
-    process.env.CLOUDFLARE_PAGES
-);
-// Local: prerender by default (SEO). CI/Cloudflare: skip unless PRERENDER=1.
-const prerender = isCi
-  ? process.env.PRERENDER === "1"
-  : process.env.PRERENDER !== "0";
+// Prerender by default (local + CI). Set PRERENDER=0 for fast Vite-only builds.
+const prerender = process.env.PRERENDER !== "0";
 
 function run(cmd) {
   console.log(`[build] ${cmd}`);
@@ -52,7 +43,7 @@ if (prerender) {
   run("node scripts/ensure-playwright.mjs");
   run("node scripts/prerender.mjs");
 } else {
-  console.log("[build] Skipping prerender (set PRERENDER=1 or unset PRERENDER=0).");
+  console.log("[build] Skipping prerender (set PRERENDER=0 to skip).");
 }
 
 console.log("[build] Complete");

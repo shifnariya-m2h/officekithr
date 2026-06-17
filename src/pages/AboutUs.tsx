@@ -1,6 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { PageShell } from "@/seo/PageShell";
+import { breadcrumbSchema } from "@/seo/schema";
+import { PAGE_GEO_BY_PATH } from "@/data/page-faqs";
 import { Users, Target, Heart, Award, CheckCircle, Lock, Shield, LinkIcon } from "lucide-react";
+
+const PAGE_PATH = "/about-us";
 
 const AboutUs = () => {
   const values = [
@@ -73,6 +78,18 @@ const AboutUs = () => {
   ];
 
   return (
+    <PageShell
+      title="About OfficeKit HR | Enterprise HRMS Platform"
+      description="Learn how OfficeKit HR helps growing businesses automate HR, payroll, and compliance across India and the Middle East."
+      path={PAGE_PATH}
+      faqs={PAGE_GEO_BY_PATH[PAGE_PATH]?.faqs}
+      schemaNodes={[
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About Us", path: PAGE_PATH },
+        ]),
+      ]}
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -256,6 +273,7 @@ const AboutUs = () => {
 
       <Footer />
     </div>
+    </PageShell>
   );
 };
 

@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   Clock,
@@ -15,6 +16,8 @@ import {
 import { Link } from "react-router-dom";
 // import { loadSyncoraBot } from "../../components/syncoraBot";
 import { loadSyncoraBot } from "@/components/syncoraBot";
+
+const PAGE_PATH = "/features/attendance-and-leave";
 
 const AttendanceAndLeave = () => {
   const features = [
@@ -60,6 +63,11 @@ const AttendanceAndLeave = () => {
   ];
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Attendance & Leave — OfficeKit HR"
+      breadcrumbLabel="Attendance & Leave"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -199,6 +207,7 @@ const AttendanceAndLeave = () => {
 
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 

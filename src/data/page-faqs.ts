@@ -138,6 +138,20 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
       },
     ],
   },
+  "/features/exit-management": {
+    faqs: [
+      {
+        question: "Does OfficeKit HR handle full and final settlement?",
+        answer:
+          "Yes. Exit workflows cover clearance checklists, asset handover, F&F settlement calculations, and compliance documentation.",
+      },
+      {
+        question: "Can employees submit resignations online?",
+        answer:
+          "Yes. Employees submit resignations through self-service with configurable multi-level approval chains.",
+      },
+    ],
+  },
   "/about-us": {
     faqs: [
       {

@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
 import { Button } from "@/components/ui/button";
 import {
   Smartphone,
@@ -18,6 +19,8 @@ import {
   MessageSquare
 } from "lucide-react";
 import { Link } from "react-router-dom";
+
+const PAGE_PATH = "/features/mobile-app";
 
 const MobileApp = () => {
   const features = [
@@ -69,6 +72,11 @@ const MobileApp = () => {
   ];
 
   return (
+    <FeaturePageLayout
+      path={PAGE_PATH}
+      productName="Mobile HR App — OfficeKit HR"
+      breadcrumbLabel="Mobile App"
+    >
     <div className="min-h-screen bg-background">
       <Navigation />
 
@@ -260,6 +268,7 @@ const MobileApp = () => {
 
       <Footer />
     </div>
+    </FeaturePageLayout>
   );
 };
 
