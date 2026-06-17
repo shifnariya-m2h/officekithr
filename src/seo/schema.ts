@@ -90,11 +90,9 @@ export function softwareApplicationSchema() {
       availability: "https://schema.org/InStock",
       url: `${SITE.url}/pricing`,
       description: "Modular per-user pricing.",
-      priceSpecification: { 
+      priceSpecification: {
         "@type": "PriceSpecification",
         priceCurrency: "INR",
-        minPrice: "99",
-        price: "99",
         unitText: "per user per month",
       },
     },

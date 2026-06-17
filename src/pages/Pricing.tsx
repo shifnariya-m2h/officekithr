@@ -7,7 +7,7 @@ import { ArrowRight, Check, Phone } from "lucide-react";
 import { CANONICAL } from "@/seo/canonical-paths";
 import { TrustBadges } from "@/components/TrustBadges";
 
-import { SITE_PRICING, formatIndiaPrice, formatGccPrice } from "@/data/site-pricing";
+import { SITE_PRICING } from "@/data/site-pricing";
 
 const PRICING_HEADSET_IMAGE = "/pricing-headset.webp";
 
@@ -16,8 +16,6 @@ const PLANS = [
     name: "Silver",
     tier: "silver" as const,
     description: SITE_PRICING.plans[0].description,
-    indiaFrom: SITE_PRICING.plans[0].indiaFrom,
-    gccFrom: SITE_PRICING.plans[0].gccFrom,
     highlights: [
       "Core HR & employee records",
       "Attendance & leave",
@@ -31,8 +29,6 @@ const PLANS = [
     name: "Gold",
     tier: "gold" as const,
     description: SITE_PRICING.plans[1].description,
-    indiaFrom: SITE_PRICING.plans[1].indiaFrom,
-    gccFrom: SITE_PRICING.plans[1].gccFrom,
     highlights: [
       "All features in Silver",
       "Multi-company",
@@ -45,8 +41,6 @@ const PLANS = [
     name: "Platinum",
     tier: "platinum" as const,
     description: SITE_PRICING.plans[2].description,
-    indiaFrom: SITE_PRICING.plans[2].indiaFrom,
-    gccFrom: SITE_PRICING.plans[2].gccFrom,
     highlights: [
       "All features in Gold",
       "Travel management",
@@ -103,8 +97,7 @@ const Pricing = () => {
             <span className="gradient-text">India &amp; GCC</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Modular per-user plans from {formatIndiaPrice(99)}/user/month (India)
-            and {formatGccPrice(15)}/user/month (GCC). Pay only for the modules you need.
+            Modular per-user plans for India and GCC. Pay only for the modules you need.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
@@ -144,7 +137,7 @@ const Pricing = () => {
               Plans that scale with you
             </h2>
             <p className="text-muted-foreground">
-              Transparent starting prices. Volume discounts for 200+ employees.
+              Contact us for a tailored quote. Volume discounts for 200+ employees.
             </p>
           </div>
 
@@ -168,13 +161,6 @@ const Pricing = () => {
                   </span>
                   <p className="text-sm text-muted-foreground mt-4 mb-6 min-h-[2.5rem]">
                     {plan.description}
-                  </p>
-                  <p className="text-2xl font-semibold text-foreground mb-1">
-                    {formatIndiaPrice(plan.indiaFrom)}
-                    <span className="text-base font-normal text-muted-foreground">/user/mo</span>
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    India · from {formatGccPrice(plan.gccFrom)}/user/mo in GCC
                   </p>
                   <ul className="space-y-3 flex-1 mb-8">
                     {plan.highlights.map((item) => (
