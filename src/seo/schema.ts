@@ -1,3 +1,4 @@
+import { SITE_PRICING } from "@/data/site-pricing";
 import { SITE, absoluteUrl } from "./site-config";
 
 export interface FaqItem {
@@ -106,6 +107,14 @@ export function softwareApplicationSchema() {
     softwareVersion: "3.0",
     storageRequirements: "Cloud-based, no local storage required",
     releaseNotes: `${SITE.url}/resources/blogs/mobileappupdates`,
+    // TODO: Uncomment when G2/Capterra listings have verified aggregate ratings:
+    // aggregateRating: {
+    //   "@type": "AggregateRating",
+    //   ratingValue: "…",
+    //   reviewCount: "…",
+    //   bestRating: "5",
+    //   worstRating: "1",
+    // },
   };
 }
 
@@ -349,6 +358,55 @@ export function speakableSchema(input: { url: string; cssSelectors: string[] }) 
       "@type": "SpeakableSpecification",
       cssSelector: input.cssSelectors,
     },
+  };
+}
+
+/** Pricing page — Product with tiered Offers (India + GCC). */
+export function pricingPageSchema() {
+  const url = `${SITE.url}/pricing`;
+  const offers = SITE_PRICING.plans.flatMap((plan) => [
+    {
+      "@type": "Offer",
+      name: `${plan.name} (India)`,
+      price: plan.indiaFrom,
+      priceCurrency: "INR",
+      url,
+      availability: "https://schema.org/InStock",
+      description: plan.description,
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: plan.indiaFrom,
+        priceCurrency: "INR",
+        unitText: SITE_PRICING.billing,
+      },
+    },
+    {
+      "@type": "Offer",
+      name: `${plan.name} (GCC)`,
+      price: plan.gccFrom,
+      priceCurrency: "AED",
+      url,
+      availability: "https://schema.org/InStock",
+      description: plan.description,
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: plan.gccFrom,
+        priceCurrency: "AED",
+        unitText: SITE_PRICING.billing,
+      },
+    },
+  ]);
+
+  return {
+    "@type": "Product",
+    "@id": `${url}#product`,
+    name: "OfficeKit HR",
+    description:
+      "Modular HRMS with per-user pricing for India and GCC payroll, attendance, and compliance.",
+    url,
+    brand: { "@type": "Brand", name: SITE.name },
+    category: "HRMS Software",
+    offers,
   };
 }
 

@@ -25,6 +25,14 @@ const CHECKS = [
     file: join("pricing", "index.html"),
     mustIncludeTitle: "Pricing",
     mustIncludeH1: "Flexible HRMS pricing",
+    mustIncludeBody: "₹99",
+    mustNotBeHomepage: true,
+  },
+  {
+    route: "/gcc-compliance",
+    file: join("gcc-compliance", "index.html"),
+    mustIncludeTitle: "GCC",
+    mustIncludeH1: "GCC payroll compliance",
     mustNotBeHomepage: true,
   },
   {
@@ -35,9 +43,23 @@ const CHECKS = [
     mustNotBeHomepage: true,
   },
   {
-    route: "/compare/keka-alternative",
-    file: join("compare", "keka-alternative", "index.html"),
+    route: "/officekit-vs-keka",
+    file: join("officekit-vs-keka", "index.html"),
     mustIncludeTitle: "Keka",
+    mustHaveH1: true,
+    mustNotBeHomepage: true,
+  },
+  {
+    route: "/officekit-vs-zoho-people",
+    file: join("officekit-vs-zoho-people", "index.html"),
+    mustIncludeTitle: "Zoho",
+    mustHaveH1: true,
+    mustNotBeHomepage: true,
+  },
+  {
+    route: "/officekit-vs-darwinbox",
+    file: join("officekit-vs-darwinbox", "index.html"),
+    mustIncludeTitle: "Darwinbox",
     mustHaveH1: true,
     mustNotBeHomepage: true,
   },
@@ -46,6 +68,13 @@ const CHECKS = [
     file: join("features", "payroll-and-compliance", "index.html"),
     mustIncludeTitle: "Payroll",
     mustHaveH1: true,
+    mustNotBeHomepage: true,
+  },
+  {
+    route: "/reviews",
+    file: join("reviews", "index.html"),
+    mustIncludeTitle: "Reviews",
+    mustIncludeH1: "OfficeKit HR reviews",
     mustNotBeHomepage: true,
   },
   {
@@ -71,10 +100,7 @@ function extractH1(html) {
 function isHomepageBody(html) {
   const title = extractTitle(html);
   const h1 = extractH1(html);
-  return (
-    title.includes(HOME_TITLE_SNIPPET) &&
-    h1.includes(HOME_H1_SNIPPET)
-  );
+  return title.includes(HOME_TITLE_SNIPPET) && h1.includes(HOME_H1_SNIPPET);
 }
 
 let failed = 0;
@@ -103,6 +129,14 @@ for (const check of CHECKS) {
   if (check.mustIncludeH1 && !h1.includes(check.mustIncludeH1)) {
     console.error(
       `[verify-prerender] FAIL ${check.route}: h1 "${h1}" missing "${check.mustIncludeH1}"`
+    );
+    failed++;
+    continue;
+  }
+
+  if (check.mustIncludeBody && !html.includes(check.mustIncludeBody)) {
+    console.error(
+      `[verify-prerender] FAIL ${check.route}: HTML missing "${check.mustIncludeBody}"`
     );
     failed++;
     continue;

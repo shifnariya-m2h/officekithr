@@ -1,4 +1,4 @@
-/** Testimonials + aggregate rating for UI and Review schema. */
+/** Testimonials for on-site display — not third-party aggregate ratings. */
 export const TESTIMONIALS = [
   {
     name: "Mohideen Kader",
@@ -38,6 +38,7 @@ export const TESTIMONIALS = [
   },
 ] as const;
 
+/** @deprecated Do not use for UI — third-party counts are not verified. Use on-site testimonials only. */
 export const AGGREGATE_RATING = {
   ratingValue: "4.8",
   reviewCount: "47",

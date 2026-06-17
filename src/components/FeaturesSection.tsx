@@ -17,6 +17,7 @@ export default function FeaturesSection() {
   const workFeatures = [
     { title: "Attendance and Leave", link: "/features/attendance-and-leave" },
     { title: "Payroll and Compliance", link: "/features/payroll-and-compliance" },
+    { title: "GCC Compliance Hub", link: "/gcc-compliance" },
     { title: "India Payroll Compliance", link: "/compliance/india-payroll-compliance" },
     { title: "Payroll Software UAE", link: "/payroll-software-uae" },
     { title: "Face Recognition Attendance", link: "/longtail/face-recognition-attendance-india" },

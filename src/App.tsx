@@ -71,11 +71,13 @@ const MarketingLandingPage = lazy(
   () => import("./pages/marketing/MarketingLandingPage")
 );
 const ComplianceHub = lazy(() => import("./pages/compliance/ComplianceHub"));
+const GccComplianceHub = lazy(() => import("./pages/compliance/GccComplianceHub"));
 const CompliancePage = lazy(() => import("./pages/compliance/CompliancePage"));
 const LongtailHub = lazy(() => import("./pages/longtail/LongtailHub"));
 const LongtailPage = lazy(() => import("./pages/longtail/LongtailPage"));
 const IndustryPage = lazy(() => import("./pages/industries/IndustryPage"));
 const Customers = lazy(() => import("./pages/Customers"));
+const Reviews = lazy(() => import("./pages/Reviews"));
 const ToolsHub = lazy(() => import("./pages/tools/ToolsHub"));
 const ToolPage = lazy(() => import("./pages/tools/ToolPage"));
 const KnowledgeIndex = lazy(() => import("./pages/knowledge/KnowledgePage"));
@@ -91,6 +93,11 @@ const StickyDemoCta = lazy(() =>
 );
 const CookieConsent = lazy(() =>
   import("@/components/CookieConsent").then((m) => ({ default: m.CookieConsent }))
+);
+const ReviewPromptBanner = lazy(() =>
+  import("@/components/ReviewPromptBanner").then((m) => ({
+    default: m.ReviewPromptBanner,
+  }))
 );
 
 function PageLoader() {
@@ -251,6 +258,7 @@ const AppRoutes = () => {
 
           {/* Compliance pages */}
           <Route path="/compliance" element={<ComplianceHub />} />
+          <Route path="/gcc-compliance" element={<GccComplianceHub />} />
           <Route path="/compliance/:slug" element={<CompliancePage />} />
 
           {/* Long-tail keyword pages */}
@@ -261,6 +269,7 @@ const AppRoutes = () => {
           <Route path="/industries/:slug" element={<IndustryPage />} />
 
           <Route path="/customers" element={<Customers />} />
+          <Route path="/reviews" element={<Reviews />} />
           <Route path="/tools" element={<ToolsHub />} />
           <Route path="/tools/:slug" element={<ToolPage />} />
           <Route path="/knowledge" element={<KnowledgeIndex />} />
@@ -311,6 +320,9 @@ function DeferredChrome({ isPopupOpen }: { isPopupOpen: boolean }) {
       )}
       <Suspense fallback={null}>
         <StickyDemoCta />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ReviewPromptBanner />
       </Suspense>
     </>
   );

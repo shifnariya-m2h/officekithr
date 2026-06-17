@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { CASE_STUDIES } from "@/data/case-studies";
-import { TESTIMONIALS, AGGREGATE_RATING } from "@/data/testimonials-data";
+import { TESTIMONIALS } from "@/data/testimonials-data";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Quote, Star } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 import { breadcrumbSchema } from "@/seo/schema";
 import { PageJsonLd } from "@/components/PageJsonLd";
 
@@ -35,14 +35,12 @@ const Customers = () => {
               HR teams across India and the GCC automate payroll, attendance, and
               compliance with OfficeKit HR.
             </p>
-            <div className="flex justify-center gap-1 mt-4" aria-label="4.8 out of 5 stars">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-              ))}
-              <span className="ml-2 text-sm text-muted-foreground">
-                {AGGREGATE_RATING.ratingValue}/5 from {AGGREGATE_RATING.reviewCount} reviews
-              </span>
-            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              <Link to="/reviews" className="text-primary hover:underline">
+                Read customer testimonials
+              </Link>
+              {/* TODO: Link G2/Capterra profiles once listings are live */}
+            </p>
           </div>
         </section>
 

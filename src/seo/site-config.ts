@@ -19,11 +19,13 @@ export const SITE = {
     facebook: "https://www.facebook.com/officekithr/",
     instagram: "https://www.instagram.com/officekit_hr/",
   },
-  /** schema.org sameAs — official social profiles */
+  /** schema.org sameAs — official social + review profiles */
   sameAs: [
     "https://www.linkedin.com/company/officekithr/",
     "https://www.facebook.com/officekithr/",
     "https://www.instagram.com/officekit_hr/",
+    // TODO: Add when live — "https://www.g2.com/products/officekit-hr",
+    // TODO: Add when live — "https://www.capterra.com/p/XXXXXX/OfficeKit-HR",
   ],
 } as const;
 
