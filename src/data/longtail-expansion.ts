@@ -22,7 +22,7 @@ export const LONGTAIL_EXPANSION = {
       {
         question: "What is the cheapest HRMS for 50 employees in India?",
         answer:
-          "OfficeKit HR Silver at ₹99/user/month (~₹4,950/month for 50 users) includes statutory payroll, attendance, and ESS — often lower TCO than bundled competitors.",
+          "OfficeKit HR Silver includes statutory payroll, attendance, and employee self-service on modular per-user pricing — often lower total cost of ownership than bundled competitors. See our pricing page for current rates.",
       },
     ],
     related: [

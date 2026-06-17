@@ -122,7 +122,7 @@ const FAQSection = ({ variant = "home", categories }: FAQSectionProps) => {
                 Need more detail?
               </h3>
               <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto mb-6">
-                Browse all {FAQ_PAGE_ALL_FAQS.length} answers on India &amp; GCC payroll, WPS, pricing, modules, and security.
+                Browse all {FAQ_PAGE_ALL_FAQS.length} answers on India &amp; GCC payroll, WPS, modules, implementation, and security.
               </p>
               <Button
                 asChild

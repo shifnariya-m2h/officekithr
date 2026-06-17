@@ -415,7 +415,7 @@ export const ARTICLE_POSTS: Record<string, ArticlePost> = {
       {
         question: "What does HR software cost per employee in India and the UAE?",
         answer:
-          "Published per-employee rates in this segment range from roughly ₹60 to ₹125 PEPM in India and AED 6 to 12 in the Gulf, depending on tier. Be cautious with vendors whose pricing requires a sales call to discover — the number is rarely lower for the suspense.",
+          "HRMS pricing in this segment is typically per employee per month, with tiers based on modules and headcount. Prefer vendors that publish transparent rates on their pricing page rather than those that require a sales call to disclose costs.",
       },
     ],
   }),

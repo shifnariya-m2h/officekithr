@@ -1,5 +1,6 @@
 /**
  * Production build entry — skips Playwright prerender on CI unless PRERENDER=1.
+ * Local builds prerender by default (set PRERENDER=0 to skip).
  */
 import { execSync } from "child_process";
 import { dirname, join } from "path";
@@ -13,8 +14,10 @@ const isCi = Boolean(
     process.env.VERCEL ||
     process.env.CLOUDFLARE_PAGES
 );
-// Prerender by default — critical for SEO/LCP scores (set PRERENDER=0 to skip).
-const prerender = process.env.PRERENDER !== "0";
+// Local: prerender by default (SEO). CI/Cloudflare: skip unless PRERENDER=1.
+const prerender = isCi
+  ? process.env.PRERENDER === "1"
+  : process.env.PRERENDER !== "0";
 
 function run(cmd) {
   console.log(`[build] ${cmd}`);

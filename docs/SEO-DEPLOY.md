@@ -38,9 +38,32 @@ This generates:
 
 ## Cloudflare
 
+This site is a **Vite static SPA** with prerendered HTML — **not** Next.js. Do **not** use `opennextjs-cloudflare` or any OpenNext deploy command.
+
+### Cloudflare Workers (Git)
+
+| Setting | Value |
+|---------|--------|
+| Build command | `npm ci && npm run build` |
+| Deploy command | `npx wrangler deploy` |
+
+`wrangler.jsonc` points at `./dist` (static assets). Optional one-shot: `npm run deploy:cloudflare`.
+
+Set env `PRERENDER=1` on the build if you want full Playwright prerender in CI (slower; default on CI is Vite-only).
+
+### Cloudflare Pages (alternative)
+
+| Setting | Value |
+|---------|--------|
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Deploy command | *(leave empty — Pages uploads `dist` automatically)* |
+
+### After deploy
+
 1. **Disable “Managed robots.txt”** (or align with `public/robots.txt`) so AI crawlers (`GPTBot`, `PerplexityBot`, `Google-Extended`) are not blocked by conflicting rules.
 2. **`public/_redirects`** handles www, trailing-slash removal, and canonical URL consolidation.
-3. Production SEO build: `PRERENDER=1 npm run build` then deploy `dist/`.
+3. Production SEO build locally: `PRERENDER=1 npm run build` then deploy `dist/`.
 
 ## Architecture
 

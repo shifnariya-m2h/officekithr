@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "officekithr",
+  "compatibility_date": "2026-06-17",
+  // Static Vite build output — not Next.js / OpenNext.
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

@@ -24,7 +24,7 @@ const Faq = () => {
   return (
     <PageShell
       title="FAQs | OfficeKit HR"
-      description="FAQs about OfficeKit HR — HRMS for India & GCC. WPS payroll UAE, PF/ESI India, statutory compliance, pricing, modules, and AI features."
+      description="60+ answers about OfficeKit HR — HRMS for India & GCC. WPS payroll UAE, PF/ESI India, statutory compliance, pricing, modules, AI features, and implementation."
       path={FAQ_PATH}
       faqs={schemaFaqs}
       schemaNodes={[
@@ -46,7 +46,7 @@ const Faq = () => {
               <span className="gradient-text">Questions</span>
             </>
           }
-          subtitle="Answers about OfficeKit HR — payroll, compliance, HR modules, pricing, and support for India and the GCC."
+          subtitle="Comprehensive answers on payroll, compliance, HR modules, pricing, AI automation, security, and implementation — for teams in India and the GCC."
         >
           <Button asChild size="lg" className="btn-cta h-11 group">
             <Link to="/contact">
@@ -65,8 +65,11 @@ const Faq = () => {
         <FAQSection variant="page" categories={FAQ_PAGE_CATEGORIES} />
 
         <section className="pb-20 text-center">
-          <p className="text-muted-foreground mb-4">
-            Still have questions? Talk to our team.
+          <p className="text-muted-foreground mb-2 max-w-lg mx-auto">
+            Didn&apos;t find what you&apos;re looking for? Our team can walk you through payroll, compliance, and rollout for your specific setup.
+          </p>
+          <p className="text-sm text-muted-foreground mb-6">
+            Typical go-live in 2–6 weeks with guided migration and training.
           </p>
           <Button asChild className="rounded-full bg-[#0055ff] hover:bg-[#0044cc]">
             <Link to="/contact">
