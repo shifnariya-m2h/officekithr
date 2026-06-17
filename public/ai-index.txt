@@ -1,6 +1,6 @@
 # OfficeKit HR — AI Index
 # Priority URLs for AI search citation and retrieval
-# Last updated: 2026-06-16
+# Last updated: 2026-06-17
 # Full summary: https://www.officekithr.com/llms.txt
 # Full content: https://www.officekithr.com/llms-full.txt
 
@@ -46,5 +46,6 @@ https://www.officekithr.com/resources/blogs/pf-esi-guide-indian-employers
 
 ## Conversion
 https://www.officekithr.com/pricing
+https://www.officekithr.com/faq
 https://www.officekithr.com/customers
 https://www.officekithr.com/contact

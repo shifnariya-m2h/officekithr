@@ -8,6 +8,7 @@ type SeoHeroBannerProps = {
   children?: ReactNode;
   backgroundImage?: string;
   centered?: boolean;
+  titleId?: string;
 };
 
 /** Full-width hero with background image and readable overlay (matches feature pages). */
@@ -18,6 +19,7 @@ export function SeoHeroBanner({
   children,
   backgroundImage = SEO_ASSETS.sectionBg,
   centered = true,
+  titleId,
 }: SeoHeroBannerProps) {
   const align = centered ? "text-center" : "";
 
@@ -35,6 +37,7 @@ export function SeoHeroBanner({
           <p className="text-sm font-medium text-primary mb-3">{eyebrow}</p>
         )}
         <h1
+          id={titleId}
           className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 ${
             centered ? "mx-auto max-w-4xl" : "max-w-3xl"
           }`}

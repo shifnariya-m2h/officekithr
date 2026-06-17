@@ -32,6 +32,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "motion/react": "framer-motion",
+      // lottie-web's main entry is UMD; lottie-react expects a default ESM export.
+      "lottie-web": path.resolve(
+        __dirname,
+        "node_modules/lottie-web/build/player/esm/lottie.min.js"
+      ),
     },
     dedupe: ["react", "react-dom", "framer-motion"],
   },
@@ -105,7 +110,6 @@ export default defineConfig({
     cssMinify: true,
   },
   optimizeDeps: {
-    include: ["react", "react-dom", "react-router-dom"],
-    exclude: ["lottie-react"],
+    include: ["react", "react-dom", "react-router-dom", "lottie-react", "lottie-web"],
   },
 });

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import {
-  HR_POPUP_SESSION_KEY,
+  markHrPopupShown,
   useHrPopupTrigger,
 } from "@/hooks/useHrPopupTrigger";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -34,6 +34,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Faq = lazy(() => import("./pages/Faq"));
 const RecruitmentManagement = lazy(() => import("./pages/features/RecruitmentManagement"));
 const AttendanceAndLeave = lazy(() => import("./pages/features/AttendanceAndLeave"));
 const PayrollAndCompliance = lazy(() => import("./pages/features/PayrollAndCompliance"));
@@ -109,15 +110,12 @@ const AppRoutes = () => {
   const isUaeRoute = isUaePath(location.pathname);
   const isHome = location.pathname === "/";
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const openHrPopup = useCallback(() => setIsPopupOpen(true), []);
+  const openHrPopup = useCallback(() => {
+    markHrPopupShown();
+    setIsPopupOpen(true);
+  }, []);
 
   useHrPopupTrigger(isHome, isPopupOpen, openHrPopup);
-
-  useEffect(() => {
-    if (isPopupOpen) {
-      sessionStorage.setItem(HR_POPUP_SESSION_KEY, "true");
-    }
-  }, [isPopupOpen]);
 
   return (
     <LanguageProvider
@@ -143,6 +141,7 @@ const AppRoutes = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<Faq />} />
 
           <Route
             path="/features/recruitment-management"

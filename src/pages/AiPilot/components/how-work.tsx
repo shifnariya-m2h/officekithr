@@ -2,32 +2,38 @@ import { useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/performance/media";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HowItWorks() {
-  const sectionsRef = useRef([]);
+  const sectionsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    sectionsRef.current.forEach((section) => {
-      if (!section) return;
-      gsap.fromTo(
-        section,
-        { y: 100, opacity: 0, scale: 0.9 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1,
+    if (prefersReducedMotion()) return;
+
+    const sections = sectionsRef.current.filter(Boolean);
+    if (!sections.length) return;
+
+    const ctx = gsap.context(() => {
+      sections.forEach((section) => {
+        gsap.from(section, {
+          y: 48,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
+            start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
           },
-        }
-      );
+        });
+      });
     });
+
+    ScrollTrigger.refresh();
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -92,7 +98,7 @@ export default function HowItWorks() {
             <div className="flex justify-center order-2">
               <img
                 className="rounded-2xl h-[25rem] object-cover"
-                src="/Ai-pilot-chatbot.png"
+                src="/Ai-pilot-chatbot.webp"
                 alt="Quick Workspace Setup"
                 loading="lazy"
               />

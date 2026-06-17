@@ -9,6 +9,9 @@ export type OptimizedImageProps = {
   srcSet?: string;
   sizes?: string;
   className?: string;
+  /** Maps to the native `fetchpriority` attribute on `<img>`. */
+  priority?: "high" | "low" | "auto";
+  /** @deprecated Use `priority` */
   fetchPriority?: "high" | "low" | "auto";
   loading?: "eager" | "lazy";
   decoding?: "async" | "sync" | "auto";
@@ -28,6 +31,7 @@ export function OptimizedImage({
   srcSet,
   sizes,
   className,
+  priority,
   fetchPriority,
   loading,
   decoding = "async",
@@ -47,7 +51,7 @@ export function OptimizedImage({
       decoding={decoding}
       draggable={draggable}
       aria-hidden={decorative ? true : undefined}
-      {...imgFetchPriority(fetchPriority)}
+      {...imgFetchPriority(priority ?? fetchPriority)}
     />
   );
 }

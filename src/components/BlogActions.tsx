@@ -11,12 +11,13 @@ type BlogActionsProps = {
   contactHref?: string;
 };
 
+import { safeLocalGet, safeLocalSet } from "@/lib/safe-storage";
+
 const BOOKMARKS_KEY = "ok_blog_bookmarks";
 
 const readBookmarks = () => {
-  if (typeof window === "undefined") return [];
   try {
-    const stored = window.localStorage.getItem(BOOKMARKS_KEY);
+    const stored = safeLocalGet(BOOKMARKS_KEY);
     if (!stored) return [];
     const parsed = JSON.parse(stored);
     return Array.isArray(parsed) ? parsed : [];
@@ -26,8 +27,7 @@ const readBookmarks = () => {
 };
 
 const writeBookmarks = (items: unknown[]) => {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(items));
+  safeLocalSet(BOOKMARKS_KEY, JSON.stringify(items));
 };
 
 const BlogActions = ({

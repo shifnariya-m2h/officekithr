@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { LazyContainerScroll } from "@/components/ui/LazyContainerScroll";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { HERO_IMAGES } from "@/lib/seo/assets";
+import { imgFetchPriority } from "@/lib/img-props";
 
 const HeroProductParallax = lazy(() =>
   import("@/components/motion/HeroProductParallax").then((m) => ({
@@ -99,7 +100,7 @@ const HeroSection = () => {
         width={HERO_IMAGES.mobile.width}
         height={HERO_IMAGES.mobile.height}
         className="h-full w-full object-contain object-bottom"
-        fetchPriority="high"
+        {...imgFetchPriority("high")}
         loading="eager"
         decoding="async"
         draggable={false}
@@ -123,7 +124,7 @@ const HeroSection = () => {
         width={HERO_IMAGES.heroBg.width}
         height={HERO_IMAGES.heroBg.height}
         className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none opacity-90"
-        fetchPriority="high"
+        priority="high"
         loading="eager"
         decoding="async"
         decorative

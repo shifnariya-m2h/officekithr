@@ -50,6 +50,7 @@ const Footer = () => {
   ];
 
   const resourcesLinks = [
+    { name: "FAQs", href: "/faq" },
     { name: "Blog", href: "/resources/blogs" },
     { name: "HR Guides", href: "/resources/guides" },
     { name: "Knowledge Base", href: "/knowledge" },

@@ -40,7 +40,7 @@ export function PageShell({
     faqs?.length && path
       ? speakableSchema({
           url: absoluteUrl(path),
-          cssSelectors: ["#page-faq-heading", ".geo-faq-answer", ".direct-answer"],
+          cssSelectors: ["#page-faq-heading", ".geo-faq-answer", ".home-faq-answer", ".direct-answer"],
         })
       : null;
   const pageNodes = [

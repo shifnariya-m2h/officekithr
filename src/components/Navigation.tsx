@@ -14,7 +14,8 @@ import {
   ScanFace,
   Bot,
   Coins,
-  Lightbulb
+  Lightbulb,
+  HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -78,6 +79,7 @@ const Navigation = () => {
     { name: "HR Software UAE", href: "/hr-software-uae", icon: Lightbulb, description: "WPS payroll & GCC HR." },
     { name: "HRMS India", href: "/hrms-software-india", icon: Lightbulb, description: "Statutory payroll & HRMS." },
     { name: "Compare vendors", href: "/compare", icon: Lightbulb, description: "OfficeKit vs Keka, greytHR." },
+    { name: "FAQs", href: "/faq", icon: HelpCircle, description: "Common questions about OfficeKit HR." },
   ];
 
   // WhatsApp Handler
@@ -250,7 +252,7 @@ const Navigation = () => {
               <DropdownMenuContent
                 onMouseEnter={handleResourcesMouseEnter}
                 onMouseLeave={handleResourcesMouseLeave}
-              className="w-[90vw] max-w-[280px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 z-[70]"
+              className="w-[90vw] max-w-[320px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 z-[70]"
               align="start"
               sideOffset={8}
               onCloseAutoFocus={(e) => e.preventDefault()}

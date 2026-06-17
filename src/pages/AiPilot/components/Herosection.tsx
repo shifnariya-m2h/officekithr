@@ -1,10 +1,18 @@
+import { useEffect, useState } from "react";
 import { Button } from "../../../components/ui/button";
 import { Link } from "react-router-dom";
 import { LazyLottie } from "@/components/ui/LazyLottie";
+import { prefersReducedMotion, isMobileViewport } from "@/lib/performance/media";
+import { imgFetchPriority } from "@/lib/img-props";
+import { ChevronDown } from "lucide-react";
 
 const loadAiPilotAnimation = () =>
-  import("../../../../public/lottie/Anima Bot.json");
-import { ChevronDown } from "lucide-react";
+  fetch("/lottie/Anima%20Bot.json")
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to load AI Pilot animation");
+      return res.json();
+    })
+    .then((data) => ({ default: data as Record<string, unknown> }));
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -15,8 +23,11 @@ import { SiApple, SiAndroid } from "react-icons/si";
 
 
 const HeroSection = () => {
- 
+  const [useStaticHero, setUseStaticHero] = useState(false);
 
+  useEffect(() => {
+    setUseStaticHero(prefersReducedMotion() || isMobileViewport());
+  }, []);
 
   return (
     <section
@@ -117,20 +128,41 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-300/20 blur-3xl scale-110"></div>
 
               <div className="relative z-10 flex justify-center">
-                <LazyLottie
-                  loadAnimation={loadAiPilotAnimation}
-                  loop
-                  className="
-                    w-[260px] h-[360px]
-                    sm:w-[340px] sm:h-[480px]
-                    md:w-[420px] md:h-[600px]
-                    lg:w-[500px] lg:h-[700px]
-                    xl:w-[560px] xl:h-[780px]
-                    mt-6 sm:mt-8 md:mt-10
-                    drop-shadow-2xl
-                    transform hover:scale-105 transition duration-500
-                  "
-                />
+                {useStaticHero ? (
+                  <img
+                    src="/chatbot.webp"
+                    alt="AI Pilot assistant on mobile"
+                    width={560}
+                    height={780}
+                    className="
+                      w-[260px] h-auto
+                      sm:w-[340px]
+                      md:w-[420px]
+                      lg:w-[500px]
+                      xl:w-[560px]
+                      mt-6 sm:mt-8 md:mt-10
+                      drop-shadow-2xl
+                      transform hover:scale-105 transition duration-500
+                    "
+                    loading="eager"
+                    {...imgFetchPriority("high")}
+                  />
+                ) : (
+                  <LazyLottie
+                    loadAnimation={loadAiPilotAnimation}
+                    loop
+                    className="
+                      w-[260px] h-[360px]
+                      sm:w-[340px] sm:h-[480px]
+                      md:w-[420px] md:h-[600px]
+                      lg:w-[500px] lg:h-[700px]
+                      xl:w-[560px] xl:h-[780px]
+                      mt-6 sm:mt-8 md:mt-10
+                      drop-shadow-2xl
+                      transform hover:scale-105 transition duration-500
+                    "
+                  />
+                )}
               </div>
             </div>
           </div>

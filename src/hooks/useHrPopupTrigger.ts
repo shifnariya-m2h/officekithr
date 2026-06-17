@@ -1,8 +1,14 @@
 import { useEffect } from "react";
 
 export const HR_POPUP_SENTINEL_ID = "hr-popup-scroll-sentinel";
-const POPUP_SESSION_KEY = "ok_hr_popup_session_shown";
 const POPUP_SCROLL_MIN_PX = 280;
+
+/** In-memory only — avoids sessionStorage (blocked in some preview/iframe contexts). */
+let hrPopupShown = false;
+
+export function markHrPopupShown(): void {
+  hrPopupShown = true;
+}
 
 function getScrollTop(): number {
   return window.scrollY || document.documentElement.scrollTop || 0;
@@ -25,8 +31,9 @@ export function useHrPopupTrigger(
   onOpen: () => void
 ) {
   useEffect(() => {
-    if (!enabled || isOpen || typeof window === "undefined") return;
-    if (sessionStorage.getItem(POPUP_SESSION_KEY) === "true") return;
+    if (!enabled || isOpen || typeof window === "undefined" || hrPopupShown) {
+      return;
+    }
 
     let opened = false;
     let sentinelSeen = false;
@@ -36,8 +43,9 @@ export function useHrPopupTrigger(
     let attachTimer = 0;
 
     const open = () => {
-      if (opened) return;
+      if (opened || hrPopupShown) return;
       opened = true;
+      hrPopupShown = true;
       observer?.disconnect();
       mutationObserver?.disconnect();
       window.clearInterval(attachTimer);
@@ -117,5 +125,3 @@ export function useHrPopupTrigger(
     };
   }, [enabled, isOpen, onOpen]);
 }
-
-export const HR_POPUP_SESSION_KEY = POPUP_SESSION_KEY;

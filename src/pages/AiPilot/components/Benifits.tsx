@@ -41,9 +41,9 @@ function Benefits() {
             AI Pilot makes OfficeKit HR not just smarter, but more human.
           </h2>
           <p className="text-gray-300 mb-8">
-            Get AI-powered attendance free with OfficeKit HR's Face Recognition
-            App perfect for startups and small teams, without costly systems or
-            errors.
+            Ask questions, apply for leave, download payslips, and access HR
+            policies through a natural voice or text interface—built directly
+            into OfficeKit HR.
           </p>
 
           <ul className="space-y-4 mb-10">

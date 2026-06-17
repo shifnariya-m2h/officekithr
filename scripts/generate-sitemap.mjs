@@ -23,6 +23,7 @@ const STATIC_PATHS = [
   "/about-us",
   "/pricing",
   "/contact",
+  "/faq",
   "/features/recruitment-management",
   "/features/attendance-and-leave",
   "/features/payroll-and-compliance",
@@ -149,6 +150,7 @@ const STATIC_PATHS = [
 const PRIORITY = {
   "/": "1.0",
   "/pricing": "0.9",
+  "/faq": "0.8",
   "/ae": "0.85",
   "/hrms-software-india": "0.88",
   "/payroll-software-uae": "0.88",
@@ -414,6 +416,7 @@ ${SITE}/resources/blogs/pf-esi-guide-indian-employers
 
 ## Conversion
 ${SITE}/pricing
+${SITE}/faq
 ${SITE}/customers
 ${SITE}/contact
 `;
