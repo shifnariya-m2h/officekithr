@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
+import { shouldRenderForCrawler } from "@/lib/is-crawler";
 
 type DeferredMountProps = {
   children: ReactNode;
@@ -19,7 +20,7 @@ export function DeferredMount({
   maxWait = 1200,
   className,
 }: DeferredMountProps) {
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(shouldRenderForCrawler);
 
   useEffect(() => {
     let cancelled = false;
