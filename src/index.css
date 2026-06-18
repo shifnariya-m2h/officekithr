@@ -27,8 +27,7 @@
   will-change: transform;
 }
 
-.marquee-track:hover .animate-marquee,
-.marquee-track:hover .animate-marquee-reverse {
+.marquee-root:hover .marquee-track {
   animation-play-state: paused;
 }
 
@@ -359,11 +358,25 @@ html[data-perf-mode="mobile"] .section-fade-in {
     will-change: transform;
   }
 
+  .marquee-track-reverse {
+    animation-direction: reverse;
+  }
+
   .marquee-track-static {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 1rem 1.25rem;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .marquee-track-static {
+      gap: 1.25rem 1.75rem;
+    }
   }
 
   .marquee-group {
