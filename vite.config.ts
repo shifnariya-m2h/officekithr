@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -22,10 +22,29 @@ function asyncCssPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const blogApiKey = env.VITE_BLOG_API_KEY?.trim();
+
+  return {
   server: {
     host: "::",
     port: 8085,
+    proxy: {
+      "/api/flowpilot-blogs": {
+        target: "https://flowpilot.officekithr.net",
+        changeOrigin: true,
+        rewrite: (path) =>
+          path.replace(/^\/api\/flowpilot-blogs/, "/api/api/blogs"),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            if (blogApiKey) {
+              proxyReq.setHeader("Authorization", `Bearer ${blogApiKey}`);
+            }
+          });
+        },
+      },
+    },
   },
   plugins: [react(), asyncCssPlugin()],
   resolve: {
@@ -112,4 +131,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom", "lottie-react", "lottie-web"],
   },
+  };
 });

@@ -243,10 +243,24 @@ function excerptFrom(html, max = 160) {
 }
 
 async function fetchDynamicBlogs() {
+  const apiUrl =
+    process.env.VITE_BLOG_API_URL ||
+    "https://flowpilot.officekithr.net/api/api/blogs";
+  const apiKey = process.env.VITE_BLOG_API_KEY?.trim();
+
   try {
-    const res = await fetch("https://api.officekithr.com/api/blogs");
+    const headers = apiKey ? { Authorization: `Bearer ${apiKey}` } : {};
+    const url = new URL(apiUrl);
+    url.searchParams.set("page", "1");
+    url.searchParams.set("limit", "50");
+    url.searchParams.set("status", "published");
+
+    const res = await fetch(url.toString(), { headers });
     if (!res.ok) return { paths: [], manifest: {} };
-    const posts = await res.json();
+    const body = await res.json();
+    const posts = body?.data?.blogs ?? body;
+    if (!Array.isArray(posts)) return { paths: [], manifest: {} };
+
     const manifest = {};
     const paths = [];
 
@@ -257,7 +271,10 @@ async function fetchDynamicBlogs() {
       const path = `/blog/${slug}`;
       paths.push(path);
       const description =
-        p.excerpt || excerptFrom(p.content) ||
+        p.metaDescription ||
+        p.description ||
+        p.excerpt ||
+        excerptFrom(p.content) ||
         "Expert HR insights from OfficeKit HR.";
       manifest[slug] = {
         slug,
@@ -266,7 +283,10 @@ async function fetchDynamicBlogs() {
         headline: p.title,
         description,
         image: p.image || `${SITE}/ImageThumbnail2.png`,
-        datePublished: p.createdAt?.split("T")[0] || p.date,
+        datePublished:
+          p.publishedAt?.split("T")[0] ||
+          p.createdAt?.split("T")[0] ||
+          p.date,
         author: p.author || "OfficeKit HR Team",
       };
     }

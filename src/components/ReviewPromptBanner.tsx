@@ -6,6 +6,7 @@ import {
   REVIEW_PLATFORMS,
   REVIEW_PROMPT_DAYS_AFTER_ONBOARDING,
 } from "@/data/review-platforms";
+import { safeLocalGet, safeSessionGet, safeSessionSet } from "@/lib/safe-storage";
 
 const STORAGE_KEY = "officekit_review_prompt_dismissed";
 const ONBOARDING_KEY = "officekit_onboarding_completed_at";
@@ -18,9 +19,9 @@ function daysSince(isoDate: string): number {
 
 function shouldShowPrompt(): boolean {
   if (typeof window === "undefined") return false;
-  if (sessionStorage.getItem(STORAGE_KEY)) return false;
+  if (safeSessionGet(STORAGE_KEY)) return false;
 
-  const onboardingAt = localStorage.getItem(ONBOARDING_KEY);
+  const onboardingAt = safeLocalGet(ONBOARDING_KEY);
   if (!onboardingAt) return false;
 
   if (daysSince(onboardingAt) < REVIEW_PROMPT_DAYS_AFTER_ONBOARDING) return false;
@@ -43,7 +44,7 @@ export function ReviewPromptBanner() {
   if (!visible) return null;
 
   const dismiss = () => {
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    safeSessionSet(STORAGE_KEY, "1");
     setVisible(false);
   };
 

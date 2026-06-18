@@ -31,8 +31,11 @@ export const env = {
   syncoraApiKey: str(import.meta.env.VITE_SYNCORA_API_KEY, ""),
   blogApiUrl: str(
     import.meta.env.VITE_BLOG_API_URL,
-    "https://api.officekithr.com/api/blogs",
+    import.meta.env.DEV
+      ? "/api/flowpilot-blogs"
+      : "https://flowpilot.officekithr.net/api/api/blogs",
   ),
+  blogApiKey: str(import.meta.env.VITE_BLOG_API_KEY, ""),
   gaMeasurementId: str(
     import.meta.env.VITE_GA_MEASUREMENT_ID,
     "G-J60WZ10KBF",

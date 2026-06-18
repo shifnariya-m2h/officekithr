@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,18 +9,62 @@ import { Badge } from "@/components/ui/badge";
 import { BLOG_CATEGORIES, BLOG_LISTING_POSTS } from "@/data/blog-listing";
 import { BLOG_CARD_IMAGE_FALLBACK } from "@/data/blog-images";
 import { formatBlogDate } from "@/utils/formatBlogDate";
+import { getAllPosts } from "@/services/blogService";
+import { BlogPost } from "@/types";
+
+function sortByDateDesc(posts: BlogPost[]): BlogPost[] {
+  return [...posts].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
+}
+
+function mergePosts(apiPosts: BlogPost[], staticPosts: BlogPost[]): BlogPost[] {
+  const seen = new Set<string>();
+  const merged: BlogPost[] = [];
+
+  // API blogs first (newest within each group), then static/legacy posts
+  for (const post of [...sortByDateDesc(apiPosts), ...sortByDateDesc(staticPosts)]) {
+    const key = post.slug || post.link;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    merged.push(post);
+  }
+
+  return merged;
+}
 
 const Blog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [apiPosts, setApiPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    getAllPosts()
+      .then((posts) => {
+        if (!cancelled) setApiPosts(posts);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const allPosts = useMemo(
+    () => mergePosts(apiPosts, BLOG_LISTING_POSTS),
+    [apiPosts],
+  );
 
   const categoryParam = searchParams.get("category") || "";
   const activeCategory =
     BLOG_CATEGORIES.find((c) => c.param === categoryParam)?.label ?? "All Posts";
 
   const filteredPosts = useMemo(() => {
-    if (activeCategory === "All Posts") return BLOG_LISTING_POSTS;
-    return BLOG_LISTING_POSTS.filter((post) => post.updates === activeCategory);
-  }, [activeCategory]);
+    if (activeCategory === "All Posts") return allPosts;
+    return allPosts.filter((post) => post.updates === activeCategory);
+  }, [activeCategory, allPosts]);
 
   const featuredPost = filteredPosts[0];
   const latestPosts = filteredPosts.slice(1);
@@ -160,12 +204,20 @@ const Blog = () => {
                 Latest Articles
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground">
-                {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""}
-                {activeCategory !== "All Posts" ? ` in ${activeCategory}` : ""}
+                {loading ? "Loading articles…" : (
+                  <>
+                    {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""}
+                    {activeCategory !== "All Posts" ? ` in ${activeCategory}` : ""}
+                  </>
+                )}
               </p>
             </div>
 
-            {latestPosts.length > 0 ? (
+            {loading && filteredPosts.length === 0 ? (
+              <div className="text-center py-12 text-muted-foreground">
+                Loading articles…
+              </div>
+            ) : latestPosts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {latestPosts.map((post) => (
                   <Link key={post._id} to={post.link} className="block group h-full">

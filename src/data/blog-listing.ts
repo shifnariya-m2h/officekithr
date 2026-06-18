@@ -175,4 +175,5 @@ export const BLOG_CATEGORIES = [
   { label: "India Compliance", shortLabel: "India", param: "India Compliance" },
   { label: "Leadership & Culture", shortLabel: "Culture", param: "Leadership & Culture" },
   { label: "Remote Work", shortLabel: "Remote", param: "Remote Work" },
+  { label: "HR Trends", shortLabel: "Trends", param: "HR Trends" },
 ] as const;
