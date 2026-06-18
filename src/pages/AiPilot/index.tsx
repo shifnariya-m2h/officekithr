@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { productSchema } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/site-config";
+import { ProductPageShell } from "@/components/product/ProductMotion";
 
 const PAGE_PATH = "/features/ai-pilot";
 
@@ -14,25 +15,27 @@ const AiPilot = () => {
 
   return (
     <PageShell
-      title="AI Pilot for HR Automation | OfficeKit HR"
-      description="Automate repetitive HR tasks with OfficeKit AI Pilot — smart voice and text workflows for modern HR teams."
+      title="AI Pilot — AI HR Assistant | OfficeKit HR"
+      description="Automate employee queries, leave, payslips, and workforce insights with AI Pilot — voice and chat built into OfficeKit HR."
       path={PAGE_PATH}
       schemaNodes={[
         productSchema({
           name: "AI Pilot — OfficeKit HR",
           description:
-            "AI-powered voice and text assistant built into OfficeKit HR for leave, payslips, policies, and everyday HR tasks.",
+            "AI-powered voice and text assistant for leave, payslips, policies, and everyday HR tasks.",
           url,
         }),
       ]}
     >
-      <div className="min-h-screen bg-background">
+      <ProductPageShell>
         <Navigation />
-        <HeroSection />
-        <HowWorks />
-        <Benifits />
+        <main id="main-content">
+          <HeroSection />
+          <HowWorks />
+          <Benifits />
+        </main>
         <Footer />
-      </div>
+      </ProductPageShell>
     </PageShell>
   );
 };

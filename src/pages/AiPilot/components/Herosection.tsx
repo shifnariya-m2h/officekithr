@@ -60,8 +60,8 @@ const HeroSection = () => {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Your AI-powered voice assistant built into OfficeKit HR.
-                Interact using voice or text to manage HR tasks effortlessly.
+                Ask leave balances, payslips, and policies by voice or chat —
+                built into OfficeKit HR.
               </p>
             </div>
 

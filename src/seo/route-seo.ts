@@ -104,9 +104,9 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
   },
   {
     path: "/features/face-kit",
-    title: "Face-Kit Biometric Attendance | OfficeKit HR",
+    title: "Face Kit — AI Face Scan Attendance | OfficeKit HR",
     description:
-      "AI face recognition attendance for accurate, contactless time tracking at scale.",
+      "Touchless AI face scan attendance, free for up to 25 users. Syncs with OfficeKit HR payroll and reports.",
   },
   {
     path: "/features/ai-pilot",

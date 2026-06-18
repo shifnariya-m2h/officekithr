@@ -36,6 +36,8 @@ import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
 import { useIsDesktopNav } from "@/hooks/useMediaQuery";
 import { useMobileNavLock } from "@/hooks/useMobileNavLock";
 import { INDUSTRY_NAV_LINKS, INDUSTRY_NAV_VIEW_ALL } from "@/data/industry-nav";
+import { AnnouncementBar, useAnnouncementNavOffset } from "@/components/AnnouncementBar";
+import { SITE_ANNOUNCEMENT } from "@/data/site-announcement";
 
 const MobileNavigationPanel = lazy(
   () => import("@/components/MobileNavigationPanel")
@@ -48,6 +50,7 @@ const Navigation = () => {
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
+  const { announcementVisible, dismissAnnouncement } = useAnnouncementNavOffset();
   const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const industriesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -73,8 +76,8 @@ const Navigation = () => {
     { name: "Employee Self Service", href: "/features/self-service-portal", icon: UserCheck, description: "Self-service for employees." },
     { name: "Exit Management", href: "/features/exit-management", icon: LogOut, description: "Smooth exit process." },
     { name: "Mobile App", href: "/features/mobile-app", icon: Smartphone, description: "Workspace in our Pocket." },
-    { name: "Face Kit", href: "/features/face-kit", icon: ScanFace, description: "Advanced facial recognition." },
-    { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot, description: "AI-powered HR assistance." },
+    { name: "Face Kit", href: "/features/face-kit", icon: ScanFace, description: "AI face scan attendance — now live." },
+    { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot, description: "Voice & chat HR assistant." },
   ];
 
   const resourcesLinks = [
@@ -177,7 +180,14 @@ const Navigation = () => {
   );
 
   return (
-    <Navbar className="!fixed !top-0 left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8">
+    <>
+      <AnnouncementBar visible={announcementVisible} onDismiss={dismissAnnouncement} />
+      <Navbar
+        className={cn(
+          "!fixed left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8",
+          announcementVisible ? SITE_ANNOUNCEMENT.navOffsetClass : "!top-0"
+        )}
+      >
       {/* Desktop Navigation — not mounted on mobile (saves Radix + heavy DOM) */}
       {isDesktopNav ? (
       <NavBody>
@@ -480,6 +490,7 @@ const Navigation = () => {
       </MobileNav>
       ) : null}
     </Navbar>
+    </>
   );
 };
 

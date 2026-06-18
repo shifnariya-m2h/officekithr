@@ -45,16 +45,16 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Mark Attendance{" "}
+                AI Face Scan{" "}
                 <span className="text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">
-                  in a Blink
+                  Attendance
                 </span>{" "}
-                with Face Recognition
+                — Now Live
               </h1>
 
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
-                Experience secure, instant, and completely contactless attendance
-                tracking powered by advanced AI Face Recognition technology
+                Touchless check-in with face recognition. Free for up to 25 users,
+                synced with OfficeKit HR payroll and reports.
               </p>
             </div>
 

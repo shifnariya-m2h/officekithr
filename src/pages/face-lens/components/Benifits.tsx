@@ -7,20 +7,20 @@ const phone = "/benifit-hero-removebg.webp";
 function Benefits() {
   const features = [
     {
-      title: "Free for all firms",
-      desc: "No licensing cost upto 25 users",
+      title: "Free up to 25 users",
+      desc: "Full face scan attendance at no cost.",
     },
     {
-      title: "Seamless setup",
-      desc: "launch in minutes without IT involvement.",
+      title: "Quick setup",
+      desc: "Go live in minutes — no IT team needed.",
     },
     {
-      title: "Accurate records",
-      desc: "Say goodbye to buddy punching and errors",
+      title: "No buddy punching",
+      desc: "Only registered faces can check in.",
     },
     {
-      title: "Secure data",
-      desc: "Employee details are encrypted and privacy-protected",
+      title: "Secure & private",
+      desc: "Encrypted face data tied to each profile.",
     },
   ];
 
@@ -40,14 +40,13 @@ function Benefits() {
       <div className="relative container mx-auto grid lg:grid-cols-2 gap-10 items-center px-6">
         {/* Left Content */}
         <div>
-          <h3 className="text-lg font-light mb-2">Benefits of  Face Kit App</h3>
+          <h3 className="text-lg font-light mb-2">Face Kit benefits</h3>
           <h2 className="text-4xl font-bold leading-snug mb-4">
-            Get the  Face Kit App, full features, completely FREE.
+            Free AI face scan for small teams
           </h2>
           <p className="text-gray-300 mb-8">
-            Get AI-powered attendance free with OfficeKit HR's Face Recognition
-            App perfect for startups and small teams, without costly systems or
-            errors.
+            No hardware. No IT setup. Accurate attendance that flows straight
+            into OfficeKit HR.
           </p>
 
           <ul className="space-y-4 mb-10">

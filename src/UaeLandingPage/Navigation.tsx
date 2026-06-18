@@ -33,6 +33,8 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
+import { AnnouncementBar, useAnnouncementNavOffset } from "@/components/AnnouncementBar";
+import { SITE_ANNOUNCEMENT } from "@/data/site-announcement";
 import { useIsDesktopNav } from "@/hooks/useMediaQuery";
 import { useMobileNavLock } from "@/hooks/useMobileNavLock";
 
@@ -45,6 +47,7 @@ const Navigation = () => {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const { announcementVisible, dismissAnnouncement } = useAnnouncementNavOffset();
 
   const closeMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
@@ -125,7 +128,7 @@ const Navigation = () => {
       nameAr: 'Face Kit',
       href: "/features/face-kit", 
       icon: ScanFace, 
-      description: language === 'ar' ? 'تعرف متقدم على الوجه.' : 'Advanced facial recognition.' 
+      description: language === 'ar' ? 'حضور بمسح الوجه بالذكاء الاصطناعي — متاح الآن.' : 'AI face scan attendance — now live.' 
     },
     { 
       name: language === 'ar' ? 'AI Pilot' : 'AI Pilot', 
@@ -133,7 +136,7 @@ const Navigation = () => {
       nameAr: 'AI Pilot',
       href: "/features/ai-pilot", 
       icon: Bot, 
-      description: language === 'ar' ? 'مساعدة الموارد البشرية المدعومة بالذكاء الاصطناعي.' : 'AI-powered HR assistance.' 
+      description: language === 'ar' ? 'مساعد الموارد البشرية بالصوت والدردشة.' : 'Voice & chat HR assistant.' 
     },
   ];
 
@@ -250,7 +253,15 @@ const Navigation = () => {
   );
 
   return (
-    <Navbar className={`!fixed !top-0 left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'font-arabic' : ''}`}>
+    <>
+      <AnnouncementBar visible={announcementVisible} onDismiss={dismissAnnouncement} />
+      <Navbar
+        className={cn(
+          "!fixed left-0 w-full right-0 z-50 pt-2 sm:pt-4 md:pt-6 lg:pt-8",
+          announcementVisible ? SITE_ANNOUNCEMENT.navOffsetClass : "!top-0",
+          isRTL ? "font-arabic" : ""
+        )}
+      >
       {isDesktopNav ? (
       <NavBody>
         <NavbarLogo />
@@ -672,6 +683,7 @@ const Navigation = () => {
       </MobileNav>
       ) : null}
     </Navbar>
+    </>
   );
 };
 

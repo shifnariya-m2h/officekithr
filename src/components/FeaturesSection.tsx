@@ -20,7 +20,7 @@ export default function FeaturesSection() {
     { title: "GCC Compliance Hub", link: "/gcc-compliance" },
     { title: "India Payroll Compliance", link: "/compliance/india-payroll-compliance" },
     { title: "Payroll Software UAE", link: "/payroll-software-uae" },
-    { title: "Face Recognition Attendance", link: "/longtail/face-recognition-attendance-india" },
+    { title: "Face Kit — AI Face Scan", link: "/features/face-kit" },
   ];
 
   const payrollFeatures = [
