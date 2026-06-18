@@ -121,10 +121,16 @@ OfficeKit HR is an AI-powered HRMS (Human Resource Management System) for recrui
 - Payroll Software GCC: /longtail/payroll-software-gcc
 
 ### Industry Vertical Pages
+- Industries hub: /industries
+- Fintech HRMS: /industries/hrms-for-fintech
+- Healthcare HRMS: /industries/hrms-for-healthcare
+- IT & Software HRMS: /industries/hrms-for-it-services
 - Retail HRMS: /industries/hrms-for-retail
 - Hospitality HRMS: /industries/hrms-for-hospitality
+- Manufacturing HRMS: /industries/hrms-for-manufacturing
 - Education HRMS: /industries/hrms-for-education
 - Logistics HRMS: /industries/hrms-for-logistics
+- Real Estate HRMS: /industries/hrms-for-real-estate
 - BFSI HRMS: /industries/hrms-for-bfsi
 
 ## Pricing Model

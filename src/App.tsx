@@ -75,6 +75,7 @@ const GccComplianceHub = lazy(() => import("./pages/compliance/GccComplianceHub"
 const CompliancePage = lazy(() => import("./pages/compliance/CompliancePage"));
 const LongtailHub = lazy(() => import("./pages/longtail/LongtailHub"));
 const LongtailPage = lazy(() => import("./pages/longtail/LongtailPage"));
+const IndustriesHub = lazy(() => import("./pages/industries/IndustriesHub"));
 const IndustryPage = lazy(() => import("./pages/industries/IndustryPage"));
 const Customers = lazy(() => import("./pages/Customers"));
 const Reviews = lazy(() => import("./pages/Reviews"));
@@ -266,6 +267,7 @@ const AppRoutes = () => {
           <Route path="/longtail/:slug" element={<LongtailPage />} />
 
           {/* Industry vertical pages */}
+          <Route path="/industries" element={<IndustriesHub />} />
           <Route path="/industries/:slug" element={<IndustryPage />} />
 
           <Route path="/customers" element={<Customers />} />

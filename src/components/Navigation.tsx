@@ -35,6 +35,7 @@ import {
 import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
 import { useIsDesktopNav } from "@/hooks/useMediaQuery";
 import { useMobileNavLock } from "@/hooks/useMobileNavLock";
+import { INDUSTRY_NAV_LINKS, INDUSTRY_NAV_VIEW_ALL } from "@/data/industry-nav";
 
 const MobileNavigationPanel = lazy(
   () => import("@/components/MobileNavigationPanel")
@@ -46,8 +47,10 @@ const Navigation = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
   const featuresTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const industriesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const closeMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
@@ -56,7 +59,7 @@ const Navigation = () => {
 
   useMobileNavLock(isMobileMenuOpen, closeMenu);
 
-  const toggleMobileDropdown = useCallback((key: "features" | "resources") => {
+  const toggleMobileDropdown = useCallback((key: "features" | "resources" | "industries") => {
     setOpenDropdown((prev) => (prev === key ? null : key));
   }, []);
 
@@ -129,6 +132,24 @@ const Navigation = () => {
     }, 150); // 150ms delay before closing
   };
 
+  const handleIndustriesMouseEnter = () => {
+    if (industriesTimeoutRef.current) {
+      clearTimeout(industriesTimeoutRef.current);
+    }
+    industriesTimeoutRef.current = setTimeout(() => {
+      setIndustriesOpen(true);
+    }, 200);
+  };
+
+  const handleIndustriesMouseLeave = () => {
+    if (industriesTimeoutRef.current) {
+      clearTimeout(industriesTimeoutRef.current);
+    }
+    industriesTimeoutRef.current = setTimeout(() => {
+      setIndustriesOpen(false);
+    }, 150);
+  };
+
   // Cleanup timeouts on unmount
   useEffect(() => {
     return () => {
@@ -137,6 +158,9 @@ const Navigation = () => {
       }
       if (resourcesTimeoutRef.current) {
         clearTimeout(resourcesTimeoutRef.current);
+      }
+      if (industriesTimeoutRef.current) {
+        clearTimeout(industriesTimeoutRef.current);
       }
     };
   }, []);
@@ -218,6 +242,84 @@ const Navigation = () => {
                     </div>
                   </Link>
                 ))}
+              </div>
+            </DropdownMenuContent>
+            </div>
+          </DropdownMenu>
+
+          {/* Industries Dropdown */}
+          <DropdownMenu
+            modal={false}
+            open={industriesOpen}
+            onOpenChange={setIndustriesOpen}
+          >
+            <div
+              onMouseEnter={handleIndustriesMouseEnter}
+              onMouseLeave={handleIndustriesMouseLeave}
+              className="pointer-events-auto"
+            >
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="nav-menu-trigger gap-1 px-2 sm:px-2.5 md:px-3 lg:px-3 xl:px-4 py-2 text-sm lg:text-base font-medium whitespace-nowrap"
+                  aria-label="Industries menu"
+                  aria-expanded={industriesOpen}
+                  aria-haspopup="true"
+                >
+                  <span>Industries</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${industriesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                </button>
+              </DropdownMenuTrigger>
+            </div>
+            <div
+              onMouseEnter={handleIndustriesMouseEnter}
+              onMouseLeave={handleIndustriesMouseLeave}
+            >
+              <DropdownMenuContent
+                onMouseEnter={handleIndustriesMouseEnter}
+                onMouseLeave={handleIndustriesMouseLeave}
+              className="w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70]"
+              align="start"
+              sideOffset={8}
+              onCloseAutoFocus={(e) => e.preventDefault()}
+              side="bottom"
+              alignOffset={-20}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3">
+                {INDUSTRY_NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer"
+                  >
+                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
+                      <link.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5">
+                        {link.name}
+                      </h3>
+                      <p className="text-xs text-gray-600 transition-colors duration-200">
+                        {link.description}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+                <Link
+                  to={INDUSTRY_NAV_VIEW_ALL.href}
+                  className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer md:col-span-2 border border-dashed border-gray-200"
+                >
+                  <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
+                    <INDUSTRY_NAV_VIEW_ALL.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-sm text-gray-900 group-hover:text-[#0055ff] transition-colors duration-200 mb-0.5">
+                      {INDUSTRY_NAV_VIEW_ALL.name}
+                    </h3>
+                    <p className="text-xs text-gray-600 transition-colors duration-200">
+                      {INDUSTRY_NAV_VIEW_ALL.description}
+                    </p>
+                  </div>
+                </Link>
               </div>
             </DropdownMenuContent>
             </div>
@@ -365,6 +467,8 @@ const Navigation = () => {
             <Suspense fallback={<div className="p-4 text-sm text-gray-500">Loading…</div>}>
               <MobileNavigationPanel
                 featuresLinks={featuresLinks}
+                industriesLinks={INDUSTRY_NAV_LINKS}
+                industriesViewAll={INDUSTRY_NAV_VIEW_ALL}
                 resourcesLinks={resourcesLinks}
                 openDropdown={openDropdown}
                 onToggleDropdown={toggleMobileDropdown}

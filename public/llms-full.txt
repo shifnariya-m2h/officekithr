@@ -324,10 +324,16 @@ OfficeKit HR is a modular, AI-powered Human Resource Management System (HRMS) de
 - /longtail/payroll-software-gcc
 
 ### Industry Vertical Pages
+- /industries — HRMS by industry hub (fintech, healthcare, IT, retail, hospitality, manufacturing, education, logistics, real estate, BFSI)
+- /industries/hrms-for-fintech — HRMS for fintech, NBFCs, payment companies, variable pay, India+GCC payroll
+- /industries/hrms-for-healthcare — HRMS for hospitals, clinics, shift rostering, credential tracking
+- /industries/hrms-for-it-services — HRMS for IT services and software companies, ATS, OKRs, India+GCC payroll
 - /industries/hrms-for-retail — HRMS for retail stores, multi-location attendance, shift scheduling
 - /industries/hrms-for-hospitality — HRMS for hotels, restaurants, shift-based teams, tip tracking
+- /industries/hrms-for-manufacturing — HRMS for factories, shift attendance, Face-Kit biometric, blue-collar payroll
 - /industries/hrms-for-education — HRMS for schools, colleges, faculty attendance, academic leave
 - /industries/hrms-for-logistics — HRMS for transport, warehousing, GPS-based attendance, trip pay
+- /industries/hrms-for-real-estate — HRMS for property firms, agent commissions, UAE WPS compliance
 - /industries/hrms-for-bfsi — HRMS for banking, insurance, branch-level management, regulatory compliance
 
 ### Marketing Pages

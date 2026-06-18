@@ -247,6 +247,12 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
     description: p.metaDescription,
   })),
   // Industry vertical pages
+  {
+    path: "/industries",
+    title: "HRMS by Industry | Fintech, Healthcare, Retail & More — OfficeKit HR",
+    description:
+      "Industry-specific HRMS for fintech, healthcare, IT, retail, hospitality, manufacturing, education, logistics, real estate, and BFSI. India and GCC payroll compliance.",
+  },
   ...Object.values(INDUSTRY_PAGES).map((p) => ({
     path: p.path,
     title: p.title,
