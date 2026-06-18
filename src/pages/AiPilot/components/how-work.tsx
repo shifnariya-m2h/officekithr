@@ -1,7 +1,7 @@
 import {
   ProductStepsSection,
   type ProductStep,
-} from "@/components/product/ProductMotion";
+} from "@/components/product";
 
 const STEPS: ProductStep[] = [
   {

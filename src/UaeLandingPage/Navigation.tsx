@@ -128,7 +128,7 @@ const Navigation = () => {
       nameAr: 'Face Kit',
       href: "/features/face-kit", 
       icon: ScanFace, 
-      description: language === 'ar' ? 'حضور بمسح الوجه بالذكاء الاصطناعي — متاح الآن.' : 'AI face scan attendance — now live.' 
+      description: language === 'ar' ? 'حضور بمسح الوجه بالذكاء الاصطناعي متاح الآن.' : 'AI face scan attendance Now Live.' 
     },
     { 
       name: language === 'ar' ? 'AI Pilot' : 'AI Pilot', 

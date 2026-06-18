@@ -76,7 +76,7 @@ const Navigation = () => {
     { name: "Employee Self Service", href: "/features/self-service-portal", icon: UserCheck, description: "Self-service for employees." },
     { name: "Exit Management", href: "/features/exit-management", icon: LogOut, description: "Smooth exit process." },
     { name: "Mobile App", href: "/features/mobile-app", icon: Smartphone, description: "Workspace in our Pocket." },
-    { name: "Face Kit", href: "/features/face-kit", icon: ScanFace, description: "AI face scan attendance — now live." },
+    { name: "Face Kit", href: "/features/face-kit", icon: ScanFace, description: "AI face scan attendance Now Live." },
     { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot, description: "Voice & chat HR assistant." },
   ];
 

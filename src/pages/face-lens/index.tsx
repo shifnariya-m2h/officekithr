@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { productSchema } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/site-config";
-import { ProductPageShell } from "@/components/product/ProductMotion";
+import { ProductPageShell } from "@/components/product";
 
 const PAGE_PATH = "/features/face-kit";
 

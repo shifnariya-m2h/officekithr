@@ -7,7 +7,17 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DIST = join(__dirname, "..", "dist");
+const ROOT = join(__dirname, "..");
+const DIST = join(ROOT, "dist");
+const ROUTES_FILE = join(ROOT, "scripts", "prerender-routes.json");
+
+/** Routes actually prerendered this build — CI skips blogs unless PRERENDER_BLOGS=1. */
+function loadPrerenderRoutes() {
+  if (!existsSync(ROUTES_FILE)) return null;
+  return new Set(JSON.parse(readFileSync(ROUTES_FILE, "utf8")));
+}
+
+const prerenderRoutes = loadPrerenderRoutes();
 
 const HOME_TITLE_SNIPPET = "AI-Powered HRMS for India, UAE";
 const HOME_H1_SNIPPET = "GCC Payroll";
@@ -105,6 +115,11 @@ function isHomepageBody(html) {
 let failed = 0;
 
 for (const check of CHECKS) {
+  if (prerenderRoutes && !prerenderRoutes.has(check.route)) {
+    console.log(`[verify-prerender] SKIP ${check.route} (not in prerender-routes.json)`);
+    continue;
+  }
+
   const filePath = join(DIST, check.file);
   if (!existsSync(filePath)) {
     console.error(`[verify-prerender] MISSING ${check.route} → ${check.file}`);

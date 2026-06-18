@@ -1,4 +1,4 @@
-import { ProductBenefitsShell } from "@/components/product/ProductMotion";
+import { ProductBenefitsShell } from "@/components/product";
 
 function Benefits() {
   return (
