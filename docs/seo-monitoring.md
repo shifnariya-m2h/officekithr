@@ -41,7 +41,7 @@ Confirm production deploy has `PRERENDER=1` (see `docs/rendering-audit.md`).
 Spot-check:
 
 ```bash
-curl -s https://www.officekithr.com/pricing | grep -c '₹99'
+curl -s https://www.officekithr.com/pricing | grep -i 'Flexible HRMS pricing'
 curl -s https://www.officekithr.com/gcc-compliance | grep -i 'WPS'
 curl -s https://www.officekithr.com/officekit-vs-keka | grep -i 'Keka'
 ```

@@ -1,10 +1,22 @@
 /** Testimonials for on-site display — not third-party aggregate ratings. */
-export const TESTIMONIALS = [
+export type Testimonial = {
+  name: string;
+  role: string;
+  company: string;
+  /** Optional headshot — omit when using company logo in avatar. */
+  avatar?: string;
+  /** Company logo under /company-logos/ — shown in avatar when no headshot. */
+  companyLogo?: string;
+  rating: number;
+  quote: string;
+};
+
+export const TESTIMONIALS: readonly Testimonial[] = [
   {
     name: "Mohideen Kader",
     role: "Head of HR",
     company: "Lulu International Exchange LLC",
-    image: "/p2.svg",
+    companyLogo: "/company-logos/lulu.webp",
     rating: 5,
     quote:
       "OfficeKit HR is an easy-to-use employee management software, fully customizable HRMS which made our tedious tasks of daily HR process so easy.",
@@ -13,7 +25,7 @@ export const TESTIMONIALS = [
     name: "Anees",
     role: "Head of HR",
     company: "Thai Group",
-    image: "/p3.svg",
+    companyLogo: "/company-logos/thai.webp",
     rating: 5,
     quote:
       "OfficeKit HR lets you put your thoughts together in a very concise format through the best HR software and it really helps you present your best phase.",
@@ -22,7 +34,6 @@ export const TESTIMONIALS = [
     name: "Venugopal",
     role: "Chief Executive Officer",
     company: "Buchprufer",
-    image: "/placeholder.svg",
     rating: 5,
     quote:
       "We have been using OfficeKit HR for the last couple of years, and it has helped us through the growth and management of our company.",
@@ -31,7 +42,7 @@ export const TESTIMONIALS = [
     name: "Sajitha",
     role: "HR Manager",
     company: "Midac Electronics",
-    image: "/placeholder.svg",
+    companyLogo: "/company-logos/midac.webp",
     rating: 5,
     quote:
       "Statutory payroll for India and WPS for UAE on one platform saved our HR team weeks every month.",

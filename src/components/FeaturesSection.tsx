@@ -30,17 +30,17 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="bg-background mb-[110px]">
+    <section className="bg-background mb-16 sm:mb-24 lg:mb-[110px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeUpOnce className="text-center mb-mb-secondory">
-          <Badge className="bg-white font-normal py-2 text-[#1d4ed8] mb-4 border border-[#ededed] hover:bg-transparent">
+        <FadeUpOnce className="text-center mb-10 sm:mb-mb-secondory">
+          <Badge className="bg-white font-normal py-2 px-4 text-[#1d4ed8] mb-3 sm:mb-4 border border-[#ededed] hover:bg-transparent">
             Features
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-semibold text-hr-text-primary mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-hr-text-primary mb-4 sm:mb-6">
             Everything You Need <br /> for{" "}
             <span className="leading-snug gradient-text">Better HR</span>
           </h2>
-          <p className="text-hr-text-secondary text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="text-hr-text-secondary text-base sm:text-lg leading-relaxed max-w-3xl mx-auto px-1">
             Recruitment, time tracking, statutory payroll, and employee
             self-service on one platform — built for mid-market teams in{" "}
             <Link to="/hrms-software-india" className={SEO_LINK}>
@@ -56,12 +56,12 @@ export default function FeaturesSection() {
 
         <StaggerReveal className="space-y-0">
           <StaggerItem>
-            <div className="grid mb-mb-tursioury lg:grid-cols-2 gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa] max-w-full overflow-hidden">
-              <div className="space-y-8">
-                <h3 className="text-3xl font-semibold text-hr-text-primary mb-6">
+            <div className="grid mb-12 sm:mb-mb-tursioury lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa] max-w-full overflow-hidden">
+              <div className="space-y-5 sm:space-y-8">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-hr-text-primary mb-4 sm:mb-6">
                   Hiring & Onboarding
                 </h3>
-                <p className="text-hr-text-secondary text-lg leading-relaxed mb-8 text-justify max-w-prose">
+                <p className="text-hr-text-secondary text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 text-justify max-w-prose">
                   Run hiring and onboarding from one place: job postings, offer
                   letters, document collection, and day-one setup. Keep employee
                   records, org charts, and policy documents in a single HRMS —
@@ -97,7 +97,7 @@ export default function FeaturesSection() {
           </StaggerItem>
 
           <StaggerItem>
-            <div className="grid mb-mb-tursioury lg:grid-cols-2 gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa] max-w-full overflow-hidden">
+            <div className="grid mb-12 sm:mb-mb-tursioury lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa] max-w-full overflow-hidden">
               <div className="relative order-2 lg:order-1 max-w-full overflow-hidden">
                 <img
                   className="rounded-2xl w-full h-auto max-w-full"
@@ -109,11 +109,11 @@ export default function FeaturesSection() {
                   height={600}
                 />
               </div>
-              <div className="space-y-4 order-1 lg:order-4">
-                <h3 className="text-3xl font-semibold text-hr-text-primary mb-6">
+              <div className="space-y-4 sm:space-y-5 order-1 lg:order-4">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-hr-text-primary mb-4 sm:mb-6">
                   Time & Payroll
                 </h3>
-                <p className="text-hr-text-secondary text-[18px] leading-normal mb-8 text-justify max-w-prose">
+                <p className="text-hr-text-secondary text-base sm:text-[18px] leading-normal mb-6 sm:mb-8 text-justify max-w-prose">
                   Capture attendance through biometric devices, mobile check-in, or{" "}
                   <Link
                     to="/longtail/face-recognition-attendance-india"
@@ -153,12 +153,12 @@ export default function FeaturesSection() {
           </StaggerItem>
 
           <StaggerItem>
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center p-6 rounded-2xl bg-[#f4f7fa]">
-              <div className="space-y-8">
-                <h3 className="text-3xl font-semibold text-hr-text-primary mb-6">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center p-4 sm:p-6 rounded-2xl bg-[#f4f7fa]">
+              <div className="space-y-5 sm:space-y-8">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-hr-text-primary mb-4 sm:mb-6">
                   Performance & Self-Service
                 </h3>
-                <p className="text-hr-text-secondary text-[18px] leading-normal mb-8 text-justify max-w-prose">
+                <p className="text-hr-text-secondary text-base sm:text-[18px] leading-normal mb-6 sm:mb-8 text-justify max-w-prose">
                   Set appraisal cycles, KPIs, and review templates that managers
                   can run without chasing spreadsheets. Employees update goals,
                   submit self-assessments, and view feedback in one place. The{" "}

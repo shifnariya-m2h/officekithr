@@ -71,22 +71,22 @@ const FAQSection = ({ variant = "home", categories }: FAQSectionProps) => {
 
   return (
     <section
-      className="mb-mb-common bg-background"
+      className="mb-16 sm:mb-24 lg:mb-mb-common bg-background"
       aria-labelledby={isPage ? undefined : "faq-heading"}
     >
       <div className="container mx-auto px-4">
         {!isPage && (
-          <div className="text-center mb-12">
-            <Badge className="bg-white mb-2 font-normal py-2 text-[#1d4ed8] border border-[#ededed] hover:bg-transparent">
+          <div className="text-center mb-8 sm:mb-12">
+            <Badge className="bg-white mb-3 sm:mb-4 font-normal py-2 px-4 text-[#1d4ed8] border border-[#ededed] hover:bg-transparent">
               FAQs
             </Badge>
             <h2
               id="faq-heading"
-              className="text-4xl lg:text-5xl font-semibold text-hr-text-primary mb-3"
+              className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-hr-text-primary mb-3"
             >
               Frequently Asked <span className="leading-snug gradient-text">Questions</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
               Quick answers to common questions about OfficeKit HR
             </p>
           </div>

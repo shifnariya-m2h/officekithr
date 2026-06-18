@@ -42,16 +42,16 @@ export function CookieConsent() {
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-desc"
-      className="fixed bottom-0 left-0 right-0 z-[200] p-4 md:p-6 max-sm:pb-[max(1rem,env(safe-area-inset-bottom))]"
+      className="fixed left-0 right-0 z-[200] p-3 sm:p-4 md:p-6 bottom-[max(4.5rem,env(safe-area-inset-bottom))] sm:bottom-0 sm:pb-[max(1rem,env(safe-area-inset-bottom))]"
     >
-      <div className="mx-auto max-w-4xl rounded-2xl border border-border bg-background shadow-lg p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 max-sm:max-h-[58dvh] max-sm:overflow-y-auto">
-        <div className="flex-1">
-          <p id="cookie-consent-title" className="font-semibold text-foreground">
+      <div className="mx-auto flex max-w-4xl flex-col gap-3 rounded-2xl border border-border bg-background/98 p-4 shadow-lg backdrop-blur-sm sm:gap-4 sm:p-5 md:flex-row md:items-center md:p-6">
+        <div className="min-w-0 flex-1">
+          <p id="cookie-consent-title" className="text-sm font-semibold text-foreground sm:text-base">
             Cookie preferences
           </p>
           <p
             id="cookie-consent-desc"
-            className="text-sm text-muted-foreground mt-1"
+            className="mt-1 text-xs leading-relaxed text-muted-foreground sm:text-sm"
           >
             We use cookies for analytics and ads to improve our site. See our{" "}
             <Link to="/cookie-policy" className="text-primary underline">
@@ -64,18 +64,18 @@ export function CookieConsent() {
             .
           </p>
         </div>
-        <div className="flex shrink-0 gap-2">
+        <div className="flex w-full shrink-0 flex-col gap-2 sm:w-auto sm:flex-row">
           <button
             type="button"
             onClick={reject}
-            className="px-4 py-2 text-sm font-medium rounded-lg border border-border hover:bg-muted"
+            className="w-full rounded-lg border border-border px-4 py-2.5 text-sm font-medium hover:bg-muted sm:w-auto sm:py-2"
           >
             Reject non-essential
           </button>
           <button
             type="button"
             onClick={accept}
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-[#0055ff] text-white hover:bg-[#0044cc]"
+            className="w-full rounded-lg bg-[#0055ff] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#0044cc] sm:w-auto sm:py-2"
           >
             Accept all
           </button>

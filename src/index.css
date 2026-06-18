@@ -344,7 +344,7 @@ html[data-perf-mode="mobile"] .section-fade-in {
 
   /* Feature Card Animation — transform only */
   .feature-card {
-    @apply bg-card border border-border rounded-2xl p-8 transition-[transform,box-shadow,border-color] duration-300 hover:shadow-medium hover:border-primary/20 hover:-translate-y-1;
+    @apply bg-card border border-border rounded-2xl p-5 sm:p-6 lg:p-8 transition-[transform,box-shadow,border-color] duration-300 hover:shadow-medium hover:border-primary/20 hover:-translate-y-1;
   }
 
   /* Testimonial marquee — GPU transform loop */

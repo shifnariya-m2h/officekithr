@@ -68,7 +68,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       className={cn(
         isFixed ? "fixed inset-x-0 top-0 z-40 w-full" : "sticky inset-x-0 top-20 z-40 w-full",
         /* Fixed padding — shrink via child transform to avoid CLS */
-        "py-6",
+        "py-3 sm:py-4 lg:py-6",
         className
       )}
     >
@@ -135,7 +135,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <div
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-0.5rem)] flex-col items-center justify-between bg-white px-2 sm:px-3 md:px-4 lg:hidden py-4",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-1rem)] flex-col items-center justify-between bg-white px-2 sm:px-3 md:px-4 lg:hidden py-3 sm:py-4",
         "transition-[transform,box-shadow] duration-300 ease-out will-change-transform origin-top",
         visible
           ? "scale-[0.97] rounded-2xl shadow-lg dark:bg-neutral-950"

@@ -25,7 +25,6 @@ const CHECKS = [
     file: join("pricing", "index.html"),
     mustIncludeTitle: "Pricing",
     mustIncludeH1: "Flexible HRMS pricing",
-    mustIncludeBody: "₹99",
     mustNotBeHomepage: true,
   },
   {

@@ -20,7 +20,7 @@ const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-14 lg:pb-0">
       <HomePageSchema />
       <Navigation />
       <main id="main-content">

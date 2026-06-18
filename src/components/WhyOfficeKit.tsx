@@ -35,20 +35,20 @@ export default function WhyOfficeKit() {
   ];
 
   return (
-    <section className="pb-pb-common">
+    <section className="pb-16 sm:pb-24 lg:pb-pb-common">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="!bg-[#f4f7fa] rounded-3xl p-8 lg:p-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8">
+        <div className="!bg-[#f4f7fa] rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+            <div className="space-y-6 sm:space-y-8">
               <div>
-                <Badge className="bg-white font-normal py-2 text-[#1d4ed8] mb-4 border border-[#ededed] hover:bg-transparent">
+                <Badge className="bg-white font-normal py-2 px-4 text-[#1d4ed8] mb-3 sm:mb-4 border border-[#ededed] hover:bg-transparent">
                   Better Starts here
                 </Badge>
-                <h2 className="text-4xl lg:text-5xl font-semibold text-hr-text-primary leading-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-hr-text-primary leading-tight mb-4 sm:mb-6">
                   Why <span className="gradient-text">OfficeKit</span> <br />
                   Stands out?
                 </h2>
-                <p className="text-hr-text-secondary text-lg leading-relaxed">
+                <p className="text-hr-text-secondary text-base sm:text-lg leading-relaxed">
                   OfficeKit HR stands out by offering a fully integrated,
                   all-in-one platform that automates the entire employee
                   lifecycle, making HR effortless and efficient.

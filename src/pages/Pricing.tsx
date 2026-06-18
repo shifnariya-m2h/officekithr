@@ -1,17 +1,15 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, Phone } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { CANONICAL } from "@/seo/canonical-paths";
 import { TrustBadges } from "@/components/TrustBadges";
+import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { PageShell } from "@/seo/PageShell";
 import { breadcrumbSchema, pricingPageSchema } from "@/seo/schema";
 import {
   SITE_PRICING,
-  formatIndiaPrice,
-  formatGccPrice,
 } from "@/data/site-pricing";
 
 const PRICING_HEADSET_IMAGE = "/pricing-headset.webp";
@@ -19,8 +17,6 @@ const PRICING_HEADSET_IMAGE = "/pricing-headset.webp";
 const PLANS = SITE_PRICING.plans.map((plan) => ({
   name: plan.name,
   tier: plan.id,
-  indiaFrom: plan.indiaFrom,
-  gccFrom: plan.gccFrom,
   description: plan.description,
   popular: "popular" in plan && plan.popular === true,
   highlights:
@@ -80,7 +76,8 @@ const MODULES = [
 const PRICING_FAQS = [
   {
     question: "How much does OfficeKit HR cost?",
-    answer: `OfficeKit HR starts at ${formatIndiaPrice(99)} per user per month in India and ${formatGccPrice(15)} in the GCC for the Silver tier. Gold and Platinum tiers add advanced modules. See plan cards above for full tier pricing.`,
+    answer:
+      "OfficeKit HR offers modular Silver, Gold, and Platinum tiers priced per user per month for India and GCC. Contact sales for a tailored quote based on headcount, countries, and modules.",
   },
   {
     question: "Are volume discounts available?",
@@ -117,50 +114,27 @@ const Pricing = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
 
-        <section className="pt-36 pb-16 md:pt-44 md:pb-20 bg-gradient-subtle">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <Badge className="mb-4 bg-white font-normal py-2 text-[#3f5ffc] border border-[#ededed] hover:bg-transparent">
-              Pricing
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-5">
+        <SeoHeroBanner
+          overlayClassName="from-background/97 via-background/95 to-background"
+          title={
+            <>
               Flexible HRMS pricing for{" "}
               <span className="gradient-text">India &amp; GCC</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 direct-answer">
-              Modular per-user plans from {formatIndiaPrice(99)}/user/month (India)
-              and {formatGccPrice(15)}/user/month (GCC). Pay only for the modules you
-              need.
-            </p>
-            <p className="text-sm text-muted-foreground mb-8">{SITE_PRICING.note}</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="rounded-full bg-[#0055ff] hover:bg-[#0044cc] h-12 px-8"
-              >
-                <Link to="/contact">
-                  Book a free demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="rounded-full h-12 px-8"
-              >
-                <a href="tel:+918137932991">
-                  <Phone className="mr-2 h-4 w-4" />
-                  +91-8137932991
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        <div className="pb-8">
-          <TrustBadges />
-        </div>
+            </>
+          }
+          subtitle="Modular per-user plans — pay only for the modules you need."
+        >
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full bg-[#0055ff] hover:bg-[#0044cc] h-12 px-8"
+          >
+            <Link to="/contact">
+              Book a free demo
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </SeoHeroBanner>
 
         <section className="py-16 md:py-20 border-t border-border">
           <div className="container mx-auto px-4">
@@ -169,8 +143,7 @@ const Pricing = () => {
                 Plans that scale with you
               </h2>
               <p className="text-muted-foreground">
-                Published starting prices per user per month. Volume discounts for
-                200+ employees.
+                Contact us for a tailored quote. Volume discounts for 200+ employees.
               </p>
             </div>
 
@@ -181,8 +154,6 @@ const Pricing = () => {
                   <article
                     key={plan.name}
                     className={`relative flex flex-col rounded-2xl border-2 bg-card p-6 lg:p-8 ${style.border}`}
-                    itemScope
-                    itemType="https://schema.org/Offer"
                   >
                     {plan.popular && (
                       <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#0055ff] px-4 py-1 text-xs font-semibold text-white">
@@ -194,19 +165,7 @@ const Pricing = () => {
                     >
                       {plan.name}
                     </span>
-                    <div className="mt-4 mb-2">
-                      <p className="text-3xl font-bold text-foreground">
-                        {formatIndiaPrice(plan.indiaFrom)}
-                        <span className="text-base font-normal text-muted-foreground">
-                          {" "}
-                          / user / mo
-                        </span>
-                      </p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        India · from {formatGccPrice(plan.gccFrom)} in GCC
-                      </p>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-6 min-h-[2.5rem]">
+                    <p className="text-sm text-muted-foreground mt-4 mb-6 min-h-[2.5rem]">
                       {plan.description}
                     </p>
                     <ul className="space-y-3 flex-1 mb-8">
@@ -232,6 +191,10 @@ const Pricing = () => {
                   </article>
                 );
               })}
+            </div>
+
+            <div className="mt-14 pt-10 border-t border-border max-w-6xl mx-auto">
+              <TrustBadges />
             </div>
           </div>
         </section>

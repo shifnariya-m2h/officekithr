@@ -9,6 +9,8 @@ type SeoHeroBannerProps = {
   backgroundImage?: string;
   centered?: boolean;
   titleId?: string;
+  overlayClassName?: string;
+  className?: string;
 };
 
 /** Full-width hero with background image and readable overlay (matches feature pages). */
@@ -20,16 +22,18 @@ export function SeoHeroBanner({
   backgroundImage = SEO_ASSETS.sectionBg,
   centered = true,
   titleId,
+  overlayClassName = "from-background/92 via-background/88 to-background/96",
+  className = "",
 }: SeoHeroBannerProps) {
   const align = centered ? "text-center" : "";
 
   return (
     <section
-      className="relative pt-32 pb-16 md:pb-20 bg-cover bg-center overflow-hidden"
+      className={`relative pt-28 pb-12 sm:pt-32 sm:pb-16 md:pb-20 bg-cover bg-center overflow-hidden ${className}`}
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
       <div
-        className="absolute inset-0 bg-gradient-to-b from-background/92 via-background/88 to-background/96"
+        className={`absolute inset-0 bg-gradient-to-b ${overlayClassName}`}
         aria-hidden
       />
       <div className={`relative container mx-auto px-4 max-w-4xl ${align}`}>
