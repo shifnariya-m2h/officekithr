@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight, ChevronDown, Menu, X,
   BookOpen,
+  Coins,
   Globe
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
