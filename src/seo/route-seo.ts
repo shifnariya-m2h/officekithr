@@ -56,63 +56,63 @@ export const STATIC_ROUTES: RouteSeoConfig[] = [
   },
   {
     path: "/features/recruitment-management",
-    title: "Recruitment Management Software | OfficeKit HR",
+    title: "Recruitment Management Software | India & UAE — OfficeKit HR",
     description:
-      "Hire faster with AI-assisted recruitment, applicant tracking, and onboarding workflows in OfficeKit HR.",
+      "Applicant tracking, interview scheduling, offers, and onboarding for India and GCC hiring teams. ATS connected to core HR in OfficeKit HR.",
   },
   {
     path: "/features/attendance-and-leave",
-    title: "Attendance & Leave Management | OfficeKit HR",
+    title: "Attendance & Leave Management | India & UAE — OfficeKit HR",
     description:
-      "Track attendance, shifts, and leave with biometric integrations and real-time dashboards.",
+      "Biometric, mobile, and Face-Kit attendance with shift rules, overtime, and leave policies for India and GCC payroll teams.",
   },
   {
     path: "/features/payroll-and-compliance",
-    title: "Payroll & Compliance Software | OfficeKit HR",
+    title: "Payroll & Compliance Software | India, UAE & GCC — OfficeKit HR",
     description:
-      "Automate payroll, tax compliance, and statutory reporting for India and GCC payroll teams.",
+      "Statutory payroll for India (PF, ESI, PT, TDS) and GCC (UAE WPS, KSA GOSI, Kuwait PIFSS) with salary slips and audit-ready reports.",
   },
   {
     path: "/features/performance-appraisal",
-    title: "Performance Appraisal Software | OfficeKit HR",
+    title: "Performance Appraisal Software | India & GCC — OfficeKit HR",
     description:
-      "Run continuous performance reviews, OKRs, and feedback cycles with OfficeKit HR.",
+      "OKRs, appraisal cycles, and 360° feedback for India and GCC teams. Performance management connected to OfficeKit HR.",
   },
   {
     path: "/features/self-service-portal",
-    title: "Employee Self-Service Portal | OfficeKit HR",
+    title: "Employee Self-Service Portal | India & UAE — OfficeKit HR",
     description:
-      "Empower employees with ESS for payslips, leave requests, profiles, and HR requests.",
+      "ESS for payslips, leave, claims, and profile updates — web and mobile self-service for India and GCC employees.",
   },
   {
     path: "/features/exit-management",
-    title: "Exit Management & Offboarding | OfficeKit HR",
+    title: "Exit Management & Offboarding | India & UAE — OfficeKit HR",
     description:
-      "Streamline resignations, clearance, and exit interviews with structured offboarding workflows.",
+      "Resignations, clearance, F&F settlement, and UAE gratuity workflows. Structured offboarding for India and GCC teams.",
   },
   {
     path: "/features/mobile-app",
-    title: "Mobile HRMS App | OfficeKit HR",
+    title: "Mobile HRMS App | India & UAE — OfficeKit HR",
     description:
-      "Manage HR on the go with secure mobile apps for attendance, leave, and employee self-service.",
+      "iOS and Android HR app for attendance, leave, approvals, and payslips — built for India and GCC field and office teams.",
   },
   {
     path: "/features/employee-management",
-    title: "Employee Management System | OfficeKit HR",
+    title: "Employee Management System | India & GCC — OfficeKit HR",
     description:
-      "Centralize employee records, documents, org charts, and lifecycle management in one HRMS.",
+      "Centralise employee records, documents, org charts, and lifecycle management for India and UAE companies in one HRMS.",
   },
   {
     path: "/features/face-kit",
-    title: "Face Kit — AI Face Scan Attendance | OfficeKit HR",
+    title: "Face Kit — AI Face Scan Attendance | India & UAE — OfficeKit HR",
     description:
-      "Touchless AI face scan attendance, free for up to 25 users. Syncs with OfficeKit HR payroll and reports.",
+      "Touchless AI face scan attendance for India and GCC teams. Free up to 25 users, synced with OfficeKit HR payroll and shifts.",
   },
   {
     path: "/features/ai-pilot",
-    title: "AI Pilot for HR Automation | OfficeKit HR",
+    title: "AI Pilot for HR Automation | India & GCC — OfficeKit HR",
     description:
-      "Automate repetitive HR tasks with OfficeKit AI Pilot — smart workflows for modern HR teams.",
+      "Voice and chat AI HR assistant for leave, payslips, and policies. AI Pilot for India and GCC teams in OfficeKit HR.",
   },
   {
     path: "/resources/blogs",

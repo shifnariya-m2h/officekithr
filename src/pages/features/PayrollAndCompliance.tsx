@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FeaturePageLayout } from "@/components/seo/FeaturePageLayout";
+import { FeatureSeoIntro } from "@/components/seo/FeatureSeoIntro";
 import { Button } from "@/components/ui/button";
 import {
   Calculator,
@@ -114,6 +115,8 @@ const PayrollAndCompliance = () => {
           </div>
         </div>
       </section>
+
+      <FeatureSeoIntro path={PAGE_PATH} />
 
       {/* Key Features */}
       <section className="py-20 bg-background">

@@ -4,20 +4,26 @@ import HowWorks from "./components/how-work";
 import Benifits from "./components/Benifits";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
+import { FeatureSeoIntro } from "@/components/seo/FeatureSeoIntro";
 import { productSchema } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/site-config";
 import { ProductPageShell } from "@/components/product";
+import { PAGE_GEO_BY_PATH } from "@/data/page-faqs";
+import { getRouteSeo } from "@/seo/route-seo";
 
 const PAGE_PATH = "/features/face-kit";
 
 const FaceLens = () => {
   const url = canonicalUrl(PAGE_PATH);
+  const routeSeo = getRouteSeo(PAGE_PATH);
+  const geo = PAGE_GEO_BY_PATH[PAGE_PATH];
 
   return (
     <PageShell
-      title="Face Kit — AI Face Scan Attendance | OfficeKit HR"
-      description="Touchless AI face scan attendance, free for up to 25 users. Syncs with OfficeKit HR payroll, leave, and workforce insights."
+      title={routeSeo.title}
+      description={routeSeo.description}
       path={PAGE_PATH}
+      faqs={geo?.faqs}
       schemaNodes={[
         productSchema({
           name: "Face Kit — OfficeKit HR",
@@ -31,6 +37,7 @@ const FaceLens = () => {
         <Navigation />
         <main id="main-content">
           <HeroSection />
+          <FeatureSeoIntro path={PAGE_PATH} />
           <HowWorks />
           <Benifits />
         </main>

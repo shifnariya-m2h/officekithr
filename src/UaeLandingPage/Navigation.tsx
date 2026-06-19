@@ -3,17 +3,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
-  ArrowRight, ChevronDown, Menu, X, Users,
-  Calendar,
-  BarChart3,
-  IdCard,
-  UserCheck,
-  LogOut,
-  Smartphone,
+  ArrowRight, ChevronDown, Menu, X,
   BookOpen,
-  ScanFace,
-  Bot,
-  Coins,
   Globe
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -37,6 +28,7 @@ import { AnnouncementBar, useAnnouncementNavOffset } from "@/components/Announce
 import { SITE_ANNOUNCEMENT } from "@/data/site-announcement";
 import { useIsDesktopNav } from "@/hooks/useMediaQuery";
 import { useMobileNavLock } from "@/hooks/useMobileNavLock";
+import { FEATURE_NAV_LINKS } from "@/data/feature-nav";
 
 const Navigation = () => {
   const { language, setLanguage, t, isRTL } = useLanguage();
@@ -56,89 +48,13 @@ const Navigation = () => {
 
   useMobileNavLock(isMobileMenuOpen, closeMenu);
 
-  // Navigation Links Data with English and Arabic
-  const featuresLinks = [
-    { 
-      name: language === 'ar' ? 'إدارة التوظيف' : 'Recruitment Management', 
-      nameEn: 'Recruitment Management',
-      nameAr: 'إدارة التوظيف',
-      href: "/features/recruitment-management", 
-      icon: Users, 
-      description: language === 'ar' ? 'توظيف أذكى وأبسط.' : 'Smarter hiring, simplified.' 
-    },
-    { 
-      name: language === 'ar' ? 'الحضور والإجازة' : 'Attendance and Leave', 
-      nameEn: 'Attendance and Leave',
-      nameAr: 'الحضور والإجازة',
-      href: "/features/attendance-and-leave", 
-      icon: Calendar, 
-      description: language === 'ar' ? 'وقت وإجازة سهلة.' : 'Easy time & leave.' 
-    },
-    { 
-      name: language === 'ar' ? 'كشوف المرتبات والامتثال' : 'Payroll & Compliance', 
-      nameEn: 'Payroll & Compliance',
-      nameAr: 'كشوف المرتبات والامتثال',
-      href: "/features/payroll-and-compliance", 
-      icon: Coins, 
-      description: language === 'ar' ? 'كشوف مرتبات مبسطة.' : 'Payroll made simple.' 
-    },
-    { 
-      name: language === 'ar' ? 'إدارة الأداء' : 'Performance Management', 
-      nameEn: 'Performance Management',
-      nameAr: 'إدارة الأداء',
-      href: "/features/performance-appraisal", 
-      icon: BarChart3, 
-      description: language === 'ar' ? 'دفع الأداء الأفضل.' : 'Drive better performance.' 
-    },
-    { 
-      name: language === 'ar' ? 'إدارة الموظفين' : 'Employee Management', 
-      nameEn: 'Employee Management',
-      nameAr: 'إدارة الموظفين',
-      href: "/features/employee-management", 
-      icon: IdCard, 
-      description: language === 'ar' ? 'جميع بيانات الموظفين، موحدة.' : 'All employee data, unified.' 
-    },
-    { 
-      name: language === 'ar' ? 'خدمة الموظف الذاتية' : 'Employee Self Service', 
-      nameEn: 'Employee Self Service',
-      nameAr: 'خدمة الموظف الذاتية',
-      href: "/features/self-service-portal", 
-      icon: UserCheck, 
-      description: language === 'ar' ? 'خدمة ذاتية للموظفين.' : 'Self-service for employees.' 
-    },
-    { 
-      name: language === 'ar' ? 'إدارة المغادرة' : 'Exit Management', 
-      nameEn: 'Exit Management',
-      nameAr: 'إدارة المغادرة',
-      href: "/features/exit-management", 
-      icon: LogOut, 
-      description: language === 'ar' ? 'عملية مغادرة سلسة.' : 'Smooth exit process.' 
-    },
-    { 
-      name: language === 'ar' ? 'التطبيق المحمول' : 'Mobile App', 
-      nameEn: 'Mobile App',
-      nameAr: 'التطبيق المحمول',
-      href: "/features/mobile-app", 
-      icon: Smartphone, 
-      description: language === 'ar' ? 'مساحة العمل في جيبنا.' : 'Workspace in our Pocket.' 
-    },
-    { 
-      name: language === 'ar' ? 'Face Kit' : 'Face Kit', 
-      nameEn: 'Face Kit',
-      nameAr: 'Face Kit',
-      href: "/features/face-kit", 
-      icon: ScanFace, 
-      description: language === 'ar' ? 'حضور بمسح الوجه بالذكاء الاصطناعي متاح الآن.' : 'AI face scan attendance Now Live.' 
-    },
-    { 
-      name: language === 'ar' ? 'AI Pilot' : 'AI Pilot', 
-      nameEn: 'AI Pilot',
-      nameAr: 'AI Pilot',
-      href: "/features/ai-pilot", 
-      icon: Bot, 
-      description: language === 'ar' ? 'مساعد الموارد البشرية بالصوت والدردشة.' : 'Voice & chat HR assistant.' 
-    },
-  ];
+  const featuresLinks = FEATURE_NAV_LINKS.map((link) => ({
+    id: link.id,
+    name: language === "ar" ? link.nameAr : link.name,
+    href: link.href,
+    icon: link.icon,
+    description: language === "ar" ? link.descriptionAr : link.description,
+  }));
 
   const resourcesLinks = [
     {
@@ -340,17 +256,17 @@ const Navigation = () => {
               <DropdownMenuContent
                 onMouseEnter={handleFeaturesMouseEnter}
                 onMouseLeave={handleFeaturesMouseLeave}
-                className={`w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70] ${isRTL ? 'text-right' : 'text-left'}`}
+                className={`w-[95vw] max-w-[920px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70] ${isRTL ? 'text-right' : 'text-left'}`}
                 align="start"
                 sideOffset={8}
                 onCloseAutoFocus={(e) => e.preventDefault()}
                 side="bottom"
                 alignOffset={-20}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-3">
                   {featuresLinks.map((link) => (
                     <Link
-                      key={link.href}
+                      key={link.id}
                       to={link.href}
                       className={`flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
                     >
@@ -566,13 +482,13 @@ const Navigation = () => {
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === 'features' ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                  openDropdown === 'features' ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
                 <div className={`space-y-1 ${isRTL ? 'pr-4' : 'pl-4'} pt-2`}>
                   {featuresLinks.map((link, index) => (
                     <Link
-                      key={link.href}
+                      key={link.id}
                       to={link.href}
                       className={`flex items-start gap-3 w-full px-3 py-2.5 rounded-md text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-[#0055ff] group transform ${isRTL ? 'flex-row-reverse hover:-translate-x-1' : 'hover:translate-x-1'}`}
                       style={{

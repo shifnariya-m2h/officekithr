@@ -1,14 +1,37 @@
 import type { FaqItem } from "@/seo/schema";
 import { CANONICAL } from "@/seo/canonical-paths";
+import { FEATURE_GEO_BY_PATH } from "@/data/feature-geo";
 
 export type PageGeoConfig = {
   faqs: FaqItem[];
   relatedLinks?: { label: string; href: string }[];
   summary?: string;
+  directAnswer?: string;
+  definition?: { term: string; meaning: string };
+  compliancePoints?: string[];
+  regions?: ("India" | "UAE" | "GCC")[];
 };
+
+function featureGeoToPageGeo(): Record<string, PageGeoConfig> {
+  return Object.fromEntries(
+    Object.entries(FEATURE_GEO_BY_PATH).map(([path, geo]) => [
+      path,
+      {
+        faqs: geo.faqs,
+        relatedLinks: geo.relatedLinks,
+        summary: geo.summary,
+        directAnswer: geo.directAnswer,
+        definition: geo.definition,
+        compliancePoints: geo.compliancePoints,
+        regions: geo.regions,
+      },
+    ])
+  );
+}
 
 /** Per-route FAQs for PreFooterGeo + FAQPage JSON-LD on key pages. */
 export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
+  ...featureGeoToPageGeo(),
   "/pricing": {
     summary:
       "OfficeKit HR offers modular Silver, Gold, and Platinum plans for India and GCC teams — per-user pricing with core HR, payroll, attendance, and advanced automation modules. Book a demo for a tailored quote.",
@@ -43,114 +66,7 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
       { label: "HRMS for India", href: CANONICAL.hrmsIndia },
       { label: "Payroll software UAE", href: CANONICAL.payrollUae },
     ],
-  },
-  "/features/payroll-and-compliance": {
-    summary:
-      "OfficeKit HR automates payroll calculations, statutory filings, and GCC compliance including UAE WPS salary transfers.",
-    faqs: [
-      {
-        question: "Does OfficeKit HR support UAE WPS payroll?",
-        answer:
-          "Yes. OfficeKit supports UAE WPS-compliant salary processing and reporting workflows for employers in the UAE.",
-      },
-      {
-        question: "Which payroll regulations are covered for India?",
-        answer:
-          "Indian payroll modules support PF, ESI, professional tax, and other statutory deductions with audit-ready reports.",
-      },
-      {
-        question: "Can payroll integrate with attendance and leave?",
-        answer:
-          "Yes. Payroll runs use attendance, overtime, and leave data from the same HRMS to reduce manual reconciliation.",
-      },
-    ],
-    relatedLinks: [
-      { label: "WPS compliance software", href: CANONICAL.wpsUae },
-      { label: "Payroll software UAE", href: CANONICAL.payrollUae },
-    ],
-  },
-  "/features/recruitment-management": {
-    summary:
-      "OfficeKit HR recruitment management covers applicant tracking, job posts, interview scheduling, offers, and digital onboarding linked to core HR records.",
-    faqs: [
-      {
-        question: "Does OfficeKit include applicant tracking?",
-        answer:
-          "Yes. Recruiters can manage job posts, pipelines, interviews, and offer letters in one ATS connected to onboarding.",
-      },
-      {
-        question: "Can onboarding be automated after hire?",
-        answer:
-          "Yes. New hires move into structured onboarding checklists with document collection and role assignments.",
-      },
-    ],
-    relatedLinks: [
-      { label: "Best HRMS India", href: CANONICAL.hrmsIndia },
-    ],
-  },
-  "/features/attendance-and-leave": {
-    faqs: [
-      {
-        question: "What attendance capture methods are supported?",
-        answer:
-          "OfficeKit supports web check-in, mobile GPS/geo-fencing, biometric devices, and Face-Kit face recognition.",
-      },
-      {
-        question: "Are shift and overtime rules configurable?",
-        answer:
-          "Yes. Administrators can define shifts, grace periods, overtime policies, and holiday calendars by location.",
-      },
-    ],
-  },
-  "/features/performance-appraisal": {
-    faqs: [
-      {
-        question: "Does OfficeKit support OKRs and review cycles?",
-        answer:
-          "Yes. Teams can run continuous feedback, scheduled appraisal cycles, and goal tracking aligned to company OKRs.",
-      },
-    ],
-  },
-  "/features/self-service-portal": {
-    faqs: [
-      {
-        question: "What can employees do in the self-service portal?",
-        answer:
-          "Employees access payslips, apply for leave, update profiles, submit HR requests, and view policies without HR intervention.",
-      },
-    ],
-  },
-  "/features/mobile-app": {
-    faqs: [
-      {
-        question: "Is there a mobile app for iOS and Android?",
-        answer:
-          "Yes. The OfficeKit mobile app covers attendance, leave, approvals, and payslips for employees and managers.",
-      },
-    ],
-  },
-  "/features/employee-management": {
-    faqs: [
-      {
-        question: "What employee data is centralized in OfficeKit?",
-        answer:
-          "Core HR stores profiles, documents, org structure, employment history, and lifecycle events in one system of record.",
-      },
-    ],
-  },
-  "/features/exit-management": {
-    faqs: [
-      {
-        question: "Does OfficeKit HR handle full and final settlement?",
-        answer:
-          "Yes. Exit workflows cover clearance checklists, asset handover, F&F settlement calculations, and compliance documentation.",
-      },
-      {
-        question: "Can employees submit resignations online?",
-        answer:
-          "Yes. Employees submit resignations through self-service with configurable multi-level approval chains.",
-      },
-    ],
+    regions: ["India", "UAE", "GCC"],
   },
   "/about-us": {
     faqs: [
@@ -165,6 +81,7 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
           "The product is used by companies in India, UAE, Kuwait, Saudi Arabia, and Qatar with localized payroll support.",
       },
     ],
+    regions: ["India", "UAE", "GCC"],
   },
   "/contact": {
     faqs: [
@@ -192,6 +109,7 @@ export const PAGE_GEO_BY_PATH: Record<string, PageGeoConfig> = {
       { label: "Payroll software UAE", href: CANONICAL.payrollUae },
       { label: "WPS compliance", href: CANONICAL.wpsUae },
     ],
+    regions: ["UAE", "GCC"],
   },
 };
 

@@ -3,17 +3,8 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react"
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
-  ArrowRight, ChevronDown, Users,
-  Calendar,
-  BarChart3,
-  IdCard,
-  UserCheck,
-  LogOut,
-  Smartphone,
+  ArrowRight, ChevronDown,
   BookOpen,
-  ScanFace,
-  Bot,
-  Coins,
   Lightbulb,
   HelpCircle
 } from "lucide-react";
@@ -36,6 +27,7 @@ import { NavBrandLogo } from "@/components/ui/NavBrandLogo";
 import { useIsDesktopNav } from "@/hooks/useMediaQuery";
 import { useMobileNavLock } from "@/hooks/useMobileNavLock";
 import { INDUSTRY_NAV_LINKS, INDUSTRY_NAV_VIEW_ALL } from "@/data/industry-nav";
+import { FEATURE_NAV_LINKS } from "@/data/feature-nav";
 import { AnnouncementBar, useAnnouncementNavOffset } from "@/components/AnnouncementBar";
 import { SITE_ANNOUNCEMENT } from "@/data/site-announcement";
 
@@ -65,20 +57,6 @@ const Navigation = () => {
   const toggleMobileDropdown = useCallback((key: "features" | "resources" | "industries") => {
     setOpenDropdown((prev) => (prev === key ? null : key));
   }, []);
-
-  // Navigation Links Data
-  const featuresLinks = [
-    { name: "Recruitment Management", href: "/features/recruitment-management", icon: Users, description: "Smarter hiring, simplified." },
-    { name: "Attendance and Leave", href: "/features/attendance-and-leave", icon: Calendar, description: "Easy time & leave." },
-    { name: "Payroll and Compliance", href: "/features/payroll-and-compliance", icon: Coins, description: "Payroll made simple." },
-    { name: "Performance Management", href: "/features/performance-appraisal", icon: BarChart3, description: "Drive better performance." },
-    { name: "Employee Management", href: "/features/employee-management", icon: IdCard, description: "All employee data, unified." },
-    { name: "Employee Self Service", href: "/features/self-service-portal", icon: UserCheck, description: "Self-service for employees." },
-    { name: "Exit Management", href: "/features/exit-management", icon: LogOut, description: "Smooth exit process." },
-    { name: "Mobile App", href: "/features/mobile-app", icon: Smartphone, description: "Workspace in our Pocket." },
-    { name: "Face Kit", href: "/features/face-kit", icon: ScanFace, description: "AI face scan attendance Now Live." },
-    { name: "AI Pilot", href: "/features/ai-pilot", icon: Bot, description: "Voice & chat HR assistant." },
-  ];
 
   const resourcesLinks = [
     { name: "Blogs", href: "/resources/blogs", icon: BookOpen, description: "Latest insights and updates." },
@@ -225,17 +203,17 @@ const Navigation = () => {
               <DropdownMenuContent
                 onMouseEnter={handleFeaturesMouseEnter}
                 onMouseLeave={handleFeaturesMouseLeave}
-              className="w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70]"
+              className="w-[95vw] max-w-[920px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70]"
               align="start"
               sideOffset={8}
               onCloseAutoFocus={(e) => e.preventDefault()}
               side="bottom"
               alignOffset={-20}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3">
-                {featuresLinks.map((link) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-3">
+                {FEATURE_NAV_LINKS.map((link) => (
                   <Link
-                    key={link.href}
+                    key={link.id}
                     to={link.href}
                     className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer"
                   >
@@ -287,14 +265,14 @@ const Navigation = () => {
               <DropdownMenuContent
                 onMouseEnter={handleIndustriesMouseEnter}
                 onMouseLeave={handleIndustriesMouseLeave}
-              className="w-[90vw] max-w-[600px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70]"
+              className="w-[95vw] max-w-[920px] bg-white rounded-2xl shadow-xl border border-gray-100 mt-2 p-3 md:p-4 z-[70]"
               align="start"
               sideOffset={8}
               onCloseAutoFocus={(e) => e.preventDefault()}
               side="bottom"
               alignOffset={-20}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-3">
                 {INDUSTRY_NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
@@ -316,7 +294,7 @@ const Navigation = () => {
                 ))}
                 <Link
                   to={INDUSTRY_NAV_VIEW_ALL.href}
-                  className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer md:col-span-2 border border-dashed border-gray-200"
+                  className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm group cursor-pointer sm:col-span-2 lg:col-span-3 border border-dashed border-gray-200"
                 >
                   <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-[#0055ff] flex items-center justify-center transition-all duration-200">
                     <INDUSTRY_NAV_VIEW_ALL.icon className="h-4 w-4 text-[#0055ff] group-hover:text-white transition-colors duration-200" />
@@ -476,7 +454,7 @@ const Navigation = () => {
           {isMobileMenuOpen ? (
             <Suspense fallback={<div className="p-4 text-sm text-gray-500">Loading…</div>}>
               <MobileNavigationPanel
-                featuresLinks={featuresLinks}
+                featuresLinks={FEATURE_NAV_LINKS}
                 industriesLinks={INDUSTRY_NAV_LINKS}
                 industriesViewAll={INDUSTRY_NAV_VIEW_ALL}
                 resourcesLinks={resourcesLinks}

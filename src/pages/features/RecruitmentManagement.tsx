@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PageShell } from "@/seo/PageShell";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
-import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
+import { FeatureSeoIntro } from "@/components/seo/FeatureSeoIntro";
 import { Button } from "@/components/ui/button";
 import {
   Users,
@@ -18,11 +18,13 @@ import { Link } from "react-router-dom";
 import { productSchema } from "@/seo/schema";
 import { canonicalUrl } from "@/seo/site-config";
 import { PAGE_GEO_BY_PATH } from "@/data/page-faqs";
+import { getRouteSeo } from "@/seo/route-seo";
 
 const PAGE_PATH = "/features/recruitment-management";
 
 const RecruitmentManagement = () => {
   const geo = PAGE_GEO_BY_PATH[PAGE_PATH];
+  const routeSeo = getRouteSeo(PAGE_PATH);
 
   const features = [
     {
@@ -61,8 +63,8 @@ const RecruitmentManagement = () => {
 
   return (
     <PageShell
-      title="Recruitment Management Software | OfficeKit HR"
-      description="Hire faster with applicant tracking, interview scheduling, offer management, and paperless onboarding in OfficeKit HR."
+      title={routeSeo.title}
+      description={routeSeo.description}
       path={PAGE_PATH}
       faqs={geo?.faqs}
       schemaNodes={[
@@ -101,18 +103,7 @@ const RecruitmentManagement = () => {
           </Button>
         </SeoHeroBanner>
 
-        <section className="py-12 md:py-16 bg-background">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <DirectAnswerBlock
-              answer="OfficeKit HR recruitment management software provides applicant tracking, job posting, interview scheduling, offer letters, and paperless onboarding—connected to core HR so new hires move from offer to day-one without duplicate data entry."
-              definition={{
-                term: "Recruitment management (ATS)",
-                meaning:
-                  "Software that manages job requisitions, candidate pipelines, interviews, offers, and onboarding handoff to HR records.",
-              }}
-            />
-          </div>
-        </section>
+        <FeatureSeoIntro path={PAGE_PATH} />
 
         <section className="py-20 bg-background" aria-labelledby="features-heading">
           <div className="container mx-auto px-4">

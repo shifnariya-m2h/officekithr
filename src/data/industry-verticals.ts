@@ -93,6 +93,7 @@ const INDUSTRY_BASE: Record<string, Omit<IndustryConfig, "highlights" | "feature
     ],
     relatedLinks: [
       { label: "Best HRMS software India", href: "/hrms-software-india" },
+      { label: "GCC compliance hub", href: "/gcc-compliance" },
       { label: "HRMS for hospitality", href: "/industries/hrms-for-hospitality" },
       { label: "Attendance & leave feature", href: "/features/attendance-and-leave" },
     ],
@@ -160,6 +161,7 @@ const INDUSTRY_BASE: Record<string, Omit<IndustryConfig, "highlights" | "feature
     ],
     relatedLinks: [
       { label: "Payroll software UAE", href: "/payroll-software-uae" },
+      { label: "GCC compliance hub", href: "/gcc-compliance" },
       { label: "HRMS for retail", href: "/industries/hrms-for-retail" },
       { label: "Payroll & compliance feature", href: "/features/payroll-and-compliance" },
     ],
@@ -228,6 +230,7 @@ const INDUSTRY_BASE: Record<string, Omit<IndustryConfig, "highlights" | "feature
     ],
     relatedLinks: [
       { label: "Best HRMS software India", href: "/hrms-software-india" },
+      { label: "Payroll software India", href: "/payroll-software-india" },
       { label: "Employee management feature", href: "/features/employee-management" },
     ],
   },
@@ -363,6 +366,7 @@ const INDUSTRY_BASE: Record<string, Omit<IndustryConfig, "highlights" | "feature
     relatedLinks: [
       { label: "HRMS for BFSI", href: "/industries/hrms-for-bfsi" },
       { label: "IT services HRMS", href: "/industries/hrms-for-it-services" },
+      { label: "HRMS software India", href: "/hrms-software-india" },
       { label: "Payroll & compliance", href: "/features/payroll-and-compliance" },
     ],
   },
@@ -562,6 +566,7 @@ const INDUSTRY_BASE: Record<string, Omit<IndustryConfig, "highlights" | "feature
     ],
     relatedLinks: [
       { label: "Bangalore HRMS", href: "/solutions/hrms-software-bangalore" },
+      { label: "HRMS software India", href: "/hrms-software-india" },
       { label: "Recruitment management", href: "/features/recruitment-management" },
       { label: "Performance appraisal", href: "/features/performance-appraisal" },
     ],
@@ -629,6 +634,7 @@ const INDUSTRY_BASE: Record<string, Omit<IndustryConfig, "highlights" | "feature
     ],
     relatedLinks: [
       { label: "Healthcare HR software", href: "/hr-software-healthcare" },
+      { label: "Payroll software UAE", href: "/payroll-software-uae" },
       { label: "Attendance & leave", href: "/features/attendance-and-leave" },
       { label: "Employee management", href: "/features/employee-management" },
     ],

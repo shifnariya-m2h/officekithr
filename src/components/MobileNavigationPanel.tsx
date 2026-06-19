@@ -64,7 +64,7 @@ function MobileNavigationPanel({
           <div className="space-y-1 pl-4 pt-2">
             {featuresLinks.map((link) => (
               <Link
-                key={link.href}
+                key={"id" in link ? link.id : link.href}
                 to={link.href}
                 className="group flex w-full items-start gap-3 rounded-md px-3 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-[#0055ff]"
                 onClick={onClose}

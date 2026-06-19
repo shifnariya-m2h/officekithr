@@ -222,7 +222,7 @@ const IndustryPage = () => {
         </section>
 
         <GeoFaqSection faqs={page.faqs} />
-        <RelatedLinks links={page.relatedLinks} />
+        <RelatedLinks links={page.relatedLinks} heading="Related guides & solutions" />
         <Footer />
       </div>
     </PageShell>

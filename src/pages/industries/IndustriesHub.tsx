@@ -5,6 +5,8 @@ import { PageShell } from "@/seo/PageShell";
 import { SeoHeroBanner } from "@/components/seo/SeoHeroBanner";
 import { DirectAnswerBlock } from "@/components/seo/DirectAnswerBlock";
 import { GeoFaqSection } from "@/components/geo/GeoFaqSection";
+import { RelatedLinks } from "@/components/geo/RelatedLinks";
+import { GEO_INTERNAL_LINKS } from "@/data/geo-links";
 import { INDUSTRY_PAGES } from "@/data/industry-verticals";
 import { breadcrumbSchema } from "@/seo/schema";
 import { ArrowRight } from "lucide-react";
@@ -101,6 +103,15 @@ const IndustriesHub = () => (
       </main>
 
       <GeoFaqSection faqs={HUB_FAQS} />
+      <RelatedLinks
+        links={[
+          GEO_INTERNAL_LINKS.hrmsIndia,
+          GEO_INTERNAL_LINKS.payrollUae,
+          GEO_INTERNAL_LINKS.gccCompliance,
+          GEO_INTERNAL_LINKS.hrDubai,
+        ]}
+        heading="Regional HRMS guides"
+      />
       <Footer />
     </div>
   </PageShell>
